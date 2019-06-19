@@ -1,0 +1,230 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap starter</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body class="complete">
+ 
+    
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="index.html"><img src="assets/images/mybooking_logo_white.svg" alt="" width="200"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Flota
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Filas</a>
+                        <a class="dropdown-item" href="choose_product.html">Rejilla</a>
+                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="conditions.html">Condiciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contacto</a>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="bg-nav"></div>
+    
+    <!-- Reservation steps -->
+    <!-- Reservation steps -->
+    <div class="bg-gray-100">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-md-12 col-lg-8">
+            <div id="steps" class="">
+              <div data-desc="Lugar y Fecha" class="step">1</div>
+              <div data-desc="Seleccionar producto" class="step">2</div>
+              <div data-desc="Completar Reserva" class="active step">3</div>
+              <div data-desc="Sumario" class="step">4</div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <h2 class="title text-center color-gray-500 mt-3">Completar reserva</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Reservation : Selected product -->
+    <div class="bg-white pb-5">
+      <div id="selected_product" class="container"></div>
+    </div>
+    
+    <div class="bg-gray-200">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="col-md-12 bg-white shadow-bottom py-3 px-3 my-5">
+              <!-- Reservation : Extras -->
+              <h4 class="title-small my-3">Extras</h4>
+              <div id="extras_listing"></div>
+              <!-- Reservation complete -->
+              <form id="form-reservation" name="reservation_form">
+                <h4 class="title-small my-3">Información del cliente</h4>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input class="form-control" name="customer_name" type="text" placeholder="Nombre:*">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input class="form-control" name="customer_surname" type="text" placeholder="Apellidos:*">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input class="form-control" name="customer_email" type="text" placeholder="Correo eléctronico:*">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input class="form-control" type="text" placeholder="Confirmar Correo eléctronico:*">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input class="form-control" name="customer_phone" type="text" placeholder="Teléfono principal:*">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input class="form-control" name="customer_mobile_phone" id="customer_mobile_phone" type="text"
+                      placeholder="Teléfono alternativo:*">
+                  </div>
+                </div>
+    
+                <h4 class="title-small my-3">Información adicional</h4>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <textarea name="comments" id="comments" placeholder="Comentarios" style="min-width: 100%"></textarea>
+                  </div>
+                </div>
+                <!-- Reservation : payment -->
+                <div id="payment_detail">
+                </div>
+    
+                <button type="submit" class="btn btn-outline-dark my-5">Solicitar reserva</a>
+    
+              </form>
+            </div>
+          </div>
+          <!-- Reservation: Summary (sidebar) -->
+          <div class="col-md-4">
+            <div id="reservation_detail" class="col-md-12 sidebar bg-white shadow-bottom py-3 px-3 my-5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Product detail -->
+    <script type="text/tpml" id="script_product_detail">
+      <div class="row">
+           <div class="col-md-3 info-completar">
+               <h4>Entrega</h4>
+               <ul>
+                 <li><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></li>
+                 <li><%=shopping_cart.pickup_place_customer_translation%></li>
+               </ul>
+           </div>
+           <div class="col-md-3 info-completar">
+               <h4>Devolución</h4>
+               <ul>
+                 <li><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></li>
+                 <li><%=shopping_cart.return_place_customer_translation%></li>
+               </ul>
+           </div>
+           <div class="col-md-6 wrapp-product">
+               <img class="float-right" src="<%=product.full_photo%>" alt="" style="max-width: 360px">
+           </div>
+       </div>
+       <div class="row">
+           <div class="col"><p class="text-right small-name"><%=product.name%></p></div>
+       </div>
+    </script>
+    
+    <!-- Extra representation -->
+    <script type="text/template" id="script_detailed_extra">
+      <% if (extra.max_quantity > 1) { %>
+        <form class="form-inline">
+                <label for="select<%=extra.code%>"><%=extra.name%></label>
+                <select class="form-control ml-2" name="select<%=extra.code%>" id="select<%=extra.code%>" data-value="<%=extra.code%>">
+                  <% for (var idx=0;idx<=extra.max_quantity;idx++) { %>
+                  <option value="<%=idx%>"
+                    <% if (extrasInShoppingCart[extra.code] && extrasInShoppingCart[extra.code] == idx) { %>
+                      selected="selected"
+                    <%}%> >
+                        <%=idx%> un. <%if (idx>0){%>(<%=new Number(extra.unit_price*idx).toFixed(2)%>€)<%}%>
+                  </option>
+                  <% } %>
+                </select>
+              </form>
+      <% } else { %>
+          <div class="form-group">
+            <label for="checkboxl<%=extra.code%>"><%=extra.name%></label>
+            <span><%=new Number(extra.unit_price).toFixed(2)%> €</span>
+            <span>  <input id="checkboxl<%=extra.code%>" type="checkbox" class="extra-checkbox" data-value="<%=extra.code%>" <% if (extrasInShoppingCart[extra.code] &&  extrasInShoppingCart[extra.code] > 0) { %> checked="checked" <% } %>> </span>
+          </div>
+      <% } %>
+    </script>
+    
+    <!-- Reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+      <h4 class="title-small my-3">Detalle de la reserva</h4>
+      <h5>Entrega</h5>
+      <p><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>
+      <p><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.pickup_place_customer_translation%></p>
+      <hr>
+      <h5>Devolución</h5>
+      <p><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></p>
+      <p><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
+      <hr>
+      <h5>Total producto</h5>
+      <p><%=shopping_cart.item_cost%>€</p>
+      <hr>
+      <h5>Total</h5>
+      <p><%=shopping_cart.total_cost%>€</p>
+      <a class="btn btn-outline-dark" href="">Modificar reserva</a>
+    </script>
+    
+    <!-- Payment detail -->
+    <script type="text/tmpl" id="script_payment_detail">
+      <h4 class="title-small my-3">Pago</h4>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <div class="alert alert-success">
+            <p>Para confirmar la reserva se requiere una paga y señal del 20% del importe total de la reserva</p>
+          </div>
+        </div>
+    
+        <div class="form-check col-md-12">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+                Sólo solicitud de reserva
+            </label>
+        </div>
+      </div>
+    </script>
+    
+<footer class="flex-block-wrapper bg-blue">
+    <div class="centered-flex-block">
+        <p class="color-transparent-white pt10">&copy; 2019 mybooking</p>
+    </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

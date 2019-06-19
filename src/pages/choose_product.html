@@ -1,0 +1,117 @@
+---
+layout: default
+meta-title: Choose product
+step: Seleccionar producto
+---
+
+{{> nav }}
+
+<div class="bg-nav"></div>
+
+<!-- Reservation steps -->
+{{> steps }}
+
+<!-- Result -->
+
+<!-- Reservation : Pickup/Return information -->
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <div class="choose-product-form">
+        <form
+          action="choose_product.html"
+          method="get"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <div class="form-group w-100">
+            <label class="control-label w-100"
+              >Lugar Entrega
+              <select class="w-100" id="pickup_place" name="pickup_place">
+              </select>
+            </label>
+          </div>
+          <div class="form-group w-100">
+            <label class="control-label w-100"
+              >Lugar Devolución
+              <select class="w-100" id="return_place" name="return_place">
+              </select>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="control-label"
+              >Fecha Entrega
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="date_from"
+                  name="date_from"
+                />
+                <select
+                  class="input-group-field"
+                  id="time_from"
+                  name="time_from"
+                >
+                </select>
+              </div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="control-label"
+              >Fecha Devolución
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="date_to"
+                  name="date_to"
+                />
+                <select class="input-group-field" id="time_to" name="time_to">
+                </select>
+              </div>
+            </label>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            href="choose_product.html"
+          >
+            Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-lg-8">
+      <div id="product_listing" class="cards mb-5"></div>
+    </div>
+  </div>
+</div>
+
+<script type="text/tpml" id="script_detailed_product">
+  <div class="card">
+      <header class="header-card">
+          <h1><%=product.name%></h1>
+      </header>
+      <div class="separator"></div>
+      <section class="footer-card">
+          <div class="product-wrapper"><img src="<%=product.photo%>" class="product-image"></div>
+          <p class="short-description"><%=product.short_description%></p>
+          <p class="product-price"><%=new Number(product.price).toFixed(2)%>€</p>
+          <% if (product.availability) { %>
+            <a class="btn btn-light mb30 btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
+          <% } else { %>
+            <p>Consulta telefónica</p>
+          <% } %>
+      </section>
+  </div>
+</script>
