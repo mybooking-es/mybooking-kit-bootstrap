@@ -165,7 +165,7 @@
         <% if (extra.max_quantity > 1) { %>
           <form class="form-inline">
                   <label for="select<%=extra.code%>"><%=extra.name%></label>
-                  <select class="form-control ml-2" name="select<%=extra.code%>" id="select<%=extra.code%>" data-value="<%=extra.code%>">
+                  <select class="form-control ml-2 extra-select" name="select<%=extra.code%>" id="select<%=extra.code%>" data-value="<%=extra.code%>">
                     <% for (var idx=0;idx<=extra.max_quantity;idx++) { %>
                     <option value="<%=idx%>"
                       <% if (extrasInShoppingCart[extra.code] && extrasInShoppingCart[extra.code] == idx) { %>
