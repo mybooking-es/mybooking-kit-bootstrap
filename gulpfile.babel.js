@@ -29,7 +29,7 @@ function loadConfig() {
 // Build the "dist" folder by running all of the below tasks
 gulp.task(
   "build",
-  gulp.series(clean, pages, sass, javascript, images, fontawesome, copy)
+  gulp.series(clean, pages, sass, javascript, myBookingEngine, images, fontawesome, copy)
 );
 
 // Build the site, run the server, and watch for file changes
@@ -152,6 +152,14 @@ function javascript() {
       )
     )
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + "/assets/js"));
+}
+
+// Copy mybooking engine JS to the "dist" folder
+function myBookingEngine() {
+  return gulp
+    .src(["src/assets/js/lib/mybooking-engine-init.js",
+          "src/assets/js/lib/mybooking-engine.js"])
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 

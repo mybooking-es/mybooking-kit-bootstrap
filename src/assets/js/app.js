@@ -27,67 +27,6 @@ $(window).bind("load", function() {
   }
 });
 
-// Index Page load
-$("body.index").ready(function() {
-  // For index Page coding
-});
-
-require("./lib/require.js");
-// Jquery plugins
-require("./lib/jquery.migrate.js");
-require("./lib/jquery.validate.js");
-require("./lib/jquery.ui.js");
-require("./lib/jquery.ui.datepicker-es.js");
-require("./lib/jquery.ui.datepicker-ca.js");
-require("./lib/jquery.ui.datepicker-en.js");
-require("./lib/jquery.ui.datepicker-it.js");
-require("./lib/jquery.ui.datepicker.validation.js");
-require("./lib/jquery.form.js");
-require("./lib/jquery.formparams.js");
-// SUPPORT
-require("./lib/datejs.js");
-// Yurak Sisa Dream Libraries
-
-require("./lib/YSDEventTarget.js");
-require("./lib/YSDDataAdapter.js");
-require("./lib/YSDAbstractDataSource.js");
-require("./lib/YSDListSelectorModel.js");
-require("./lib/YSDSelectSelectorController.js");
-require("./lib/YSDSelectSelectorView.js");
-require("./lib/ysdtemplate.js");
-require("./lib/YSDRemoteDataSource.js");
-require("./lib/YSDSelectSelector.js");
-// Project libraries
-require("./lib/commonServices.js");
-
-// Page index JS
-$(document).ready(function() {
-  if ($("body").hasClass("index")) {
-    require("./index.js");
-  }
-});
-
-// Page choose_product JS
-$(document).ready(function() {
-  if ($("body").hasClass("choose_product")) {
-    require("./choose_product.js");
-  }
-});
-
-// Page complete JS
-$(document).ready(function() {
-  if ($("body.complete").length > 0) {
-    require("./complete.js");
-  }
-});
-
-// Page summary JS
-$(document).ready(function() {
-  if ($("body.summary").length > 0) {
-    require("./summary.js");
-  }
-});
-
 // Steps
 $(document).ready(function() {
   $(".step").each(function(index, element) {

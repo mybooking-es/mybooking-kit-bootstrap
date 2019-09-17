@@ -98,6 +98,8 @@ step: Seleccionar producto
 </div>
 
 <script type="text/tpml" id="script_detailed_product">
+  <% for (var idx=0;idx<products.length; idx++) { %>
+  <% var product = products[idx]; %>
   <div class="card">
       <header class="header-card">
           <h1><%=product.name%></h1>
@@ -106,7 +108,7 @@ step: Seleccionar producto
       <section class="footer-card">
           <div class="product-wrapper"><img src="<%=product.photo%>" class="product-image"></div>
           <p class="short-description"><%=product.short_description%></p>
-          <p class="product-price"><%=new Number(product.price).toFixed(2)%>€</p>
+          <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
           <% if (product.availability) { %>
             <a class="btn btn-light mb30 btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
           <% } else { %>
@@ -114,4 +116,5 @@ step: Seleccionar producto
           <% } %>
       </section>
   </div>
+  <% } %>
 </script>

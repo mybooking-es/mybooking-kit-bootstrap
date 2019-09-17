@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -145,37 +145,44 @@
                  <li><%=shopping_cart.return_place_customer_translation%></li>
                </ul>
            </div>
+           <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
            <div class="col-md-6 wrapp-product">
-               <img class="float-right" src="<%=product.full_photo%>" alt="" style="max-width: 360px">
+               <img class="float-right" src="<%=shopping_cart.items[idx].photo_full%>" alt="" style="max-width: 360px">
            </div>
+           <% } %>
        </div>
        <div class="row">
-           <div class="col"><p class="text-right small-name"><%=product.name%></p></div>
+           <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
+           <div class="col"><p class="text-right small-name"><%=shopping_cart.items[idx].item_description_customer_translation%></p></div>
+           <% } %>
        </div>
     </script>
     
     <!-- Extra representation -->
     <script type="text/template" id="script_detailed_extra">
-      <% if (extra.max_quantity > 1) { %>
-        <form class="form-inline">
-                <label for="select<%=extra.code%>"><%=extra.name%></label>
-                <select class="form-control ml-2" name="select<%=extra.code%>" id="select<%=extra.code%>" data-value="<%=extra.code%>">
-                  <% for (var idx=0;idx<=extra.max_quantity;idx++) { %>
-                  <option value="<%=idx%>"
-                    <% if (extrasInShoppingCart[extra.code] && extrasInShoppingCart[extra.code] == idx) { %>
-                      selected="selected"
-                    <%}%> >
-                        <%=idx%> un. <%if (idx>0){%>(<%=new Number(extra.unit_price*idx).toFixed(2)%>€)<%}%>
-                  </option>
-                  <% } %>
-                </select>
-              </form>
-      <% } else { %>
-          <div class="form-group">
-            <label for="checkboxl<%=extra.code%>"><%=extra.name%></label>
-            <span><%=new Number(extra.unit_price).toFixed(2)%> €</span>
-            <span>  <input id="checkboxl<%=extra.code%>" type="checkbox" class="extra-checkbox" data-value="<%=extra.code%>" <% if (extrasInShoppingCart[extra.code] &&  extrasInShoppingCart[extra.code] > 0) { %> checked="checked" <% } %>> </span>
-          </div>
+      <% for (var idx=0;idx<extras.length;idx++) { %>
+        <% var extra = extras[idx]; %>
+        <% if (extra.max_quantity > 1) { %>
+          <form class="form-inline">
+                  <label for="select<%=extra.code%>"><%=extra.name%></label>
+                  <select class="form-control ml-2" name="select<%=extra.code%>" id="select<%=extra.code%>" data-value="<%=extra.code%>">
+                    <% for (var idx=0;idx<=extra.max_quantity;idx++) { %>
+                    <option value="<%=idx%>"
+                      <% if (extrasInShoppingCart[extra.code] && extrasInShoppingCart[extra.code] == idx) { %>
+                        selected="selected"
+                      <%}%> >
+                          <%=idx%> un. <%if (idx>0){%>(<%=configuration.formatCurrency(extra.unit_price*idx)%>)<%}%>
+                    </option>
+                    <% } %>
+                  </select>
+                </form>
+        <% } else { %>
+            <div class="form-group">
+              <label for="checkboxl<%=extra.code%>"><%=extra.name%></label>
+              <span><%=configuration.formatCurrency(extra.unit_price)%></span>
+              <span>  <input id="checkboxl<%=extra.code%>" type="checkbox" class="extra-checkbox" data-value="<%=extra.code%>" <% if (extrasInShoppingCart[extra.code] &&  extrasInShoppingCart[extra.code] > 0) { %> checked="checked" <% } %>> </span>
+            </div>
+        <% } %>
       <% } %>
     </script>
     
@@ -191,10 +198,13 @@
       <p><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
       <hr>
       <h5>Total producto</h5>
-      <p><%=shopping_cart.item_cost%>€</p>
+      <p><%=configuration.formatCurrency(shopping_cart.item_cost)%></p>
+      <hr>
+      <h5>Total extras</h5>
+      <p><%=configuration.formatCurrency(shopping_cart.extras_cost)%></p>
       <hr>
       <h5>Total</h5>
-      <p><%=shopping_cart.total_cost%>€</p>
+      <p><%=configuration.formatCurrency(shopping_cart.total_cost)%></p>
       <a class="btn btn-outline-dark" href="">Modificar reserva</a>
     </script>
     
@@ -223,6 +233,8 @@
     </div>
 </footer>
 
+<script src="assets/js/mybooking-engine-init.js"></script>
+<script src="assets/js/mybooking-engine.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>
