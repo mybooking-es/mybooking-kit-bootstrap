@@ -11,6 +11,8 @@ import fs from "fs";
 import webpackStream from "webpack-stream";
 import webpack2 from "webpack";
 import named from "vinyl-named";
+import uncss         from 'uncss';
+import autoprefixer  from 'autoprefixer';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -81,6 +83,15 @@ function resetPages(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
+
+  const postCssPlugins = [
+      // Autoprefixer
+      autoprefixer({ browsers: COMPATIBILITY }),
+
+      // UnCSS - Uncomment to remove unused styles in production
+      // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
+    ].filter(Boolean);
+
   return (
     gulp
       .src("src/assets/scss/app.scss")
@@ -90,11 +101,12 @@ function sass() {
           includePaths: PATHS.sass
         }).on("error", $.sass.logError)
       )
-      .pipe(
-        $.autoprefixer({
-          browsers: COMPATIBILITY
-        })
-      )
+      .pipe($.postcss(postCssPlugins))      
+      //.pipe(
+      //  $.autoprefixer({
+      //    browsers: COMPATIBILITY
+      //  })
+      //)
       // Comment in the pipe below to run UnCSS in production
       //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
       .pipe(
