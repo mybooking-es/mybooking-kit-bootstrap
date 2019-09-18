@@ -16818,7 +16818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  // Core
 
 
-window.Popper = __webpack_require__(2)["default"];
+window.Popper = __webpack_require__(2).default;
  // Components
 
 

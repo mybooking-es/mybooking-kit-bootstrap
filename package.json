@@ -19,6 +19,12 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.14.3"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",

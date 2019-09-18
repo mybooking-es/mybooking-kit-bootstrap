@@ -127,14 +127,14 @@
 
 .centered-flex-block {
   z-index: 2;
-  opacity: 1 !important;
+  opacity: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
-  max-width: 30%;
   text-align: center;
+  max-width: 30%;
 }
 
 .centered-flex-block h1 {
@@ -161,7 +161,7 @@
 
 .icon-panel i {
   font-size: 4em;
-  color: $blue;
+  color: #3a539b;
 }
 
 // Large devices (desktops, 992px and up)
@@ -216,122 +216,6 @@
   margin: 15px auto 10px;
 }
 
-span.stopa {
-  border: 1px solid $transparent-white;
-  border-radius: 1.8em;
-  color: $transparent-white;
-  display: inline-block;
-  line-height: 2.6em;
-  text-align: center;
-  width: 2.6em;
-}
-
-.stopa-2::before,
-.stopa-2::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 21px;
-  background-color: $transparent-white;
-  height: 1px;
-  width: calc(100% - 20px);
-}
-
-.stopa-2::before {
-  right: calc(50% + 20px);
-}
-
-.stopa-2::after {
-  left: calc(50% + 20px);
-}
-
-/* ========== Contact ============== */
-/* The bg image */
-.sec-contact {
-  background-image: url(../images/bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-color: $blue;
-  height: 1000px;
-  background-blend-mode: multiply;
-}
-
-/* wrapp all */
-.wrapp-contact-content {
-  display: flex;
-  margin: 50px 10% 0 10%;
-  height: 530px;
-  width: calc(80% - 30px);
-  /* For margins */
-  color: $white;
-}
-
-.wrapp-contact-content hr {
-  width: 50px;
-  margin-left: 0;
-  margin-bottom: 30px;
-  border-style: dashed;
-}
-
-/* Left zone */
-.contact-left {
-  width: 70%;
-  display: flex;
-}
-
-.contact-info {
-  width: 50%;
-  background-color: #22313f;
-  padding: 20px 10% 20px 20px;
-}
-
-.contact-map {
-  background-color: $white;
-  width: 50%;
-}
-
-/* Right zone */
-.contact-right {
-  width: 30%;
-}
-
-.contact-form {
-  padding: 20px;
-  background-color: #1f3a93;
-  margin-left: 30px;
-}
-
-.contact-form input,
-.contact-form form textarea {
-  width: 100%;
-  border-radius: 4px;
-  border: none;
-  margin-bottom: 2em;
-  color: #acb7ee;
-}
-
-ul.social-links,
-.social-links li {
-  margin: 0;
-  padding: 0;
-}
-
-.social-links li {
-  float: left;
-  margin-left: 30px;
-  list-style: none;
-  font-size: 2em;
-}
-
-.social-links > li:first-child {
-  margin-left: 0;
-}
-
-.social-links a {
-  color: $transparent-white;
-}
-
 // Formularios
 
 select {
@@ -371,7 +255,9 @@ select {
   background-color: $gray-100;
   padding: 15px;
   margin-bottom: 2em;
-  //min-width: 300px;
+  .control-label {
+    min-width: 100%;
+  }
 }
 
 .info-completar {
