@@ -13120,23 +13120,25 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 }); // Form Selector
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
-  var height = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").offset().top;
-  var is_mobile = false;
+  if (typeof __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").offset() !== "undefined") {
+    var height = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").offset().top;
+    var is_mobile = false;
 
-  if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
-    is_mobile = true;
-  }
+    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
+      is_mobile = true;
+    }
 
-  if (!is_mobile) {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on("scroll", function () {
-      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
-      } else if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scrollTop() > height) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").addClass("flex-form-sticky");
-      } else {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
-      }
-    });
+    if (!is_mobile) {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on("scroll", function () {
+        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
+        } else if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scrollTop() > height) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").addClass("flex-form-sticky");
+        } else {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
+        }
+      });
+    }
   }
 });
 
