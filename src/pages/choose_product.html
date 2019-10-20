@@ -4,117 +4,82 @@ meta-title: Choose product
 step: Seleccionar producto
 ---
 
+{{> cta }}
 {{> nav }}
-
-<div class="bg-nav"></div>
 
 <!-- Reservation steps -->
 {{> steps }}
 
 <!-- Result -->
 
+<div class="bg-gray-200 py-5 full-height">
 <!-- Reservation : Pickup/Return information -->
-<div class="container-fluid my-5">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12 col-lg-3">
-      <div class="choose-product-form">
-        <form
-          action="choose_product.html"
-          method="get"
-          enctype="application/x-www-form-urlencoded"
-        >
-          <div class="form-group w-100">
-            <label class="control-label w-100"
-              >Lugar Entrega
-              <select class="w-100" id="pickup_place" name="pickup_place">
-              </select>
-            </label>
-          </div>
-          <div class="form-group w-100">
-            <label class="control-label w-100"
-              >Lugar Devolución
-              <select class="w-100" id="return_place" name="return_place">
-              </select>
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="control-label"
-              >Fecha Entrega
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="date_from"
-                  name="date_from"
-                />
-                <select
-                  class="input-group-field"
-                  id="time_from"
-                  name="time_from"
-                >
-                </select>
-              </div>
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="control-label"
-              >Fecha Devolución
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="date_to"
-                  name="date_to"
-                />
-                <select class="input-group-field" id="time_to" name="time_to">
-                </select>
-              </div>
-            </label>
-          </div>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            href="choose_product.html"
-          >
-            Actualizar
-          </button>
-        </form>
-      </div>
+      <div id="reservation_detail"></div>
     </div>
     <div class="col-12 col-lg-8">
-      <div id="product_listing" class="cards mb-5"></div>
+      <div id="product_listing" class="magic-cards mb-5"></div>
     </div>
   </div>
 </div>
+</div>
 
+<!-- Script detailed product for choose_product -->
 <script type="text/tpml" id="script_detailed_product">
   <% for (var idx=0;idx<products.length; idx++) { %>
-  <% var product = products[idx]; %>
-  <div class="card">
-      <header class="header-card">
-          <h1><%=product.name%></h1>
-      </header>
-      <div class="separator"></div>
-      <section class="footer-card">
-          <div class="product-wrapper"><img src="<%=product.photo%>" class="product-image"></div>
-          <p class="short-description"><%=product.short_description%></p>
-          <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
-          <% if (product.availability) { %>
-            <a class="btn btn-light mb30 btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
-          <% } else { %>
-            <p>Consulta telefónica</p>
-          <% } %>
-      </section>
+    <% var product = products[idx]; %>
+    <div class="magic-card">
+        <header class="header-card">
+            <h1 class="product-name"><%=product.name%></h1>
+        </header>
+        <div class="separator"></div>
+        <section class="footer-card">
+          <div class="img-wrapper">
+        <img src="<%=product.photo%>" class="product-image"></div>
+            <div class="variable-content">
+              <% if (product.price != product.base_price) { %>
+                <% if (product.offer_discount_type == 'percentage') { %>
+                  <p class="offer"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
+                <% } %>
+              <% } %>
+            </div>
+
+            <div class="abajo">
+            <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+
+            <% if (product.availability) { %>
+            <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
+            <% } else { %>
+            <p>Modelo no disponible en la oficina y fechas seleccionadas</p>
+            <% } %>
+
+            <% if (product.few_available_units) { %>
+              <p class="text-danger mt-3">¡Quedan pocas unidades!</p>
+            <% } %>
+            
+            </div>
+        </section>
+    </div>
+    <% } %>
+  </script>
+
+<!-- Script detailed for reservation summary -->
+<script type="text/tmpl" id="script_reservation_summary">
+  <div class="bg-white p-3 mb-5 shadow-bottom">
+  <h4 class="title-small my-3">Detalle de la reserva</h4>
+  <h5>Entrega</h5>
+  <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>
+  <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.pickup_place_customer_translation%></p>
+  <hr>
+  <h5>Devolución</h5>
+  <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></p>
+  <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
+  <hr>
+  <!-- Button trigger modal -->
+  <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal">Modificar reserva</button> 
   </div>
-  <% } %>
 </script>
+
+{{> modal_change_search }}

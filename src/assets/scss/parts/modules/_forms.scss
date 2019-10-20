@@ -1,0 +1,140 @@
+//==============================================
+// Module/inputs, forms, textarea
+//==============================================
+
+// Form Selector
+
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  background-color: $transparent-white;
+  padding: 10px;
+}
+.flex-form-sticky {
+  @extend .flex-form;
+  flex-direction: row;
+  background-color: $gray-300;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  .btn {
+    height: 48px;
+    margin-top: 32px;
+  }
+  input.hasDatepicker {
+    max-width: 130px;
+  }
+}
+.flex-form-item-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 5px;
+}
+.flex-form-item {
+  display: flex;
+  select {
+    width: 100%;
+    min-width: 98px;
+  }
+}
+.flex-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  background-color: #fff;
+  padding: 5px 10px;
+  height: 48px;
+  color: $gray-700;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  input.hasDatepicker {
+    max-width: 130px;
+  }
+}
+
+/* ============================================
+  ===========  Reglas para todos los Formularios
+  ============================================== */
+select {
+  border-radius: 0px;
+  padding: 0 0.8rem;
+  text-indent: 1px;
+  text-overflow: "";
+  border: 0;
+  font-size: 1rem;
+  height: 48px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+  }
+}
+.input-group > .form-control {
+  height: 48px;
+}
+.input-group-prepend > .input-group-text {
+  border-radius: 0;
+}
+/* remove rounding from cards, buttons and inputs */
+.card,
+.btn,
+.form-control {
+  border-radius: 0;
+}
+// Overriding jQuery UI styles
+input[type="text"],
+input[type="password"],
+.ui-autocomplete-input,
+textarea,
+.uneditable-input {
+  display: inline-flex;
+  padding: 0 0.8rem;
+  font-size: 13px;
+  line-height: 18px;
+  color: $gray-700;
+  border: 0;
+  border-radius: 0;
+  height: 48px;
+}
+label {
+  position: relative;
+}
+.custom-icon {
+  position: absolute;
+  font-size: 18px;
+  color: $gray-700;
+  right: 8px;
+  top: 36px;
+}
+.custom-icon-select {
+  @extend .custom-icon;
+  top: 16px;
+}
+.custom-form {
+  input[type="text"],
+  input[type="password"],
+  .ui-autocomplete-input,
+  textarea,
+  .uneditable-input {
+    border: 1px solid $gray-400;
+    border-radius: 3px;
+    box-shadow: none;
+  }
+}
+
+.form-reservation-error {
+  color: #dc3545;
+}
+input.form-reservation-error {
+  border-color: #dc3545 !important;
+}

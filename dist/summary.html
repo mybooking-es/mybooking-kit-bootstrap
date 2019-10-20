@@ -6,43 +6,51 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap starter</title>
+    <title>Su reserva</title>
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
-<body class="summary">
+<body class="summary ">
  
     
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.html"><img src="assets/images/mybooking_logo_white.svg" alt="" width="200"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-        </button>
+    <div class="cta cta__bg cta__text color-whites">
+      <span><i class="fas fa-phone "></i> <a href="tel:+34888888888">+34 888 88 88 88</a></span>
+      <span class="mr-auto ml-3">
+        <i class="far fa-envelope"></i>
+        <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+      </span>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Flota
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Filas</a>
-                        <a class="dropdown-item" href="choose_product.html">Rejilla</a>
-                    </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="conditions.html">Condiciones</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contacto</a>
-                </li>
-                </li>
-            </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Flota
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Filas</a>
+              <a class="dropdown-item" href="choose_product.html">Rejilla</a>
+            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Condiciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contacto</a>
+          </li>
+          </li>
+        </ul>
+      </div>
     </nav>
     <div class="bg-nav"></div>
     
@@ -59,8 +67,10 @@
               <div data-desc="Sumario" class="active step">4</div>
             </div>
           </div>
-          <div class="col-md-12 col-lg-4">
-            <h2 class="title text-center color-gray-500 mt-3">Su reserva</h2>
+          <div class="col-md-12 col-lg-4 d-flex">
+              <div class="d-inline-flex p-2 align-items-center">
+                  <h2 class="color-blue">Su reserva</h2>
+              </div>
           </div>
         </div>
       </div>
@@ -218,10 +228,8 @@
     </script>
     
     
-<footer class="flex-block-wrapper bg-blue">
-    <div class="centered-flex-block">
-        <p class="color-transparent-white pt10">&copy; 2019 mybooking</p>
-    </div>
+<footer class="footer text-center py-3">
+  <p class="color-white">&copy; 2019 mybooking</p>
 </footer>
 
 <script src="assets/js/mybooking-engine-init.js"></script>

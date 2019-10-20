@@ -6,48 +6,56 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap starter</title>
+    <title>Index</title>
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
-<body class="index">
+<body class="index mybooking-selector-widget">
  
     
     <div class="hero-header-container">
-      <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="index.html"><img src="assets/images/mybooking_logo_white.svg" alt="" width="200"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-          </button>
+      <div class="cta cta__bg cta__text color-whites">
+        <span><i class="fas fa-phone "></i> <a href="tel:+34888888888">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>  <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-white"></div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
-                          Flota
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Filas</a>
-                          <a class="dropdown-item" href="choose_product.html">Rejilla</a>
-                      </div>
-                  <li class="nav-item">
-                      <a class="nav-link" href="conditions.html">Condiciones</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contacto</a>
-                  </li>
-                  </li>
-              </ul>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Flota
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Filas</a>
+                <a class="dropdown-item" href="choose_product.html">Rejilla</a>
+              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="conditions.html">Condiciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacto</a>
+            </li>
+            </li>
+          </ul>
+        </div>
       </nav>  <div class="hero-header-content">
         <div class="hero-header-left">
           <div class="aligner">
-            <h1>Mybooking Kit Bootstrap</h1>
+            <h1 class="fw-900">Mybooking Web Sample HTML Bootstrap</h1>
             <p>
               Lorem ipsum dolor amet flannel mumblecore air plant iceland hexagon
               tote bag twee pok pok scenester selfies.
@@ -55,98 +63,56 @@
           </div>
         </div>
         <div class="hero-header-right">
-          <div class="landing-form mx-3">
-            <form
-              action="choose_product.html"
-              method="get"
-              enctype="application/x-www-form-urlencoded"
-            >
-              <div class="form-group w-100">
-                <label class="control-label w-100"
-                  >Lugar Entrega
-                  <select class="w-100" id="pickup_place" name="pickup_place">
-                  </select>
-                </label>
-              </div>
-              <div class="form-group w-100">
-                <label class="control-label w-100"
-                  >Lugar Devolución
-                  <select class="w-100" id="return_place" name="return_place">
-                  </select>
-                </label>
-              </div>
-    
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col">
-                    <label class="control-label"
-                      >Fecha Entrega
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                          </div>
-                        </div>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="date_from"
-                          name="date_from"
-                        />
-                        <select
-                          class="input-group-field ml-1"
-                          id="time_from"
-                          name="time_from"
-                        >
-                        </select>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="col">
-                    <label class="control-label"
-                      >Fecha Devolución
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                          </div>
-                        </div>
-    
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="date_to"
-                          name="date_to"
-                        />
-                        <select
-                          class="input-group-field ml-1"
-                          id="time_to"
-                          name="time_to"
-                        >
-                        </select>
-                      </div>
-                    </label>
-                  </div>
+          <!-- FLEX-FORM-SELECTOR -->
+          <section class="widget widget_mybooking_rent_engine_selector reservation-step">
+            <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded" class="flex-form">
+              <div class="flex-form-item-box">
+                <label>Lugar Entrega</label>
+                <div class="flex-form-item">
+                  <select id="widget_pickup_place" name="pickup_place"></select>
+                  <i class="fa fa-angle-down flex-icon"></i>
                 </div>
               </div>
-    
-              <input
-                type="submit"
-                class="btn btn-primary float-right"
-                href="choose_product.html"
-                value="Buscar"
-              />
+              <div class="flex-form-item-box">
+                <label>Lugar Devolución</label>
+                <div class="flex-form-item">
+                  <select id="widget_return_place" name="return_place">
+                  </select>
+                  <i class="fa fa-angle-down flex-icon"></i>
+                </div>
+              </div>
+              <div class="flex-form-item-box">
+                <label>Fecha Entrega</label>
+                <div class="flex-form-item">
+                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                  <input type="text" id="widget_date_from" name="date_from" />
+                  <select class="ml-1" id="widget_time_from" name="time_from">
+                  </select>
+                </div>
+              </div>
+              <div class="flex-form-item-box">
+                <label>Fecha Devolución</label>
+                <div class="flex-form-item">
+                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                  <input type="text" id="widget_date_to" name="date_to" />
+                  <select class="ml-1" id="widget_time_to" name="time_to">
+                  </select>
+                </div>
+              </div>
+              <div class="flex-form-item-box">
+                <input type="submit" class="btn btn-primary" value="Buscar" />
+              </div>
             </form>
-          </div>
-        </div>
+          </section>    </div>
       </div>
       <div class="diagonal-section"></div>
     </div>
     
-    <div class="flex-block-wrapper">
-      <div class="centered-flex-block mt150">
-        <h1>Overview</h1>
-        <div class="hr"></div>
+    <div class="title-wrapper">
+      <div class="title">
+        <h1 class="fw-900">Overview</h1>
+        <hr class="center-hr">
+        </hr>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae magni culpa
           laudantium at. Pariatur officia maiores earum
@@ -157,30 +123,32 @@
     <div class="icons-wrapper mt100">
       <div class="icon-panel icon-1">
         <i class="fas fa-gas-pump"></i><br />
-        <h5>We don't charge deposit</h5>
+        <h6>Conecta tu cuenta de Mybooking</h6>
       </div>
       <div class="icon-panel icon-2">
         <i class="fas fa-wallet"></i><br />
-        <h5>Competitive prices</h5>
+        <h6>Opciones de diseño y personalización</h6>
       </div>
       <div class="icon-panel icon-3">
         <i class="fas fa-credit-card"></i><br />
-        <h5>Credit card doesn't required</h5>
+        <h6>Gestión sencilla de contenidos</h6>
       </div>
       <div class="icon-panel icon-4">
         <i class="fas fa-users"></i><br />
-        <h5>Extra drivers included</h5>
+        <h6>Listo para empezar desde cero</h6>
       </div>
     </div>
     
     <div class="gradient-section">
-      <div class="centered-flex-block mt150">
-        <h1 class="color-white">How it works</h1>
-        <div class="hr-white"></div>
-        <p class="color-white">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae magni culpa
-          laudantium at. Pariatur officia maiores earum impedit numquam quod cum
-        </p>
+      <div class="title-wrapper">
+        <div class="title">
+          <h1 class="color-white fw-900">How it works</h1>
+          <hr class="center-hr-white"></hr>
+          <p class="color-white">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae magni culpa
+            laudantium at. Pariatur officia maiores earum impedit numquam quod cum
+          </p>
+        </div>
       </div>
     
       <div class="text-center">
@@ -189,7 +157,7 @@
     
       <div class="feature">
         <div class="features__item">
-          <span class="stopa">1</span>
+          <span class="stopa stopa-1">1</span>
           <h3>Choose</h3>
           <hr />
           <p>
@@ -206,7 +174,7 @@
           </p>
         </div>
         <div class="features__item">
-          <span class="stopa">3</span>
+          <span class="stopa stopa-3">3</span>
           <h3>Car</h3>
           <hr />
           <p>
@@ -216,11 +184,8 @@
       </div>
     </div>
     
-    
-<footer class="flex-block-wrapper bg-blue">
-    <div class="centered-flex-block">
-        <p class="color-transparent-white pt10">&copy; 2019 mybooking</p>
-    </div>
+<footer class="footer text-center py-3">
+  <p class="color-white">&copy; 2019 mybooking</p>
 </footer>
 
 <script src="assets/js/mybooking-engine-init.js"></script>

@@ -11,8 +11,8 @@ import fs from "fs";
 import webpackStream from "webpack-stream";
 import webpack2 from "webpack";
 import named from "vinyl-named";
-import uncss         from 'uncss';
-import autoprefixer  from 'autoprefixer';
+import uncss from "uncss";
+import autoprefixer from "autoprefixer";
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -31,7 +31,18 @@ function loadConfig() {
 // Build the "dist" folder by running all of the below tasks
 gulp.task(
   "build",
-  gulp.series(clean, pages, sass, javascript, myBookingEngine, images, fontawesome, copy)
+  gulp.series(
+    clean,
+    pages,
+    sass,
+    javascript,
+    myBookingEngine,
+    images,
+    build_fonts,
+    fontawesome,
+    cssimages,
+    copy
+  )
 );
 
 // Build the site, run the server, and watch for file changes
@@ -49,6 +60,14 @@ function copy() {
   return gulp.src(PATHS.assets).pipe(gulp.dest(PATHS.dist + "/assets"));
 }
 
+//   1: Fonts
+
+function build_fonts() {
+  return gulp
+    .src("./assets/fonts/*.{woff,woff2,eot,svg,ttf}")
+    .pipe(gulp.dest(PATHS.dist + "/assets/fonts"));
+}
+
 // Copy Fontawesome fonts into dist folder
 function fontawesome() {
   return gulp
@@ -56,6 +75,13 @@ function fontawesome() {
       "./node_modules/@fortawesome/fontawesome-free/webfonts/*.{woff,woff2,eot,svg,ttf}"
     )
     .pipe(gulp.dest(PATHS.dist + "/assets/fonts"));
+}
+
+// Copy jQuery UI images into dist css folder
+function cssimages() {
+  return gulp
+    .src("./src/assets/scss/vendor/jquery.ui.custom/images/*.{jpg,gif,png}")
+    .pipe(gulp.dest(PATHS.dist + "/assets/css/images"));
 }
 
 // Copy page templates into finished HTML files
@@ -83,14 +109,13 @@ function resetPages(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
-
   const postCssPlugins = [
-      // Autoprefixer
-      autoprefixer({ browsers: COMPATIBILITY }),
+    // Autoprefixer
+    autoprefixer({ browsers: COMPATIBILITY })
 
-      // UnCSS - Uncomment to remove unused styles in production
-      // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
-    ].filter(Boolean);
+    // UnCSS - Uncomment to remove unused styles in production
+    // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
+  ].filter(Boolean);
 
   return (
     gulp
@@ -101,7 +126,7 @@ function sass() {
           includePaths: PATHS.sass
         }).on("error", $.sass.logError)
       )
-      .pipe($.postcss(postCssPlugins))      
+      .pipe($.postcss(postCssPlugins))
       //.pipe(
       //  $.autoprefixer({
       //    browsers: COMPATIBILITY
@@ -170,8 +195,10 @@ function javascript() {
 // Copy mybooking engine JS to the "dist" folder
 function myBookingEngine() {
   return gulp
-    .src(["src/assets/js/lib/mybooking-engine-init.js",
-          "src/assets/js/lib/mybooking-engine.js"])
+    .src([
+      "src/assets/js/lib/mybooking-engine-init.js",
+      "src/assets/js/lib/mybooking-engine.js"
+    ])
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 

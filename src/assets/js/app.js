@@ -14,23 +14,22 @@ window.jQuery = $;
 require("./lib/bootstrap-explicit-pieces.js");
 
 /* Sticky footer */
-$(window).bind("load", function() {
-  var footer = $("footer");
-  var pos = footer.position();
-  var height = $(window).height();
-  height = height - pos.top;
-  height = height - 50;
-  if (height > 0) {
-    footer.css({
-      "margin-top": height + "px"
-    });
-  }
-});
+// $(window).bind("load", function() {
+//   var footer = $("footer");
+//   var pos = footer.position();
+//   var height = $(window).height();
+//   height = height - pos.top;
+//   height = height - 50;
+//   if (height > 0) {
+//     footer.css({
+//       "margin-top": height + "px"
+//     });
+//   }
+// });
 
 // Steps
 $(document).ready(function() {
   $(".step").each(function(index, element) {
-    //element == this
     $(element)
       .not(".active")
       .addClass("done");
@@ -39,4 +38,25 @@ $(document).ready(function() {
       return false;
     }
   });
+});
+
+// Form Selector
+$(document).ready(function() {
+  var height = $("#form-selector").offset().top;
+  var is_mobile = false;
+
+  if ($(".navbar-toggler").is(":visible")) {
+    is_mobile = true;
+  }
+  if (!is_mobile) {
+    $(window).on("scroll", function() {
+      if ($(".navbar-toggler").is(":visible")) {
+        $("#form-selector").removeClass("flex-form-sticky");
+      } else if ($(window).scrollTop() > height) {
+        $("#form-selector").addClass("flex-form-sticky");
+      } else {
+        $("#form-selector").removeClass("flex-form-sticky");
+      }
+    });
+  }
 });

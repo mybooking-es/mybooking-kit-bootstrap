@@ -1,5 +1,8 @@
 //==============================================
-// Layout/footer
-//============================================== 
+// Layout/Hero header
+//==============================================
 
-.l-footer {}
+.footer {
+  background-color: darken($brand-primary, 40%);
+  color: $white;
+}

@@ -1,10 +1,10 @@
-window.mybookingEngine = function(){
-  var baseURL = 'https://mbc-developer1.mybooking.es';
+window.mybookingEngine = (function() {
+  var baseURL = "https://demo-rentacar.mybooking.es";
   var extrasStep = false;
-  var chooseProductUrl = 'choose_product.html';
-  var chooseExtrasUrl = 'choose_extras.html';
-  var completeUrl = 'complete.html';
-  var summaryUrl = 'summary.html';
+  var chooseProductUrl = "choose_product.html";
+  var chooseExtrasUrl = "choose_extras.html";
+  var completeUrl = "complete.html";
+  var summaryUrl = "summary.html";
   function getBaseURL() {
     return baseURL;
   }
@@ -23,12 +23,12 @@ window.mybookingEngine = function(){
   function getSummaryUrl() {
     return summaryUrl;
   }
-  return{
+  return {
     baseURL: getBaseURL,
     extrasStep: getExtrasStep,
     chooseProductUrl: getChooseProductUrl,
     chooseExtrasUrl: getChooseExtrasUrl,
     completeUrl: getCompleteUrl,
     summaryUrl: getSummaryUrl
-  }
-}();
+  };
+})();

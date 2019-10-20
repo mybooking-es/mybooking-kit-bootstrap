@@ -13093,25 +13093,23 @@ window.jQuery = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a; // Bootstrap
 
 __webpack_require__(15);
 /* Sticky footer */
+// $(window).bind("load", function() {
+//   var footer = $("footer");
+//   var pos = footer.position();
+//   var height = $(window).height();
+//   height = height - pos.top;
+//   height = height - 50;
+//   if (height > 0) {
+//     footer.css({
+//       "margin-top": height + "px"
+//     });
+//   }
+// });
+// Steps
 
-
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).bind("load", function () {
-  var footer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("footer");
-  var pos = footer.position();
-  var height = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height();
-  height = height - pos.top;
-  height = height - 50;
-
-  if (height > 0) {
-    footer.css({
-      "margin-top": height + "px"
-    });
-  }
-}); // Steps
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".step").each(function (index, element) {
-    //element == this
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element).not(".active").addClass("done");
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".done").html('<i class="fa fa-check" aria-hidden="true"></i>');
 
@@ -13119,6 +13117,27 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
       return false;
     }
   });
+}); // Form Selector
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
+  var height = __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").offset().top;
+  var is_mobile = false;
+
+  if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
+    is_mobile = true;
+  }
+
+  if (!is_mobile) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on("scroll", function () {
+      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(".navbar-toggler").is(":visible")) {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
+      } else if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scrollTop() > height) {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").addClass("flex-form-sticky");
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").removeClass("flex-form-sticky");
+      }
+    });
+  }
 });
 
 /***/ }),
