@@ -34,7 +34,7 @@ step: Su reserva
   <div>
     <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
     <h2 class="product-name"><%=booking_line.item_description_customer_translation%></h2>
-    <p class="detail-text">LOCALIZADOR: <%= booking.id %></br>
+    <p class="detail-text">LOCALIZADOR: <%=booking.id%></br>
       Duración del alquiler: <%=booking.days%> día/s</p>
     <% } %>
     <h5>Entrega</h5>

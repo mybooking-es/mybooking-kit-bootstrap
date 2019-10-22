@@ -1,5 +1,5 @@
 window.mybookingEngine = (function() {
-  var baseURL = "https://demo-rentacar.mybooking.es";
+  var baseURL = "https://demo-rentacar-dev.mybooking.es";
   var extrasStep = false;
   var chooseProductUrl = "choose_product.html";
   var chooseExtrasUrl = "choose_extras.html";

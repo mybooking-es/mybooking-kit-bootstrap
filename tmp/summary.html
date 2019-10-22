@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html"><%= nav.home %></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -109,7 +109,7 @@
       <div>
         <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
         <h2 class="product-name"><%=booking_line.item_description_customer_translation%></h2>
-        <p class="detail-text">LOCALIZADOR: <%= booking.id %></br>
+        <p class="detail-text">LOCALIZADOR: <%=booking.id%></br>
           Duración del alquiler: <%=booking.days%> día/s</p>
         <% } %>
         <h5>Entrega</h5>

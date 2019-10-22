@@ -101,13 +101,13 @@ function pages() {
       })
     )
     .pipe(gulp.dest(PATHS.tmp))
-    .pipe(gulp.dest(PATHS.dist));
+    .pipe(gulp.dest(PATHS.dist)); // Copy to dist all to hold translated pages (in pages/language)
 }
 
 // Translate task (i18-html-gulp)
 function translate() {
   return gulp
-    .src([PATHS.tmp + "/*.html", "!/en"])
+    .src([PATHS.tmp + "/*.html", "!" + PATHS.tmp + "/**/conditions.html"]) // To avoid process conditions.html because it's translated
     .pipe(
       i18n({
         langDir: "./src/lang",
