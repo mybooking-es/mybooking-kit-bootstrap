@@ -20,50 +20,50 @@ step: Completar reserva
 
         <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-5">
           <!-- Reservation : Extras -->
-          <h4 class="title-small my-3">Extras</h4>
+          <h4 class="title-small my-3"><%= complete.extras_title %></h4>
           <div id="extras_listing"></div>
         </div>
 
         <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-3 mb-5 custom-form">
           <!-- Reservation complete -->
             <form id="form-reservation" name="reservation_form">
-              <h4 class="brand-primary my-3">Información del cliente</h4>
+              <h4 class="brand-primary my-3"><%= complete.customer_title %></h4>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="name">Nombre *</label>
-                  <input class="form-control" id="customer_name" name="customer_name" type="text" placeholder="Nombre*">
+                  <label for="name"><%= complete.field_customer_name %> *</label>
+                  <input class="form-control" id="customer_name" name="customer_name" type="text" placeholder="<%= complete.field_customer_name %>*">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="surname">Apellidos *</label>
+                  <label for="surname"><%= complete.field_customer_surname %> *</label>
                   <input class="form-control" id="customer_surname" name="customer_surname" type="text"
-                    placeholder="Apellidos">
+                    placeholder="<%= complete.field_customer_surname %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="email">Correo eléctronico *</label>
+                  <label for="email"><%= complete.field_customer_email %> *</label>
                   <input class="form-control" id="customer_email" name="customer_email" type="text"
-                    placeholder="Correo eléctronico">
+                    placeholder="<%= complete.field_customer_email %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="confirm_customer_email">Confirmar correo eléctronico *</label>
+                  <label for="confirm_customer_email"><%= complete.field_customer_email_confirm %> *</label>
                   <input class="form-control" id="confirm_customer_email" name="confirm_customer_email" type="text"
-                    placeholder="Confirmar correo eléctronico">
+                    placeholder="<%= complete.field_customer_email_confirm %> *">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="phone">Teléfono principal *</label>
+                  <label for="phone"><%= complete.field_customer_main_phone_number %> *</label>
                   <input class="form-control" id="customer_phone" name="customer_phone" type="text"
-                    placeholder="Teléfono principal">
+                    placeholder="<%= complete.field_customer_main_phone_number %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="">Teléfono alternativo</label>
+                  <label for=""><%= complete.field_customer_alternative_phone_number %>*</label>
                   <input class="form-control" id="customer_mobile_phone" name="customer_mobile_phone"
-                    type="text" placeholder="Teléfono alternativo">
+                    type="text" placeholder="<%= complete.field_customer_alternative_phone_number %>">
                 </div>
               </div>
-              <h4 class="brand-primary my-3">Información adicional</h4>
+              <h4 class="brand-primary my-3"><%= complete.additional_information_title %></h4>
               <div class="form-row">
                 <div class="form-group col-md-12">
-                  <label for="comments">Comentarios</label>
-                  <textarea name="comments" id="comments" placeholder="Comentarios"
+                  <label for="comments"><%= complete.field_comments %></label>
+                  <textarea name="comments" id="comments" placeholder="<%= complete.field_comments %>"
                     style="width: 100%; height: 100px; padding: 0.8rem;"></textarea>
                 </div>
               </div>

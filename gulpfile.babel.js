@@ -11,6 +11,7 @@ import fs from "fs";
 import webpackStream from "webpack-stream";
 import webpack2 from "webpack";
 import named from "vinyl-named";
+import i18n from "gulp-html-i18n";
 import uncss from "uncss";
 import autoprefixer from "autoprefixer";
 
@@ -40,6 +41,7 @@ gulp.task(
     images,
     build_fonts,
     fontawesome,
+    translate,
     cssimages,
     copy
   )
@@ -52,6 +54,7 @@ gulp.task("default", gulp.series("build", server, watch));
 // This happens every time a build starts
 function clean(done) {
   rimraf(PATHS.dist, done);
+  rimraf(PATHS.tmp, done);
 }
 
 // Copy files out of the assets folder
@@ -95,6 +98,24 @@ function pages() {
         partials: "src/partials/",
         data: "src/data/",
         helpers: "src/helpers/"
+      })
+    )
+    .pipe(gulp.dest(PATHS.tmp))
+    .pipe(gulp.dest(PATHS.dist));
+}
+
+// Translate task (i18-html-gulp)
+function translate() {
+  return gulp
+    .src([PATHS.tmp + "/*.html", "!/en"])
+    .pipe(
+      i18n({
+        langDir: "./src/lang",
+        createLangDirs: true,
+        defaultLang: "es",
+        trace: true,
+        delimiters: ["<%=", "%>"],
+        langRegExp: /<%= ?([\w-.]+) %>/g
       })
     )
     .pipe(gulp.dest(PATHS.dist));

@@ -1,0 +1,13 @@
+# translate for choose product
+choose_product_page_title: Selezionare prodotto
+# main content
+select: Selezionare
+# sidebar
+reservation_summary_title: Dettagli sulla prenotazione
+pickup_place: Luogo ritiro
+return_place: Luogo riconsegna
+date_from: Data ritiro
+date_to: Data riconsegna
+time_from: Ora ritiro
+time_to: Ora riconsegna
+update: Aggiornare

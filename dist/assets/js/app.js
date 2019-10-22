@@ -13091,20 +13091,7 @@ window.jQuery = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a; // Bootstrap
 // Option 2 : If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
 
-__webpack_require__(15);
-/* Sticky footer */
-// $(window).bind("load", function() {
-//   var footer = $("footer");
-//   var pos = footer.position();
-//   var height = $(window).height();
-//   height = height - pos.top;
-//   height = height - 50;
-//   if (height > 0) {
-//     footer.css({
-//       "margin-top": height + "px"
-//     });
-//   }
-// });
+__webpack_require__(15); // Custom js
 // Steps
 
 
@@ -13117,7 +13104,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
       return false;
     }
   });
-}); // Form Selector
+}); // Form Selector sticky
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
   if (typeof __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#form-selector").offset() !== "undefined") {
@@ -13140,6 +13127,32 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
       });
     }
   }
+}); // Go top button
+
+jQuery(document).ready(function ($) {
+  // browser window scroll (in pixels) after which the "back to top" link is shown
+  var offset = 300,
+      //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+  offset_opacity = 1200,
+      //duration of the top scrolling animation (in ms)
+  scroll_top_duration = 700,
+      //grab the "back to top" link
+  $back_to_top = $(".cd-top"); //hide or show the "back to top" link
+
+  $(window).scroll(function () {
+    $(this).scrollTop() > offset ? $back_to_top.addClass("cd-is-visible") : $back_to_top.removeClass("cd-is-visible cd-fade-out");
+
+    if ($(this).scrollTop() > offset_opacity) {
+      $back_to_top.addClass("cd-fade-out");
+    }
+  }); //smooth scroll to top
+
+  $back_to_top.on("click", function (event) {
+    event.preventDefault();
+    $("body,html").animate({
+      scrollTop: 0
+    }, scroll_top_duration);
+  });
 });
 
 /***/ }),

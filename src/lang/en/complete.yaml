@@ -1,0 +1,43 @@
+# translate for complete
+complete_reservation_page_title: Fill in data
+# sidebar
+reservation_summary_title: Booking details
+reservation_summary_pickup: Pick-up
+reservation_summary_return: Return
+reservation_summary_price: Price
+reservation_summary_total_product: Product total
+reservation_summary_total_extras: Extras total
+reservation_summary_pickup_place_supplement: Pick up place supplement
+reservation_summary_pickup_time_supplement: Pick up time supplement
+reservation_summary_return_place_supplement: Return place supplement
+reservation_summary_return_time_supplement: Return time supplement
+reservation_summary_total: Total
+reservation_summary_deposit: Deposit
+reservation_summary_deposit_detail: The deposit will be returned after product drop-off
+modify_the_reservation: Modify reservation
+# main content
+product_information_title: Product information
+products_information_title: Products information
+extras_title: Extras
+customer_title: Client information
+not_available: Not available
+field_customer_name: Name
+field_customer_name_mandatory: Name is required
+field_customer_surname: Surname
+field_customer_surname_mandatory: Surname is required
+field_customer_email: E-mail
+field_customer_email_mandatory: E-mail is required
+field_customer_email_confirm: Confirm e-mail
+field_customer_main_phone_number: Phone number
+field_customer_alternative_phone_number: Alternative phone number
+additional_information_title: Additional information
+field_comments: Comments
+payment_title: Pay
+payment_to_confirm_reservation: To confirm the reservation a %1% deposit is required
+conditions_read: I've read and accept <a href="%1" target="blank">the general terms and conditions</a>
+request_reservation: Request reservation
+only_request_reservation: Only request reservation
+credit_card_payment: Credit card (to confirm booking a %1% deposit is required)
+paypal_payment: PayPal (to confirm booking a %1% deposit is required)
+conditions_not_read: We\'re sorry. You haven't agreed with our rental terms
+form_errors: Please, check the form. It contains invalid data.

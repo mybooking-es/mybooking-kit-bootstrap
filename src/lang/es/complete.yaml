@@ -1,0 +1,43 @@
+# translate for complete
+complete_reservation_page_title: Completar datos
+# sidebar
+reservation_summary_title: Detalle de la reserva
+reservation_summary_pickup: Entrega
+reservation_summary_return: Devolución
+reservation_summary_price: Precio
+reservation_summary_total_product: Total producto
+reservation_summary_total_extras: Total extras
+reservation_summary_pickup_place_supplement: Suplemento lugar entrega
+reservation_summary_pickup_time_supplement: Suplemento hora entrega
+reservation_summary_return_place_supplement: Suplemento lugar recogida
+reservation_summary_return_time_supplement: Suplemento hora recogida
+reservation_summary_total: Total
+reservation_summary_deposit: Fianza
+reservation_summary_deposit_detail: La fianza se devolverá tras las devolución del producto
+modify_the_reservation: Modificar reserva
+# main content
+product_information_title: Información del producto
+products_information_title: Información de los productos
+extras_title: Extras
+customer_title: Información del cliente
+not_available: No disponible
+field_customer_name: Nombre
+field_customer_name_mandatory: El nombre del cliente es obligatorio
+field_customer_surname: Apellidos
+field_customer_surname_mandatory: Los apellidos del cliente son obligatorios
+field_customer_email: Correo electrónico
+field_customer_email_mandatory: El correo electrónico del cliente es obligatorio
+field_customer_email_confirm: Confirmar correo electrónico
+field_customer_main_phone_number: Teléfono principal
+field_customer_alternative_phone_number: Teléfono alternativo
+additional_information_title: Información adicional
+field_comments: Comentarios
+payment_title: Pago
+payment_to_confirm_reservation: Para confirmar la reserva se requiere una paga y señal del %1% del importe total de la reserva
+conditions_read: He leído y acepto las <a href="%1" target="blank">condiciones</a> del alquiler
+request_reservation: Solicitar reserva
+only_request_reservation: Sólo solicitud de reserva
+credit_card_payment: Tarjeta de crédito (20% de paga y señal para confirmar reserva)
+paypal_payment: PayPal (20% de paga y señal para confirmar reserva)
+conditions_not_read: Lo sentimos. No ha marcado que ha leído las condiciones de alquiler
+form_errors: Por favor, revise el formulario. Contiene datos no válidos.

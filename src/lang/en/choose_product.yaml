@@ -1,0 +1,14 @@
+# translate for choose product
+choose_product_page_title: Select product
+choose_products_page_title: Select products
+# main content
+select: Select
+# sidebar
+reservation_summary_title: Booking details
+pickup_place: Pick-up location
+return_place: Return location
+date_from: Pick-up Date
+date_to: Return Date
+time_from: Pick-up Time
+time_to: Return Time
+update: Update

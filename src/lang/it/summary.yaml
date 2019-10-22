@@ -1,0 +1,30 @@
+# translate for summary 
+summary_page_title: Prenotazione
+booking_detail_state_pending_confirmation: non è stata ancora confermata
+booking_detail_state_confirming: si sta confermando
+booking_detail_state_confirmed: è confermata
+booking_detail_state_in_progress: è in corso
+booking_detail_state_done: è finalizzato
+booking_detail_state_cancelled: è cancellata
+booking_detail_product_title: Prodotto prenotato
+booking_detail_extras_title: Extra
+booking_detail_customer_title: Dati del cliente
+booking_detail_customer_name: Nome
+booking_detail_customer_phone_number: Numeri di telefono
+booking_detail_customer_email: E-mail
+booking_detail_summary_paid: Pagato
+booking_detail_summary_pending: Da pagare
+# sidebar
+reservation_summary_title: Dettagli sulla prenotazione
+reservation_summary_pickup: Ritiro
+reservation_summary_return: Riconsegna
+reservation_summary_price: Prezzo
+reservation_summary_total_product: Totale prodotto
+reservation_summary_total_extras: Totale extra
+reservation_summary_pickup_place_supplement: Supplemento luogo di ritiro
+reservation_summary_pickup_time_supplement: Supplemento orario di ritiro
+reservation_summary_return_place_supplement: Supplemento luogo di riconsegna
+reservation_summary_return_time_supplement: Supplemento orario di riconsegna
+reservation_summary_total: Totale
+reservation_summary_deposit: Deposito cauzionale
+reservation_summary_deposit_detail: Il deposito cauzionale verrà restituito alla riconsegna del prodotto

@@ -1,0 +1,232 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose product</title>
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="choose_product ">
+<!-- trace:tmp/choose_product.html -->
+ 
+    
+    <div class="cta cta__bg cta__text color-whites">
+      <span><i class="fas fa-phone "></i> <a href="tel:+34888888888">+34 888 88 88 88</a></span>
+      <span class="mr-auto ml-3">
+        <i class="far fa-envelope"></i>
+        <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+      </span>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Flota
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Filas</a>
+              <a class="dropdown-item" href="choose_product.html">Rejilla</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Condiciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contacto</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-europe"></i> Idioma
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="en">Inglés</a>
+              <a class="dropdown-item" href="ca">Catalán</a>
+              <a class="dropdown-item" href="it">Italiano</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Reservation steps -->
+    <!-- Reservation steps -->
+    <div class="bg-gray-100">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-md-12 col-lg-8">
+            <div id="steps" class="">
+              <div data-desc="Lugar y Fecha" class="step">1</div>
+              <div data-desc="Seleccionar producto" class="active step">2</div>
+              <div data-desc="Completar Reserva" class="step">3</div>
+              <div data-desc="Sumario" class="step">4</div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4 d-flex">
+              <div class="d-inline-flex p-2 align-items-center">
+                  <h2 class="color-blue">Seleccionar producto</h2>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Result -->
+    
+    <div class="bg-gray-200 py-5 full-height">
+    <!-- Reservation : Pickup/Return information -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-lg-3">
+            <div id="reservation_detail"></div>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div id="product_listing" class="magic-cards mb-5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Script detailed product for choose_product -->
+    <script type="text/tpml" id="script_detailed_product">
+      <% for (var idx=0;idx<products.length; idx++) { %>
+        <% var product = products[idx]; %>
+        <div class="magic-card">
+            <header class="header-card">
+                <h1 class="product-name"><%=product.name%></h1>
+            </header>
+            <div class="separator"></div>
+            <section class="footer-card">
+              <div class="img-wrapper">
+            <img src="<%=product.photo%>" class="product-image"></div>
+                <div class="variable-content">
+                  <% if (product.price != product.base_price) { %>
+                    <% if (product.offer_discount_type == 'percentage') { %>
+                      <p class="offer"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
+                    <% } %>
+                  <% } %>
+                </div>
+    
+                <div class="abajo">
+                <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+    
+                <% if (product.availability) { %>
+                <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
+                <% } else { %>
+                <p>Modelo no disponible en la oficina y fechas seleccionadas</p>
+                <% } %>
+    
+                <% if (product.few_available_units) { %>
+                  <p class="text-danger mt-3">¡Quedan pocas unidades!</p>
+                <% } %>
+                
+                </div>
+            </section>
+        </div>
+        <% } %>
+      </script>
+    
+    <!-- Script detailed for reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+      <div class="bg-white p-3 mb-5 shadow-bottom">
+      <h4 class="title-small my-3">Detalle de la reserva</h4>
+      <h5>Entrega</h5>
+      <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>
+      <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.pickup_place_customer_translation%></p>
+      <hr>
+      <h5>Devolución</h5>
+      <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></p>
+      <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
+      <hr>
+      <!-- Button trigger modal -->
+      <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal">Modificar reserva</button> 
+      </div>
+    </script>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="choose_productModal" tabindex="-1" role="dialog" aria-labelledby="choose_productModal"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modificar búsqueda</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="choose_product.html" method="get" enctype="application/x-www-form-urlencoded">
+            <div class="modal-body">
+              <div class="form-group w-100">
+                <label class="control-label w-100">Lugar Entrega <i class="fas custom-icon fa-angle-down"></i>
+                  <select class="w-100" id="pickup_place" name="pickup_place">
+                  </select>
+                </label>
+              </div>
+              <div class="form-group w-100">
+                <label class="control-label w-100">Lugar Devolución <i class="fas custom-icon fa-angle-down"></i>
+                  <select class="w-100" id="return_place" name="return_place">
+                  </select>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="control-label w-100">Fecha Entrega
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="date_from" name="date_from" />
+                    <select class="input-group-field" id="time_from" name="time_from">
+                    </select>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="control-label w-100">Fecha Devolución
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" id="date_to" name="date_to" />
+                    <select class="input-group-field" id="time_to" name="time_to">
+                    </select>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit" value="Nueva búsqueda" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>    
+<footer class="footer text-center py-3">
+  <p class="color-white">&copy; 2019 mybooking</p>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/mybooking-engine-init.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>
