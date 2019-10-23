@@ -27,7 +27,7 @@ Para utilizar la plantilla tu computadora necesita:
 Haz un clon o descarga la plantilla desde el repositorio
 
 ```bash
-git clone clone https://github.com/yuraksisa/bootstrap-starter.git
+git clone clone https://github.com/mybooking-es/mybooking-web-sample-html-bootstrap.git
 ```
 
 Abre la carpeta en la línea de comandos, e instala las dependencias necesarias:

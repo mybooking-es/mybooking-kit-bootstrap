@@ -1,1 +1,11 @@
 home: Home
+fleet: Fleet
+rows: Rows
+columns: Columns
+conditions: Conditions
+contact: Contact
+language: Language
+ca: Catalan
+it: Italian
+es: Spanish
+en: English

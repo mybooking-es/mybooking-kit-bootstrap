@@ -1,5 +1,24 @@
+/*
+ *
+ * Gulp tasks for mybooking static websites.
+ *
+ * Table of contents:
+ *   Fonts
+ *   Styles
+ *   Panini
+ *   jQuery UI Images
+ *   Scripts
+ *   Images
+ *   Local Server
+ *   Run all in order
+ *   Watch
+ *   Default & production tasks
+ *
+ */
+
 "use strict";
 
+// Define variables
 import plugins from "gulp-load-plugins";
 import yargs from "yargs";
 import browser from "browser-sync";
@@ -24,31 +43,11 @@ const PRODUCTION = !!yargs.argv.production;
 // Load settings from settings.yml
 const { COMPATIBILITY, PORT, UNCSS_OPTIONS, PATHS } = loadConfig();
 
+// Config
 function loadConfig() {
   let ymlFile = fs.readFileSync("config.yml", "utf8");
   return yaml.load(ymlFile);
 }
-
-// Build the "dist" folder by running all of the below tasks
-gulp.task(
-  "build",
-  gulp.series(
-    clean,
-    pages,
-    sass,
-    javascript,
-    myBookingEngine,
-    images,
-    build_fonts,
-    fontawesome,
-    translate,
-    cssimages,
-    copy
-  )
-);
-
-// Build the site, run the server, and watch for file changes
-gulp.task("default", gulp.series("build", server, watch));
 
 // Delete the "dist" folder
 // This happens every time a build starts
@@ -57,17 +56,14 @@ function clean(done) {
   rimraf(PATHS.tmp, done);
 }
 
-// Copy files out of the assets folder
-// This task skips over the "img", "js", and "scss" folders, which are parsed separately
-function copy() {
-  return gulp.src(PATHS.assets).pipe(gulp.dest(PATHS.dist + "/assets"));
-}
+// -----------------------------------------------------------------------------
+//   Fonts
+// -----------------------------------------------------------------------------
 
-//   1: Fonts
-
+//  Copy Inter fonts into dist folder
 function build_fonts() {
   return gulp
-    .src("./assets/fonts/*.{woff,woff2,eot,svg,ttf}")
+    .src(PATHS.fonts + "/*.{woff,woff2,eot,svg,ttf}")
     .pipe(gulp.dest(PATHS.dist + "/assets/fonts"));
 }
 
@@ -80,17 +76,14 @@ function fontawesome() {
     .pipe(gulp.dest(PATHS.dist + "/assets/fonts"));
 }
 
-// Copy jQuery UI images into dist css folder
-function cssimages() {
-  return gulp
-    .src("./src/assets/scss/vendor/jquery.ui.custom/images/*.{jpg,gif,png}")
-    .pipe(gulp.dest(PATHS.dist + "/assets/css/images"));
-}
+// -----------------------------------------------------------------------------
+//   Panini
+// -----------------------------------------------------------------------------
 
-// Copy page templates into finished HTML files
+// Convert page templates into finished HTML files in tmp folder for translation
 function pages() {
   return gulp
-    .src("src/pages/**/*.{html,hbs,handlebars}")
+    .src("src/pages/**/*.html")
     .pipe(
       panini({
         root: "src/pages/",
@@ -100,14 +93,17 @@ function pages() {
         helpers: "src/helpers/"
       })
     )
-    .pipe(gulp.dest(PATHS.tmp))
-    .pipe(gulp.dest(PATHS.dist)); // Copy to dist all to hold translated pages (in pages/language)
+    .pipe(gulp.dest(PATHS.tmp));
 }
+
+// -----------------------------------------------------------------------------
+//   i18-html-gulp
+// -----------------------------------------------------------------------------
 
 // Translate task (i18-html-gulp)
 function translate() {
   return gulp
-    .src([PATHS.tmp + "/*.html", "!" + PATHS.tmp + "/**/conditions.html"]) // To avoid process conditions.html because it's translated
+    .src(PATHS.tmp + "/**/*.html")
     .pipe(
       i18n({
         langDir: "./src/lang",
@@ -127,13 +123,16 @@ function resetPages(done) {
   done();
 }
 
+// -----------------------------------------------------------------------------
+//  Styles
+// -----------------------------------------------------------------------------
+
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
   const postCssPlugins = [
     // Autoprefixer
     autoprefixer({ browsers: COMPATIBILITY })
-
     // UnCSS - Uncomment to remove unused styles in production
     // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
   ].filter(Boolean);
@@ -148,11 +147,11 @@ function sass() {
         }).on("error", $.sass.logError)
       )
       .pipe($.postcss(postCssPlugins))
-      //.pipe(
-      //  $.autoprefixer({
-      //    browsers: COMPATIBILITY
-      //  })
-      //)
+      // .pipe(
+      //   $.autoprefixer({
+      //     browsers: COMPATIBILITY
+      //   })
+      // )
       // Comment in the pipe below to run UnCSS in production
       //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
       .pipe(
@@ -172,6 +171,21 @@ function sass() {
       )
   );
 }
+
+// -----------------------------------------------------------------------------
+//   jQuery UI images
+// -----------------------------------------------------------------------------
+
+// Copy jQuery UI images into dist css folder
+function cssimages() {
+  return gulp
+    .src("./src/assets/scss/vendor/jquery.ui.custom/images/*.{jpg,gif,png}")
+    .pipe(gulp.dest(PATHS.dist + "/assets/css/images"));
+}
+
+// -----------------------------------------------------------------------------
+//   Scripts with webpack
+// -----------------------------------------------------------------------------
 
 let webpackConfig = {
   module: {
@@ -193,6 +207,7 @@ let webpackConfig = {
     ]
   }
 };
+
 // Combine JavaScript into one file
 // In production, the file is minified
 function javascript() {
@@ -223,11 +238,15 @@ function myBookingEngine() {
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 
+// -----------------------------------------------------------------------------
+//   Images
+// -----------------------------------------------------------------------------
+
 // Copy images to the "dist" folder
 // In production, the images are compressed
 function images() {
   return gulp
-    .src("src/assets/img/**/*")
+    .src("src/assets/images/**/*")
     .pipe(
       $.if(
         PRODUCTION,
@@ -236,10 +255,14 @@ function images() {
         })
       )
     )
-    .pipe(gulp.dest(PATHS.dist + "/assets/img"));
+    .pipe(gulp.dest(PATHS.dist + "/assets/images"));
 }
 
-// Start a server with BrowserSync to preview the site in
+// -----------------------------------------------------------------------------
+//   Localhost Server for development
+// -----------------------------------------------------------------------------
+
+// Start a server with BrowserSync
 function server(done) {
   browser.init({
     server: PATHS.dist,
@@ -254,9 +277,34 @@ function reload(done) {
   done();
 }
 
+// -----------------------------------------------------------------------------
+//    Run all in order
+// -----------------------------------------------------------------------------
+
+// Build the "dist" folder by running all of the below tasks
+gulp.task(
+  "build",
+  gulp.series(
+    clean,
+    pages,
+    sass,
+    javascript,
+    myBookingEngine,
+    images,
+    build_fonts,
+    fontawesome,
+    translate,
+    cssimages
+  )
+);
+
+// -----------------------------------------------------------------------------
+//   Watch
+// -----------------------------------------------------------------------------
+
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
-  gulp.watch(PATHS.assets, copy);
+  // gulp.watch(PATHS.assets, copy);
   gulp
     .watch("src/pages/**/*.html")
     .on("all", gulp.series(pages, browser.reload));
@@ -271,3 +319,17 @@ function watch() {
     .watch("src/assets/img/**/*")
     .on("all", gulp.series(images, browser.reload));
 }
+
+// -----------------------------------------------------------------------------
+//   Default task
+// -----------------------------------------------------------------------------
+
+// Build the site, run the server, and watch for file changes
+gulp.task("default", gulp.series("build", server, watch));
+
+// NPM scripts:
+// For development execute: gulp start
+// For production execute: yarn run build
+
+// export tasks
+exports.clean = clean;

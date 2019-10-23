@@ -13153,6 +13153,18 @@ jQuery(document).ready(function ($) {
       scrollTop: 0
     }, scroll_top_duration);
   });
+}); // Languages
+
+jQuery(document).ready(function ($) {
+  if ($("html").attr("lang") == "es") {
+    $("a.es").removeClass("visible");
+  } else if ($("html").attr("lang") == "ca") {
+    $("a.ca").removeClass("visible");
+  } else if ($("html").attr("lang") == "it") {
+    $("a.it").removeClass("visible");
+  } else if ($("html").attr("lang") == "en") {
+    $("a.en").removeClass("visible");
+  }
 });
 
 /***/ }),

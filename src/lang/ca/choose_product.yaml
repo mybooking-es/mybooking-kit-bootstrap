@@ -3,6 +3,8 @@ choose_product_page_title: Seleccionar producte
 # main content
 select: Seleccionar
 # sidebar
+reservation_summary_pickup: Entrega
+reservation_summary_return: Devolució
 reservation_summary_title: Detalle de la reserva
 pickup_place: Punt de lliurament
 return_place: Punt de devolució

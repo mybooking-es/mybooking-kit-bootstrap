@@ -3,6 +3,8 @@ choose_product_page_title: Selezionare prodotto
 # main content
 select: Selezionare
 # sidebar
+reservation_summary_pickup: Entrega
+reservation_summary_return: Devolución
 reservation_summary_title: Dettagli sulla prenotazione
 pickup_place: Luogo ritiro
 return_place: Luogo riconsegna

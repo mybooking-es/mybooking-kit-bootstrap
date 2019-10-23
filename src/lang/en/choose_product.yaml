@@ -4,6 +4,8 @@ choose_products_page_title: Select products
 # main content
 select: Select
 # sidebar
+reservation_summary_pickup: Pick up
+reservation_summary_return: Return
 reservation_summary_title: Booking details
 pickup_place: Pick-up location
 return_place: Return location

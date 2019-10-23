@@ -20,13 +20,12 @@ PATHS:
   tmp: "tmp"
   # Path to dist folder
   dist: "dist"
-  # Paths to static assets that aren't images, CSS, or JavaScript
-  assets:
-    - "src/assets/**/*"
-    - "!src/assets/{img,js,scss}/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "node_modules/bootstrap/scss"
   # Paths to JavaScript entry points for webpack to bundle modules
   entries:
     - "src/assets/js/app.js"
+  # Path to fonts folder
+  fonts: "src/assets/fonts"
+

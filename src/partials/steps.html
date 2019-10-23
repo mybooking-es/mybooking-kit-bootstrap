@@ -3,36 +3,36 @@
   <div class="container">
     <div class="row py-3">
       <div class="col-md-12 col-lg-8">
-        <div id="steps" class="">
+        <div id="steps">
           {{#ifpage 'index'}}
-          <div data-desc="Lugar y Fecha" class="active step">1</div>
+          <div data-desc="<%= steps.step_1 %>" class="active step">1</div>
           {{/ifpage}}
           {{#unlesspage 'index'}}
-          <div data-desc="Lugar y Fecha" class="step">1</div>
+          <div data-desc="<%= steps.step_1 %>" class="step">1</div>
           {{/unlesspage}}
           {{#ifpage 'choose_product'}}
-          <div data-desc="Seleccionar producto" class="active step">2</div>
+          <div data-desc="<%= steps.step_2 %>" class="active step">2</div>
           {{/ifpage}}
           {{#unlesspage 'choose_product'}}
-          <div data-desc="Seleccionar producto" class="step">2</div>
+          <div data-desc="<%= steps.step_2 %>" class="step">2</div>
           {{/unlesspage}}
           {{#ifpage 'complete'}}
-          <div data-desc="Completar Reserva" class="active step">3</div>
+          <div data-desc="<%= steps.step_3 %>" class="active step">3</div>
           {{/ifpage}}
           {{#unlesspage 'complete'}}
-          <div data-desc="Completar Reserva" class="step">3</div>
+          <div data-desc="<%= steps.step_3 %>" class="step">3</div>
           {{/unlesspage}}
           {{#ifpage 'summary'}}
-          <div data-desc="Sumario" class="active step">4</div>
+          <div data-desc="<%= steps.step_4 %>" class="active step">4</div>
           {{/ifpage}}
           {{#unlesspage 'summary'}}
-          <div data-desc="Sumario" class="step">4</div>
+          <div data-desc="<%= steps.step_4 %>" class="step">4</div>
           {{/unlesspage}}
         </div>
       </div>
       <div class="col-md-12 col-lg-4 d-flex">
           <div class="d-inline-flex p-2 align-items-center">
-              <h2 class="color-blue">{{ step }}</h2>
+              <h2 class="color-gray-700"><%= {{ active_step }} %></h2>
           </div>
       </div>
     </div>

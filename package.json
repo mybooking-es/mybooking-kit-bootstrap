@@ -11,7 +11,7 @@
     "bootstrap",
     "gulp"
   ],
-  "author": "@netinetidesign",
+  "author": "@mybooking_es",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.2.0",
