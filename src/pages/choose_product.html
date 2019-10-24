@@ -50,13 +50,13 @@ active_step: steps.step_2
             <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
 
             <% if (product.availability) { %>
-            <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
+            <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
             <% } else { %>
-            <p>Modelo no disponible en la oficina y fechas seleccionadas</p>
+            <p><%= choose_product.model_not_available %></p>
             <% } %>
 
             <% if (product.few_available_units) { %>
-              <p class="text-danger mt-3">¡Quedan pocas unidades!</p>
+              <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
             <% } %>
             
             </div>
@@ -78,8 +78,8 @@ active_step: steps.step_2
   <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
   <hr>
   <!-- Button trigger modal -->
-  <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal">Modificar reserva</button> 
+  <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal"><%= choose_product.modify_reservation %></button> 
   </div>
 </script>
 
-{{> modal_change_search }}
+{{> modal_modify_reservation }}

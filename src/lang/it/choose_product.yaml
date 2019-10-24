@@ -1,10 +1,12 @@
 # translate for choose product
 choose_product_page_title: Selezionare prodotto
+model_not_available: Modello non disponibile in ufficio e date selezionate
+low_stock: Sono rimaste poche unità!
 # main content
 select: Selezionare
 # sidebar
-reservation_summary_pickup: Entrega
-reservation_summary_return: Devolución
+reservation_summary_pickup: Consegna
+reservation_summary_return: Ritorno
 reservation_summary_title: Dettagli sulla prenotazione
 pickup_place: Luogo ritiro
 return_place: Luogo riconsegna
@@ -13,3 +15,6 @@ date_to: Data riconsegna
 time_from: Ora ritiro
 time_to: Ora riconsegna
 update: Aggiornare
+modify_reservation: Modifica prenotazione
+new_search: Nuova ricerca
+

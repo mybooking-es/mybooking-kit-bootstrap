@@ -41,3 +41,21 @@ credit_card_payment: Credit card (a deposit of %1% is required to confirm the re
 paypal_payment: PayPal (a deposit of %1% is required to confirm the reservation)
 conditions_not_read: Lo sentimos. No ha marcado que ha leído las condiciones de alquiler
 form_errors: Por favor, revise el formulario. Contiene datos no válidos.
+customer_adress_title: Indirizzo cliente
+customer_adress_street: Strada
+customer_adress_number: Numero
+customer_adress_complement: Complemento (piano / porta)
+customer_adress_city: Città
+customer_adress_province: Provincia
+customer_adress_country: Paese
+customer_driver_data: Dati del conducente
+customer_driver_name: Nome del conducente
+customer_driver_surname: Cognome del conducente
+customer_driver_passport: Passaporto del conducente
+customer_driver_date_of_birth: Data di nascita del conducente
+customer_driver_driving_license_number: Numero della patente di guida
+customer_driver_driving_license_date: Rilascio della patente di guida
+customer_driver_driving_license_country: Paese di rilascio della patente di guida
+
+
+

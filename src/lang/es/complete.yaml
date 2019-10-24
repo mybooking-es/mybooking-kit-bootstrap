@@ -41,3 +41,18 @@ credit_card_payment: Tarjeta de crédito (20% de paga y señal para confirmar re
 paypal_payment: PayPal (20% de paga y señal para confirmar reserva)
 conditions_not_read: Lo sentimos. No ha marcado que ha leído las condiciones de alquiler
 form_errors: Por favor, revise el formulario. Contiene datos no válidos.
+customer_adress_title: Dirección del cliente
+customer_adress_street: Calle
+customer_adress_number: Número
+customer_adress_complement: Complemento (piso/puerta)
+customer_adress_city: Ciudad
+customer_adress_province: Provincia
+customer_adress_country: País
+customer_driver_data: Datos del conductor
+customer_driver_name: Nombre del conductor
+customer_driver_surname: Apellidos del conductor
+customer_driver_passport: Nof o pasaporte del conductor
+customer_driver_date_of_birth: Fecha de nacimiento del conductor
+customer_driver_driving_license_number: Número del carnet de conducir
+customer_driver_driving_license_date: Fecha expedición carnet de conducir
+customer_driver_driving_license_country: País de expedición carnet de conducir

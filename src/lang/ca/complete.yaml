@@ -41,3 +41,19 @@ credit_card_payment: Targeta de crèdit (es requereix una paga i senyal del %1% 
 paypal_payment: PayPal (es requereix una paga i senyal del %1% per confirmar la reserva)
 conditions_not_read: Ho sentim. No ha marcat que ha llegit les condicions de lloguer
 form_errors: Si us plau, revisi el formulari. Conté dades invàlides.
+customer_adress_title: Direcció del client
+customer_adress_street: Carrer
+customer_adress_number: Nombre
+customer_adress_complement: Complement (pis/porta)
+customer_adress_city: Ciutat
+customer_adress_province: Província
+customer_adress_country: País
+customer_driver_data: Dades del conductor
+customer_driver_name: Nom del conductor
+customer_driver_surname: Cognoms del conductor
+customer_driver_passport: Nif o passaport del conductor
+customer_driver_date_of_birth: Data de naixement del conductor
+customer_driver_driving_license_number: Nombre del carnet de conduir
+customer_driver_driving_license_date: Data expedició carnet de conduir
+customer_driver_driving_license_country: País d'expedició carnet de conduir
+

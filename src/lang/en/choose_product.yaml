@@ -1,6 +1,7 @@
 # translate for choose product
 choose_product_page_title: Select product
-choose_products_page_title: Select products
+model_not_available: Model not available in the office and selected dates
+low_stock: There are few units left!
 # main content
 select: Select
 # sidebar
@@ -14,3 +15,5 @@ date_to: Return Date
 time_from: Pick-up Time
 time_to: Return Time
 update: Update
+modify_reservation: Modify reservation
+new_search: New search

@@ -1,5 +1,7 @@
 # translate for choose product
 choose_product_page_title: Seleccionar producto
+model_not_available: Modelo no disponible en la oficina y fechas seleccionadas
+low_stock: ¡Quedan pocas unidades!
 # main content
 select: Seleccionar
 # sidebar
@@ -13,3 +15,5 @@ date_to: Fecha de devolución
 time_from: Hora de entrega
 time_to: Hora de devolución
 update: Actualizar
+modify_reservation: Modificar reserva
+new_search: Nueva búsqueda

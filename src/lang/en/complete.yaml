@@ -41,3 +41,18 @@ credit_card_payment: Credit card (to confirm booking a %1% deposit is required)
 paypal_payment: PayPal (to confirm booking a %1% deposit is required)
 conditions_not_read: We\'re sorry. You haven't agreed with our rental terms
 form_errors: Please, check the form. It contains invalid data.
+customer_adress_title: Customer adress
+customer_adress_street: Street
+customer_adress_number: Number
+customer_adress_complement: Complement (floor/door)
+customer_adress_city: City
+customer_adress_province: Province
+customer_adress_country: Country
+customer_driver_data: Driver data
+customer_driver_name: Driver name
+customer_driver_surname: Driver surname
+customer_driver_passport: Driver passport
+customer_driver_date_of_birth: Driver date of birth
+customer_driver_driving_license_number: Driver driving license number
+customer_driver_driving_license_date: Issue of driving license
+customer_driver_driving_license_country: Country of issue driving license

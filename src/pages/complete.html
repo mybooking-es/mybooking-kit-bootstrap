@@ -1,7 +1,7 @@
 ---
 layout: default
 meta-title: Completar reserva
-step: Completar reserva
+active_step: steps.step_3
 ---
 
 {{> cta }}
@@ -67,65 +67,65 @@ step: Completar reserva
                     style="width: 100%; height: 100px; padding: 0.8rem;"></textarea>
                 </div>
               </div>
-              <h4 class="brand-primary my-3">Dirección del cliente</h4>
+              <h4 class="brand-primary my-3"><%= complete.customer_adress_title %> </h4>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="street">Calle</label>
-                  <input class="form-control" id="street" name="street" type="text" placeholder="Calle">
+                  <label for="street"><%= complete.customer_adress_street %></label>
+                  <input class="form-control" id="street" name="street" type="text" placeholder="<%= complete.customer_adress_street %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="number">Número</label>
-                  <input class="form-control" id="number" name="number" type="text" placeholder="Número">
+                  <label for="number"><%= complete.customer_adress_number %></label>
+                  <input class="form-control" id="number" name="number" type="text" placeholder="<%= complete.customer_adress_number %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="complement">Complemento (piso/puerta)</label>
-                  <input class="form-control" id="complement" name="complement" type="text" placeholder="Complemento (piso/puerta)">
+                  <label for="complement"><%= complete.customer_adress_complement %></label>
+                  <input class="form-control" id="complement" name="complement" type="text" placeholder="<%= complete.customer_adress_complement %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="city">Ciudad</label>
-                  <input class="form-control" id="city" name="city" type="text" placeholder="Ciudad">
+                  <label for="city"><%= complete.customer_adress_city %></label>
+                  <input class="form-control" id="city" name="city" type="text" placeholder="<%= complete.customer_adress_city %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="state">Provincia</label>
-                  <input class="form-control" id="state" name="state" type="text" placeholder="Provincia">
+                  <label for="state"><%= complete.customer_adress_province %></label>
+                  <input class="form-control" id="state" name="state" type="text" placeholder="<%= complete.customer_adress_province %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="country">País</label>
-                  <input class="form-control" name="country" id="country" type="text" placeholder="País">
+                  <label for="country"><%= complete.customer_adress_country %></label>
+                  <input class="form-control" name="country" id="country" type="text" placeholder="<%= complete.customer_adress_country %>">
                 </div>
               </div>
-              <h4 class="brand-primary my-3">Datos del conductor</h4>
+              <h4 class="brand-primary my-3"><%= complete.customer_driver_data %></h4>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="driver_name">Nombre del conductor</label>
+                  <label for="driver_name"><%= complete.customer_driver_name %></label>
                   <input class="form-control" id="driver_name" name="driver_name" type="text"
-                    placeholder="Nombre del conductor">
+                    placeholder="<%= complete.customer_driver_name %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="">Apellidos del conductor</label>
-                  <input class="form-control" id="driver_surname" name="driver_surname" type="text" placeholder="Apellidos del conductor">
+                  <label for=""><%= complete.customer_driver_surname %></label>
+                  <input class="form-control" id="driver_surname" name="driver_surname" type="text" placeholder="<%= complete.customer_driver_surname %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="driver_document_id">Nif o pasaporte del conductor</label>
-                  <input class="form-control" id="driver_document_id" name="driver_document_id" type="text" placeholder="Nif o pasaporte del conductor">
+                  <label for="driver_document_id"><%= complete.customer_driver_passport %></label>
+                  <input class="form-control" id="driver_document_id" name="driver_document_id" type="text" placeholder="<%= complete.customer_driver_passport %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="driver_date_of_birth">Fecha de nacimiento del conductor</label>
-                  <input class="form-control" id="driver_date_of_birth" name="driver_date_of_birth" type="text" placeholder="Fecha de nacimiento del conductor">
+                  <label for="driver_date_of_birth"><%= complete.customer_driver_date_of_birth %></label>
+                  <input class="form-control" id="driver_date_of_birth" name="driver_date_of_birth" type="text" placeholder="<%= complete.customer_driver_date_of_birth %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="driver_driving_license_number">Número del carnet de conducir</label>
-                  <input class="form-control" id="driver_driving_license_number" name="driver_driving_license_number" type="text" placeholder="Número del carnet de conducir">
+                  <label for="driver_driving_license_number"><%= complete.customer_driver_driving_license_number %></label>
+                  <input class="form-control" id="driver_driving_license_number" name="driver_driving_license_number" type="text" placeholder="<%= complete.customer_driver_driving_license_number %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="driver_driving_license_date">Fecha expedición carnet de conducir</label>
+                  <label for="driver_driving_license_date"><%= complete.customer_driver_driving_license_date %></label>
                   <input class="form-control" name="driver_driving_license_date" id="driver_driving_license_date" type="text"
-                    placeholder="Fecha expedición carnet de conducir">
+                    placeholder="<%= complete.customer_driver_driving_license_date %>">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="driver_driving_license_country">País de expedición carnet de conducir</label>
+                  <label for="driver_driving_license_country"><%= complete.customer_driver_driving_license_country %></label>
                   <input class="form-control" name="driver_driving_license_country" id="driver_driving_license_country" type="text"
-                    placeholder="País de expedición carnet de conducir">
+                    placeholder="<%= complete.customer_driver_driving_license_country %>">
                 </div>
               </div>
               <h4 class="brand-primary my-3">Vuelo</h4>
@@ -208,7 +208,7 @@ step: Completar reserva
                     </div>
                     <% value = (extrasInShoppingCart[extra.code]) ? extrasInShoppingCart[extra.code] : 0; %>
                     <input type="text" id="extra-<%=extra.code%>-quantity"
-                        class="form-control disabled text-center" value="<%=value%>"/>
+                        class="form-control disabled text-center extra-input" value="<%=value%>" data-extra-code="<%=extra.code%>"/>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary btn-plus-extra"
                         data-value="<%=extra.code%>"
@@ -342,4 +342,4 @@ step: Completar reserva
   <% } %>
 </script>
 
-{{> modal_change_search }}
+{{> modal_modify_reservation }}

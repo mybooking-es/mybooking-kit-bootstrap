@@ -1,11 +1,13 @@
 # translate for choose product
 choose_product_page_title: Seleccionar producte
+model_not_available: Model no disponible a l'oficina i dates seleccionades
+low_stock: Queden poques unitats!
 # main content
 select: Seleccionar
 # sidebar
 reservation_summary_pickup: Entrega
 reservation_summary_return: Devolució
-reservation_summary_title: Detalle de la reserva
+reservation_summary_title: Detalls de la reserva
 pickup_place: Punt de lliurament
 return_place: Punt de devolució
 date_from: Data de lliurament
@@ -13,3 +15,6 @@ date_to: Data de devolució
 time_from: Hora de lliurament
 time_to: Hora de devolució
 update: Actualitzar
+modify_reservation: Modificar reserva
+new_search: Cercar de nou
+
