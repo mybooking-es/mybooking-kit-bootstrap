@@ -1,4 +1,7 @@
-# translate for summary 
+# translate for summary
+rental_locator: LOCALITZADOR
+rental_duration: Durada del lloguer
+rental_days: dia/s
 summary_page_title: Reserva
 booking_detail_state_pending_confirmation: està pendent de confirmació
 booking_detail_state_confirming: està sent confirmada
@@ -10,7 +13,8 @@ booking_detail_product_title: Producte contractat
 booking_detail_extras_title: Extras
 booking_detail_customer_title: Dades del client
 booking_detail_customer_name: Nom
-booking_detail_customer_phone_number: Telèfon(s)
+booking_detail_customer_phone_number: Telèfon
+booking_detail_customer_mobile: Telèfon alternatiu
 booking_detail_customer_email: Correu electric
 booking_detail_summary_paid: Pagat
 booking_detail_summary_pending: Pendent
@@ -25,6 +29,8 @@ reservation_summary_pickup_place_supplement: Suplement punt de lliurament
 reservation_summary_pickup_time_supplement: Suplement hora de lliurament
 reservation_summary_return_place_supplement: Suplement punt de devolució
 reservation_summary_return_time_supplement: Suplement hora de devolució
+reservation_summary_driver_age_supplement: Suplemento edad del conductor
+reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Total
 reservation_summary_deposit: Fiança
 reservation_summary_deposit_detail: La fiança es retornarà després de la devolució del producte

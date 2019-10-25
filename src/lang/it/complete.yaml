@@ -1,5 +1,8 @@
 # translate for complete
 complete_reservation_page_title: Completare i dati
+rental_locator: LOCATOR
+rental_duration: Durata del noleggio
+rental_days: giorni
 # sidebar
 reservation_summary_title: Dettagli sulla prenotazione
 reservation_summary_pickup: Ritiro
@@ -11,10 +14,12 @@ reservation_summary_pickup_place_supplement: Supplemento luogo di ritiro
 reservation_summary_pickup_time_supplement: Supplemento orario di ritiro
 reservation_summary_return_place_supplement: Supplemento luogo di riconsegna
 reservation_summary_return_time_supplement: Supplemento orario di riconsegna
-reservation_summary_total: Totale
+reservation_summary_driver_age_supplement: Supplemento dell'età del conducente
+reservation_summary_fuel_supplement: Supplemento carburante
+reservation_summary_total: Importo totale
 reservation_summary_deposit: Deposito cauzionale
 reservation_summary_deposit_detail: Il deposito cauzionale verrà restituito alla riconsegna del prodotto
-modify_the_reservation: Modifica prenotazione
+modify_reservation: Modifica prenotazione
 # main content
 product_information_title: Informazioni sul prodotto
 products_information_title: Informazioni sul produrre
@@ -56,6 +61,10 @@ customer_driver_date_of_birth: Data di nascita del conducente
 customer_driver_driving_license_number: Numero della patente di guida
 customer_driver_driving_license_date: Rilascio della patente di guida
 customer_driver_driving_license_country: Paese di rilascio della patente di guida
+customer_flight: Volo
+customer_flight_company: Società
+customer_flight_number: Numero di volo
+customer_flight_time: Tempo previsto
 
 
 

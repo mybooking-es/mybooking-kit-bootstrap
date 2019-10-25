@@ -1,4 +1,7 @@
-# translate for summary 
+# translate for summary
+rental_locator: LOCATOR
+rental_duration: Durata del noleggio
+rental_days: giorni
 summary_page_title: Prenotazione
 booking_detail_state_pending_confirmation: non è stata ancora confermata
 booking_detail_state_confirming: si sta confermando
@@ -11,6 +14,7 @@ booking_detail_extras_title: Extra
 booking_detail_customer_title: Dati del cliente
 booking_detail_customer_name: Nome
 booking_detail_customer_phone_number: Numeri di telefono
+booking_detail_customer_mobile: Telefono alternativo
 booking_detail_customer_email: E-mail
 booking_detail_summary_paid: Pagato
 booking_detail_summary_pending: Da pagare
@@ -25,6 +29,8 @@ reservation_summary_pickup_place_supplement: Supplemento luogo di ritiro
 reservation_summary_pickup_time_supplement: Supplemento orario di ritiro
 reservation_summary_return_place_supplement: Supplemento luogo di riconsegna
 reservation_summary_return_time_supplement: Supplemento orario di riconsegna
+reservation_summary_driver_age_supplement: Suplemento edad del conductor
+reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Totale
 reservation_summary_deposit: Deposito cauzionale
 reservation_summary_deposit_detail: Il deposito cauzionale verrà restituito alla riconsegna del prodotto

@@ -1,30 +1,36 @@
-# translate for summary 
+# translate for summary
+rental_locator: LOCATOR
+rental_duration: Rental duration
+rental_days: day/s
 summary_page_title: Reserva
-booking_detail_state_pending_confirmation: Pendiente de confirmación
-booking_detail_state_confirming: Confirmando
-booking_detail_state_confirmed: Confirmada
-booking_detail_state_in_progress: En progreso
+booking_detail_state_pending_confirmation: Confirmation pendient
+booking_detail_state_confirming: Confirming
+booking_detail_state_confirmed: Confirmed
+booking_detail_state_in_progress: In progress
 booking_detail_state_done: Finalizada
-booking_detail_state_cancelled: Cancelada
-booking_detail_product_title: Producto contratado
+booking_detail_state_cancelled: Finished
+booking_detail_product_title: Contracted product
 booking_detail_extras_title: Extras
-booking_detail_customer_title: Datos del cliente
-booking_detail_customer_name: Nombre
-booking_detail_customer_phone_number: Teléfono(s)
-booking_detail_customer_email: Correo electrónico
-booking_detail_summary_paid: Pagado
-booking_detail_summary_pending: Pendiente
+booking_detail_customer_title: Client data
+booking_detail_customer_name: Name
+booking_detail_customer_phone_number: Telephone
+booking_detail_customer_mobile: Alternative telephone
+booking_detail_customer_email: Email
+booking_detail_summary_paid: Paid out
+booking_detail_summary_pending: Pending
 # sidebar
-reservation_summary_title: Detalle de la reserva
-reservation_summary_pickup: Entrega
-reservation_summary_return: Devolución
-reservation_summary_price: Precio
-reservation_summary_total_product: Total producto
+reservation_summary_title: Reservation Detail
+reservation_summary_pickup: Pick up
+reservation_summary_return: Return
+reservation_summary_price: Price
+reservation_summary_total_product: Total product
 reservation_summary_total_extras: Total extras
-reservation_summary_pickup_place_supplement: Suplemento lugar entrega
-reservation_summary_pickup_time_supplement: Suplemento hora entrega
-reservation_summary_return_place_supplement: Suplemento lugar recogida
-reservation_summary_return_time_supplement: Suplemento hora recogida
+reservation_summary_pickup_place_supplement: Pick up place supplement
+reservation_summary_pickup_time_supplement: Pick up time supplement
+reservation_summary_return_place_supplement: Return place supplement
+reservation_summary_return_time_supplement: Return time supplement
+reservation_summary_driver_age_supplement: Suplemento edad del conductor
+reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Total
-reservation_summary_deposit: Fianza
-reservation_summary_deposit_detail: La fianza se devolverá tras las devolución del producto
+reservation_summary_deposit: Deposit
+reservation_summary_deposit_detail: The deposit will be returned after the return of the product

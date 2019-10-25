@@ -1,5 +1,8 @@
 # translate for complete
 complete_reservation_page_title: Fill in data
+rental_locator: LOCATOR
+rental_duration: Rental duration
+rental_days: day/s
 # sidebar
 reservation_summary_title: Booking details
 reservation_summary_pickup: Pick-up
@@ -11,10 +14,12 @@ reservation_summary_pickup_place_supplement: Pick up place supplement
 reservation_summary_pickup_time_supplement: Pick up time supplement
 reservation_summary_return_place_supplement: Return place supplement
 reservation_summary_return_time_supplement: Return time supplement
+reservation_summary_driver_age_supplement: Driver's age supplement
+reservation_summary_fuel_supplement: Fuel supplement
 reservation_summary_total: Total
 reservation_summary_deposit: Deposit
 reservation_summary_deposit_detail: The deposit will be returned after product drop-off
-modify_the_reservation: Modify reservation
+modify_reservation: Modify reservation
 # main content
 product_information_title: Product information
 products_information_title: Products information
@@ -56,3 +61,7 @@ customer_driver_date_of_birth: Driver date of birth
 customer_driver_driving_license_number: Driver driving license number
 customer_driver_driving_license_date: Issue of driving license
 customer_driver_driving_license_country: Country of issue driving license
+customer_flight: Flight
+customer_flight_company: Company
+customer_flight_number: Flight number
+customer_flight_time: Estimated time

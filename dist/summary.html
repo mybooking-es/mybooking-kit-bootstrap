@@ -136,7 +136,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="col bg-white shadow-bottom py-3 px-3 mt-5">
-            <h4 class="brand-primary my-3">Datos del conductor</h4>
+            <h4 class="brand-primary my-3">Datos del cliente</h4>
             <div class="table-responsive">
               <table class="table table-borderless">
                 <tbody>
@@ -152,10 +152,12 @@
                     <th scope="row">Teléfono:</th>
                     <td><%=booking.customer_phone%></td>
                   </tr>
+                  <% if (booking.customer_mobile_phone > 0) { %>
                   <tr>
                     <th scope="row">Teléfono alternativo:</th>
                     <td><%=booking.customer_mobile_phone%></td>
                   </tr>
+                  <% } %>
                 </tbody>
               </table>
             </div>
@@ -187,19 +189,19 @@
     
             <% if (booking.time_from_cost > 0) { %>
             <hr>
-            <h6>Suplemento hora de entrega</h6>
+            <h6>Suplemento hora entrega</h6>
             <p class="color-gray-600"><%=configuration.formatCurrency(booking.time_from_cost)%></p>
             <% } %>
     
             <% if (booking.pickup_place_cost > 0) { %>
             <hr>
-            <h6>Suplemento lugar de entrega</h6>
+            <h6>Suplemento lugar entrega</h6>
             <p class="color-gray-600"><%=configuration.formatCurrency(booking.pickup_place_cost)%></p>
             <% } %>
     
             <% if (booking.time_to_cost > 0) { %>
             <hr>
-            <h6>Suplemento hora de devolución</h6>
+            <h6>Suplemento hora devolución</h6>
             <p class="color-gray-600"><%=configuration.formatCurrency(booking.time_to_cost)%></p>
             <% } %>
     
