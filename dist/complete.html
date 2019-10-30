@@ -432,7 +432,7 @@
             </button>
           </div>
           <form name="search_form" method="get" enctype="application/x-www-form-urlencoded"
-            class="flex-form">
+            class="flex-form" autocomplete="off">
             <div class="flex-form-item-box">
               <label>Lugar de entrega</label>
               <div class="flex-form-item">
@@ -452,7 +452,7 @@
               <label>Fecha de entrega</label>
               <div class="flex-form-item">
                 <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                <input type="text" id="date_from" name="date_from" />
+                <input type="text" id="date_from" name="date_from" placeholder="dd/mm/aaaa"/>
                 <select class="ml-1" id="time_from" name="time_from">
                 </select>
               </div>
@@ -461,7 +461,7 @@
               <label>Fecha de devolución</label>
               <div class="flex-form-item">
                 <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                <input type="text" id="date_to" name="date_to" />
+                <input type="text" id="date_to" name="date_to" placeholder="dd/mm/aaaa"/>
                 <select class="ml-1" id="time_to" name="time_to">
                 </select>
               </div>

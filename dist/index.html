@@ -78,7 +78,9 @@
           <div class="hero-header-right">
             <!-- FLEX-FORM-SELECTOR -->
             <section class="widget widget_mybooking_rent_engine_selector reservation-step">
-              <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded" class="flex-form">
+              <form id="form-selector" name="widget_search_form" method="get" 
+                    enctype="application/x-www-form-urlencoded" class="flex-form"
+                    autocomplete="off">
                 <div class="flex-form-item-box">
                   <label>Lugar de entrega</label>
                   <div class="flex-form-item">
@@ -98,7 +100,7 @@
                   <label>Fecha de entrega</label>
                   <div class="flex-form-item">
                     <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                    <input type="text" id="widget_date_from" name="date_from" />
+                    <input type="text" id="widget_date_from" name="date_from" placeholder="dd/mm/aaaa"/>
                     <select class="ml-1" id="widget_time_from" name="time_from">
                     </select>
                   </div>
@@ -107,7 +109,7 @@
                   <label>Fecha de devolución</label>
                   <div class="flex-form-item">
                     <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                    <input type="text" id="widget_date_to" name="date_to" />
+                    <input type="text" id="widget_date_to" name="date_to" placeholder="dd/mm/aaaa"/>
                     <select class="ml-1" id="widget_time_to" name="time_to">
                     </select>
                   </div>
