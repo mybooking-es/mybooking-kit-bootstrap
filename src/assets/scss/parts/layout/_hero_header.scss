@@ -2,7 +2,7 @@
 // Layout/Hero header
 //==============================================
 
-.hero-header-container {
+.hero-header {
   background: url(../images/bg-image.jpg) no-repeat center center;
   background-size: cover;
   position: relative;
@@ -63,7 +63,7 @@
 ==================================== */
 
 @media (min-width: 768px) {
-  .hero-header-container {
+  .hero-header {
     padding-bottom: 200px;
   }
 
@@ -87,4 +87,13 @@
     flex-direction: row;
     height: 500px;
   }
+}
+
+.hero-header-content-horizontal {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  align-items: center;
+  justify-content: center;
 }

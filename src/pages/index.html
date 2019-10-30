@@ -4,24 +4,7 @@ meta-title: Index
 body-classes: "mybooking-selector-widget"
 ---
 
-<div class="hero-header-container">
-  {{> cta }}
-  {{> nav }}
-  <div class="hero-header-content">
-    <div class="hero-header-left">
-      <div class="aligner">
-        <h1 class="fw-900"><%= index.slogan_title %></h1>
-        <p>
-          <%= index.slogan_text %>
-        </p>
-      </div>
-    </div>
-    <div class="hero-header-right">
-      {{> selector }}
-    </div>
-  </div>
-  <div class="diagonal-section"></div>
-</div>
+{{> hero-header }}
 
 <div class="title-wrapper">
   <div class="title">
@@ -95,3 +78,37 @@ body-classes: "mybooking-selector-widget"
     </div>
   </div>
 </div>
+
+<div class="media-block bg-gray-50">
+    <div class="media-block_left media-block_text">
+      <div class="media-block_text_aligner">
+        <h3>Quinoa before</h3>
+        <ul class="list-unstyled color-gray-500">
+          <li class="lead">Marfa dreamcatcher</li>
+          <li class="lead">Palo santo</li>
+          <li class="lead">Heirloom pabst</li>
+          <li class="lead">Coloring book</li>
+        </ul>
+        <a class="btn btn-outline-dark" href="#" role="button">Leer
+          más</a>
+      </div>
+    </div>
+    <div class="media-block_right" id="image_1"></div>
+  </div>
+  
+  <div class="media-block bg-gray-50">
+    <div class="media-block_right media-block_text">
+      <div class="media-block_text_aligner">
+        <h3>Chicharrones</h3>
+        <ul class="list-unstyled color-gray-500">
+          <li class="lead">Kickstarter </li>
+          <li class="lead">Activated charcoal</li>
+          <li class="lead">Flexitarian leggings</li>
+          <li class="lead">Tumblr biodiesel </li>
+        </ul>
+        <a class="btn btn-outline-dark" href="#" role="button">Leer
+          más</a>
+      </div>
+    </div>
+    <div class="media-block_left" id="image_2"></div>
+  </div>

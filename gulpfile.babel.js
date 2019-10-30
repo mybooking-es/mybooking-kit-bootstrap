@@ -304,13 +304,12 @@ gulp.task(
 
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
-  // gulp.watch(PATHS.assets, copy);
   gulp
     .watch("src/pages/**/*.html")
     .on("all", gulp.series(pages, browser.reload));
   gulp
     .watch("src/{layouts,partials}/**/*.html")
-    .on("all", gulp.series(resetPages, pages, browser.reload));
+    .on("all", gulp.series(resetPages, pages, translate, browser.reload));
   gulp.watch("src/assets/scss/**/*.scss").on("all", sass);
   gulp
     .watch("src/assets/js/**/*.js")
@@ -318,6 +317,7 @@ function watch() {
   gulp
     .watch("src/assets/img/**/*")
     .on("all", gulp.series(images, browser.reload));
+  gulp.watch("tmp/**/*.html").on("all", gulp.series(translate, browser.reload));
 }
 
 // -----------------------------------------------------------------------------

@@ -1,0 +1,91 @@
+// ============ Small devices
+.media-block {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-x: hidden;
+  height: 1000px;
+}
+.media-block_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+  .media-block_text_aligner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 90%;
+    .btn {
+      max-width: fit-content;
+    }
+  }
+}
+.media-block_wrapp-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  .media-block_img {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+  }
+}
+
+//======= Large devices (desktops, 992px and up)
+
+@media (min-width: 922px) {
+  .media-block {
+    flex-direction: row;
+    height: 500px;
+  }
+  .media-block_text {
+    width: 50%;
+    height: 500px;
+    .media-block_text_aligner {
+      max-width: 60%;
+    }
+  }
+  .media-block_left,
+  .media-block_right {
+    display: flex;
+    width: 50%;
+  }
+  .media-block_left {
+    order: 1;
+  }
+  .media-block_right {
+    order: 2;
+  }
+  .media-block_wrapp-img {
+    width: 50%;
+  }
+}
+
+// ========= IMAGENES ==
+
+/* Tenemos 2 tipos de imágenes:
+    1ª. Ocupan toda la sección, van con background-size cover, se recorta la imágen para adaptarse a su contenedor, necesitas especificar el alto
+        
+    2º. Tienen un padding y nunca se recorta la imágen, van dentro de la clase media-block__wrapp-img con media-block__img */
+
+#image_1 {
+  background-image: url(../images/image_1.jpg);
+  background-size: cover;
+  height: 500px;
+}
+#image_2 {
+  background-image: url(../images/image_2.jpg);
+  background-size: cover;
+  height: 500px;
+}
+#image_3 {
+  background-image: url(../images/image_3.svg);
+}
