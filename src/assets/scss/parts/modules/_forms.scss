@@ -11,13 +11,19 @@
   background-color: $transparent-white;
   padding: 10px;
 }
-.flex-form.flex-form-horizontal {
+.flex-form-horizontal {
   display: flex;
-  flex-direction: row !important;
-  align-items: center;
-  flex-grow: 1;
+  flex-direction: column;
   background-color: $transparent-white;
   padding: 10px;
+}
+.form-groups-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-form-group {
+  display: flex;
+  flex-direction: column;
 }
 .flex-form-sticky {
   @extend .flex-form;

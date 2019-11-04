@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
-<body class="contact ">
+<body class="contact mybooking-contact-widget">
  
     
     <div class="cta cta__bg cta__text color-whites">
-      <span><i class="fas fa-phone "></i> <a href="tel:+34888888888">+34 888 88 88 88</a></span>
+      <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
       <span class="mr-auto ml-3">
         <i class="far fa-envelope"></i>
         <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
@@ -93,22 +93,14 @@
             </div>
             <ul class="social-links mt50">
               <li class="social__item">
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
               </li>
               <li class="social__item">
-                <a href="#" target="_blank"><i class="fab fa-free-code-camp"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
               </li>
               <li class="social__item">
-                <a href="#" target="_blank"><i class="fab fa-codepen"></i></a>
-              </li>
-              <li class="social__item">
-                <a href="#" target="_blank">
-                  <i class="fab fa-behance"></i></a>
-              </li>
-              <li class="social__item">
-                <a href="#" target="_blank">
-                  <i class="fab fa-github"></i></a>
-              </li>
+                  <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </li>
             </ul>
           </div>
           <div class="contact-left-map">
@@ -122,22 +114,30 @@
           <h4>Form</h4>
           <hr />
     
-          <form action="https://formspree.io/johndoe@gmail.com" method="POST">
+          <form id="widget_contact_form" name="widget_contact_form" autocomplete="off">
             <div class="form-group">
               <label for="name">Nombre</label>
-              <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Nombre" />
+              <input type="text" class="form-control" id="customer_name" name="customer_name" aria-describedby="name" placeholder="Nombre" />
             </div>
             <div class="form-group">
+                <label for="name">Apellidos</label>
+                <input type="text" class="form-control" id="customer_surname" name="customer_surname" aria-describedby="name" placeholder="Apellidos" />
+            </div>    
+            <div class="form-group">
+                <label for="name">Teléfono</label>
+                <input type="text" class="form-control" id="customer_phone" name="customer_phone" aria-describedby="name" placeholder="Teléfono" />
+            </div>            
+            <div class="form-group">
               <label for="exampleInputEmail1">Email</label>
-              <input type="email" name="_replyto" class="form-control" aria-describedby="emailHelp" placeholder="Email" />
+              <input type="email" id="customer_email" name="customer_email" class="form-control" aria-describedby="emailHelp" placeholder="Email" />
             </div>
             <div class="form-group">
               <label for="comment">Commentario:</label>
-              <textarea name="message" placeholder="Mensage" class="form-control" rows="4" id="comment"></textarea>
+              <textarea id="comments" name="comments" placeholder="Mensage" class="form-control" rows="4" id="comment"></textarea>
             </div>
             <div class="form-group">
               <label>
-                <button type="submit" value="Send" class="btn btn-outline-light">
+                <button id="send_message_button" type="submit" value="Send" class="btn btn-outline-light">
                   Enviar
                 </button>
               </label>
@@ -147,9 +147,65 @@
       </div>
     </section>
     
-<footer class="footer text-center py-3">
-  <p class="color-white">&copy; 2019 mybooking</p>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Lorem ipsum</h6>
+        <ul>
+          <li><a href="#">disrupt</a></li>
+          <li><a href="#">meggings</a></li>
+          <li><a href="#">quinoa</a></li>
+          <li><a href="#">Polaroid VHS</a></li>
+          <li><a href="#">Aesthetic</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>palo santo</h6>
+        <ul>
+          <li><a href="#">waistcoat</a></li>
+          <li><a href="#">Crucifix</a></li>
+          <li><a href="#">mustache</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Siguenos</h6>
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2019 <strong>YourBusiness</strong><span class="ml-5">
+          developed by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
 
 <script src="/assets/js/app.js"></script>
 <script src="/assets/js/mybooking-engine-init.js"></script>

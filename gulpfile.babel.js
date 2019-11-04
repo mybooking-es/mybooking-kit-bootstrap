@@ -31,7 +31,6 @@ import webpackStream from "webpack-stream";
 import webpack2 from "webpack";
 import named from "vinyl-named";
 import i18n from "gulp-html-i18n";
-import uncss from "uncss";
 import autoprefixer from "autoprefixer";
 
 // Load all Gulp plugins into one variable
@@ -41,7 +40,7 @@ const $ = plugins();
 const PRODUCTION = !!yargs.argv.production;
 
 // Load settings from settings.yml
-const { COMPATIBILITY, PORT, UNCSS_OPTIONS, PATHS } = loadConfig();
+const { PORT, PATHS } = loadConfig();
 
 // Config
 function loadConfig() {
@@ -50,7 +49,6 @@ function loadConfig() {
 }
 
 // Delete the "dist" folder
-// This happens every time a build starts
 function clean(done) {
   rimraf(PATHS.dist, done);
   rimraf(PATHS.tmp, done);
@@ -130,46 +128,32 @@ function resetPages(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
-  const postCssPlugins = [
-    // Autoprefixer
-    autoprefixer({ browsers: COMPATIBILITY })
-    // UnCSS - Uncomment to remove unused styles in production
-    // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
-  ].filter(Boolean);
+  const postCssPlugins = [autoprefixer()].filter(Boolean);
 
-  return (
-    gulp
-      .src("src/assets/scss/app.scss")
-      .pipe($.sourcemaps.init())
-      .pipe(
-        $.sass({
-          includePaths: PATHS.sass
-        }).on("error", $.sass.logError)
-      )
-      .pipe($.postcss(postCssPlugins))
-      // .pipe(
-      //   $.autoprefixer({
-      //     browsers: COMPATIBILITY
-      //   })
-      // )
-      // Comment in the pipe below to run UnCSS in production
-      //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
-      .pipe(
-        $.if(
-          PRODUCTION,
-          $.cleanCss({
-            compatibility: "ie9"
-          })
-        )
-      )
-      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-      .pipe(gulp.dest(PATHS.dist + "/assets/css"))
-      .pipe(
-        browser.reload({
-          stream: true
+  return gulp
+    .src("src/assets/scss/app.scss")
+    .pipe($.sourcemaps.init())
+    .pipe(
+      $.sass({
+        includePaths: PATHS.sass
+      }).on("error", $.sass.logError)
+    )
+    .pipe($.postcss(postCssPlugins))
+    .pipe(
+      $.if(
+        PRODUCTION,
+        $.cleanCss({
+          compatibility: "ie9"
         })
       )
-  );
+    )
+    .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + "/assets/css"))
+    .pipe(
+      browser.reload({
+        stream: true
+      })
+    );
 }
 
 // -----------------------------------------------------------------------------
@@ -188,6 +172,7 @@ function cssimages() {
 // -----------------------------------------------------------------------------
 
 let webpackConfig = {
+  mode: PRODUCTION ? "production" : "development",
   module: {
     rules: [
       {
