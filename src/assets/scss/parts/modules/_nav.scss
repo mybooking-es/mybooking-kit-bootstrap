@@ -83,7 +83,8 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .index .bg-nav {
+  .index .bg-nav,
+  .index_2 .bg-nav {
     background: none;
   }
   .index .cta {

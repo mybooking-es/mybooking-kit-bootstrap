@@ -84,7 +84,7 @@ jQuery(document).ready(function($) {
   });
 });
 
-// Languages
+// Nav Language selector
 jQuery(document).ready(function($) {
   if ($("html").attr("lang") == "es") {
     $("a.es").removeClass("visible");

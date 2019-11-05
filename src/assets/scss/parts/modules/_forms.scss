@@ -1,8 +1,66 @@
 //==============================================
 // Module/inputs, forms, textarea
 //==============================================
+// Form selector horizontal
+.flex-form-horizontal {
+  display: flex;
+  flex-direction: column;
+  background-color: $transparent-white;
+  padding: 10px;
+}
+.flex-form-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.flex-form-group {
+  display: flex;
+  flex-direction: column;
+}
+.flex-form-horizontal-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.flex-form-horizontal-item {
+  display: flex;
+  select {
+    display: flex;
+    flex-basis: 100%;
+  }
+}
+.flex-form-group:nth-child(1n) {
+  margin-right: 5px;
+  select {
+    flex-basis: 50px;
+    flex-grow: 1;
+    flex-shrink: 50px;
+  }
+}
+.flex-form-group:nth-child(2n) {
+  margin-left: 5px;
+  flex-grow: 1;
+  input.hasDatepicker {
+    flex-grow: 1;
+    width: 80px;
+  }
+}
+.flex-form-sticky {
+  .flex-form-group {
+    flex-direction: row;
+  }
+  .flex-form-horizontal-box:last-child {
+    margin-left: 5px;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .flex-form-group-wrapper {
+    flex-direction: row;
+  }
+}
 
-// Form Selector
+// Form Selector vertical
 .flex-form {
   display: flex;
   flex-direction: column;
@@ -11,22 +69,9 @@
   background-color: $transparent-white;
   padding: 10px;
 }
-.flex-form-horizontal {
-  display: flex;
-  flex-direction: column;
-  background-color: $transparent-white;
-  padding: 10px;
-}
-.form-groups-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-.flex-form-group {
-  display: flex;
-  flex-direction: column;
-}
 .flex-form-sticky {
   @extend .flex-form;
+  align-items: end;
   flex-direction: row;
   background-color: $gray-300;
   position: fixed;

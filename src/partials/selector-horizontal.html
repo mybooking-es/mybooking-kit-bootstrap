@@ -3,18 +3,18 @@
   <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
     class="flex-form-horizontal">
 
-    <div class="form-groups-wrapper">
+    <div class="flex-form-group-wrapper">
       <div class="flex-form-group">
-        <div class="flex-form-item-box">
+        <div class="flex-form-horizontal-box">
           <label><%= index.pickup_place %></label>
-          <div class="flex-form-item">
+          <div class="flex-form-horizontal-item">
             <select id="widget_pickup_place" name="pickup_place"></select>
             <i class="fa fa-angle-down flex-icon"></i>
           </div>
         </div>
-        <div class="flex-form-item-box">
+        <div class="flex-form-horizontal-box">
           <label><%= index.return_place %></label>
-          <div class="flex-form-item">
+          <div class="flex-form-horizontal-item">
             <select id="widget_return_place" name="return_place">
             </select>
             <i class="fa fa-angle-down flex-icon"></i>
@@ -22,18 +22,18 @@
         </div>
       </div>
       <div class="flex-form-group">
-        <div class="flex-form-item-box">
+        <div class="flex-horizontal-box">
           <label><%= index.date_from %></label>
-          <div class="flex-form-item">
+          <div class="flex-form-horizontal-item">
             <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
             <input type="text" id="widget_date_from" name="date_from" />
             <select class="ml-1" id="widget_time_from" name="time_from">
             </select>
           </div>
         </div>
-        <div class="flex-form-item-box">
+        <div class="flex-form-horizontal-box">
           <label><%= index.date_to %></label>
-          <div class="flex-form-item">
+          <div class="flex-form-horizontal-item">
             <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
             <input type="text" id="widget_date_to" name="date_to" />
             <select class="ml-1" id="widget_time_to" name="time_to">
@@ -42,8 +42,8 @@
         </div>
       </div>
     </div>
-    <div class="flex-form-item-box">
-      <input type="submit" class="btn btn-primary" value="<%= index.search_button %>" />
+    <div class="flex-form-horizontal-box">
+      <input type="submit" class="btn btn-primary mt-3" value="<%= index.search_button %>" />
     </div>
   </form>
 </section>
