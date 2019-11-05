@@ -15,7 +15,11 @@
 }
 .flex-form-group {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
+  input.hasDatepicker {
+    flex-grow: 1;
+  }
 }
 .flex-form-horizontal-box {
   display: flex;
@@ -25,22 +29,14 @@
   display: flex;
   select {
     display: flex;
-    width: 100px;
+    flex-grow: 1;
   }
 }
 .flex-form-group:nth-child(1n) {
   margin-right: 5px;
-  flex-grow: 1;
-  select {
-    flex-grow: 1;
-  }
 }
 .flex-form-group:nth-child(2n) {
   margin-left: 5px;
-  flex-grow: 1;
-  input.hasDatepicker {
-    flex-grow: 1;
-  }
 }
 .flex-form-sticky {
   .flex-form-group {
@@ -49,12 +45,23 @@
   .flex-form-horizontal-box:last-child {
     margin-left: 5px;
     flex-grow: 1;
+    align-self: flex-end;
   }
 }
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .flex-form-group-wrapper {
     flex-direction: row;
+  }
+}
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+  .flex-form-horizontal-item {
+    display: flex;
+    select {
+      display: flex;
+      width: 100px;
+    }
   }
 }
 
