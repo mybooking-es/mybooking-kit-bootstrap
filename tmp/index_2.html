@@ -7,11 +7,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <meta name="description" content="alquiler de coches"/>
     <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body class="index_2 mybooking-selector-widget">
- 
+
     
     <!-- hero-header-horizontal -->
     <div class="hero-header">
@@ -32,19 +33,17 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html"><%= nav.home %></a>
-            </li>
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <%= nav.fleet %>
+                <%= nav.home %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"><%= nav.rows %></a>
-                <a class="dropdown-item" href="choose_product.html"><%= nav.columns %></a>
+                <a class="dropdown-item" href="index.html">Index</a>
+                <a class="dropdown-item" href="index_1.html">Index 1</a>
+                <a class="dropdown-item" href="index_2.html">Index 2</a>
               </div>
-            </li> -->
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="conditions.html"><%= nav.conditions %></a>
             </li>
@@ -53,12 +52,12 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+                aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-globe-europe"></i> <%= nav.language %>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item es visible" href="/index_2.html"><%= nav.es %></a>
-                <a class="dropdown-item en visible" href="/en/index_2.html"><%= nav.en %></a>       
+                <a class="dropdown-item en visible" href="/en/index_2.html"><%= nav.en %></a>
                 <a class="dropdown-item ca visible" href="/ca/index_2.html"><%= nav.ca %></a>
                 <a class="dropdown-item it visible" href="/it/index_2.html"><%= nav.it %></a>
               </div>
@@ -93,7 +92,7 @@
                   </div>
                 </div>
                 <div class="flex-form-group">
-                  <div class="flex-horizontal-box">
+                  <div class="flex-form-horizontal-box">
                     <label><%= index.date_from %></label>
                     <div class="flex-form-horizontal-item">
                       <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
@@ -122,16 +121,13 @@
     
       <div class="diagonal-section"></div>
     </div>
-    <div class="title-wrapper">
-      <div class="title">
-        <h1 class="fw-900"><%= index.featured_section_title %></h1>
-        <hr class="center-hr">
-        </hr>
-        <p>
+    <header class="header-wrapper">
+        <h1 class="title fw-900"><%= index.featured_section_title %></h1>
+        <hr class="custom-hr"></hr>
+        <p class="subtitle">
           <%= index.featured_section_text %>
         </p>
-      </div>
-    </div>
+    </header>
     
     <div class="icons-wrapper mt100">
       <div class="icon-panel icon-1">
@@ -153,15 +149,16 @@
     </div>
     
     <div class="gradient-section">
-      <div class="title-wrapper">
-        <div class="title">
-          <h1 class="color-white fw-900"><%= index.featured_section_2_title %></h1>
-          <hr class="center-hr-white"></hr>
-          <p class="color-white">
-              <%= index.featured_section_2_text %>
-          </p>
-        </div>
-      </div>
+      <header class="header-wrapper">
+        <h1 class="title color-white fw-900 mt-5">
+          <%= index.featured_section_2_title %>
+        </h1>
+        <hr class="custom-hr-white">
+        </hr>
+        <p class="subtitle color-white">
+          <%= index.featured_section_2_text %>
+        </p>
+      </header>
     
       <div class="text-center">
         <img class="img-fluid" src="../assets/images/three-cars.png" alt="" />
@@ -173,7 +170,7 @@
           <h3><%= index.feature_title_1 %></h3>
           <hr />
           <p>
-              <%= index.feature_text_1 %>
+            <%= index.feature_text_1 %>
           </p>
         </div>
         <div class="features__item">
@@ -189,45 +186,45 @@
           <h3><%= index.feature_title_3 %></h3>
           <hr />
           <p>
-              <%= index.feature_text_3 %>
+            <%= index.feature_text_3 %>
           </p>
         </div>
       </div>
     </div>
     
     <div class="media-block bg-gray-50">
-        <div class="media-block_left media-block_text">
-          <div class="media-block_text_aligner">
-            <h3>Quinoa before</h3>
-            <ul class="list-unstyled color-gray-500">
-              <li class="lead">Marfa dreamcatcher</li>
-              <li class="lead">Palo santo</li>
-              <li class="lead">Heirloom pabst</li>
-              <li class="lead">Coloring book</li>
-            </ul>
-            <a class="btn btn-outline-dark" href="#" role="button">Leer
-              más</a>
-          </div>
+      <div class="media-block_left media-block_text">
+        <div class="media-block_text_aligner">
+          <h3>Quinoa before</h3>
+          <ul class="list-unstyled color-gray-500">
+            <li class="lead">Marfa dreamcatcher</li>
+            <li class="lead">Palo santo</li>
+            <li class="lead">Heirloom pabst</li>
+            <li class="lead">Coloring book</li>
+          </ul>
+          <a class="btn btn-outline-dark" href="#" role="button">Leer
+            más</a>
         </div>
-        <div class="media-block_right" id="image_1"></div>
       </div>
-      
-      <div class="media-block bg-gray-50">
-        <div class="media-block_right media-block_text">
-          <div class="media-block_text_aligner">
-            <h3>Chicharrones</h3>
-            <ul class="list-unstyled color-gray-500">
-              <li class="lead">Kickstarter </li>
-              <li class="lead">Activated charcoal</li>
-              <li class="lead">Flexitarian leggings</li>
-              <li class="lead">Tumblr biodiesel </li>
-            </ul>
-            <a class="btn btn-outline-dark" href="#" role="button">Leer
-              más</a>
-          </div>
+      <div class="media-block_right" id="image_1"></div>
+    </div>
+    
+    <div class="media-block bg-gray-50">
+      <div class="media-block_right media-block_text">
+        <div class="media-block_text_aligner">
+          <h3>Chicharrones</h3>
+          <ul class="list-unstyled color-gray-500">
+            <li class="lead">Kickstarter </li>
+            <li class="lead">Activated charcoal</li>
+            <li class="lead">Flexitarian leggings</li>
+            <li class="lead">Tumblr biodiesel </li>
+          </ul>
+          <a class="btn btn-outline-dark" href="#" role="button">Leer
+            más</a>
         </div>
-        <div class="media-block_left" id="image_2"></div>
       </div>
+      <div class="media-block_left" id="image_2"></div>
+    </div>
     
 <footer class="footer">
   <div class="container">
@@ -283,8 +280,8 @@
 <div class="container-fluid copy">
   <div class="row">
     <div class="col text-center">
-      <p>&copy; 2019 <strong>YourBusiness</strong><span class="ml-5">
-          developed by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
     </div>
   </div>
 </div>

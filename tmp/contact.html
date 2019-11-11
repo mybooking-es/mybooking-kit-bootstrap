@@ -6,12 +6,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Contacto Empresa - Empresa de alquiler coches</title>
+    <meta name="description" content="Contacto Empresa - Empresa de alquiler de coches"/>
     <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body class="contact mybooking-contact-widget">
- 
+
     
     <div class="cta cta__bg cta__text color-whites">
       <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
@@ -30,19 +31,17 @@
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html"><%= nav.home %></a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <%= nav.fleet %>
+              <%= nav.home %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#"><%= nav.rows %></a>
-              <a class="dropdown-item" href="choose_product.html"><%= nav.columns %></a>
+              <a class="dropdown-item" href="index.html">Index</a>
+              <a class="dropdown-item" href="index_1.html">Index 1</a>
+              <a class="dropdown-item" href="index_2.html">Index 2</a>
             </div>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="conditions.html"><%= nav.conditions %></a>
           </li>
@@ -51,12 +50,12 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+              aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-globe-europe"></i> <%= nav.language %>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item es visible" href="/contact.html"><%= nav.es %></a>
-              <a class="dropdown-item en visible" href="/en/contact.html"><%= nav.en %></a>       
+              <a class="dropdown-item en visible" href="/en/contact.html"><%= nav.en %></a>
               <a class="dropdown-item ca visible" href="/ca/contact.html"><%= nav.ca %></a>
               <a class="dropdown-item it visible" href="/it/contact.html"><%= nav.it %></a>
             </div>
@@ -65,75 +64,89 @@
       </div>
     </nav>
     <section class="bg-contact">
+        <header class="header-wrapper">
+        <h1 class="fw-900 title">Contacto</h1>
+        <hr class="custom-hr">
+        </hr>
+      </header>
       <div class="contact-content">
         <div class="contact-left">
           <div class="contact-left-info">
             <div class="contact_details">
               <div class="about">
-                <h4>Contacto</h4>
+                <h2>Datos de contacto</h2>
                 <hr />
-                <p>
-                  Estaremos encantados de atenderle en:
-                </p>
+                <p>Estaremos encantados de atenderle en:</p>
               </div>
               <div class="info">
-                <h4 class="color-blue-light">
+                <h2 class="color-blue-light">
                   <i class="fas fa-map-marker-alt"></i> Localización
-                </h4>
-                <p>Avinguda des Camp Verd P37, 46, 07730 Alaior, Islas Baleares</p>
-                <h4 class="color-blue-light">
+                </h2>
+    
+                <ul class="list-unstyled">
+                  <li>Polígon Industrial</li>
+                  <li>07730</li>
+                  <li>Alaior</li>
+                  <li>Menorca - Illes Balears</li>
+                </ul>
+                <h2 class="color-blue-light">
                   <i class="fas fa-mobile-alt"></i> Teléfono
-                </h4>
+                </h2>
                 <p>+34 888 88 88 88</p>
-                <h4 class="color-blue-light">
+                <h2 class="color-blue-light">
                   <i class="far fa-envelope"></i> Email
-                </h4>
-                <p>johndoe@gmail.com</p>
+                </h2>
+                <p>info@johndoe.com</p>
               </div>
             </div>
             <ul class="social-links mt50">
               <li class="social__item">
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
               </li>
               <li class="social__item">
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
               </li>
               <li class="social__item">
-                  <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                </li>
+                <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+              </li>
+    
             </ul>
           </div>
           <div class="contact-left-map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.338384896538!2d4.147550115478896!3d39.933819992790625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12be21b9ec7e3359%3A0x4958a4bbdab1ed23!2smybooking!5e0!3m2!1ses!2ses!4v1546868592476"
-              width="100%" height="553" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb&#x3D;!1m14!1m8!1m3!1d2924.561437168132!2d4.148268244996879!3d39.93379124577824!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4958a4bbdab1ed23!2smybooking!5e0!3m2!1ses!2ses!4v1573208975777!5m2!1ses!2ses
+    " width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
           </div>
         </div>
     
         <div class="contact-form contact-right">
-          <h4>Form</h4>
+          <h2>Escríbenos</h2>
           <hr />
     
           <form id="widget_contact_form" name="widget_contact_form" autocomplete="off">
             <div class="form-group">
               <label for="name">Nombre</label>
-              <input type="text" class="form-control" id="customer_name" name="customer_name" aria-describedby="name" placeholder="Nombre" />
+              <input type="text" class="form-control" id="customer_name" name="customer_name" aria-describedby="name"
+                placeholder="Nombre" />
             </div>
             <div class="form-group">
-                <label for="name">Apellidos</label>
-                <input type="text" class="form-control" id="customer_surname" name="customer_surname" aria-describedby="name" placeholder="Apellidos" />
-            </div>    
+              <label for="name">Apellidos</label>
+              <input type="text" class="form-control" id="customer_surname" name="customer_surname" aria-describedby="name"
+                placeholder="Apellidos" />
+            </div>
             <div class="form-group">
-                <label for="name">Teléfono</label>
-                <input type="text" class="form-control" id="customer_phone" name="customer_phone" aria-describedby="name" placeholder="Teléfono" />
-            </div>            
+              <label for="name">Teléfono</label>
+              <input type="text" class="form-control" id="customer_phone" name="customer_phone" aria-describedby="name"
+                placeholder="Teléfono" />
+            </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Email</label>
-              <input type="email" id="customer_email" name="customer_email" class="form-control" aria-describedby="emailHelp" placeholder="Email" />
+              <input type="email" id="customer_email" name="customer_email" class="form-control"
+                aria-describedby="emailHelp" placeholder="Email" />
             </div>
             <div class="form-group">
               <label for="comment">Commentario:</label>
-              <textarea id="comments" name="comments" placeholder="Mensage" class="form-control" rows="4" id="comment"></textarea>
+              <textarea id="comments" name="comments" placeholder="Mensage" class="form-control" rows="4"
+                id="comment"></textarea>
             </div>
             <div class="form-group">
               <label>
@@ -201,8 +214,8 @@
 <div class="container-fluid copy">
   <div class="row">
     <div class="col text-center">
-      <p>&copy; 2019 <strong>YourBusiness</strong><span class="ml-5">
-          developed by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
     </div>
   </div>
 </div>

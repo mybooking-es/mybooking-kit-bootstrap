@@ -1,6 +1,10 @@
 //==============================================
 // Layout/ Footer
 //==============================================
+.wrapper-footer {
+  background-color: darken($brand-primary, 40%);
+  color: $white;
+}
 .logo-footer {
   background: url("../images/mybooking_logo_white.svg");
   width: 150px;

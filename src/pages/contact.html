@@ -1,7 +1,7 @@
 ---
 layout: default
-meta-title: Contacto
-title: Contacto
+title: Contacto Empresa - Empresa de alquiler coches
+meta-description: Contacto Empresa - Empresa de alquiler de coches
 body-classes: "mybooking-contact-widget"
 ---
 
@@ -9,75 +9,88 @@ body-classes: "mybooking-contact-widget"
 {{> nav }}
 
 <section class="bg-contact">
+    <header class="header-wrapper">
+    <h1 class="fw-900 title">Contacto</h1>
+    <hr class="custom-hr">
+    </hr>
+  </header>
   <div class="contact-content">
     <div class="contact-left">
       <div class="contact-left-info">
         <div class="contact_details">
           <div class="about">
-            <h4>Contacto</h4>
+            <h2>Datos de contacto</h2>
             <hr />
-            <p>
-              Estaremos encantados de atenderle en:
-            </p>
+            <p>Estaremos encantados de atenderle en:</p>
           </div>
           <div class="info">
-            <h4 class="color-blue-light">
+            <h2 class="color-blue-light">
               <i class="fas fa-map-marker-alt"></i> Localización
-            </h4>
-            <p>Avinguda des Camp Verd P37, 46, 07730 Alaior, Islas Baleares</p>
-            <h4 class="color-blue-light">
+            </h2>
+
+            <ul class="list-unstyled">
+              <li>{{ global.adress }}</li>
+              <li>{{ global.postal_code }}</li>
+              <li>{{ global.city }}</li>
+              <li>{{ global.province }}</li>
+            </ul>
+            <h2 class="color-blue-light">
               <i class="fas fa-mobile-alt"></i> Teléfono
-            </h4>
-            <p>+34 888 88 88 88</p>
-            <h4 class="color-blue-light">
+            </h2>
+            <p>{{ global.phone }}</p>
+            <h2 class="color-blue-light">
               <i class="far fa-envelope"></i> Email
-            </h4>
-            <p>johndoe@gmail.com</p>
+            </h2>
+            <p>{{ global.email }}</p>
           </div>
         </div>
         <ul class="social-links mt50">
           <li class="social__item">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{{ global.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
           </li>
           <li class="social__item">
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="{{ global.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
           </li>
           <li class="social__item">
-              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            </li>
+            <a href="{{ global.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+
         </ul>
       </div>
       <div class="contact-left-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.338384896538!2d4.147550115478896!3d39.933819992790625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12be21b9ec7e3359%3A0x4958a4bbdab1ed23!2smybooking!5e0!3m2!1ses!2ses!4v1546868592476"
-          width="100%" height="553" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="{{ global.google-maps }}" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
       </div>
     </div>
 
     <div class="contact-form contact-right">
-      <h4>Form</h4>
+      <h2>Escríbenos</h2>
       <hr />
 
       <form id="widget_contact_form" name="widget_contact_form" autocomplete="off">
         <div class="form-group">
           <label for="name">Nombre</label>
-          <input type="text" class="form-control" id="customer_name" name="customer_name" aria-describedby="name" placeholder="Nombre" />
+          <input type="text" class="form-control" id="customer_name" name="customer_name" aria-describedby="name"
+            placeholder="Nombre" />
         </div>
         <div class="form-group">
-            <label for="name">Apellidos</label>
-            <input type="text" class="form-control" id="customer_surname" name="customer_surname" aria-describedby="name" placeholder="Apellidos" />
-        </div>    
+          <label for="name">Apellidos</label>
+          <input type="text" class="form-control" id="customer_surname" name="customer_surname" aria-describedby="name"
+            placeholder="Apellidos" />
+        </div>
         <div class="form-group">
-            <label for="name">Teléfono</label>
-            <input type="text" class="form-control" id="customer_phone" name="customer_phone" aria-describedby="name" placeholder="Teléfono" />
-        </div>            
+          <label for="name">Teléfono</label>
+          <input type="text" class="form-control" id="customer_phone" name="customer_phone" aria-describedby="name"
+            placeholder="Teléfono" />
+        </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Email</label>
-          <input type="email" id="customer_email" name="customer_email" class="form-control" aria-describedby="emailHelp" placeholder="Email" />
+          <input type="email" id="customer_email" name="customer_email" class="form-control"
+            aria-describedby="emailHelp" placeholder="Email" />
         </div>
         <div class="form-group">
           <label for="comment">Commentario:</label>
-          <textarea id="comments" name="comments" placeholder="Mensage" class="form-control" rows="4" id="comment"></textarea>
+          <textarea id="comments" name="comments" placeholder="Mensage" class="form-control" rows="4"
+            id="comment"></textarea>
         </div>
         <div class="form-group">
           <label>

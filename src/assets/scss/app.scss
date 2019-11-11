@@ -9,6 +9,12 @@
 
 // Random clases...
 
+// Random clases...
+.conditions h2 {
+  font-size: 1.2rem;
+  color: $brand-primary;
+}
+
 .shadow-bottom {
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 5px 5px 4px 4px;
@@ -30,25 +36,14 @@
   }
 }
 
-.wrapper-footer {
-  background-color: darken($brand-primary, 40%);
-  color: $white;
-}
-
-.btn.btn-secondary.understrap-read-more-link {
-  color: $brand-primary;
-  background-color: transparent;
-  border: 0;
-  padding-left: 0;
-  &:hover {
-    color: darken($brand-primary, 10%);
-  }
-}
-
+// Utilities
 .full-height {
   height: 100%;
 }
-
+.full-width {
+  width: 100%;
+}
+// Nav language selector
 a.es,
 a.ca,
 a.it,

@@ -56,7 +56,7 @@ customer_adress_country: País
 customer_driver_data: Datos del conductor
 customer_driver_name: Nombre del conductor
 customer_driver_surname: Apellidos del conductor
-customer_driver_passport: Nof o pasaporte del conductor
+customer_driver_passport: Nif o pasaporte del conductor
 customer_driver_date_of_birth: Fecha de nacimiento del conductor
 customer_driver_driving_license_number: Número del carnet de conducir
 customer_driver_driving_license_date: Fecha expedición carnet de conducir

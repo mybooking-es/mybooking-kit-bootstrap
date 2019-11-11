@@ -1,19 +1,17 @@
 ---
 layout: default
-meta-title: Index
+title: Condiciones de alquiler coches | Empresa
+meta-description: Condiciones de alquiler de coches
 ---
 
+{{> cta }}
 {{> nav }}
 
-<div class="bg-nav"></div>
-
 <div class="container">
-    <div class="row">
-        <div class="col mt100 mb100">
-
-            <h1><%= conditions.conditions_page_title %></h1>
-            <p></p><%= conditions.conditions_content %></p>
-
-        </div>
+  <div class="row">
+    <div class="col col-md-8 offset-md-2 mt100 mb100 conditions">
+      <h1 class="mb-5"><%= conditions.conditions_title %></h1>
+      <%= conditions.conditions_text %>
     </div>
+  </div>
 </div>

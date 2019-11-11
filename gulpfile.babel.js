@@ -4,8 +4,9 @@
  *
  * Table of contents:
  *   Fonts
- *   Styles
  *   Panini
+ *   Sitemap
+ *   Styles
  *   jQuery UI Images
  *   Scripts
  *   Images
@@ -32,6 +33,7 @@ import webpack2 from "webpack";
 import named from "vinyl-named";
 import i18n from "gulp-html-i18n";
 import autoprefixer from "autoprefixer";
+import sitemap from "gulp-sitemap";
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -120,6 +122,22 @@ function resetPages(done) {
   panini.refresh();
   done();
 }
+
+// -----------------------------------------------------------------------------
+//   Sitemap
+// -----------------------------------------------------------------------------
+
+// Generate a sitemap from generated html files.
+// function sitemap() {
+//   return gulp
+//     .src(PATHS.dist + "/**/*.html")
+//     .pipe(
+//       sitemap({
+//         siteUrl: "http://www.amazon.com"
+//       })
+//     )
+//     .pipe(gulp.dest(PATHS.dist));
+// }
 
 // -----------------------------------------------------------------------------
 //  Styles
@@ -318,3 +336,4 @@ gulp.task("default", gulp.series("build", server, watch));
 
 // export tasks
 exports.clean = clean;
+exports.sitemap = sitemap;

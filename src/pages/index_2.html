@@ -1,21 +1,19 @@
 ---
 layout: default
-meta-title: Index
+title: Index
+meta-description: alquiler de coches
 body-classes: "mybooking-selector-widget"
 ---
 
 {{> hero-header-horizontal }}
 
-<div class="title-wrapper">
-  <div class="title">
-    <h1 class="fw-900"><%= index.featured_section_title %></h1>
-    <hr class="center-hr">
-    </hr>
-    <p>
+<header class="header-wrapper">
+    <h1 class="title fw-900"><%= index.featured_section_title %></h1>
+    <hr class="custom-hr"></hr>
+    <p class="subtitle">
       <%= index.featured_section_text %>
     </p>
-  </div>
-</div>
+</header>
 
 <div class="icons-wrapper mt100">
   <div class="icon-panel icon-1">
@@ -37,15 +35,16 @@ body-classes: "mybooking-selector-widget"
 </div>
 
 <div class="gradient-section">
-  <div class="title-wrapper">
-    <div class="title">
-      <h1 class="color-white fw-900"><%= index.featured_section_2_title %></h1>
-      <hr class="center-hr-white"></hr>
-      <p class="color-white">
-          <%= index.featured_section_2_text %>
-      </p>
-    </div>
-  </div>
+  <header class="header-wrapper">
+    <h1 class="title color-white fw-900 mt-5">
+      <%= index.featured_section_2_title %>
+    </h1>
+    <hr class="custom-hr-white">
+    </hr>
+    <p class="subtitle color-white">
+      <%= index.featured_section_2_text %>
+    </p>
+  </header>
 
   <div class="text-center">
     <img class="img-fluid" src="{{root}}../assets/images/three-cars.png" alt="" />
@@ -57,7 +56,7 @@ body-classes: "mybooking-selector-widget"
       <h3><%= index.feature_title_1 %></h3>
       <hr />
       <p>
-          <%= index.feature_text_1 %>
+        <%= index.feature_text_1 %>
       </p>
     </div>
     <div class="features__item">
@@ -73,42 +72,42 @@ body-classes: "mybooking-selector-widget"
       <h3><%= index.feature_title_3 %></h3>
       <hr />
       <p>
-          <%= index.feature_text_3 %>
+        <%= index.feature_text_3 %>
       </p>
     </div>
   </div>
 </div>
 
 <div class="media-block bg-gray-50">
-    <div class="media-block_left media-block_text">
-      <div class="media-block_text_aligner">
-        <h3>Quinoa before</h3>
-        <ul class="list-unstyled color-gray-500">
-          <li class="lead">Marfa dreamcatcher</li>
-          <li class="lead">Palo santo</li>
-          <li class="lead">Heirloom pabst</li>
-          <li class="lead">Coloring book</li>
-        </ul>
-        <a class="btn btn-outline-dark" href="#" role="button">Leer
-          más</a>
-      </div>
+  <div class="media-block_left media-block_text">
+    <div class="media-block_text_aligner">
+      <h3>Quinoa before</h3>
+      <ul class="list-unstyled color-gray-500">
+        <li class="lead">Marfa dreamcatcher</li>
+        <li class="lead">Palo santo</li>
+        <li class="lead">Heirloom pabst</li>
+        <li class="lead">Coloring book</li>
+      </ul>
+      <a class="btn btn-outline-dark" href="#" role="button">Leer
+        más</a>
     </div>
-    <div class="media-block_right" id="image_1"></div>
   </div>
-  
-  <div class="media-block bg-gray-50">
-    <div class="media-block_right media-block_text">
-      <div class="media-block_text_aligner">
-        <h3>Chicharrones</h3>
-        <ul class="list-unstyled color-gray-500">
-          <li class="lead">Kickstarter </li>
-          <li class="lead">Activated charcoal</li>
-          <li class="lead">Flexitarian leggings</li>
-          <li class="lead">Tumblr biodiesel </li>
-        </ul>
-        <a class="btn btn-outline-dark" href="#" role="button">Leer
-          más</a>
-      </div>
+  <div class="media-block_right" id="image_1"></div>
+</div>
+
+<div class="media-block bg-gray-50">
+  <div class="media-block_right media-block_text">
+    <div class="media-block_text_aligner">
+      <h3>Chicharrones</h3>
+      <ul class="list-unstyled color-gray-500">
+        <li class="lead">Kickstarter </li>
+        <li class="lead">Activated charcoal</li>
+        <li class="lead">Flexitarian leggings</li>
+        <li class="lead">Tumblr biodiesel </li>
+      </ul>
+      <a class="btn btn-outline-dark" href="#" role="button">Leer
+        más</a>
     </div>
-    <div class="media-block_left" id="image_2"></div>
   </div>
+  <div class="media-block_left" id="image_2"></div>
+</div>
