@@ -1,6 +1,6 @@
 # Mybooking web-sample Bootstrap
 
-Esta plantilla utiliza los estilos y scripts de [Bootstrap 4](http://getbootstrap.com/) con la configuración, sistema de construcción y estructura de archivos de [Foundation ZURB Template](https://github.com/zurb/foundation-zurb-template).
+Esta plantilla utiliza los estilos y scripts de [Bootstrap 4](http://getbootstrap.com/) con la configuración y sistema de construcción de [Foundation ZURB Template](https://github.com/zurb/foundation-zurb-template).
 
 La plantilla viene configurada con un generador Gulp con las siguientes características:
 
@@ -8,7 +8,8 @@ La plantilla viene configurada con un generador Gulp con las siguientes caracter
 - Compilación y prefijos CSS con Sass
 - Agrupador de modulos JavaScript con Webpack
 - Servidor local BrowserSync
-- Para construcción construye:
+- Sistema de tradución con Gulp i18n
+- Para producción construye:
   - Compresión de CSS
   - Compresión de JavaScript
   - Compresión de Imágenes

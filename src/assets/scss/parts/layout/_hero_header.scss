@@ -36,16 +36,6 @@
   max-width: 50%;
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .aligner-horizontal {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 50%;
-  }
-}
-
 .hero-header-right {
   display: flex;
   order: 2;
@@ -53,10 +43,6 @@
   height: 500px;
   align-items: center;
   justify-content: center;
-}
-
-.hero-header-right img {
-  margin: 0 auto;
 }
 
 .diagonal-section {
@@ -115,4 +101,14 @@
   height: 700px;
   align-items: center;
   justify-content: center;
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .aligner-horizontal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 50%;
+  }
 }
