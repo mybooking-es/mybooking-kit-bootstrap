@@ -1,19 +1,22 @@
 <!-- hero-header -->
-<div class="hero-header">
-    {{> cta }}
-    {{> nav }}
-    <div class="hero-header-content">
-      <div class="hero-header-left">
-        <div class="aligner">
-          <h1 class="fw-900"><%= index.slogan_title %></h1>
-          <p>
-            <%= index.slogan_text %>
-          </p>
-        </div>
-      </div>
-      <div class="hero-header-right">
-        {{> selector }}
+<div class="hero-header-container">
+  <video class="bg-landing" src="{{root}}assets/video/bg-video.mp4" width="100%" height="100%" preload="auto" autoplay
+    loop muted volume="0"></video>
+
+  {{> cta }}
+  {{> nav }}
+  <div class="hero-header-content">
+    <div class="hero-header-left">
+      <div class="aligner">
+        <h1 class="fw-900"><%= index.slogan_title %></h1>
+        <p>
+          <%= index.slogan_text %>
+        </p>
       </div>
     </div>
-    <div class="diagonal-section"></div>
+    <div class="hero-header-right">
+      {{> selector }}
+    </div>
   </div>
+  <!-- <div class="diagonal-section"></div> -->
+</div>

@@ -21,7 +21,6 @@
   font-size: small;
   margin-top: 0;
   position: relative;
-  z-index: 30;
   padding: 0.3rem;
   background-color: darken($brand-primary, 40%);
   a {
@@ -43,9 +42,7 @@
 .navbar-dark .navbar-toggler {
   border: none;
 }
-.navbar {
-  z-index: 10;
-}
+
 .navbar-collapse {
   .navbar-nav .nav-link {
     color: $white;
@@ -84,6 +81,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .index .bg-nav,
+  .index_1 .bg-nav,
   .index_2 .bg-nav {
     background: none;
   }

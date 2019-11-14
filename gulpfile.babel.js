@@ -175,7 +175,7 @@ function sass() {
 }
 
 // -----------------------------------------------------------------------------
-//   jQuery UI images
+//   Copy Stuff into dist folder
 // -----------------------------------------------------------------------------
 
 // Copy jQuery UI images into dist css folder
@@ -183,6 +183,13 @@ function cssimages() {
   return gulp
     .src("./src/assets/scss/vendor/jquery.ui.custom/images/*.{jpg,gif,png}")
     .pipe(gulp.dest(PATHS.dist + "/assets/css/images"));
+}
+
+// Copy video to the dist folder
+function video() {
+  return gulp
+    .src("src/assets/video/*{.mp4,jpg}")
+    .pipe(gulp.dest(PATHS.dist + "/assets/video"));
 }
 
 // -----------------------------------------------------------------------------
@@ -297,7 +304,8 @@ gulp.task(
     build_fonts,
     fontawesome,
     translate,
-    cssimages
+    cssimages,
+    video
   )
 );
 

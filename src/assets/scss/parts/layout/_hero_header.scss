@@ -3,19 +3,27 @@
 //==============================================
 
 // Vertical
-.hero-header {
-  background: url(../images/bg-image.jpg) no-repeat center center;
-  background-size: cover;
+.hero-header-container {
   position: relative;
+  height: fit-content;
   padding-bottom: 100px;
-  background-blend-mode: overlay;
   background-color: $gray-700;
+  z-index: 5;
+}
+.bg-landing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  z-index: -1000;
 }
 
 .hero-header-content {
   display: flex;
   flex-direction: column-reverse;
-  height: 1000px;
 }
 
 .hero-header-left {
@@ -46,13 +54,15 @@
 }
 
 .diagonal-section {
-  position: absolute;
+  display: none;
+  position: relative;
   background-color: #fff;
   width: 110%;
   bottom: -5%;
   left: -5%;
   transform: rotate(-2.5deg);
   height: 150px;
+  z-index: 5;
 }
 
 /* ================================= 
@@ -60,8 +70,11 @@
 ==================================== */
 
 @media (min-width: 768px) {
-  .hero-header {
-    padding-bottom: 200px;
+  .diagonal-section {
+    display: block;
+  }
+  .hero-header-container {
+    height: 100vh;
   }
 
   .diagonal-section {
@@ -71,18 +84,17 @@
 
   .hero-header-left {
     width: 60%;
-    background-color: transparent;
-    height: 500px;
+    height: 70vh;
   }
 
   .hero-header-right {
     width: 40%;
+    height: 70vh;
   }
 
   .hero-header-content {
     display: flex;
     flex-direction: row;
-    height: 500px;
   }
 }
 
@@ -95,10 +107,9 @@
   max-width: 90%;
 }
 .hero-header-content-horizontal {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 100vh;
   align-items: center;
   justify-content: center;
 }
@@ -106,9 +117,9 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .aligner-horizontal {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     max-width: 50%;
+  }
+  .hero-header-content-horizontal {
+    height: 70vh;
   }
 }

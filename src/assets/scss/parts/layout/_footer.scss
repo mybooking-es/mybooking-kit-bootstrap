@@ -1,10 +1,7 @@
 //==============================================
 // Layout/ Footer
 //==============================================
-.wrapper-footer {
-  background-color: darken($brand-primary, 40%);
-  color: $white;
-}
+
 .logo-footer {
   background: url("../images/mybooking_logo_white.svg");
   width: 150px;
@@ -46,6 +43,9 @@
 }
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
+  .logo-footer {
+    margin: 0 auto 20px;
+  }
   .footer {
     text-align: center;
     h6 {
