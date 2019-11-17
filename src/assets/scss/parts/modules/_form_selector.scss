@@ -24,10 +24,13 @@
   top: 0;
   .btn {
     height: 48px;
-    margin-top: 32px;
+    margin-top: 27px;
   }
   input.hasDatepicker {
     max-width: 130px;
+  }
+  label {
+    font-size: 13px;
   }
 }
 .flex-form-item-box {

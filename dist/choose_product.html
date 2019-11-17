@@ -105,46 +105,44 @@
     <!-- Script detailed product for choose_product -->
     <!-- Script detailed product for choose_product -->
     <script type="text/tpml" id="script_detailed_product">
+      <div class="magic-cards">
       <% for (var idx=0;idx<products.length; idx++) { %>
         <% var product = products[idx]; %>
-        <div class="magic-row-card my-5">
-          <div class="magic-row-card_img">
-              <img src="<%=product.photo%>">
-          </div>
-          <div class="magic-row-card_body">
-            <div class="magic-row-card_body-left">
-              <div>
-              <h6><%=product.code%></h6>
-              <h4 class="fw-900"><%=product.name%></h4>
-              </div>
+        <div class="magic-card">
+            <header class="header-card">
+                <h1 class="product-name"><%=product.name%></h1>
+            </header>
+            <div class="separator"></div>
+            <section class="footer-card">
+              <div class="img-wrapper">
+            <img src="<%=product.photo%>" class="product-image"></div>
+                <div class="variable-content">
+                  <% if (product.price != product.base_price) { %>
+                    <% if (product.offer_discount_type == 'percentage') { %>
+                      <p class="offer"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
+                    <% } %>
+                  <% } %>
+                </div>
     
-              <% if (product.price != product.base_price) { %>
-                <% if (product.offer_discount_type == 'percentage') { %>
-                  <p class="color-gray-500"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
-                <% } %>
-              <% } %>
-              <% if (product.few_available_units) { %>
-                <p class="text-danger mt-3">¡Quedan pocas unidades!</p>
-              <% } %>
-              <h2 class="fw-700"><%=configuration.formatCurrency(product.price)%></h2>
-            </div>
-            <div class="magic-row-card_body-right">
-              <div class="magic-row-card_icons">
-                <span class="magic-icon"><i class="fas fa-users"></i> 4</span>
-                <span class="magic-icon"><i class="fas fa-gas-pump"></i> Gas</span>
-                <span class="magic-icon"> <i class="fas fa-oil-can"></i> Diesel</span>
-                <span class="magic-icon"><i class="fas fa-car-side"></i> Sport</span>
-              </div>
-              <% if (product.availability) { %>
-                <a class="magic-button btn btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
+                <div class="abajo">
+                <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+    
+                <% if (product.availability) { %>
+                <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
                 <% } else { %>
                 <p>Modelo no disponible en la oficina y fechas seleccionadas</p>
-              <% } %>
-            </div>
-          </div>
+                <% } %>
+    
+                <% if (product.few_available_units) { %>
+                  <p class="text-danger mt-3">¡Quedan pocas unidades!</p>
+                <% } %>
+                
+                </div>
+            </section>
         </div>
         <% } %>
-    </script>
+      </div>
+      </script>
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
       <div class="bg-white p-3 mb-5 shadow-bottom">

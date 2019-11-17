@@ -9,8 +9,7 @@
       <div class="magic-row-card_body">
         <div class="magic-row-card_body-left">
           <div>
-          <h6><%=product.code%></h6>
-          <h4 class="fw-900"><%=product.name%></h4>
+          <h6><%=product.name%></h6>
           </div>
 
           <% if (product.price != product.base_price) { %>
@@ -25,10 +24,12 @@
         </div>
         <div class="magic-row-card_body-right">
           <div class="magic-row-card_icons">
-            <span class="magic-icon"><i class="fas fa-users"></i> 4</span>
-            <span class="magic-icon"><i class="fas fa-gas-pump"></i> Gas</span>
-            <span class="magic-icon"> <i class="fas fa-oil-can"></i> Diesel</span>
-            <span class="magic-icon"><i class="fas fa-car-side"></i> Sport</span>
+            <span class="magic-icon"><i class="seets mr-2"></i> 4</span>
+            <span class="magic-icon"><i class="type mr-2"></i> 4</span>
+            <span class="magic-icon"><i class="doors mr-2"></i> 5</span>
+            <span class="magic-icon"><i class="suitcases mr-2"></i> 1</span>
+            <span class="magic-icon"><i class="transmission mr-2"></i> M</span>
+            <span class="magic-icon"><i class="fuel mr-2"></i> G</span>
           </div>
           <% if (product.availability) { %>
             <a class="magic-button btn btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>

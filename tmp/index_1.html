@@ -14,11 +14,12 @@
 <body class="index_1 mybooking-selector-widget">
 
     
-    <!-- hero-header -->
+    <!-- hero-header with video -->
     <div class="hero-header-container">
-      <video class="bg-landing" src="assets/video/bg-video.mp4" width="100%" height="100%" preload="auto" autoplay
-        loop muted volume="0"></video>
-    
+      <img class="bg-landing bg-cover" src="assets/video/bg-cover.jpg" alt="">
+      <video autoplay loop muted poster="assets/video/bg-cover.jpg" class="bg-landing">
+        <source src="assets/video/bg-video.mp4"> 
+      </video>
       <div class="cta cta__bg cta__text color-whites">
         <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
         <span class="mr-auto ml-3">
@@ -121,14 +122,19 @@
             </form>
           </section>    </div>
       </div>
-      <!-- <div class="diagonal-section"></div> -->
+      <div class="scroll-downs">
+        <div class="mousey">
+          <div class="scroller"></div>
+        </div>
+      </div>
     </div>
     <header class="header-wrapper">
-        <h1 class="title fw-900"><%= index.featured_section_title %></h1>
-        <hr class="custom-hr"></hr>
-        <p class="subtitle">
-          <%= index.featured_section_text %>
-        </p>
+      <h1 class="title fw-900"><%= index.featured_section_title %></h1>
+      <hr class="custom-hr">
+      </hr>
+      <p class="subtitle">
+        <%= index.featured_section_text %>
+      </p>
     </header>
     
     <div class="icons-wrapper mt100">

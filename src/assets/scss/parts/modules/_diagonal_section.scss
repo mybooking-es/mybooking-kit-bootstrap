@@ -1,0 +1,22 @@
+.diagonal_section {
+  display: none;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .diagonal_section {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 110%;
+    top: 15%;
+    left: -5%;
+    transform: rotate(-2.5deg);
+    height: 100px;
+    background-color: #fff;
+  }
+}
