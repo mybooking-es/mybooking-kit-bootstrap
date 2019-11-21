@@ -243,6 +243,7 @@ function myBookingEngine() {
   return gulp
     .src([
       "src/assets/js/lib/mybooking-engine-init.js",
+      "src/assets/js/lib/mybooking-engine-init-activities.js",
       "src/assets/js/lib/mybooking-engine.js"
     ])
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));

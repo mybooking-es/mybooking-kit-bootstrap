@@ -61,7 +61,12 @@
 </div>
 
 <script src="/assets/js/app.js"></script>
+{{#ifpage 'activity' 'activity-shopping-cart' }}
+<script src="/assets/js/mybooking-engine-init-activities.js"></script>
+{{/ifpage}}
+{{#unlesspage 'activity' 'activity-shopping-cart'}}
 <script src="/assets/js/mybooking-engine-init.js"></script>
+{{/unlesspage}}
 <script src="/assets/js/mybooking-engine.js"></script>
 <a href="#0" class="cd-top">Top</a>
 </body>
