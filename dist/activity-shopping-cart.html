@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*activity-shopping-cart.title*</title>
-    <meta name="description" content="*activity-shopping-cart.meta-description*"/>
+    <title>activity-shopping-cart</title>
+    <meta name="description" content="Mybooking Basic - Activities - shopping-cart"/>
     <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
@@ -67,15 +67,16 @@
     <!-- Activities : Shopping cart page -->
     <div class="container-fluid px-0">
         <div class="row no-gutters">
-          <div class="col-sm-12 col-md-4 activities-sidebar">
+          <div class="col-12 col-md-4 activities-sidebar">
             <!-- Products -->
             <div id="selected_products"></div>
           </div>
-          <div class="col-sm-12 col-md-8 activities-content-wrapper">
-            <div class="activities-content__bg">
+          <div class="col-12 col-md-8 activities-content">
+            <div class="activities-content__image-wrapper">
+            <!--  <img src="assets/images/activities.jpg" alt=""> -->
             </div>
-            <div class="activities-content">
-              <div class="activity-shopping-cart-widget">
+            <div class="activities-content__widget-wrapper">
+              <div class="activity-content__widget">
                   <form id="form-reservation" name="reservation_form" method="post" autocomplete="off" class="d-block">
                     <div id="reservation_container"></div>
                     <div id="payment_detail"></div>
@@ -98,42 +99,46 @@
     </script>
     
     <script type="text/tpml" id="script_products_detail">
-      <h3 class="color-white m-3">Su compra <span class="ml-5 badge badge-secondary"><%= configuration.formatCurrency(shopping_cart.total_cost) %></span></h3>
+      <div class="d-flex align-content-center justify-content-between">
+        <h3 class="color-white m-3">Su compra</h3> <span class="badge badge-secondary align-self-center mr-3 p-2"><%= configuration.formatCurrency(shopping_cart.total_cost) %></span>
+      </div>
       
-    
       <% for (idx in shopping_cart.items) { %>
-      <div class="card mb-3">
-            <img src="<%=shopping_cart.items[idx].photo_full%>" class="card-img-top" alt=""/>
-            <div class="card-body">
-            <h5 class="card-title"><%=shopping_cart.items[idx].item_description_customer_translation%></h5>
-            <p class="card-text"><%= configuration.formatDate(shopping_cart.items[idx].date) %> <%= shopping_cart.items[idx].time %></p>
-                <table class="table">
-                <tbody>
-                  <% for (var x=0; x<shopping_cart.items[idx]['items'].length; x++) { %>
-                    <tr>
-                        <td><%=shopping_cart.items[idx]['items'][x].quantity %>
-                            <%=shopping_cart.items[idx]['items'][x].item_price_description %> x
-                            <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_unit_cost) %>
-                        </td>
-                        <td>
-                            <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_cost) %>
-                        </td>
-                    </tr>
-                  <% } %>    
-                  <tr>
-                    <td>Total</td>
-                    <td><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
-                </tbody>
-              </table>
-              <br>  
-              <button class="btn float-right btn-danger btn-delete-shopping-cart-item"
+      <div class="activity-card">
+        <div class="card-img-bg-color">
+            <div class="activity-card__img">
+              <img src="<%=shopping_cart.items[idx].photo_full%>" alt=""/>
+            </div>
+            <div class="trash-button btn-delete-shopping-cart-item"
                 data-item-id="<%=shopping_cart.items[idx].item_id%>"
                 data-date="<%=shopping_cart.items[idx].date%>"
                 data-time="<%=shopping_cart.items[idx].time%>">
-                Eliminar
-              </button>
-          </div>
-      </div>
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            <div class="activity-card__img-text">
+              <h5 class="card-title color-white"><%=shopping_cart.items[idx].item_description_customer_translation%></h5>
+              <p class="card-text color-white"><%= configuration.formatDate(shopping_cart.items[idx].date) %> <%= shopping_cart.items[idx].time %></p>
+            </div>
+          </div><!-- /bg-color -->
+          <table class="activity-card_table table table-borderless">
+            <tbody>
+              <% for (var x=0; x<shopping_cart.items[idx]['items'].length; x++) { %>
+                <tr>
+                    <td><%=shopping_cart.items[idx]['items'][x].quantity %>
+                        <%=shopping_cart.items[idx]['items'][x].item_price_description %> x
+                        <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_unit_cost) %>
+                    </td>
+                    <td>
+                        <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_cost) %>
+                    </td>
+                </tr>
+              <% } %>    
+              <tr>
+                <td>Total</td>
+                <td class="fw-700 brand-primary"><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
+            </tbody>
+          </table>
+      </div><!-- /activity-card -->
         <% } %>
     </script>
     
@@ -146,35 +151,57 @@
         <input type="hidden" name="customer_language" value="<%=language%>"/>
         <h4 class="color-white">Cliente</h4>
         <hr>
-          <div class="form-group">
-            <label for="customer_name">Nombre*</label>
-            <input name="customer_name" id="customer_name" type="text" class="w-100" placeholder="Nombre">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              <label for="customer_name">Nombre*</label>
+              <input name="customer_name" id="customer_name" type="text" class="w-100" placeholder="Nombre">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="customer_surname">Apellidos*</label>
-            <input name="customer_surname" id="customer_surname" type="text" class="w-100"  placeholder="Apellidos">
+          <div class="col-12 col-md-6">
+            <div class="form-group">
+              <label for="customer_surname">Apellidos*</label>
+              <input name="customer_surname" id="customer_surname" type="text" class="w-100"  placeholder="Apellidos">
+            </div>
           </div>
-          <div class="form-group">
-            <label for="customer_email">Correo electrónico*</label>
-            <input name="customer_email" id="customer_email" type="text" class="w-100"  placeholder="Correo electrónico">
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="customer_email">Correo electrónico*</label>
+                <input name="customer_email" id="customer_email" type="text" class="w-100"  placeholder="Correo electrónico">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="confirm_customer_email">Confirmación correo electrónico*</label>
+                <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Confirmación del correo electrónico">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="confirm_customer_email">Confirmación correo electrónico*</label>
-            <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Confirmación del correo electrónico">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="customer_phone">Teléfono*</label>
+                <input name="customer_phone" id="customer_phone" type="text" class="w-100"  placeholder="Teléfono">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="confirm_customer_email">Teléfono alternativo</label>
+                <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Teléfono alternativo:">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="customer_phone">Teléfono*</label>
-            <input name="customer_phone" id="customer_phone" type="text" class="w-100"  placeholder="Teléfono">
-          </div>
-          <div class="form-group">
-            <label for="confirm_customer_email">Teléfono alternativo</label>
-            <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Teléfono alternativo:">
-          </div>
-          <div class="form-group">
-            <h4 class="color-white">Información adicional</h4>
-            <hr>
-            <label for="comments">Comentarios</label>
-            <textarea class="w-100" name="comments" id="comments" placeholder="Comentarios"></textarea>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <h4 class="color-white">Información adicional</h4>
+                <hr>
+                <label for="comments">Comentarios</label>
+                <textarea class="w-100" name="comments" id="comments" placeholder="Comentarios"></textarea>
+              </div>
+            </div>
           </div>
     </script>
     
@@ -205,20 +232,20 @@
           <% } else if (shopping_cart.can_make_request) { %>
     
             <input type="hidden" name="payment" value="none" data-payment-method="none">
-            <div class="field is-grouped">
-              <div class="control">
-                <button id="btn_reservation" type="button" class="button is-primary">Solicitar reserva</a>
-              </div>
-            </div>  
+              <div class="form-group mt-5 w-100">
+                <div class="control">
+                  <button id="btn_reservation" type="button" class="btn btn-primary w-100">Solicitar reserva</a>
+                </div>
+              </div>  
     
           <% } else if ((shopping_cart.can_pay_deposit || shopping_cart.can_pay_total)) { %>
             
             <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
-            <div class="field is-grouped">
-              <div class="control">
-                <button id="btn_reservation" type="button" class="button is-primary">Pagar</a>
-              </div>
-            </div>  
+              <div class="form-group mt-5 w-100">
+                <div class="control">
+                  <button id="btn_reservation" type="button" class="btn btn-primary w-100">Pagar</a>
+                </div>
+              </div>  
           <% } %> 
     
     

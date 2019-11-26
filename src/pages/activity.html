@@ -6,23 +6,31 @@ body-classes: "mybooking-activity"
 {{> cta }}
 {{> nav }}
 
-<div class="container-fluid px-0">
+<div class="container-fluid px-0" style="background-color: #3a3e3e">
   <div class="row no-gutters">
-    <div class="col-sm-12 col-md-4 activities-sidebar">
-      <div class="activities-sidebar__img">
-        <div class="activities-sidebar__img--content">
-          <h4 class="activity-name">La ciudad de los Inmaculados</h4>
-        </div>
-      </div>
-      <p class="activity-description">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem corrupti molestiae, dolorem voluptatum, quos quam veniam unde, assumenda quisquam ea eligendi? Ex qui necessitatibus officiis fugiat magni blanditiis libero placeat?
-      </p>
+    <div class="col-12 col-md-7 activities-sidebar">
+      <!-- Product -->
+      <div class="activity-card">
+          <div class="card-img-bg-color">
+              <div class="activity-card__img">
+                <img src="{{ root }}assets/images/activities.jpg" alt="" style="height: 400px;">
+              </div>
+              <div class="activity-card__img-text" style="height: 400px;>
+                <h5 class="card-title color-white">Nombre actividad</h5>
+                <p class="card-text color-white">Lorem quinoa palo santo</p>
+              </div>
+            </div><!-- /bg-color -->
+            <p class="activity-description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem corrupti molestiae, dolorem voluptatum, quos quam veniam unde, assumenda quisquam ea eligendi? Ex qui necessitatibus officiis fugiat magni blanditiis libero placeat?
+              </p>
+        </div><!-- /activity-card -->
     </div>
-    <div class="col-sm-12 col-md-8 activities-content-wrapper">
-      <div class="activities-content__bg">
+    <div class="col-12 col-md-5 activities-content">
+      <div class="activities-content__image-wrapper">
+        <!-- <img src="{{ root }}assets/images/activities.jpg" alt=""> -->
       </div>
-      <div class="activities-content">
-        <div class="activity-widget">
+      <div class="activities-content__widget-wrapper">
+        <div class="activity-content__widget">
           <div id="buy_selector" data-id="5"></div>
         </div>
       </div>
@@ -35,7 +43,6 @@ body-classes: "mybooking-activity"
 <!-- Activity One Time Selector -->
 
 <script type="text/tmpl" id="script_one_time_selector">
-
   <div class="tile is-parent is-vertical">
         <div class="tile is-child">
           <form name="select_date_form" id="select_date_form">
@@ -44,13 +51,11 @@ body-classes: "mybooking-activity"
           </form>
         </div>
       </div>  
-
   </script>
 
 <!-- Activity Multiple Dates Selector -->
 
 <script type="text/tmpl" id="script_multiple_dates_selector">
-
   <div class="tile is-parent is-vertical">
         <div class="tile is-child">
           <h4 class="title is-6 has-text-grey" style="margin-top: 10px">Seleccionar fecha</h4>
@@ -66,7 +71,6 @@ body-classes: "mybooking-activity"
           </form>
         </div>
       </div>  
-
   </script>
 
 <!-- Activity Cyclic Calendar -->
@@ -82,36 +86,36 @@ body-classes: "mybooking-activity"
   </script>
 
 <script type="text/tmpl" id="script_cyclic_turns">
-  <% if (turns.length == 0) {%>
-            <p class="color-gray-500">Lo sentimos, no hay horarios disponibles</p>
-          <% } else { %>
-            <br>
-            <h4 class="activity-widget__title">Seleccionar hora</h4>
-            <div class="field">
-              <div class="control">
-                <% for (var idx=0;idx<turns.length;idx++) { %>
-                  <input type="radio" name="turn" value="<%=turns[idx]%>"> <span class="color-white">&nbsp;<%=turns[idx]%></span>  </input>
-                <% } %>
-              </div>
-            </div>
-          <% } %>
+<% if (turns.length == 0) {%>
+    <p class="color-gray-500">Lo sentimos, no hay horarios disponibles</p>
+  <% } else { %>
+    <br>
+    <h4 class="activity-widget__title">Seleccionar hora</h4>
+    <div class="field">
+      <div class="control">
+        <% for (var idx=0;idx<turns.length;idx++) { %>
+          <input type="radio" name="turn" value="<%=turns[idx]%>"> <span class="color-white">&nbsp;<%=turns[idx]%></span>  </input>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
   </script>
 
 <script type="text/tmpl" id="script_tickets">
   <br>
-      <h4 class="activity-widget__title">Seleccionar personas</h4>
-      <% for (item in tickets) { %>
-          <div class="flex-form-item-box">
-            <div class="flex-form-item">
-              <select name="quantity_rate_<%=item%>" id="quantity_rate_<%=item%>" class="quantity_rate">
-                <% for (var idx=0; idx<tickets[item].length; idx++) { %>
-                <option value="<%=tickets[item][idx]["number"]%>" data-total="<%=tickets[item][idx]["total"]%>"><%=tickets[item][idx]["description"]%></option>
-                <% } %>
-              </select>
-              <i class="fa fa-angle-down flex-icon"></i>
-            </div>
-          </div> 
-      <% } %>
-      <br>
-      <a id="btn_reservation" href="#" class="btn btn-primary full-width" role="button">Reservar</a>
-  </script>
+  <h4 class="activity-widget__title">Seleccionar personas</h4>
+  <% for (item in tickets) { %>
+      <div class="flex-form-item-box">
+        <div class="flex-form-item">
+          <select name="quantity_rate_<%=item%>" id="quantity_rate_<%=item%>" class="quantity_rate">
+            <% for (var idx=0; idx<tickets[item].length; idx++) { %>
+            <option value="<%=tickets[item][idx]["number"]%>" data-total="<%=tickets[item][idx]["total"]%>"><%=tickets[item][idx]["description"]%></option>
+            <% } %>
+          </select>
+          <i class="fa fa-angle-down flex-icon"></i>
+        </div>
+      </div> 
+  <% } %>
+  <br>
+  <a id="btn_reservation" href="#" class="btn btn-primary full-width" role="button">Reservar</a>
+</script>
