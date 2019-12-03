@@ -7,16 +7,13 @@ body-classes: "mybooking-activity-shopping-cart"
 {{> nav }}
 
 <!-- Activities : Shopping cart page -->
-<div class="container-fluid px-0">
+<div class="container-fluid px-0" style="background-color: #3a3e3e">
     <div class="row no-gutters">
-      <div class="col-12 col-md-4 activities-sidebar">
+      <div class="col-12 col-md-6 col-lg-4 activities-sidebar">
         <!-- Products -->
         <div id="selected_products"></div>
       </div>
-      <div class="col-12 col-md-8 activities-content">
-        <div class="activities-content__image-wrapper">
-        <!--  <img src="{{ root }}assets/images/activities.jpg" alt=""> -->
-        </div>
+      <div class="col-12 col-md-6 col-lg-8 activities-content">
         <div class="activities-content__widget-wrapper">
           <div class="activity-content__widget">
               <form id="form-reservation" name="reservation_form" method="post" autocomplete="off" class="d-block">
@@ -70,14 +67,15 @@ body-classes: "mybooking-activity-shopping-cart"
                     <%=shopping_cart.items[idx]['items'][x].item_price_description %> x
                     <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_unit_cost) %>
                 </td>
-                <td>
+                <td class="float-right">
                     <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_cost) %>
                 </td>
             </tr>
-          <% } %>    
+          <% } %>  
           <tr>
             <td>Total</td>
-            <td class="fw-700 brand-primary"><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
+            <td class="fw-700 brand-primary float-right"><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
+          </tr>
         </tbody>
       </table>
   </div><!-- /activity-card -->
@@ -94,13 +92,13 @@ body-classes: "mybooking-activity-shopping-cart"
     <h4 class="color-white">Cliente</h4>
     <hr>
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-lg-6">
         <div class="form-group">
           <label for="customer_name">Nombre*</label>
           <input name="customer_name" id="customer_name" type="text" class="w-100" placeholder="Nombre">
         </div>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-lg-6">
         <div class="form-group">
           <label for="customer_surname">Apellidos*</label>
           <input name="customer_surname" id="customer_surname" type="text" class="w-100"  placeholder="Apellidos">
@@ -108,13 +106,13 @@ body-classes: "mybooking-activity-shopping-cart"
       </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <div class="form-group">
             <label for="customer_email">Correo electrónico*</label>
             <input name="customer_email" id="customer_email" type="text" class="w-100"  placeholder="Correo electrónico">
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <div class="form-group">
             <label for="confirm_customer_email">Confirmación correo electrónico*</label>
             <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Confirmación del correo electrónico">
@@ -122,13 +120,13 @@ body-classes: "mybooking-activity-shopping-cart"
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <div class="form-group">
             <label for="customer_phone">Teléfono*</label>
             <input name="customer_phone" id="customer_phone" type="text" class="w-100"  placeholder="Teléfono">
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <div class="form-group">
             <label for="confirm_customer_email">Teléfono alternativo</label>
             <input name="confirm_customer_email" id="confirm_customer_email" class="w-100"  type="text" placeholder="Teléfono alternativo:">
@@ -141,7 +139,7 @@ body-classes: "mybooking-activity-shopping-cart"
             <h4 class="color-white">Información adicional</h4>
             <hr>
             <label for="comments">Comentarios</label>
-            <textarea class="w-100" name="comments" id="comments" placeholder="Comentarios"></textarea>
+            <textarea class="w-100 p-3" name="comments" id="comments" placeholder="Comentarios"></textarea>
           </div>
         </div>
       </div>

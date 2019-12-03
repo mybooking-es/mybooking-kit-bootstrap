@@ -9,6 +9,11 @@
         <select id="widget_pickup_place" name="pickup_place"></select>
         <i class="fa fa-angle-down flex-icon"></i>
       </div>
+      <!-- Custom delivery place -->
+      <div id="another_pickup_place_group" style="display:none">
+          <input class="w-100" type="text" id="pickup_place_other" name="pickup_place_other"/>
+          <input type="hidden" name="custom_pickup_place" value="false"/>
+      </div>
     </div>
     <div class="flex-form-item-box">
       <label><%= index.return_place %></label>
