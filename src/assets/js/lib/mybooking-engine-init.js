@@ -1,5 +1,5 @@
 window.mybookingEngine = (function() {
-  var baseURL = "";
+  var baseURL = "https://carmove.mybooking.es";
   var extrasStep = false;
   var chooseProductUrl = "choose_product.html";
   var chooseExtrasUrl = "choose_extras.html";
@@ -7,7 +7,7 @@ window.mybookingEngine = (function() {
   var summaryUrl = "summary.html";
   var useGoogleMaps = true;
   var googleMapsSettings = {
-    apiKey: "",
+    apiKey: "AIzaSyD3DUfIDDveebcfuob2XIDWjBol9eWExyo",
     settings: {
       googleMapsRestrictCountryCode: "es",
       googlePlacesRetrictBounds: true,

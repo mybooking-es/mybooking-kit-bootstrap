@@ -8,26 +8,27 @@ body-classes: "mybooking-activity-shopping-cart"
 
 <!-- Activities : Shopping cart page -->
 <div class="container-fluid px-0" style="background-color: #3a3e3e">
-    <div class="row no-gutters">
-      <div class="col-12 col-md-6 col-lg-4 activities-sidebar">
-        <!-- Products -->
-        <div id="selected_products"></div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-8 activities-content">
-        <div class="activities-content__widget-wrapper">
-          <div class="activity-content__widget">
-              <form id="form-reservation" name="reservation_form" method="post" autocomplete="off" class="d-block">
-                <div id="reservation_container"></div>
-                <div id="payment_detail"></div>
-              </form>
-              <!-- Reservation buttons -->
-              <div id="reservation_error" class="alert alert-danger" style="display:none">
-              </div>
-          </div>
+  <div class="row no-gutters">
+    <div class="col-12 col-md-6 col-lg-4 activities-sidebar">
+      <!-- Products -->
+      <div id="selected_products"></div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8 activities-content">
+      <div class="activities-content__widget-wrapper">
+        <div class="activity-content__widget">
+          <form id="form-reservation" name="reservation_form" method="post" autocomplete="off" class="d-block">
+
+            <div id="reservation_container"></div>
+            <!-- Reservation buttons -->
+            <div id="reservation_error" class="alert alert-danger w-100 p-3" style="display:none">
+            </div>
+            <div id="payment_detail"></div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 <!-- /Activities : Shopping cart page -->
 
 <!-- Microtemplates -->
@@ -88,7 +89,7 @@ body-classes: "mybooking-activity-shopping-cart"
 
 <!-- Script customer -->
 <script type="text/tmpl" id="script_reservation_form">
-    <input type="hidden" name="customer_language" value="<%=language%>"/>
+  <input type="hidden" name="customer_language" value="<%=language%>"/>
     <h4 class="color-white">Cliente</h4>
     <hr>
     <div class="row">
@@ -136,10 +137,8 @@ body-classes: "mybooking-activity-shopping-cart"
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <h4 class="color-white">Información adicional</h4>
-            <hr>
             <label for="comments">Comentarios</label>
-            <textarea class="w-100 p-3" name="comments" id="comments" placeholder="Comentarios"></textarea>
+            <textarea class="w-100 p-3" name="comments" id="comments" placeholder="Comentarios" style="height: 100px"></textarea>
           </div>
         </div>
       </div>
@@ -147,7 +146,7 @@ body-classes: "mybooking-activity-shopping-cart"
 
 <!-- Script payment -->
 <script type="text/tmpl" id="script_payment_detail">
-      <h4 class="color-white">Confirmar</h4>
+  <h4 class="color-white">Confirmar</h4>
       <hr>
       <div class="form-check mb-3">
         <input class="form-check-input" type="checkbox" id="accept" name="accept"/>

@@ -87,31 +87,6 @@ body-classes: "mybooking-activity-order"
 
       </div><!-- /widget -->
 
-      <!-- Reservation data -->
-      <div class="widget-wrapper">
-
-        <form id="form-reservation" name="reservation_form" class="form-delivery" method="post" autocomplete="off">
-        </form>
-
-        <!-- Payment -->
-        <% if (order.can_pay_deposit || order.can_pay_total)  { %>
-        <form id="form-payment" name="payment_form" class="form-delivery" method="post" autocomplete="off">
-          <h4 class="color-white">Pagar</h4>
-          <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
-
-          <div class="clearfix">
-          <button id="btn_reservation" type="button" class="btn btn-danger float-right">
-            Pagar</button>
-          </div>
-        </form>
-        <% } %>
-
-        <!-- Reservation buttons -->
-        <div id="reservation_error" class="alert alert-danger" style="display:none">
-        </div>
-
-      </div>
-
       <div class="widget-wrapper">
         <h4 class="color-white">Datos del cliente</h4>
         <table class="table table-borderless color-white">
@@ -137,6 +112,34 @@ body-classes: "mybooking-activity-order"
           </tbody>
         </table>
       </div>
+
+      <!-- Reservation data -->
+     
+        <!-- Payment -->
+        <% if (order.can_pay_deposit || order.can_pay_total)  { %>
+
+        <div class="widget-wrapper">
+        <form id="form-reservation" name="reservation_form" class="form-delivery" method="post" autocomplete="off">
+        </form>
+
+        <form id="form-payment" name="payment_form" class="form-delivery" method="post" autocomplete="off">
+          <h4 class="color-white">Pagar</h4>
+          <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
+
+          <div class="clearfix">
+          <button id="btn_reservation" type="button" class="btn btn-danger float-right">
+            Pagar</button>
+          </div>
+        </form>
+
+        <div id="reservation_error" class="alert alert-danger" style="display:none">
+        </div>
+        
+        </div>
+
+
+        <% } %>
+
 
     </div><!-- /activities-content"-->
   </div><!-- /row-->
