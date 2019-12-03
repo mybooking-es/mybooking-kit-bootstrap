@@ -81,19 +81,20 @@
         <div class="hero-header-right">
           <!-- FLEX-FORM-SELECTOR -->
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
-            <form id="form-selector" name="widget_search_form" method="get" 
-                  enctype="application/x-www-form-urlencoded" class="flex-form"
-                  autocomplete="off">
-              <div class="flex-form-item-box">
+            <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
+              class="flex-form" autocomplete="off">
+              <div class="flex-form-item-box position-relative">
                 <label>Luogo ritiro</label>
                 <div class="flex-form-item">
                   <select id="widget_pickup_place" name="pickup_place"></select>
                   <i class="fa fa-angle-down flex-icon"></i>
                 </div>
-                <!-- Custom delivery place -->
-                <div id="another_pickup_place_group" style="display: none;">
-                    <input class="w-100 bg-white" type="text" id="widget_pickup_place_other" name="pickup_place_other"/>
-                    <input type="hidden" name="custom_pickup_place" value="false"/>
+                <div class="flex-form-item">
+                  <!-- Custom delivery place -->
+                  <div id="another_pickup_place_group" style="display: none;">
+                    <input class="bg-white w-100 absolute-input" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
+                    <input type="hidden" name="custom_pickup_place" value="false" />
+                  </div>
                 </div>
               </div>
               <div class="flex-form-item-box">
@@ -105,8 +106,9 @@
                 </div>
                 <!-- Custom collection place -->
                 <div id="another_return_place_group" style="display: none;">
-                    <input class="w-100 bg-white absolute-input" type="text" id="widget_return_place_other" name="return_place_other"/>
-                    <input type="hidden" name="custom_return_place" value="false"/>
+                  <input class="w-100 bg-white absolute-input" type="text" id="widget_return_place_other"
+                    name="return_place_other" />
+                  <input type="hidden" name="custom_return_place" value="false" />
                 </div>
           
               </div>
@@ -114,7 +116,7 @@
                 <label>Fecha de entrega</label>
                 <div class="flex-form-item">
                   <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                  <input type="text" id="widget_date_from" name="date_from" placeholder="dd/mm/aaaa"/>
+                  <input type="text" id="widget_date_from" name="date_from" placeholder="dd/mm/aaaa" />
                   <select class="ml-1" id="widget_time_from" name="time_from">
                   </select>
                 </div>
@@ -123,7 +125,7 @@
                 <label>Data riconsegna</label>
                 <div class="flex-form-item">
                   <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                  <input type="text" id="widget_date_to" name="date_to" placeholder="dd/mm/aaaa"/>
+                  <input type="text" id="widget_date_to" name="date_to" placeholder="dd/mm/aaaa" />
                   <select class="ml-1" id="widget_time_to" name="time_to">
                   </select>
                 </div>
