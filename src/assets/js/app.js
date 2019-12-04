@@ -38,7 +38,7 @@ $(document).ready(function() {
       is_mobile = true;
     }
     if (!is_mobile) {
-      $(window).on("scroll", function() {
+      $(window).on("scroll", function() {       
         if ($(".navbar-toggler").is(":visible")) {
           $("#form-selector").removeClass("flex-form-sticky");
         } else if ($(window).scrollTop() > height) {
