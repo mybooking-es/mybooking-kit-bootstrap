@@ -83,17 +83,23 @@
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
               class="flex-form" autocomplete="off">
-              <div class="flex-form-item-box position-relative">
+              <div class="flex-form-item-box">
                 <label>Punt de lliurament</label>
                 <div class="flex-form-item">
                   <select id="widget_pickup_place" name="pickup_place"></select>
                   <i class="fa fa-angle-down flex-icon"></i>
                 </div>
-                <div class="flex-form-item">
-                  <!-- Custom delivery place -->
-                  <div id="another_pickup_place_group" style="display: none;">
-                    <input class="bg-white w-100 absolute-input" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
+              </div>
+              <div class="flex-form-item-box">
+                <!-- Custom delivery place -->
+                <div id="another_pickup_place_group" style="display: none;">
+                  <div class="flex-form-item bg-white justify-content-between">
+                    <input class="bg-white" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
                     <input type="hidden" name="custom_pickup_place" value="false" />
+                    
+                    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+                      <span aria-hidden="true"><i class="fa fa-times flex-icon"></i></span>
+                    </button>        
                   </div>
                 </div>
               </div>
@@ -106,12 +112,11 @@
                 </div>
                 <!-- Custom collection place -->
                 <div id="another_return_place_group" style="display: none;">
-                  <input class="w-100 bg-white absolute-input" type="text" id="widget_return_place_other"
-                    name="return_place_other" />
+                  <input class=" bg-white absolute-input" type="text" id="widget_return_place_other" name="return_place_other" />
                   <input type="hidden" name="custom_return_place" value="false" />
                 </div>
-          
               </div>
+          
               <div class="flex-form-item-box">
                 <label>Data de lliurament</label>
                 <div class="flex-form-item">
