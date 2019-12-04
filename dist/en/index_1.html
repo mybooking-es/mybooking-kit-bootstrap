@@ -84,7 +84,7 @@
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
               class="flex-form" autocomplete="off">
               <div class="flex-form-item-box">
-                <label>Pick-up location</label>
+                <label>Pick-up location<input type="checkbox" id="widget_same_pickup_return_place" checked/></label>
                 <div class="flex-form-item widget_pickup_place_group">
                   <select id="widget_pickup_place" name="pickup_place"></select>
                   <i class="fa fa-angle-down flex-icon"></i>
@@ -100,15 +100,16 @@
                   </div>
                 </div>
               </div>
+          
               <div class="flex-form-item-box">
-                <label>Return location</label>
-                <div class="flex-form-item widget_return_place_group">
+                <label class="return_place" style="display: none">Return location</label>
+                <div class="flex-form-item widget_return_place_group return_place" style="display: none">
                   <select id="widget_return_place" name="return_place">
                   </select>
                   <i class="fa fa-angle-down flex-icon"></i>
                 </div>
                 <!-- Custom delivery place -->
-                <div id="another_return_place_group" style="display: none;">
+                <div id="another_return_place_group" style="display: none;" class="return_place">
                   <div class="flex-form-item bg-white justify-content-between">
                     <input class="bg-white" type="text" id="widget_return_place_other" name="return_place_other" />
                     <input type="hidden" name="custom_return_place" value="false" />

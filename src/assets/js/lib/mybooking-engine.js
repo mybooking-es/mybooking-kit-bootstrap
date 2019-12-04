@@ -44963,6 +44963,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         if (selectorModel.configuration.customPickupReturnPlaces) {
           if ($(selectorModel.return_place_selector).val() == 'other') {
              $(selectorModel.another_return_place_group_selector).show();          
+             // Hide the return place selector
+             $(selectorModel.return_place_group_selector).hide();
           }
           else {
              $(selectorModel.another_return_place_group_selector).hide();
