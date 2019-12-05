@@ -44688,6 +44688,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     another_pickup_place_group_close: '.another_pickup_place_group_close',
    
     same_pickup_return_place_selector: '#same_pickup_return_place',
+    same_pickup_return_place_label_selector: '#same_pickup_return_place_label',
 
     return_place_id: 'return_place',   
     return_place_selector: '#return_place',
@@ -45221,6 +45222,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
       // Bind same pickup/return place selector  
       $(selectorModel.same_pickup_return_place_selector).bind('change', function(){
         selectorController.samePickupReturnPlaceChanged();
+      });
+      $(selectorModel.same_pickup_return_place_label_selector).bind('click', function(){ 
+        $(selectorModel.same_pickup_return_place_selector).trigger('click');      
       });
 
       var returnPlace = new SelectSelector(selectorModel.return_place_id, 
@@ -52438,6 +52442,7 @@ Promise.resolve(/* AMD require */).then(function() { var __WEBPACK_AMD_REQUIRE_A
         selector.model.another_pickup_place_group_close = '.widget_another_pickup_place_group_close',
 
         selector.model.same_pickup_return_place_selector = '#widget_same_pickup_return_place';
+        selector.model.same_pickup_return_place_label_selector = '#widget_same_pickup_return_place_label';
 
         selector.model.return_place_id = 'widget_return_place';
         selector.model.return_place_selector = '#widget_return_place';
