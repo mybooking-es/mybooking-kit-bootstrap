@@ -4,13 +4,13 @@
     class="flex-form" autocomplete="off">
     <div class="flex-form-item-box position-relative">
       <label><%= index.pickup_place %></label>
-      <!--div class="button-group-pills text-center" data-toggle="buttons">
+      <div class="button-group-pills text-center" data-toggle="buttons">
           <label class="btn btn-default active">
             <input type="checkbox" id="widget_same_pickup_return_place" name="same_pickup_return_place" checked class="d-none">
             <div id="widget_same_pickup_return_place_label">Devolver en otro lugar</div>
           </label>
-      </div-->
-
+      </div>
+      
       <div class="flex-form-item widget_pickup_place_group">
         <select id="widget_pickup_place" name="pickup_place"></select>
         <i class="fa fa-angle-down flex-icon"></i>
@@ -28,8 +28,8 @@
     </div>
 
     <div class="flex-form-item-box">
-      <label class="return_place"><%= index.return_place %></label>
-      <div class="flex-form-item widget_return_place_group return_place">
+      <label class="return_place" style="display: none"><%= index.return_place %></label>
+      <div class="flex-form-item widget_return_place_group return_place" style="display: none">
         <select id="widget_return_place" name="return_place">
         </select>
         <i class="fa fa-angle-down flex-icon"></i>

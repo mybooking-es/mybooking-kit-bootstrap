@@ -136,13 +136,15 @@
   position: absolute;
   top: -10px;
   right: 0px;
-  .btn-pill {
+  .btn {
+    height: auto !important;
+    margin-top: 0 !important;
     padding: 0.3rem;
     cursor: pointer;
     border-radius: 25px;
     line-height: 1;
-    background-color: #fff;
-    color: $brand-primary;
+    background-color: $brand-primary;
+    color: #fff;
     width: 100px;
     font-size: 12px;
     transition: 0.2s ease-in-out;
@@ -150,9 +152,9 @@
       background-color: darken($brand-primary, 10%);
       color: #fff;
     }
-    &:active {
-      background-color: $brand-primary;
-      color: #fff;
+    &.active {
+      background-color: #fff;
+      color: $brand-primary;
       box-shadow: none;
     }
   }
