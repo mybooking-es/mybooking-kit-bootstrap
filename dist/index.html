@@ -83,15 +83,8 @@
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
               class="flex-form" autocomplete="off">
-              <div class="flex-form-item-box position-relative">
+              <div class="flex-form-item-box">
                 <label>Lugar de entrega</label>
-                <div class="button-group-pills text-center" data-toggle="buttons">
-                    <label class="btn btn-default active">
-                      <input type="checkbox" id="widget_same_pickup_return_place" name="same_pickup_return_place" checked class="d-none">
-                      <div id="widget_same_pickup_return_place_label">Devolver en otro lugar</div>
-                    </label>
-                </div>
-                
                 <div class="flex-form-item widget_pickup_place_group">
                   <select id="widget_pickup_place" name="pickup_place"></select>
                   <i class="fa fa-angle-down flex-icon"></i>
@@ -107,10 +100,9 @@
                   </div>
                 </div>
               </div>
-          
               <div class="flex-form-item-box">
-                <label class="return_place" style="display: none">Lugar de devolución</label>
-                <div class="flex-form-item widget_return_place_group return_place" style="display: none">
+                <label>Lugar de devolución</label>
+                <div class="flex-form-item widget_return_place_group return_place">
                   <select id="widget_return_place" name="return_place">
                   </select>
                   <i class="fa fa-angle-down flex-icon"></i>
@@ -118,7 +110,7 @@
                 <!-- Custom delivery place -->
                 <div id="another_return_place_group" style="display: none;" class="return_place">
                   <div class="flex-form-item bg-white justify-content-between">
-                    <input class="bg-white" type="text" id="widget_return_place_other" name="return_place_other" />
+                    <input class="bg-white w-100" type="text" id="widget_return_place_other" name="return_place_other" />
                     <input type="hidden" name="custom_return_place" value="false" />
                     <button type="button" class="widget_another_return_place_group_close p-0">
                       <i class="fa fa-times flex-icon"></i>
@@ -126,7 +118,6 @@
                   </div>
                 </div>
               </div>
-          
               <div class="flex-form-item-box">
                 <label>Fecha de entrega</label>
                 <div class="flex-form-item">
@@ -145,6 +136,7 @@
                   </select>
                 </div>
               </div>
+          
               <div class="flex-form-item-box">
                 <input type="submit" class="btn btn-primary" value="Buscar" />
               </div>
