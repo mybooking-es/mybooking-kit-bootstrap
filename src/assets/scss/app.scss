@@ -56,3 +56,7 @@ a.it.visible,
 a.en.visible {
   display: block;
 }
+// Google Autocomplete
+.pac-container {
+    z-index: 10000 !important;
+}

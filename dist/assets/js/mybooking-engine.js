@@ -44696,9 +44696,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     return_place_other_selector: '#return_place_other',
     another_return_place_group_selector: '#another_return_place_group',    
     custom_return_place_selector: 'input[name=custom_return_place]',
-    return_place_container_selector: '.return_place',
     return_place_group_selector: '.return_place_group',
-    another_pickup_place_group_close: '.another_return_place_group_close',
+    another_return_place_group_close: '.another_return_place_group_close',
     
     date_from_selector: '#date_from',
     time_from_id: 'time_from',
@@ -44711,9 +44710,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     number_of_products_selector: '#number_of_products',
     accept_age_selector: '#accept_age',
 
-    dataSourcePickupPlaces: null,
-    dataSourceReturnPlaces: null,
-    returnPlace: null,
+    dataSourcePickupPlaces: null, // Pickup places datasource
+    dataSourceReturnPlaces: null, // Return places datasource
 
     requestLanguage: null,
     configuration: null,
@@ -44955,17 +44953,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         $(selectorModel.custom_return_place_selector).val($(selectorModel.custom_pickup_place_selector).val());
         $(selectorModel.return_place_other_selector).val($(selectorModel.pickup_place_other_selector).val());
         // Hide the return place container
-        $(selectorModel.return_place_container_selector).hide();
+        $(selectorModel.return_place_group_selector).hide();
       }
       else { // Pickup place is different from return place
         // Show the return place container        
-        $(selectorModel.return_place_container_selector).show();
+        $(selectorModel.return_place_group_selector).show();
         // Custom pickup/return places
         if (selectorModel.configuration.customPickupReturnPlaces) {
           if ($(selectorModel.return_place_selector).val() == 'other') {
              $(selectorModel.another_return_place_group_selector).show();          
              // Hide the return place selector
-             $(selectorModel.return_place_group_selector).hide();
+             //$(selectorModel.return_place_group_selector).hide();
           }
           else {
              $(selectorModel.another_return_place_group_selector).hide();
@@ -45045,7 +45043,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         $(selectorModel.date_to_selector).datepicker('option', 'minDate', dateTo);
         $(selectorModel.date_to_selector).datepicker('setDate', null);
 
-        // ==Time From
+        // == Time From
         if (selectorModel.configuration.timeToFrom) {
           // Enable time from     
           if ($(selectorModel.time_from_selector).attr('disabled')) {   
@@ -45053,18 +45051,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
           }
           // Initialize time from
           $(selectorModel.time_from_selector).val('');
-        }
 
-        // ==Time To
-        if (selectorModel.configuration.timeToFrom) {
           // Initialize time to
           $(selectorModel.time_to_selector).val('');
         }
 
-        // Enable date to      
+        // == Date to      
         if ($(selectorModel.date_to_selector).attr('disabled')) {  
           $(selectorModel.date_to_selector).attr('disabled', false);
         }  
+        
+        // Load pickup hours
+        if (selectorModel.configuration.timeToFrom) {
+          selectorView.loadPickupHours();
+        }
+
+        // Load return days
         selectorView.loadReturnDays();
 
     },
@@ -45113,12 +45115,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                      });
         // Setup UI
         $(selectorModel.form_selector).attr('action', commonServices.chooseProductUrl);
+        
         // Setup pickup/return places
         if (selectorModel.configuration.pickupReturnPlace) {
           this.setupPickupReturnPlace();
         }
+        
         // Setup dates
         this.setupDateControls();
+        
         // Setup time from / to
         if (selectorModel.configuration.timeToFrom) {
           this.setupTimeToFrom();
@@ -45168,7 +45173,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         // If same pickup/return place -> Hide the return place and mark the same place
         if (shopping_cart.pickup_place == shopping_cart.return_place) {
           $(selectorModel.same_pickup_return_place_selector).prop('checked', true);
-          $(selectorModel.return_place_container_selector).hide();
+          $(selectorModel.return_place_group_selector).hide();
         }
         else {
           $(selectorModel.same_pickup_return_place_selector).prop('checked', false);
@@ -45319,8 +45324,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
           },
           onSelect: function(dateText, inst) {
              selectorController.dateFromChanged();
+             /*
              var date = moment(dateText,'DD/MM/YYYY').format('YYYY-MM-DD');
-             selectorModel.loadPickupHours('time_from', date);
+             selectorModel.loadPickupHours('time_from', date);  
+             */           
           }
 
         }, locale);
@@ -45610,6 +45617,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                         $(selectorModel.pickup_place_other_selector).val(selectorModel.shopping_cart.pickup_place);
                         $(selectorModel.custom_pickup_place_selector).val('true');
                         $(selectorModel.another_pickup_place_group_selector).show();
+                        $(selectorModel.pickup_place_group_selector).hide();
                     }
                     else {
                         var pickup_place = selectorModel.shopping_cart.pickup_place ? selectorModel.shopping_cart.pickup_place.replace(/\+/g, ' ') : selectorModel.shopping_cart.pickup_place;
@@ -45678,12 +45686,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                                                return value;
                                                            }});
 
-
-        if (selectorModel.returnPlace != null) {
-          selectorModel.returnPlace.stop();
-        }
         var self = this;
-        selectorModel.returnPlace = new SelectSelector(selectorModel.return_place_id, 
+        var returnPlace = new SelectSelector(selectorModel.return_place_id, 
+
             selectorModel.dataSourceReturnPlaces, null, true, i18next.t('selector.select_return_place'),
                 function() {
                   // Add other place option to the pickup places if the configuration accept custom places
@@ -45716,9 +45721,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                         $(selectorModel.return_place_selector).val('other');
                         $(selectorModel.return_place_other_selector).val(selectorModel.shopping_cart.return_place);
                         $(selectorModel.custom_return_place_selector).val('true');
-                        //if (selectorModel.shopping_cart.pickup_place != selectorModel.shopping_cart.return_place) {
-                          $(selectorModel.another_return_place_group_selector).show();
-                        //}
+                        $(selectorModel.another_return_place_group_selector).show();
+                        $(selectorModel.return_place_group_selector).hide();
                     }
                     else {
                         var return_place = selectorModel.shopping_cart.return_place ? selectorModel.shopping_cart.return_place.replace(/\+/g, ' ') : selectorModel.shopping_cart.return_place;
@@ -52438,6 +52442,7 @@ Promise.resolve(/* AMD require */).then(function() { var __WEBPACK_AMD_REQUIRE_A
         selector.model.pickup_place_other_id = 'widget_pickup_place_other';
         selector.model.pickup_place_other_selector = '#widget_pickup_place_other';
         selector.model.another_pickup_place_group_selector = '#another_pickup_place_group';
+        selector.model.custom_pickup_place_selector = 'input[name=custom_pickup_place]';        
         selector.model.pickup_place_group_selector = '.widget_pickup_place_group',
         selector.model.another_pickup_place_group_close = '.widget_another_pickup_place_group_close',
 
@@ -52449,6 +52454,7 @@ Promise.resolve(/* AMD require */).then(function() { var __WEBPACK_AMD_REQUIRE_A
         selector.model.return_place_other_id = 'widget_return_place_other';
         selector.model.return_place_other_selector = '#widget_return_place_other';
         selector.model.another_return_place_group_selector = '#another_return_place_group';  
+        selector.model.custom_return_place_selector = 'input[name=custom_return_place]';             
         selector.model.return_place_group_selector = '.widget_return_place_group',
         selector.model.another_return_place_group_close = '.widget_another_return_place_group_close',
 
@@ -56791,12 +56797,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0), __webpack_require__(22), __webpack_require__(17),__webpack_require__(18),
-         __webpack_require__(1),__webpack_require__(2),
-         __webpack_require__(3), __webpack_require__(6), __webpack_require__(11), __webpack_require__(16),
+         __webpack_require__(1),__webpack_require__(2), __webpack_require__(3), 
+         __webpack_require__(6), __webpack_require__(11), __webpack_require__(7),
+         __webpack_require__(16),
          __webpack_require__(4), __webpack_require__(5), __webpack_require__(9),
          __webpack_require__(14), __webpack_require__(13), __webpack_require__(15),
          __webpack_require__(10), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_RESULT__ = (function($, MemoryDataSource, RemoteDataSource, SelectSelector,commonServices, commonSettings, 
-                  commonTranslations, i18next, moment) {
+                  commonTranslations, i18next, moment, tmpl) {
 
   /***************************************************************************
    *
@@ -56805,49 +56812,66 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
    ***************************************************************************/
   var productModel = {
 
-    // selectors
+    requestLanguage: null, // Request language
+    configuration: null, // The platform configuration
+
+    today: null,      // Today (to manage the calendar)
+
+    code: null, // Product code
+    selectedDateFrom: null, // Selected date from
+    selectedDateTo: null, // Selected date to
+    shoppingCartId: null, // The shoppingCart Id
+
+    availabilityData: null, // Availability data
+    pickupHours: [],  // Available pickup hours
+    returnHours: [],  // Available return hours
+
+    dataSourcePickupPlaces: null, // Pickup places datasource
+    dataSourceReturnPlaces: null, // Return places datasource
+
+    // ------------------ Selectors -------------------------------------------
+
+    // form selector
     form_selector: 'form[name=search_form]',
+    // == Pickup / Return place selector
+    // pickup place   
     pickup_place_id: 'pickup_place',
     pickup_place_selector: '#pickup_place',
     pickup_place_other_selector: '#pickup_place_other',
+    pickup_place_group_selector: '.pickup_place_group',    
+    custom_pickup_place_selector: 'input[name=custom_pickup_place]',
+    another_pickup_place_group_selector: '#another_pickup_place_group',
+    // same pickup/return place
+    same_pickup_return_place_selector: '#same_pickup_return_place',
+    // return place
     return_place_id: 'return_place',
     return_place_selector: '#return_place',
     return_place_other_selector: '#pickup_place_other',
     return_place_container_selector: '.return_place',
-    same_pickup_return_place_selector: '#same_pickup_return_place',
-    custom_pickup_place_selector: 'input[name=custom_pickup_place]',
-    another_pickup_place_group_selector: '#another_pickup_place_group',
+    return_place_group_selector: '.return_place_group',   
     custom_return_place_selector: 'input[name=custom_pickup_place]',
-    another_return_place_group_selector: '#another_pickup_place_group',    
+    another_return_place_group_selector: '#another_pickup_place_group',
+    // == Date selector
     date_selector: '#date',
+    // == Time From / To selector
+    // time from
     time_from_id: 'time_from',
     time_from_selector: '#time_from',
+    // time to
     time_to_id: 'time_to',        
     time_to_selector: '#time_to',  
-    driver_age_rule_selector: '#driver_age_rule',
+    // == Other fields
+    // promotion code    
     promotion_code_selector: '#promotion_code',
+    // driver age
+    driver_age_rule_selector: '#driver_age_rule',
+    // number of products
     number_of_products_selector: '#number_of_products',
+    // accept age
     accept_age_selector: '#accept_age',
+    
+    // add to shopping cart button
     add_to_shopping_cart_btn_selector: '#add_to_shopping_cart_btn',
-
-
-    code: null, // Product code
-    dataSourcePickupPlaces: null,
-    dataSourceReturnPlaces: null,
-    returnPlace: null,
-    availabilityData: null,
-
-    selectedDateFrom: null,
-    selectedDateTo: null,
-
-    requestLanguage: null,
-    configuration: null,
-    today: null,
-    shopping_cart: null,
-    pickupDays: [], // Available pickup days
-    returnDays: [], // Available return days
-    pickupHours: [], // Available pickup hours
-    returnHours: [], // Available return hours
 
     // -------------- Load settings ----------------------------
 
@@ -56912,6 +56936,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         }
       });
     },
+
     /**
      * Access the API to get the available return hours in a date
      */
@@ -56933,6 +56958,95 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
           alert(i18next.t('selector.error_loading_data'));
         }
       });
+    },
+
+    /* ---------------- Calculate price and ShoppingCart management -------- */
+
+    /**
+     * Calculate price (build the shopping cart and choose the product)
+     */
+    calculatePrice: function() {
+
+      var dataRequest = this.buildDataRequest();
+      var dataRequestJSON =  encodeURIComponent(JSON.stringify(dataRequest));
+
+      console.log(dataRequest);
+
+      var url = commonServices.URL_PREFIX + '/api/booking/frontend/shopping-cart';
+      if (this.shoppingCartId == null) {
+        this.shoppingCartId = this.getShoppingCartFreeAccessId();
+      }
+      if (this.shoppingCartId) {
+        url+= '/'+this.shoppingCartId;
+      }
+      if (this.requestLanguage != null) {
+        url+='?lang='+this.requestLanguage;
+      }
+
+      var self = this;
+      $('#full_loader').show();
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data: dataRequestJSON,
+        dataType : 'json',
+        contentType : 'application/json; charset=utf-8',
+        crossDomain: true,
+        success: function(data, textStatus, jqXHR) {
+          if (self.shoppingCartId == null || self.shoppingCartId != data.shopping_cart.free_access_id) {
+            self.shoppingCartId = data.shopping_cart.free_access_id;
+            self.putShoppingCartFreeAccessId(self.shoppingCartId);
+          }
+          self.shopping_cart = data.shopping_cart;
+          productView.update('shopping_cart');
+        },
+        error: function(data, textStatus, jqXHR) {
+          alert(i18next.t('selector.error_loading_data'));
+        },
+        complete: function(jqXHR, textStatus) {
+          $('#full_loader').hide();
+        }
+      });
+
+    },
+
+    /**
+     * Get the shopping cart from the session storage
+     */ 
+    getShoppingCartFreeAccessId: function() {
+      return sessionStorage.getItem('shopping_cart_free_access_id');
+    },
+
+    /**
+     * Store shopping cart free access ID in season
+     */
+    putShoppingCartFreeAccessId: function(value) {
+      sessionStorage.setItem('shopping_cart_free_access_id', value);
+    },
+
+    /**
+     * Build data request
+     * (TODO Custom pickup/return place)
+     */
+    buildDataRequest: function() {
+
+      var data = {date_from: moment(this.selectedDateFrom).format('DD/MM/YYYY'),
+                  date_to: moment(this.selectedDateTo).format('DD/MM/YYYY'),
+                  category_code: this.code
+                  };
+
+      if (this.configuration.pickupReturnPlace) {
+        data.pickup_place = $(this.pickup_place_selector).val();
+        data.return_place = $(this.return_place_selector).val();
+      }
+
+      if (this.configuration.timeToFrom) {
+        data.time_from = $(this.time_from_selector).val();
+        data.time_to = $(this.time_to_selector).val();
+      }
+
+      return data;
+
     }  
    
   };
@@ -56944,6 +57058,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
    ***************************************************************************/
   var productController = {
 
+    /* --------------- Pickup / Return places events ----------------------- */
+
     /**
      * Pickup place changed
      */ 
@@ -56951,50 +57067,29 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
        console.log('pickup place changed');
 
-       // Clear date from / time from / return place / date to / time to
-       if (productModel.shopping_cart) {
-         productModel.shopping_cart.date_from = null;
-         productModel.shopping_cart.time_from = null;
-         productModel.shopping_cart.date_to = null;
-         productModel.shopping_cart.time_to = null;
-       }   
-
-       // Enable date from        
-       if ($(productModel.date_selector).attr('disabled')) {
-         $(productModel.date_selector).attr('disabled', false);
-       }
        // Enable return place
        if ($(productModel.return_place_selector).attr('disabled')) {
          $(productModel.return_place_selector).attr('disabled', false);
        }
 
-       // Initialize date from, time from, return place, date to and time to
-       $(productModel.date_from_selector).datepicker('setDate', null);
-       if (productModel.configuration.timeToFrom) {
-         $(productModel.time_from_selector).val('');
-       }
        if (productModel.configuration.pickupReturnPlace) {
-         // If same pickup/return place
          if (!$(productModel.same_pickup_return_place_selector).is(':checked')) {
            $(productModel.return_place_selector).val('');
          }
        }
-       if (productModel.configuration.timeToFrom) {
-         $(productModel.time_to_selector).val('');
-       }
-
-       // Load calendar
-       productView.checkAvailability();
 
        // Custom places
        if (productModel.configuration.customPickupReturnPlaces) {
-         if ($(productModel.pickup_place_selector).val() == 'other') {
-             $(selector.custom_pickup_place_selector).val('true');
-             $(selector.another_pickup_place_group_selector).show();
+         if ($(selectorModel.pickup_place_selector).val() == 'other') {
+             $(selectorModel.custom_pickup_place_selector).val('true');
+             $(selectorModel.another_pickup_place_group_selector).show();
+             $(selectorModel.pickup_place_group_selector).hide();
          }
          else {
-             $(selector.custom_pickup_place_selector).val('false');
-             $(selector.another_pickup_place_group_selector).hide();
+             $(selectorModel.custom_pickup_place_selector).val('false');
+             $(selectorModel.pickup_place_other_selector).val('');
+             $(selectorModel.another_pickup_place_group_selector).hide();
+             $(selectorModel.pickup_place_group_selector).show();
          }
        }
 
@@ -57003,6 +57098,33 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
     },
 
+    /**
+     * Pickup place custom address autocomplete changed
+     */
+    pickupPlaceAnotherChanged: function() {
+
+     if ($(selectorModel.same_pickup_return_place_selector).is(':checked')) {
+        $(selectorModel.return_place_selector).val('other');
+        $(selectorModel.custom_return_place_selector).val('true');
+        $(selectorModel.return_place_other_selector).val($(selectorModel.pickup_place_other_selector).val());
+     }
+
+    },
+
+    /**
+     * Pickup place custom address close click
+     */
+    pickupPlaceAnotherGroupCloseClick: function() {
+      $(selectorModel.pickup_place_selector).val('');
+      $(selector.model.pickup_place_other_selector).val('');
+      $(selector.model.custom_pickup_place_selector).val('false');
+      $(selectorModel.pickup_place_group_selector).show();
+      $(selectorModel.another_pickup_place_group_selector).hide();
+    },
+
+    /**
+     * Same pickup / return place changed
+     */
     samePickupReturnPlaceChanged: function() {
 
       if ($(productModel.same_pickup_return_place_selector).is(':checked')) {
@@ -57012,102 +57134,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
       else {
         $(productModel.return_place_container_selector).show();
       }
-
-    },
-
-    /**
-     * Dates changed
-     */
-    datesChanged: function(dateFrom, dateTo) {
-
-        console.log('dates changed');
-       
-        // Clear time_from / date_to / time_to
-        if (productModel.shopping_cart) {
-          productModel.shopping_cart.date_from = null;
-          productModel.shopping_cart.time_from = null;
-          productModel.shopping_cart.date_to = null;
-          productModel.shopping_cart.time_to = null;
-        } 
-
-        // ==Time From
-        if (productModel.configuration.timeToFrom) {
-          // Enable time from     
-          if ($(productModel.time_from_selector).attr('disabled')) {   
-            $(productModel.time_from_selector).attr('disabled', false);
-          }
-          // Initialize time from
-          $(productModel.time_from_selector).val('');
-        }
-
-        // ==Time To
-        if (productModel.configuration.timeToFrom) {
-          // Initialize time to
-          $(productModel.time_to_selector).val('');
-        }
-
-        productModel.selectedDateFrom = dateFrom;
-        productModel.selectedDateTo = dateTo;
-
-        /*
-      var dateFromStr = new Date(dateFrom.setHours(0,0,0,0)).toString('yyyy-MM-dd');
-      var dateToStr = new Date(dateTo.setHours(0,0,0,0)).toString('yyyy-MM-dd');
-      if (model.availabilityData) {
-
-        if (model.availabilityData['occupation'][dateFromStr]) {
-          if (model.availabilityData['occupation'][dateFromStr]['ends']) {
-            model.minTimeFrom = model.availabilityData['occupation'][dateFromStr]['time_to']
-          }
-          else {
-            model.minTimeFrom = null;
-          }
-        }   
-        
-        if (model.availabilityData['occupation'][dateToStr]) {
-          if (model.availabilityData['occupation'][dateToStr]['starts']) {
-            model.maxTimeTo = model.availabilityData['occupation'][dateToStr]['time_from']
-          }
-          else {
-            model.maxTimeTo = null;
-          }          
-        }             
-      }
-
-      // The user selects a date
-      model.date_from = new Date(dateFrom.setHours(0,0,0,0)).toString('dd/MM/yyyy');
-      model.date_to = new Date(dateTo.setHours(0,0,0,0)).toString('dd/MM/yyyy');
-      if (model.timeToFrom) {
-        if ($('form[name=change_dates_form]').valid()) {
-          $('#select_dates_error').hide();
-          $('#select_dates_error').html('');     
-        }     
-        $('#time_container').show();
-        $('#selector_container').show();
-      } 
-      else {
-        model.selectDates();
-      }
-      */        
-
-    },
-
-    firstDateSelected: function(dateFrom) { /* The user selects the first date */
-
-      productModel.selectedDateFrom = null;
-      productModel.selectedDateTo = null;
-
-    },
-
-    monthChanged: function() {
-
-      if (productModel.configuration.pickupReturnPlace) {
-        if ($(productModel.pickup_place_selector).val() != '') {
-          productView.checkAvailability();
-        }
-      }
-      else {
-        productView.checkAvailability();
-      }  
 
     },
 
@@ -57129,6 +57155,94 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
               $(selector.another_return_place_group_selector).hide();
           }
         }
+
+       // Enable date from        
+       if ($(productModel.date_selector).attr('disabled')) {
+         $(productModel.date_selector).attr('disabled', false);
+       }
+
+       // Initialize date, time from, return place and time to
+       $(productModel.date_selector).datepicker('setDate', null);
+       if (productModel.configuration.timeToFrom) {
+         $(productModel.time_from_selector).val('');
+         $(productModel.time_to_selector).val('');
+       }
+
+       // Load availability
+       productView.checkAvailability();
+
+    },
+
+    /* -------------------- Dates events ------------------------------------*/
+
+    /**
+     * First date selected
+     */ 
+    firstDateSelected: function(dateFrom) { /* The user selects the first date */
+
+      console.log('first date selected');
+
+      productModel.selectedDateFrom = null;
+      productModel.selectedDateTo = null;
+      $('#reservation_detail').html('');
+
+    },
+
+    /**
+     * Date range selected
+     */
+    datesChanged: function(dateFrom, dateTo) {
+
+        console.log('dates changed');
+
+        productModel.selectedDateFrom = dateFrom;
+        productModel.selectedDateTo = dateTo;    
+
+        // ==Time From
+        if (productModel.configuration.timeToFrom) {
+          // Enable time from     
+          if ($(productModel.time_from_selector).attr('disabled')) {   
+            $(productModel.time_from_selector).attr('disabled', false);
+          }
+          // Initialize time from
+          $(productModel.time_from_selector).val('');
+          // Enable time to
+          if ($(productModel.time_to_selector).attr('disabled')) {   
+            $(productModel.time_to_selector).attr('disabled', false);
+          }
+          // Initialize time from
+          $(productModel.time_to_selector).val('');          
+          // Load pickup / return hours
+          productView.loadPickupHours();
+          productView.loadReturnHours();          
+        }
+
+        // Calculate price
+        productView.calculatePrice();
+
+    },
+
+    /**
+     * Month changed (check availability)
+     */
+    monthChanged: function() {
+
+      console.log('month changed');
+      productView.checkAvailability();
+
+    },
+
+    timeFromChanged: function() {
+
+     console.log('time from changed');
+     productView.calculatePrice();
+
+    },
+
+    timeToChanged: function() {
+
+     console.log('time to changed');
+     productView.calculatePrice();
 
     }
 
@@ -57162,80 +57276,58 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
         // Setup UI
         //$(productModel.form_selector).attr('action', commonServices.chooseProductUrl);
-        if (productModel.configuration.pickupReturnPlace) {
-          this.setupPickupReturnPlace();
-        }
-        this.setupDateControls();
-        if (productModel.configuration.timeToFrom) {
-          this.setupTimeToFrom();
-        }       
+        
+        // Setup Controls
+        this.setupControls();
+
+        // Setup Validation   
         this.setupValidation();
 
-        // Start empty (by default)
-        this.startEmpty();
-
-    },
-
-    /**
-     * Start the component empty
-     */
-    startEmpty: function() {
-      // Disable the date selector
-      $('#date-container').addClass('disabled-picker');
-      // Start loading pickup places
-      if (productModel.configuration.pickupReturnPlace) {
-        this.loadPickupPlaces();
-        // Disable return place   
-        $(productModel.return_place_selector).attr('disabled', true);
-      }
-      else {
-        productView.checkAvailability();
-      }
-      // Disable time selectors
-      if (productModel.configuration.timeToFrom) {
-        $(productModel.time_from_selector).attr('disabled', true);
-        $(productModel.time_to_selector).attr('disabled', true);
-      }
-      $(productModel.add_to_shopping_cart_btn_selector).attr('disabled', true);
-    },
-
-    /**
-     * Start the component from shopping cart : Load the shopping cart information in the selector fields
-     */
-    startFromShoppingCart: function(shopping_cart) { /* Show the selector with the shopping cart information */
-
-      productModel.shopping_cart = shopping_cart;
-
-      // Initialize number of products
-      $(productModel.number_of_products_selector).val(shopping_cart.number_of_products);
-
-      // It loads delivery place/hour/time and collection place/hour/time
-      if (productModel.configuration.pickupReturnPlace) { 
-        // If same pickup/return place -> Hide the return place and mark the same place
-        if (shopping_cart.pickup_place == shopping_cart.return_place) {
-          $(productModel.same_pickup_return_place_selector).prop('checked', true);
-          $(productModel.return_place_container_selector).hide();
+        // Start loading data
+        if (productModel.configuration.pickupReturnPlace) {
+          this.loadPickupPlaces();   
         }
         else {
-          $(productModel.same_pickup_return_place_selector).prop('checked', false);
+          productView.checkAvailability();
         }
-        this.loadPickupPlaces(); // The other fields are automatically assigned after pickup_place assignation
-      }
-      else {
-        // No delivery/collection place => Directly assign date_from and date_to from shopping_cart
-        var date_from = moment(shopping_cart.date_from).format(productModel.dateFormat); 
-        var date_to = moment(shopping_cart.date_to).format(productModel.dateFormat); 
-        $(productModel.date_from_selector).datepicker("setDate", date_from); // It causes change month => load the calendar days
-        $(productModel.date_to_selector).datepicker("setDate", date_to); // It causes the month to change => load the calendar days
-        if (productModel.configuration.timeToFrom) {
-          this.loadPickupHours();
-          this.loadReturnHours();
-        }
-      }  
 
     },
 
+    /* ---------------------- Setup UI controls ---------------------------- */
+
+    setupControls: function() {
+
+      // Setup pickup/return places
+      if (productModel.configuration.pickupReturnPlace) {
+        this.setupPickupReturnPlace();
+        $(productModel.return_place_selector).attr('disabled', true);
+      }
+      
+      // Setup Date control
+      this.setupDateControl();
+      $('#date-container').addClass('disabled-picker');
+
+      // Setup time from/to controls
+      if (productModel.configuration.timeToFrom) {
+        this.setupTimeToFrom();
+        $(productModel.time_from_selector).attr('disabled', true);
+        $(productModel.time_to_selector).attr('disabled', true);        
+      }    
+
+      $(productModel.add_to_shopping_cart_btn_selector).attr('disabled', true);
+
+    },
+
+    /**
+     * Setup pickup/return place
+     */
     setupPickupReturnPlace: function() {
+
+        var pickupTime = new SelectSelector(productModel.pickup_place_id, 
+            new MemoryDataSource([]), null, true, i18next.t('selector.select_pickup_place'));     
+
+        var returnTime = new SelectSelector(productModel.return_place_id, 
+            new MemoryDataSource([]), null, true, i18next.t('selector.select_return_place'));  
 
       $(productModel.same_pickup_return_place_selector).bind('change', function(){
         productController.samePickupReturnPlaceChanged();
@@ -57246,8 +57338,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
     },
 
-
-    setupDateControls: function() {
+    /**
+     * Setup date control
+     */
+    setupDateControl: function() {
 
       // For index Page coding
       $('#date').dateRangePicker(
@@ -57329,24 +57423,48 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
       $('#date-container .prev').bind('click', function(){
         productController.monthChanged();
       });
+
       setTimeout(function(){
-        productController.monthChanged();
+        //productController.monthChanged();
         var width = $('#date-container').width();
         $('.date-picker-wrapper').css('width', '100%');
         $('.month-wrapper').css('width', 'inherit');
         $('.month-wrapper table').css('width', 'inherit');
         $('.month-wrapper table th').css('width', width/7+'px');
       }, 100);
-
-
+      
 
     },
 
+    /**
+     * Setup Time controls
+     */
+    setupTimeToFrom: function() {
+
+        var pickupTime = new SelectSelector(productModel.time_from_id, 
+            new MemoryDataSource([]), null, true, 'hh:mm');     
+
+        var returnTime = new SelectSelector(productModel.time_to_id, 
+            new MemoryDataSource([]), null, true, 'hh:mm');  
+
+        $(productModel.time_from_selector).bind('change', function(){
+          productController.timeFromChanged();
+        });
+
+        $(productModel.time_to_selector).bind('change', function(){
+          productController.timeToChanged();
+        });
+
+    },
+
+    /**
+     * Setup validation
+     */
     setupValidation: function() {
-/*
+
         $.validator.addMethod('same_day_time_from', function(value, element) {
           if (productModel.configuration.timeToFrom) {
-            if ($(productModel.date_from_selector).val() == $(productModel.date_to_selector).val()) {
+            if (productModel.selectedDateFrom == productModel.selectedDateTo) {
               return $(productModel.time_to_selector).val() > $(productModel.time_from_selector).val();
             }
             return true;
@@ -57355,6 +57473,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         });
 
         $(productModel.form_selector).validate({
+           submitHandler: function(form) {
+             productView.gotoNextStep();
+           },
            invalidHandler: function(form)
            {
              $(productModel.form_selector + ' label.form-reservation-error').remove();
@@ -57364,22 +57485,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                    required: productModel.configuration.pickupReturnPlace
                },
                pickup_place_other: {
-                   required: selector.model.pickup_place_other_selector + ':visible'
+                   required: productModel.pickup_place_other_selector + ':visible'
                },
                return_place: {
                    required: productModel.configuration.pickupReturnPlace
                },
                return_place_other: {
-                   required: selector.model.pickup_place_other_selector + ':visible'
+                   required: productModel.pickup_place_other_selector + ':visible'
                },   
-               date_from: {
-                   required: productModel.date_from_selector + ':visible'
+               date: {
+                   required: true,
                },
                time_from: {
                    required: productModel.configuration.timeToFrom
-               },
-               date_to: {
-                   required: productModel.date_to_selector + ':visible' 
                },
                time_to: {
                    required: productModel.configuration.timeToFrom,
@@ -57394,10 +57512,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                return $(productModel.promotion_code_selector).val();
                            },
                            from: function() {
-                               return $(productModel.date_from_selector).datepicker('getDate').toString('yyyy-MM-dd'); 
+                               return moment(productModel.selectedDateFrom).format('YYYY-MM-DD');
                            },
                            to: function() {
-                               return $(productModel.date_to_selector).datepicker('getDate').toString('yyyy-MM-dd');
+                               return moment(productModel.selectedDateTo).format('YYYY-MM-DD');
                            }
                        }
                    }
@@ -57419,15 +57537,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                return_place_other: {
                    required: i18next.t('selector.validations.returnPlaceRequired')
                },  
-               date_from: {
+               date: {
                    required: i18next.t('selector.validations.dateFromRequired')
                },
                time_from: {
                    required: i18next.t('selector.validations.timeFromRequired')
                },
-               date_to: {
-                   required: i18next.t('selector.validations.dateToRequired')
-               },  
                time_to: {
                    required:i18next.t('selector.validations.timeToRequired'),
                    same_day_time_from: i18next.t('selector.validations.sameDayTimeToGreaterTimeFrom')
@@ -57446,24 +57561,57 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
            },
            errorClass : 'form-reservation-error'
         });
-*/
-    },
-
-    /**
-     * Setup Time controls
-     */
-    setupTimeToFrom: function() {
-
-        var pickupTime = new SelectSelector(productModel.time_from_id, 
-            new MemoryDataSource([]), null, true, 'hh:mm');     
-
-        var returnTime = new SelectSelector(productModel.time_to_id, 
-            new MemoryDataSource([]), null, true, 'hh:mm');  
 
     },
+
 
     // ------------------------------------------------------------------------
 
+    /**
+     * Calculate price
+     */
+    calculatePrice: function() {
+ 
+      if (this.isDataComplete()) {
+        productModel.calculatePrice();
+      }
+
+    },
+
+    isDataComplete: function() {
+
+      if (productModel.configuration.pickupReturnPlace) {
+        if ($(productModel.pickup_place_selector).val() == '') {
+          return false;
+        }
+        if ($(productModel.return_place_selector).val() == '') {
+          return false;
+        }
+      }
+
+      if (productModel.selectedDateFrom == null) {
+        return false;
+      }
+
+      if (productModel.selectedDateTo == null) {
+        return false;
+      }
+
+      if (productModel.configuration.timeToFrom) {
+        if ($(productModel.time_from_selector).val() == '') {
+          return false;
+        }
+        if ($(productModel.time_to_selector).val() == '') {
+          return false;
+        }        
+      }
+
+      return true;
+    },
+
+    /**
+     * Check availability
+     */
     checkAvailability: function() {
 
         var month1 = $('#date').data('dateRangePicker').opt.month1;
@@ -57480,7 +57628,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Load pickup hours
      */
     loadPickupHours: function() { /** Load return dates **/
-      var date = moment($(productModel.date_from_selector).datepicker('getDate')).format('YYYY-MM-DD');  
+      var date = moment(productModel.selectedDateFrom).format('YYYY-MM-DD');  
       productModel.loadPickupHours('time_from', date);
     },
 
@@ -57488,7 +57636,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Load return hours
      */
     loadReturnHours: function() {
-      var date = moment($(productModel.date_to_selector).datepicker('getDate')).format('YYYY-MM-DD');  
+      var date = moment(productModel.selectedDateTo).format('YYYY-MM-DD');  
       productModel.loadReturnHours('time_to', date);
     },
 
@@ -57497,6 +57645,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      */
     loadPickupPlaces: function() {
 
+        // Setup the event
+        $(productModel.pickup_place_selector).bind('change', function() {
+           productController.pickupPlaceChanged();
+        });
+
+        // Initialize datasource
         var pickupPlacesURL = commonServices.URL_PREFIX + '/api/booking/frontend/pickup-places';
         if (productModel.requestLanguage != null) {
           pickupPlacesURL += '?lang='+productModel.requestLanguage;
@@ -57546,35 +57700,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                       }
                   }
                   
-                  // Init - Assign the pickup place if selected
-                  if (productModel.shopping_cart) {
-                    if (productModel.shopping_cart.custom_pickup_place) {
-                        $(productModel.pickup_place_selector).val('other');
-                        $(productModel.pickup_place_other_selector).val(productModel.shopping_cart.pickup_place);
-                        $(productModel.pickup_place_other_selector).html(productModel.shopping_cart.pickup_place);
-                        $(productModel.custom_pickup_place_selector).val('true');
-                        $(productModel.another_pickup_place_group_selector).show();
-                    }
-                    else {
-                        var pickup_place = productModel.shopping_cart.pickup_place ? productModel.shopping_cart.pickup_place.replace(/\+/g, ' ') : productModel.shopping_cart.pickup_place;
-                        $(productModel.pickup_place_selector).val(pickup_place);
-                    }
-                    // Assign the delivery date
-                    if (productModel.shopping_cart.date_from) {
-                      var date_from = moment(productModel.shopping_cart.date_from).format(productModel.configuration.dateFormat); 
-                      $(productModel.date_from_selector).datepicker("setDate", date_from); // It causes change month => load the calendar days
-                      if (productModel.configuration.timeToFrom) {
-                        self.loadPickupHours();
-                      }
-                    }
-                    self.loadReturnPlaces(); // date_to is assigned after return_place assignation
-                  }
-                  // End - Assign the pickup place
                 } );
-
-        $(productModel.pickup_place_selector).bind('change', function() {
-           productController.pickupPlaceChanged();
-        });
         
     },
 
@@ -57584,11 +57710,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     loadReturnPlaces: function() {
 
         // Do not load the return places while pickup place is not setup
-        if (productModel.shopping_cart == null && ($(productModel.pickup_place_selector).val() == '')) {
+        if ($(productModel.pickup_place_selector).val() == '') {
           return;
         }
 
-        // Load the return places
+        // Setup the event
+        $(productModel.return_place_selector).bind('change', function() {
+            productController.returnPlaceChanged();
+        });
+
+        // Initialize datasource
         var returnPlacesURL = commonServices.URL_PREFIX + '/api/booking/frontend/return-places';
         returnPlacesURL += '?pickup_place='+encodeURIComponent($(productModel.pickup_place_selector).val());
         if (productModel.requestLanguage != null) {
@@ -57613,12 +57744,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                                                                return value;
                                                            }});
 
-
-        if (productModel.returnPlace != null) {
-          productModel.returnPlace.stop();
-        }
         var self = this;
-        productModel.returnPlace = new SelectSelector(productModel.return_place_id, 
+        var returnPlace = new SelectSelector(productModel.return_place_id, 
             productModel.dataSourceReturnPlaces, null, true, i18next.t('selector.select_return_place'),
                 function() {
                   // Add other place option to the pickup places if the configuration accept custom places
@@ -57645,39 +57772,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                       }
                   }
 
-                  // Init - Assign the return place if selected
-                  if (productModel.shopping_cart) {
-                    if (productModel.shopping_cart.custom_return_place) {
-                        $(productModel.return_place_selector).val('other');
-                        $(productModel.return_place_other_selector).val(productModel.shopping_cart.return_place);
-                        $(productModel.return_place_other_selector).html(productModel.shopping_cart.return_place);
-                        $(productModel.custom_return_place_selector).val('true');
-                        $(productModel.another_return_place_group_selector).show();
-                    }
-                    else {
-                        var return_place = productModel.shopping_cart.return_place ? productModel.shopping_cart.return_place.replace(/\+/g, ' ') : productModel.shopping_cart.return_place;
-                        $(productModel.return_place_selector).val(return_place);
-                    }
-                    // Assign the collection date
-                    if (productModel.shopping_cart.date_to) {
-                      var date_to = moment(productModel.shopping_cart.date_to).format(productModel.configuration.dateFormat); 
-                      $(productModel.date_to_selector).datepicker("setDate", date_to); // It causes the month to change => load the calendar days
-                      if (productModel.configuration.timeToFrom) {
-                        self.loadReturnHours();
-                      } 
-                    }
-                  }
-                  else {
-                    if ($(productModel.same_pickup_return_place_selector).is(':checked')) {
-                      $(productModel.return_place_selector).val($(productModel.pickup_place_selector).val());
-                    }
-                  }
-                  // End - Assign the return place if selected   
+                  // Initialize
+                  $(productModel.return_place_selector).val($(productModel.pickup_place_selector).val());
+                  $(productModel.return_place_selector).trigger('change');
                 } );
 
-        $(productModel.return_place_selector).bind('change', function() {
-            productController.returnPlaceChanged();
-        });
+
 
     },
 
@@ -57687,10 +57787,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         case 'hours':
           if (id == 'time_from') {
             var dataSource = new MemoryDataSource(productModel.pickupHours);
-            var timeFrom = productModel.shopping_cart ? productModel.shopping_cart.time_from : null;
-            if (timeFrom != null && productModel.pickupHours.indexOf(timeFrom) == -1) {
-              timeFrom = null;
-            }            
+            var timeFrom = null;      
             var pickupTime = new SelectSelector(productModel.time_from_id,
                 dataSource, timeFrom, true, 'hh:mm',
                 function() {
@@ -57701,10 +57798,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
           }
           else if (id == 'time_to') {
             var dataSource = new MemoryDataSource(productModel.returnHours);
-            var timeTo = productModel.shopping_cart ? productModel.shopping_cart.time_to : null;
-            if (timeTo != null && productModel.returnHours.indexOf(timeTo) == -1) {
-              timeTo = null;
-            }
+            var timeTo =  null;
             var pickupTime = new SelectSelector(productModel.time_to_id,
                 dataSource, timeTo, true, 'hh:mm',
                 function() {
@@ -57714,9 +57808,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 } );
           }
           break;
+        case 'shopping_cart':
+          var html = tmpl('script_reservation_summary')({shopping_cart: productModel.shopping_cart,
+                                                         configuration: productModel.configuration});
+          $('#reservation_detail').html(html);
+          // Add to shopping cart button
+          if ($(productModel.add_to_shopping_cart_btn_selector).attr('disabled')) {
+            $(productModel.add_to_shopping_cart_btn_selector).attr('disabled', false);
+          }
+          break;
       }
 
-    }
+    },
+
+    /**
+     * Go to the next step (select extras or complete URL)
+     */
+    gotoNextStep: function() {
+
+      if (commonServices.extrasStep) {
+        window.location.href= '/'+commonServices.chooseExtrasUrl;
+      }
+      else {
+        window.location.href= '/'+commonServices.completeUrl;
+      }
+
+    },    
 
 
   };
