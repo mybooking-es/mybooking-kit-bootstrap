@@ -952,6 +952,7 @@
           </div>
           <form name="search_form" method="get" enctype="application/x-www-form-urlencoded" class="flex-form"
             autocomplete="off">
+            <!-- Pickup place -->
             <div class="flex-form-item-box">
               <label><%= choose_product.pickup_place %></label>       
               <div class="flex-form-item pickup_place_group">
@@ -969,6 +970,7 @@
                 </div>
               </div>
             </div>
+            <!-- Return place -->
             <div class="flex-form-item-box">
               <label><%= choose_product.return_place %></label>
               <div class="flex-form-item return_place_group">
@@ -987,6 +989,7 @@
                 </div>          
               </div>
             </div>
+            <!-- Date/Time From -->
             <div class="flex-form-item-box">
               <label><%= choose_product.date_from %></label>
               <div class="flex-form-item">
@@ -996,6 +999,7 @@
                 </select>
               </div>
             </div>
+            <!-- Date/Time To -->
             <div class="flex-form-item-box">
               <label><%= choose_product.date_to %></label>
               <div class="flex-form-item">
