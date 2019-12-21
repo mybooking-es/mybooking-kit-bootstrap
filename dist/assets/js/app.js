@@ -272,7 +272,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/marcelreigibarra/Desktop/mybooking-web-sample-html-bootstrap/src/assets/js/app.js */\"./src/assets/js/app.js\");\n\n\n//# sourceURL=webpack:///multi_./src/assets/js/app.js?");
+eval("module.exports = __webpack_require__(/*! /Users/marcelreigibarra/Documents/work/mybooking/mybooking-web-sample-html-bootstrap/src/assets/js/app.js */\"./src/assets/js/app.js\");\n\n\n//# sourceURL=webpack:///multi_./src/assets/js/app.js?");
 
 /***/ })
 

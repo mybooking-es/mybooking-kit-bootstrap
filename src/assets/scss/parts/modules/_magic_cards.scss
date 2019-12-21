@@ -25,11 +25,20 @@
     $brand-secondary
   );
   background: linear-gradient(to right, $brand-primary, $brand-secondary);
+  .product-title {
+    height: 180px;
+  }
   .product-name {
     color: #fff;
-    height: 180px;
     font-weight: 800;
     line-height: 1;
+    font-size: 0.8rem;
+  }
+  .product-short-description {
+    color: #fff;
+    font-weight: 800;
+    line-height: 1;
+    font-size: 1.8rem;
   }
 }
 
@@ -85,11 +94,10 @@
     padding: 0.5em;
     font-weight: 700;
   }
-  .abajo {
+  .push-down {
     position: absolute;
     top: 90px;
-    left: 50%;
-    margin-left: -90px;
+    width: 100%;
   }
 }
 

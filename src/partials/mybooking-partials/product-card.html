@@ -5,7 +5,11 @@
     <% var product = products[idx]; %>
     <div class="magic-card">
         <header class="header-card">
-            <h1 class="product-name"><%=product.name%></h1>
+          <div class="product-title">
+            <h3 class="product-name"><%=product.name%></h3>
+            <h4 class="product-short-description"><%=product.short_description%></h4>
+            <!-- <p class="color-white"><%=product.description%></p> -->
+          </div>
         </header>
         <div class="separator"></div>
         <section class="footer-card">
@@ -19,13 +23,13 @@
               <% } %>
             </div>
 
-            <div class="abajo">
+            <div class="push-down">
             <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
 
             <% if (product.availability) { %>
             <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
             <% } else { %>
-            <p><%= choose_product.model_not_available %></p>
+            <span class="badge badge-secondary p-2"><%= choose_product.model_not_available %></span>
             <% } %>
 
             <% if (product.few_available_units) { %>
