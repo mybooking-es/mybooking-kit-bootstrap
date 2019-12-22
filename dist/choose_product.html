@@ -134,7 +134,7 @@
                 <% if (product.availability) { %>
                 <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
                 <% } else { %>
-                <span class="badge badge-secondary p-2">Modelo no disponible en la oficina y fechas seleccionadas</span>
+                <div class="bg-gray-800 color-white rounded m-2 p-2">Modelo no disponible en la oficina y fechas seleccionadas</div>
                 <% } %>
     
                 <% if (product.few_available_units) { %>

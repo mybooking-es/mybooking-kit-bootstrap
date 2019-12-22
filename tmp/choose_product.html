@@ -133,7 +133,7 @@
                 <% if (product.availability) { %>
                 <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
                 <% } else { %>
-                <span class="badge badge-secondary p-2"><%= choose_product.model_not_available %></span>
+                <div class="bg-gray-800 color-white rounded m-2 p-2"><%= choose_product.model_not_available %></div>
                 <% } %>
     
                 <% if (product.few_available_units) { %>
