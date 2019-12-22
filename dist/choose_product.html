@@ -128,6 +128,17 @@
                   <% } %>
                 </div>
     
+                <% if (product.key_characteristics) { %>
+                <div>
+                  <% for (characteristic in product.key_characteristics) { %>
+                  <div class="col-md-2">
+                    <img src="assets/images/key_characteristics/car/<%=characteristic%>.svg"/>
+                  </div>
+                  <% } %>
+                </div>  
+    
+                <% } %>
+    
                 <div class="push-down">
                 <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
     
