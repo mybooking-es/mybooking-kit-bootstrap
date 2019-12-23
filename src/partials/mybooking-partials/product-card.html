@@ -25,7 +25,11 @@
             <% if (product.key_characteristics) { %> 
                 <div class="key-characteristics">
                   <% for (characteristic in product.key_characteristics) { %>
-                  <span class="key-icon"><img src="assets/images/key_characteristics/<%=characteristic%>.svg"/><%=product.key_characteristics[characteristic]%></span>  
+                  <div class="key-icon">
+                    <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
+                    <p><%=product.key_characteristics[characteristic]%></p>  
+                  </div>
+                
                   <% } %>
                 </div>
             <% } %>
