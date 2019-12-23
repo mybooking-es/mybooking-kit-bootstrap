@@ -6,9 +6,8 @@
     <div class="magic-card">
         <header class="header-card">
           <div class="product-title">
-            <p class="product-short-description"><%=product.short_description%></p>
             <p class="product-name"><%=product.name%></p>
-            <!-- <p class="color-white"><%=product.description%></p> -->
+            <p class="product-short-description"><%=product.short_description%></p>
           </div>
         </header>
         <div class="separator"></div>
@@ -23,15 +22,12 @@
               <% } %>
             </div>
 
-            <% if (product.key_characteristics) { %>
-            <div>
-              <% for (characteristic in product.key_characteristics) { %>
-              <div class="col-md-2">
-                <img src="assets/images/key_characteristics/car/<%=characteristic%>.svg"/>
-              </div>
-              <% } %>
-            </div>  
-
+            <% if (product.key_characteristics) { %> 
+                <div class="key-characteristics">
+                  <% for (characteristic in product.key_characteristics) { %>
+                  <span class="key-icon"><img src="assets/images/key_characteristics/<%=characteristic%>.svg"/></span>  
+                  <% } %>
+                </div>
             <% } %>
 
             <div class="push-down">
@@ -40,8 +36,8 @@
             <% if (product.availability) { %>
             <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
             <% } else { %>
-            <div class="bg-gray-800 color-white rounded m-2 p-2"><%= choose_product.model_not_available %></div>
-            <% } %>
+            <div class="not-available"><%= choose_product.model_not_available %></div>
+            <% } %> 
 
             <% if (product.few_available_units) { %>
               <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
