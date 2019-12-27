@@ -60,3 +60,86 @@ a.en.visible {
 .pac-container {
     z-index: 10000 !important;
 }
+
+/* DATEPICKER */
+.ui-datepicker {
+    background-color: $white;
+    padding: 5px 10px;
+    position: relative;
+    width: auto;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.17);
+    z-index: 1061 !important;
+    margin-top: 15px;
+    @media(max-width: 767px) {
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important; ;
+        position: fixed !important;
+        margin-top: 50px;
+        height: 100vh !important;
+        .ui-datepicker-group{
+            width: 100%;
+            float: none;
+            margin-bottom: 30px;
+            .ui-datepicker-next{
+                position: absolute;
+                top: 0 !important;
+                right: 15px !important;
+            }
+            &.ui-datepicker-group-last{
+                padding-bottom: 60px;
+                .ui-datepicker-calendar{
+                    border-left: 0 !important;
+                }
+            }
+        }
+        .ui-datepicker-header-desktop{
+             padding-bottom: 10px;
+        }         
+    }
+}
+
+@media(max-width: 767px) {
+  .ui-widget-content {
+      border: none 
+  }
+
+  .ui-corner-all {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+
+  }
+}
+
+.close-calendar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    background-color: #FFF;
+    height: 50px;
+    padding: 15px 20px;
+    border-bottom: 3px solid #e33531;
+    display: none !important;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 1062 !important;
+}
+
+@media (max-width: 767px) {
+  .visible-xs {
+      display: block !important;
+  }
+}
+
+.visible-xs, .visible-sm, .visible-md, .visible-lg {
+    display: none !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: none;
+}
+
+
