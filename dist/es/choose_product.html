@@ -15,12 +15,20 @@
 <!-- trace:tmp/choose_product.html -->
 
     
-    <div class="cta cta__bg cta__text color-whites">
-      <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
-      <span class="mr-auto ml-3">
-        <i class="far fa-envelope"></i>
-        <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
-      </span>
+    <div class="cta cta__bg cta__text">
+      <div class="d-none d-sm-block">
+        <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>
+      <div class="d-block d-sm-none text-center">
+        <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+        <span class="ml50">
+          <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+        </span>
+      </div>
     </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
       <a class="navbar-brand" href="index.html">
         <div class="logo-white"></div>
@@ -91,7 +99,7 @@
     <div class="bg-gray-200 py-5 full-height">
     <!-- Reservation : Pickup/Return information -->
       <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-12 col-lg-3">
             <div id="reservation_detail"></div>
           </div>
@@ -110,7 +118,7 @@
         <% var product = products[idx]; %>
         <div class="magic-card">
             <header class="header-card">
-              <div class="product-title">
+              <div class="product-name-and-short-description">
                 <p class="product-name"><%=product.name%></p>
                 <p class="product-short-description"><%=product.short_description%></p>
               </div>
@@ -160,7 +168,7 @@
       </script>
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
-      <div class="bg-white p-3 mb-5 shadow-bottom">
+      <div class="bg-white p-3 mb-4 shadow-bottom">
       <h4 class="title-small my-3">Detalle de la reserva</h4>
       <h5>Entrega</h5>
       <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>

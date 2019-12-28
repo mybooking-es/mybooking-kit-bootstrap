@@ -1,7 +1,15 @@
-<div class="cta cta__bg cta__text color-whites">
-  <span><i class="fas fa-phone"></i> <a href="{{ global.phone }}">{{ global.phone }}</a></span>
-  <span class="mr-auto ml-3">
-    <i class="far fa-envelope"></i>
-    <a class="color-white" href="mailto:{{ global.email }}">{{ global.email }}</a>
-  </span>
+<div class="cta cta__bg cta__text">
+  <div class="d-none d-sm-block">
+    <span><i class="fas fa-phone"></i> <a href="{{ global.phone }}">{{ global.phone }}</a></span>
+    <span class="mr-auto ml-3">
+      <i class="far fa-envelope"></i>
+      <a class="color-white" href="mailto:{{ global.email }}">{{ global.email }}</a>
+    </span>
+  </div>
+  <div class="d-block d-sm-none text-center">
+    <span class="mr50"><a href="{{ global.phone }}"><i class="fas fa-phone"></i></a></span>
+    <span class="ml50">
+      <a class="color-white" href="mailto:{{ global.email }}"><i class="far fa-envelope"></i></a>
+    </span>
+  </div>
 </div>

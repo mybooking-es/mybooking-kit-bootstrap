@@ -10,9 +10,16 @@
   text-align: center;
   flex-basis: 300px;
   flex-grow: 1;
-  margin: 0 18px 18px 0;
+  margin: 0 10px 20px 10px;
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
   background-color: #f3efe4;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .magic-card {
+    margin: 10px 0;
+  }
 }
 
 .header-card {
@@ -25,7 +32,7 @@
     $brand-secondary
   );
   background: linear-gradient(to right, $brand-primary, $brand-secondary);
-  .product-title {
+  .product-name-and-short-description {
     height: 180px;
   }
   // Grupo
@@ -129,6 +136,7 @@
     position: absolute;
     top: 90px;
     width: 100%;
+    padding: 0 20px;
   }
 }
 
@@ -150,6 +158,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 3rem;
 }
 .magic-row-card_img {
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
@@ -177,8 +186,29 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+// Grupo
+.row-card-product-name {
+  color: $gray-900;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 1.8rem;
+}
+// Nombre
+.row-card-product-short-description {
+  color: $gray-500;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 0.8rem;
+}
+.row-card-price {
+  h2 {
+    color: $brand-primary;
+    font-size: 1.9rem;
+    margin-bottom: 0;
+  }
+}
 .magic-row-card_body-left {
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -187,19 +217,24 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
-  .magic-row-card_icons {
-    text-align: center;
+  width: 40%;
+}
+.magic-row-card_icons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .magic-icon {
     display: flex;
-    flex-wrap: wrap;
-    .magic-icon {
+    flex-direction: row;
+    width: 50%;
+    margin-bottom: 20px;
+    span {
       font-size: 13px;
-      display: flex;
-      // flex-direction: column;
-      align-items: center;
-      width: 50%;
-      margin-bottom: 20px;
       color: $gray-500;
+    }
+    img {
+      height: 30px;
+      width: 30px;
     }
   }
 }
@@ -231,34 +266,61 @@ a.magic-button.btn {
     display: flex;
     height: 250px;
     flex-basis: 70%;
-    margin-left: -20px;
+    margin-left: -10px;
     border-radius: 4px;
+  }
+  .magic-row-card_icons {
+    flex-wrap: wrap;
+    .magic-icon {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
   }
 }
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
+  .magic-row-card {
+    margin-bottom: 1rem;
+  }
   .magic-row-card_body {
     flex-direction: column;
     height: fit-content;
   }
   .magic-row-card_body-left {
     width: 100%;
+    position: relative;
   }
   .magic-row-card_body-right {
-    justify-content: space-between;
     width: 100%;
-    .magic-row-card_icons {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      .magic-icon {
-        width: 50%;
-        margin-bottom: 30px;
+  }
+  .row-card-price {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    h2 {
+      color: $brand-primary;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+    //background-color: $brand-primary;
+  }
+  .magic-row-card_icons {
+    margin-top: 50px;
+    flex-wrap: nowrap;
+    .magic-icon {
+      flex-direction: column;
+      width: 50%;
+      margin-bottom: 20px;
+      align-items: center;
+      text-align: center;
+      span {
+        font-size: 13px;
         color: $gray-500;
       }
-      .fas {
-        color: $brand-primary;
-        font-size: 1.5rem;
+      img {
+        height: 30px;
+        width: 30px;
       }
     }
   }

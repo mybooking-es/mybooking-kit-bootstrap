@@ -14,7 +14,7 @@ active_step: steps.step_2
 <div class="bg-gray-200 py-5 full-height">
 <!-- Reservation : Pickup/Return information -->
   <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-12 col-lg-3">
         <div id="reservation_detail"></div>
       </div>
@@ -30,7 +30,7 @@ active_step: steps.step_2
 
 <!-- Script detailed for reservation summary -->
 <script type="text/tmpl" id="script_reservation_summary">
-  <div class="bg-white p-3 mb-5 shadow-bottom">
+  <div class="bg-white p-3 mb-4 shadow-bottom">
   <h4 class="title-small my-3"><%= choose_product.reservation_summary_title %></h4>
   <h5><%= choose_product.reservation_summary_pickup %></h5>
   <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>
