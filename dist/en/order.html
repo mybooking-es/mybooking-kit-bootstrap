@@ -1,0 +1,284 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities Order</title>
+    <meta name="description" content="Mybooking Basic - Activities - Order"/>
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="order mybooking-activity-order">
+<!-- trace:tmp/order.html -->
+
+    
+    <div class="cta cta__bg cta__text">
+      <div class="d-none d-sm-block">
+        <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>
+      <div class="d-block d-sm-none text-center">
+        <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+        <span class="ml50">
+          <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+        </span>
+      </div>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Home
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Index</a>
+              <a class="dropdown-item" href="index_1.html">Index 1</a>
+              <a class="dropdown-item" href="index_2.html">Index 2</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Conditions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-europe"></i> Language
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item es visible" href="/order.html">Spanish</a>
+              <a class="dropdown-item en visible" href="/en/order.html">English</a>
+              <a class="dropdown-item ca visible" href="/ca/order.html">Catalan</a>
+              <a class="dropdown-item it visible" href="/it/order.html">Italian</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="reservation_detail">
+    </div>
+    
+    <!-- Microtemplates -->
+    <script type="text/tpml" id="script_order">
+    <div class="container-fluid px-0" style="background-color: #3a3e3e">
+      <div class="row no-gutters">
+        <div class="col-12 col-md-6 activities-sidebar">
+          <h1 class="color-white m-5"><%=order.summary_status%></h1>
+          <!-- selected_products -->
+            <% for (idx in order.items) { %>
+            <div class="activity-card">
+              <div class="card-img-bg-color">
+                <div class="activity-card__img">
+                  <img src="<%=order.items[idx].photo_full%>" alt="" />
+                </div>
+                <div class="activity-card__img-text">
+                  <h5 class="card-title color-white"><%=order.items[idx].item_description_customer_translation%></h5>
+                  <p class="card-text color-white"><%= configuration.formatDate(order.items[idx].date) %>
+                    <%= order.items[idx].time %></p>
+                </div>
+              </div>
+              <table class="activity-card_table table table-borderless">
+                <tbody>
+                  <% for (var x=0; x<order.items[idx]['items'].length; x++) { %>
+                  <tr>
+                    <td><%=order.items[idx]['items'][x].quantity %>
+                      <%=order.items[idx]['items'][x].item_price_description %> x
+                      <%=configuration.formatCurrency(order.items[idx]['items'][x].item_unit_cost) %>
+                    </td>
+                    <td class="float-right">
+                      <%=configuration.formatCurrency(order.items[idx]['items'][x].item_cost) %>
+                    </td>
+                  </tr>
+                  <% } %>
+                  <tr>
+                    <td>Total</td>
+                    <td class="fw-700 brand-primary float-right">
+                      <%=configuration.formatCurrency(order.items[idx]['total'])%></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div><!-- /activity-card -->
+            <% } %>
+          <!-- /selected products -->
+        </div><!-- /sidebar -->
+        <div class="col-md-6 activities-content">
+          <div class="widget widget-wrapper">
+            <!-- reservation_detail -->
+              <table class="activity-card_table table table-borderless">
+                <h4 class="color-white">Detalle de la reserva</h4>
+                <tbody>
+                  <tr>
+                    <td>
+                      Importe total
+                    </td>
+                    <td class="float-right">
+                      <%= configuration.formatCurrency(order.total_cost)%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Total pagado
+                    </td>
+                    <td class="float-right">
+                      <%= configuration.formatCurrency(order.total_paid)%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Total pendiente</td>
+                    <td class="fw-700 brand-primary float-right">
+                      <%= configuration.formatCurrency(order.total_pending)%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <!-- /reservation detail -->
+    
+          </div><!-- /widget -->
+    
+          <div class="widget-wrapper">
+            <h4 class="color-white">Datos del cliente</h4>
+            <table class="table table-borderless color-white">
+              <tbody>
+                <tr>
+                  <th scope="row">Nombre:</th>
+                  <td class="float-right"><%=order.customer_name%> <%=order.customer_surname%></td>
+                </tr>
+                <tr>
+                  <th scope="row">Email:</th>
+                  <td class="float-right"><%=order.customer_email%></td>
+                </tr>
+                <tr>
+                  <th scope="row">Teléfono:</th>
+                  <td class="float-right"><%=order.customer_phone%></td>
+                </tr>
+                <% if (order.customer_mobile_phone > 0) { %>
+                <tr>
+                  <th scope="row">Teléfono alternativo:</th>
+                  <td class="float-right"><%=order.customer_mobile_phone%></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+    
+          <!-- Reservation data -->
+            <!-- Payment -->
+            <% if (order.can_pay_deposit || order.can_pay_total)  { %>
+    
+            <div class="widget-wrapper">
+            <form id="form-reservation" name="reservation_form" class="form-delivery" method="post" autocomplete="off">
+            </form>
+    
+            <form id="form-payment" name="payment_form" class="form-delivery" method="post" autocomplete="off">
+              <h4 class="color-white">Pagar</h4>
+              <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
+    
+              <div class="clearfix">
+              <button id="btn_reservation" type="button" class="btn btn-danger float-right">
+                Pagar</button>
+              </div>
+            </form>
+    
+            <div id="reservation_error" class="alert alert-danger" style="display:none">
+            </div>
+    
+            </div>
+    
+    
+            <% } %>
+    
+    
+        </div><!-- /activities-content"-->
+      </div><!-- /row-->
+    </div><!-- /container -->
+    
+    
+    </script>
+    
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Company name</li>
+          <li>88888888</li>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Quinoa</a></li>
+          <li><a href="#">Palo Santo</a></li>
+          <li><a href="#">Apple</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Condiciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Siguenos</h6>
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix my-2"></div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/mybooking-engine-init-activities.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>

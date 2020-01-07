@@ -58,7 +58,11 @@ a.en.visible {
 }
 // Google Autocomplete
 .pac-container {
-    z-index: 10000 !important;
+  z-index: 10000 !important;
+}
+.reservation-summary-separator {
+  border-right: 1px solid $gray-300;
+  margin: 0 10px;
 }
 
 /* DATEPICKER */

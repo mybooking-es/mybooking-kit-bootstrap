@@ -95,14 +95,14 @@
     
     <!-- Result -->
     
-    <div class="bg-gray-200 py-5 full-height">
+    <div class="bg-gray-200 p-3 full-height">
     <!-- Reservation : Pickup/Return information -->
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-12 col-lg-3">
+          <div class="col-12">
             <div id="reservation_detail"></div>
           </div>
-          <div class="col-12 col-lg-8">
+          <div class="col-12">
             <div id="product_listing" class="mb-5"></div>
           </div>
         </div>
@@ -167,21 +167,22 @@
       </script>
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
-      <div class="bg-white p-3 mb-4 shadow-bottom">
-      <h4 class="title-small my-3"><%= choose_product.reservation_summary_title %></h4>
-      <h5><%= choose_product.reservation_summary_pickup %></h5>
+      <div class="bg-white p-3 mb-4 shadow-bottom d-flex justify-content-between detail-reservation-mini">
+      <div>
       <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></p>
-      <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.pickup_place_customer_translation%></p>
-      <hr>
-      <h5><%= choose_product.reservation_summary_return %></h5>
+      <p class="color-gray-700 mb-0"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.pickup_place_customer_translation%></p>
+      </div>
+      <div class="reservation-summary-separator"></div>
+      <div>
       <p class="color-gray-700"><span><i class="fa fa-calendar mr-1" aria-hidden="true"></i></span><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></p>
-      <p class="color-gray-700"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
-      <hr>
+      <p class="color-gray-700 mb-0"><span><i class="fa fa-map-marker mr-1" aria-hidden="true"></i></span><%=shopping_cart.return_place_customer_translation%></p>
+      </div>
+      <div>
       <!-- Button trigger modal -->
-      <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal"><%= choose_product.modify_reservation %></button> 
+      <button id="modify_reservation_button" class="btn btn-outline-dark" data-toggle="modal" data-target="#choose_productModal"><i class="far fa-edit"></i></button>
+      </div>
       </div>
     </script>
-    
     <!-- FLEX-FORM-MODIFY MODAL -->
     <!-- Modal -->
     <div class="modal fade" id="choose_productModal" tabindex="-1" role="dialog" aria-labelledby="choose_productModal"
