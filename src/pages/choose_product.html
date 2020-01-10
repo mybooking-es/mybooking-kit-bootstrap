@@ -10,20 +10,12 @@ active_step: steps.step_2
 {{> steps }}
 
 <!-- Result -->
-
-<div class="bg-gray-200 p-3 full-height">
 <!-- Reservation : Pickup/Return information -->
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div id="reservation_detail"></div>
-      </div>
-      <div class="col-12">
-        <div id="product_listing" class="mb-5"></div>
-      </div>
-    </div>
-  </div>
+<div id="reservation_detail" class="sticky-top"></div>
+<div class="bg-gray-200 px-3 py-5 full-heigh">
+<div id="product_listing" class="mb-5"></div>
 </div>
+
 
 <!-- Script detailed product for choose_product -->
 {{> product-card }}

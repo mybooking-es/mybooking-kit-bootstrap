@@ -1,0 +1,41 @@
+.reservation-summary-mini {
+  display: flex;
+  background-color: darken($brand-primary, 40%);
+  padding: 0.6rem 1rem;
+  flex-direction: row;
+  justify-content: space-around;
+  .modify-button {
+    button {
+      background-color: transparent;
+    }
+    i {
+      font-size: 1.5rem;
+      color: $brand-primary;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: darken($brand-primary, 10%);
+      }
+    }
+  }
+}
+.reservation-summary-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  p:first-child {
+    margin-right: 1rem;
+  }
+  p {
+    color: $gray-400;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+}
+.reservation-summary-separator {
+  // border-right: 1px solid $transparent-white;
+  margin: 0 3rem;
+  i {
+    color: $gray-400;
+  }
+}

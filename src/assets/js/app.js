@@ -38,7 +38,7 @@ $(document).ready(function() {
       is_mobile = true;
     }
     if (!is_mobile) {
-      $(window).on("scroll", function() {       
+      $(window).on("scroll", function() {
         if ($(".navbar-toggler").is(":visible")) {
           $("#form-selector").removeClass("flex-form-sticky");
         } else if ($(window).scrollTop() > height) {
@@ -50,6 +50,20 @@ $(document).ready(function() {
     }
   }
 });
+
+// Modify reservation sticky
+// $(document).ready(function() {
+//   if (typeof $(".sticky-modify").offset() !== "undefined") {
+//     var heighSticky = $(".sticky-modify").offset().top;
+//     if ($(window).scrollTop() > heighSticky) {
+//       $(".reservation-summary-mini").removeClass("shadow-bottom");
+//       $(".reservation-summary-mini").addClass("modify-is-sticky");
+//     } else {
+//       $(".reservation-summary-mini").addClass("shadow-bottom");
+//       $(".reservation-summary-mini").removeClass("modify-is-sticky");
+//     }
+//   }
+// });
 
 // Go top button
 jQuery(document).ready(function($) {
