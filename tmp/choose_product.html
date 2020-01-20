@@ -155,12 +155,17 @@
           <i class="fas fa-long-arrow-alt-right"></i>
         </div>
         <div class="reservation-summary-item">
-          <!-- Devolución (muestra lugar sólo cuando es diferente) -->
+          <!-- Devolución (en móbil muestra lugar sólo cuando es diferente) -->
           <% if ( shopping_cart.pickup_place_customer_translation !== shopping_cart.return_place_customer_translation) { %>
             <p>
               <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
               <span class="bold-on-mobile"><%=shopping_cart.return_place_customer_translation%></span>
             </p>
+          <% } else { %>
+            <p>
+              <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
+              <span class="bold-on-mobile d-none d-md-block"><%=shopping_cart.return_place_customer_translation%></span>
+            </p> 
           <% } %>
           <p><%=shopping_cart.date_to_short_format%> - <%=shopping_cart.time_to%></p>
         </div>
