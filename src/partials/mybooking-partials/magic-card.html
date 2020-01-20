@@ -1,10 +1,11 @@
 <!-- Script detailed product for choose_product -->
 <script type="text/tpml" id="script_detailed_product">
-  <div class="magic-cards">
+  <div class="magic-cards-container">
   <% for (var idx=0;idx<products.length; idx++) { %>
     <% var product = products[idx]; %>
+    <div class="magic-card-wrapper">
     <div class="magic-card">
-        <header class="header-card">
+        <header class="magic-card-header">
           <div class="product-name-and-short-description">
             <p class="product-name"><%=product.name%></p>
             <p class="product-short-description"><%=product.short_description%></p>
@@ -50,6 +51,7 @@
             </div>
         </section>
     </div>
+  </div>
     <% } %>
   </div>
   </script>

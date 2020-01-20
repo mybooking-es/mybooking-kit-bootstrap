@@ -12,14 +12,12 @@ active_step: steps.step_2
 <!-- Result -->
 <!-- Reservation : Pickup/Return information -->
 <div id="reservation_detail" class="sticky-top"></div>
-<div class="bg-gray-200 px-3 py-5 full-heigh">
-<div id="product_listing" class="mb-5"></div>
-</div>
-
+<!-- Product card listing -->
+<div id="product_listing" class="bg-gray-200"></div>
 
 <!-- Script detailed product for choose_product -->
-{{> product-card }}
-
-{{> reservation-summary-mini }}
-
+{{> magic-card-horizontal }}
+<!-- Script for Pickup/Return information -->
+{{> reservation-summary-sticky }}
+<!-- Modal for Pickup/Return information -->
 {{> modal_modify_reservation }}

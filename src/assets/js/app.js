@@ -51,20 +51,6 @@ $(document).ready(function() {
   }
 });
 
-// Modify reservation sticky
-// $(document).ready(function() {
-//   if (typeof $(".sticky-modify").offset() !== "undefined") {
-//     var heighSticky = $(".sticky-modify").offset().top;
-//     if ($(window).scrollTop() > heighSticky) {
-//       $(".reservation-summary-mini").removeClass("shadow-bottom");
-//       $(".reservation-summary-mini").addClass("modify-is-sticky");
-//     } else {
-//       $(".reservation-summary-mini").addClass("shadow-bottom");
-//       $(".reservation-summary-mini").removeClass("modify-is-sticky");
-//     }
-//   }
-// });
-
 // Go top button
 jQuery(document).ready(function($) {
   // browser window scroll (in pixels) after which the "back to top" link is shown
