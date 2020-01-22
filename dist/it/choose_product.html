@@ -93,6 +93,63 @@
     <!-- Script detailed product for choose_product -->
     <!-- Script detailed product for choose_product -->
     <script type="text/tpml" id="script_detailed_product">
+<<<<<<< HEAD
+      <div class="magic-cards-container">
+      <% for (var idx=0;idx<products.length; idx++) { %>
+        <% var product = products[idx]; %>
+        <div class="magic-card-wrapper">
+        <div class="magic-card">
+            <header class="magic-card-header">
+              <div class="product-name-and-short-description">
+                <p class="product-name"><%=product.name%></p>
+                <p class="product-short-description"><%=product.short_description%></p>
+              </div>
+            </header>
+            <div class="separator"></div>
+            <section class="footer-card">
+              <div class="img-wrapper">
+            <img src="<%=product.photo%>" class="product-image"></div>
+                <div class="variable-content">
+                  <% if (product.price != product.base_price) { %>
+                    <% if (product.offer_discount_type == 'percentage') { %>
+                      <p class="offer"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
+                    <% } %>
+                  <% } %>
+                </div>
+    
+                <% if (product.key_characteristics) { %> 
+                    <div class="key-characteristics">
+                      <% for (characteristic in product.key_characteristics) { %>
+                      <div class="key-icon">
+                        <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
+                        <p><%=product.key_characteristics[characteristic]%></p>  
+                      </div>
+                    
+                      <% } %>
+                    </div>
+                <% } %>
+    
+                <div class="push-down">
+                <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+    
+                <% if (product.availability) { %>
+                <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>">Selezionare</a>
+                <% } else { %>
+                <div class="not-available">Modello non disponibile in ufficio e date selezionate</div>
+                <% } %> 
+    
+                <% if (product.few_available_units) { %>
+                  <p class="text-danger mt-3">Sono rimaste poche unità!</p>
+                <% } %>
+                
+                </div>
+            </section>
+        </div>
+      </div>
+        <% } %>
+      </div>
+      </script><!-- Script for Pickup/Return information -->
+=======
       <div class="magic-card-horizontal-wrapper">
       <% for (var idx=0;idx<products.length; idx++) { %>
         <% var product = products[idx]; %>
@@ -140,6 +197,7 @@
         <% } %>
       </div>
     </script><!-- Script for Pickup/Return information -->
+>>>>>>> d759c784fc17382cece797d552f15fabef59e320
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
       <div class="reservation-summary-sticky-wrapper">
