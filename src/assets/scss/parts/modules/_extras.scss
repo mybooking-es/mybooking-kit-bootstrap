@@ -1,6 +1,30 @@
 //==============================================
-// Module/extras for complete
+// Module/extras for complete reservation detail
 //==============================================
+
+.reservation-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+.reservation-detail-image-container {
+  display: flex;
+  flex-grow: 2;
+  .reservation-detail-image-wrapper {
+    max-width: 200px;
+  }
+}
+.reservation-detail-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .reservation-detail-container {
+    flex-direction: row;
+  }
+}
 
 // custom style para el swith de extras en complete
 .custom-control-input:checked ~ .custom-control-label::before {
@@ -15,22 +39,6 @@
 .card-img {
   padding: 12px;
   max-width: 100%;
-}
-.card-columns {
-  column-count: 1;
-}
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .card-columns {
-    column-count: 2;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .card-columns {
-    column-count: 3;
-  }
 }
 
 // List group para los extras en complete y summary

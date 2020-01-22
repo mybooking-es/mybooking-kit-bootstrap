@@ -1,8 +1,9 @@
 // Complete & summary
-.product-detail {
+.product-detail-container {
   padding: 30px;
   background: $white;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -17,6 +18,15 @@
     padding: 0;
     color: $gray-600;
     line-height: 1;
+  }
+}
+.product-detail-content {
+  display: flex;
+  flex-direction: column;
+}
+.product-detail-image {
+  img {
+    max-width: 300px;
   }
 }
 .grupo {
@@ -38,8 +48,13 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .product-detail {
+  .product-detail-container {
     margin-top: 0;
     flex-direction: row;
+  }
+  .product-detail-image {
+    img {
+      max-width: 600px;
+    }
   }
 }
