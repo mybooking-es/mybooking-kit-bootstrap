@@ -1,5 +1,9 @@
 window.mybookingEngine = (function() {
+<<<<<<< HEAD
   var baseURL = "https://doncars.mybooking.es";
+=======
+  var baseURL = "https://demo-rentacar.mybooking.es";
+>>>>>>> d759c784fc17382cece797d552f15fabef59e320
   var apiKey = "";
   var extrasStep = false;
   var chooseProductUrl = "choose_product.html";
