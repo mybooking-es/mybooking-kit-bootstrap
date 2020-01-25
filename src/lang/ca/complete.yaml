@@ -69,4 +69,11 @@ customer_flight: Vol
 customer_flight_company: Companyia
 customer_flight_number: Nombre de vol
 customer_flight_time: Hora prevista
-
+# Conditions and complete the process
+request_reservation: Sol.licitar reserva
+pay_on_delivery: Pagar en destí
+pay_now: Pagar ara
+confirm: Confirmar
+paypal: Paypal
+credit_card: Tarjeta de crèdit/dèbit
+confirm_conditions: He llegit i accepto els termes i les condicions

@@ -347,21 +347,21 @@
              <% if (sales_process.can_request) { %>
                <div class="form-group col-md-12">
                  <label for="payments_paypal_standard">
-                  <input type="radio" name="complete_action" value="request_reservation" class="complete_action">&nbsp;Solicitud de reserva
+                  <input type="radio" name="complete_action" value="request_reservation" class="complete_action">&nbsp;<%= complete.request_reservation %>
                  </label>
                </div>
              <% } %>
              <% if (sales_process.can_pay_on_delivery) { %>
                <div class="form-group col-md-12">
                  <label for="payments_paypal_standard">
-                  <input type="radio" name="complete_action" value="pay_on_delivery" class="complete_action">&nbsp;Pagar en destino
+                  <input type="radio" name="complete_action" value="pay_on_delivery" class="complete_action">&nbsp;<%= complete.pay_on_delivery %>
                  </label>
                </div>
              <% } %>
              <% if (sales_process.can_pay) { %>
              <div class="form-group col-md-12">
                <label for="payments_paypal_standard">
-                <input type="radio" name="complete_action" value="pay_now" class="complete_action">&nbsp;Pagar ahora
+                <input type="radio" name="complete_action" value="pay_now" class="complete_action">&nbsp;<%= complete.pay_on_delivery %>
                </label>
              </div>
              <% } %>
@@ -377,7 +377,7 @@
               <div class="form-row">  
                 <div class="form-group col-md-12">
                   <label for="payments_paypal_standard">
-                    <input type="checkbox" id="conditions_read_request_reservation" name="conditions_read_request_reservation">&nbsp;Acepto los términos y condiciones y la política de privacidad
+                    <input type="checkbox" id="conditions_read_request_reservation" name="conditions_read_request_reservation">&nbsp;<%= complete.confirm_conditions %>
                   </label>
                 </div>
               </div>   
@@ -402,14 +402,14 @@
                     <div class="form-row">  
                       <div class="form-group col-md-12">
                         <label for="payments_paypal_standard">
-                          <input type="checkbox" id="conditions_read_payment_on_delivery" name="conditions_read_payment_on_delivery">&nbsp;Acepto los términos y condiciones y la política de privacidad
+                          <input type="checkbox" id="conditions_read_payment_on_delivery" name="conditions_read_payment_on_delivery">&nbsp;<%= complete.confirm_conditions %>
                         </label>
                       </div>
                     </div>   
     
                     <div class="form-row">
                       <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-outline-dark">Confirmar</button>
+                        <button type="submit" class="btn btn-outline-dark"><%= complete.confirm %></button>
                       </div>
                     </div>  
                 </div>
@@ -436,13 +436,13 @@
                         <div class="form-row">  
                            <div class="form-group col-md-12">
                              <label for="payments_paypal_standard">
-                              <input type="radio" id="payments_paypal_standard" name="payment_method_select" class="payment_method_select" value="paypal_standard">&nbsp;Paypal
+                              <input type="radio" id="payments_paypal_standard" name="payment_method_select" class="payment_method_select" value="paypal_standard">&nbsp;<%= complete.paypal %>
                               <img src="/assets/images/pm-paypal.jpg"/>
                              </label>
                            </div>
                            <div class="form-group col-md-12">
                              <label for="payments_credit_card">
-                              <input type="radio" id="payments_credit_card" name="payment_method_select" class="payment_method_select" value="<%=sales_process.payment_methods.tpv_virtual%>">&nbsp;Tarjeta de crédito/débito
+                              <input type="radio" id="payments_credit_card" name="payment_method_select" class="payment_method_select" value="<%=sales_process.payment_methods.tpv_virtual%>">&nbsp;<%= complete.credit_card %>
                               <img src="/assets/images/pm-visa.jpg"/>
                               <img src="/assets/images/pm-mastercard.jpg"/>
                              </label>
@@ -463,7 +463,7 @@
                     <div class="form-row">  
                       <div class="form-group col-md-12">
                         <label for="payments_paypal_standard">
-                          <input type="checkbox" id="conditions_read_pay_now" name="conditions_read_pay_now">&nbsp;Acepto los términos y condiciones y la política de privacidad
+                          <input type="checkbox" id="conditions_read_pay_now" name="conditions_read_pay_now">&nbsp;<%= complete.confirm_conditions %>
                         </label>
                       </div>
                     </div>   
