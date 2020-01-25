@@ -151,39 +151,39 @@
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
       <div class="reservation-summary-sticky-wrapper">
-      <div class="reservation-summary-sticky">
-        <div class="reservation-summary-item">
-          <!-- primer bloque Recogida -->
-          <p>
-            <span class="fw-700 d-none d-md-block mr-2">Recogida</span>
-            <span class="bold-on-mobile"><%=shopping_cart.pickup_place_customer_translation%></span>
-          </p>
-          <p><%=shopping_cart.date_from_short_format%> - <%=shopping_cart.time_from%></p>
-        </div>
-        <div class="reservation-summary-separator">
-          <i class="fas fa-long-arrow-alt-right"></i>
-        </div>
-        <div class="reservation-summary-item">
-          <!-- Devolución (en móbil muestra lugar sólo cuando es diferente) -->
-          <% if ( shopping_cart.pickup_place_customer_translation !== shopping_cart.return_place_customer_translation) { %>
+        <div class="reservation-summary-sticky">
+          <div class="reservation-summary-item">
+            <!-- primer bloque Recogida -->
             <p>
-              <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
-              <span class="bold-on-mobile"><%=shopping_cart.return_place_customer_translation%></span>
+              <span class="fw-700 d-none d-md-block mr-2">Recogida</span>
+              <span class="bold-on-mobile"><%=shopping_cart.pickup_place_customer_translation%></span>
             </p>
-          <% } else { %>
-            <p>
-              <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
-              <span class="bold-on-mobile d-none d-md-block"><%=shopping_cart.return_place_customer_translation%></span>
-            </p> 
-          <% } %>
-          <p><%=shopping_cart.date_to_short_format%> - <%=shopping_cart.time_to%></p>
-        </div>
-        <!-- Button trigger modal -->
-        <div class="modify-button">
-        <button id="modify_reservation_button" data-toggle="modal" data-target="#choose_productModal"><i class="far fa-edit"></i></button>
+            <p><%=shopping_cart.date_from_short_format%> - <%=shopping_cart.time_from%></p>
+          </div>
+          <div class="reservation-summary-separator">
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </div>
+          <div class="reservation-summary-item">
+            <!-- Devolución (en móbil muestra lugar sólo cuando es diferente) -->
+            <% if ( shopping_cart.pickup_place_customer_translation !== shopping_cart.return_place_customer_translation) { %>
+              <p>
+                <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
+                <span class="bold-on-mobile"><%=shopping_cart.return_place_customer_translation%></span>
+              </p>
+            <% } else { %>
+              <p>
+                <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
+                <span class="bold-on-mobile d-none d-md-block"><%=shopping_cart.return_place_customer_translation%></span>
+              </p> 
+            <% } %>
+            <p><%=shopping_cart.date_to_short_format%> - <%=shopping_cart.time_to%></p>
+          </div>
+          <!-- Button trigger modal -->
+          <div class="modify-button">
+            <button id="modify_reservation_button" data-toggle="modal" data-target="#choose_productModal"><i class="far fa-edit"></i></button>
+          </div>
         </div>
       </div>
-    </div>
     </script><!-- Modal for Pickup/Return information -->
     <!-- FLEX-FORM-MODIFY MODAL -->
     <!-- Modal -->
