@@ -37,3 +37,8 @@ reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Totale
 reservation_summary_deposit: Deposito cauzionale
 reservation_summary_deposit_detail: Il deposito cauzionale verrà restituito alla riconsegna del prodotto
+# Pay
+pay: Pagamento
+pay_button: Pagare
+paypal: Paypal
+credit_card: Carta di credito

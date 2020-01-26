@@ -37,3 +37,8 @@ reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Total
 reservation_summary_deposit: Deposit
 reservation_summary_deposit_detail: The deposit will be returned after the return of the product
+# Pay
+pay: Payment
+pay_button: Pay
+paypal: Paypal
+credit_card: Credit card

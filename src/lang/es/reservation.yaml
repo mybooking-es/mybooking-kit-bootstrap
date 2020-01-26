@@ -37,3 +37,8 @@ reservation_summary_fuel_supplement: Suplemento combustible
 reservation_summary_total: Importe total
 reservation_summary_deposit: Fianza
 reservation_summary_deposit_detail: La fianza se devolverá tras las devolución del producto
+# Pay
+pay: Pago
+pay_button: Pagar
+paypal: Paypal
+credit_card: Tarjeta de crédito/débito
