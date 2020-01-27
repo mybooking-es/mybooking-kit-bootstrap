@@ -5,7 +5,7 @@ layout: default
 {{> cta }}
 {{> nav }}
 
-<div class="bg-gray-200 full-height custom-form">
+<div class="bg-gray-200 full-height custom-form pb-5">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -15,7 +15,6 @@ layout: default
   </div>
   <div id="reservation_detail"></div>
 </div>
-
 
 <!-- Reservation summary -->
 <script type="text/tmpl" id="script_reservation_summary">
@@ -73,9 +72,10 @@ layout: default
               <% } %>
             </tbody>
           </table>
-        </div>
-        <div id="payment_detail" class="row"></div>
-      </div>
+        </div><!-- /.table -->
+      </div><!-- / col -->
+      <div id="reservation_form_container" class="col bg-white shadow-bottom py-3 px-3" style="display:none"></div> 
+
     </div>
     <!-- Sidebar -->
     <div class="col-md-4">
@@ -139,7 +139,19 @@ layout: default
         <hr>
         <h5 class="brand-primary"><%= reservation.reservation_summary_total %></h5>
         <p class="total-price"><%=configuration.formatCurrency(booking.total_cost)%></p>
+
+        <hr>
+        <h6><%= reservation.reservation_total_paid %></h5>
+        <p class="total-price"><%=configuration.formatCurrency(booking.total_paid)%></p>
+
+        <hr>
+        <h6><%= reservation.reservation_total_pending %></h5>
+        <p class="total-price <% if (booking.total_pending > 0){ %>text-danger<%}%>"><%=configuration.formatCurrency(booking.total_pending)%></p>
+
       </div><!-- /.col.sidebar -->
+      <div id="payment_detail" class="col bg-white shadow-bottom py-3 px-3" style="display:none"></div>
+      <br>
+
     </div><!-- /col -->
   </div><!-- /row -->
 </div><!-- /container-fluid -->
@@ -151,41 +163,42 @@ layout: default
 
   <form id="form-reservation" name="booking_information_form" autocomplete="off">
     <!-- Customer address -->
-    <h4 class="brand-primary my-3"><?php _e('Dirección del cliente', 'mybooking') ?></h4>
+    <h4 class="brand-primary my-3"><%= reservation.customer_adress_title %></h4>
+
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="street"><?php _e('Dirección', 'mybooking') ?></label>
+        <label for="street"><%= reservation.customer_adress_street %></label>
         <input class="form-control" id="street" name="customer_address[street]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Dirección', 'mybooking') ?>")%>" value="<%=booking.address_street%>" maxlength="60">
+          placeholder="<%= reservation.customer_adress_street %>" value="<%=booking.address_street%>" maxlength="60">
       </div>
       <div class="form-group col-md-6">
-        <label for="number"><?php _e('Número', 'mybooking') ?></label>
+        <label for="number"><%= reservation.customer_adress_number %></label>
         <input class="form-control" id="number" name="customer_address[number]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Número', 'mybooking') ?>")%>" value="<%=booking.address_number%>" maxlength="10">
+          placeholder="<%= reservation.customer_adress_number %>" value="<%=booking.address_number%>" maxlength="10">
       </div>
       <div class="form-group col-md-6">
-        <label for="complement"><?php _e('Complemento (piso/puerta)', 'mybooking') ?></label>
+        <label for="complement"><%= reservation.customer_adress_complement %></label>
         <input class="form-control" id="complement" name="customer_address[complement]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Complemento (piso/puerta)', 'mybooking') ?>")%>" value="<%=booking.address_complement%>"  max_length="20">
+          placeholder="<%= reservation.customer_adress_complement %>" value="<%=booking.address_complement%>"  max_length="20">
       </div>
       <div class="form-group col-md-6">
-        <label for="city"><?php _e('Ciudad', 'mybooking') ?></label>
+        <label for="city"><%= reservation.customer_adress_city %></label>
         <input class="form-control" id="city" name="customer_address[city]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Ciudad', 'mybooking') ?>")%>" value="<%=booking.address_city%>" max_length="60">
+          placeholder="<%= reservation.customer_adress_city %>" value="<%=booking.address_city%>" max_length="60">
       </div>
       <div class="form-group col-md-6">
-        <label for="state"><?php _e('Provincia', 'mybooking') ?></label>
+        <label for="state"><%= reservation.customer_adress_province %></label>
         <input class="form-control" id="state" name="customer_address[state]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Provincia', 'mybooking') ?>")%>" value="<%=booking.address_state%>"  max_length="60">
+          placeholder="<%= reservation.customer_adress_province %>" value="<%=booking.address_state%>"  max_length="60">
       </div>
       <div class="form-group col-md-6">
-        <label for="state"><?php _e('Código Postal', 'mybooking') ?></label>
+        <label for="state"><%= reservation.customer_zip %></label>
         <input class="form-control" id="zip" name="customer_address[zip]" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Provincia', 'mybooking') ?>")%>" value="<%=booking.zip%>"  max_length="10">
+          placeholder="<%= reservation.customer_zip %>" max_length="10" value="<%=booking.address_zip%>">
       </div>      
       <div class="form-group col-md-6">
-        <label class="full-width" for="country"><?php _e('País', 'mybooking') ?>
-          <i class="fa custom-icon fa-angle-down"></i>
+        <label class="full-width" for="country"><%= reservation.customer_adress_country %>
+          <i class="fas custom-icon fa-angle-down"></i>
           <select name="customer_address[country]" id="country" class="form-control">
             <option value="AF">Afganistán</option>
             <option value="AL">Albania</option>
@@ -424,48 +437,49 @@ layout: default
           </select>
         </label>
       </div>
-    </div>
+    </div>  
+ 
     <!-- Driver information -->
-    <h4 class="brand-primary my-3"><?php _e('Datos del conductor', 'mybooking') ?></h4>
+    <h4 class="brand-primary my-3"><%= reservation.customer_driver_data %></h4>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="driver_name"><?php _e('Nombre del conductor', 'mybooking') ?></label>
+        <label for="driver_name"><%= reservation.customer_driver_name %></label>
         <input class="form-control" id="driver_name" name="driver_name" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Nombre del conductor', 'mybooking') ?>")%>" value="<%=booking.driver_name%>"
+          placeholder="<%= reservation.customer_driver_name %>" value="<%=booking.driver_name%>"
           maxlength="40">
       </div>
       <div class="form-group col-md-6">
-        <label for=""><?php _e('Apellidos del conductor', 'mybooking') ?></label>
+        <label for="driver_surname"><%= reservation.customer_driver_surname %></label>
         <input class="form-control" id="driver_surname" name="driver_surname" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Apellidos del conductor', 'mybooking') ?>")%>" value="<%=booking.driver_surname%>"
+          placeholder="<%= reservation.customer_driver_surname %>" value="<%=booking.driver_surname%>"
           maxlength="40">
       </div>
     </div>
     <div class="form-row">        
       <div class="form-group col-md-6">
-        <label for="driver_document_id"><?php _e('Nif o pasaporte del conductor', 'mybooking') ?></label>
+        <label for="driver_document_id"><%= reservation.customer_driver_passport %></label>
         <input class="form-control" id="driver_document_id" name="driver_document_id" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Nif o pasaporte del conductor', 'mybooking') ?>")%>" value="<%=booking.driver_document_id%>"
+          placeholder="<%= reservation.customer_driver_passport %>" value="<%=booking.driver_document_id%>"
           maxlength="50">
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_document_id_date"><?php _e('Fecha de expedición', 'mybooking') ?></label>
+          for="driver_document_id_date"><%= reservation.customer_driver_driving_license_date %></label>
         <div class="custom-date-form">
           <div class="custom-date-item">
             <select name="driver_document_id_date_day" id="driver_document_id_date_day"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_document_id_date_month" id="driver_document_id_date_month"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_document_id_date_year" id="driver_document_id_date_year"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
         </div>
         <input type="hidden" name="driver_document_id_date" id="driver_document_id_date"></input>
@@ -474,30 +488,30 @@ layout: default
     <div class="form-row">  
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_number"><?php _e('Número del carnet de conducir', 'mybooking') ?></label>
+          for="driver_driving_license_number"><%= reservation.customer_driver_driving_license_number %></label>
         <input class="form-control" id="driver_driving_license_number" name="driver_driving_license_number"
-          type="text" placeholder="<%=configuration.escapeHtml("<?php _e('Número del carnet de conducir', 'mybooking') ?>")%>" 
+          type="text" placeholder="<%= reservation.customer_driver_driving_license_number %>" 
           value="<%=booking.driver_driving_license_number%>" 
           maxlength="50">
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_date"><?php _e('Fecha expedición carnet de conducir', 'mybooking') ?></label>
+          for="driver_driving_license_date"><%= reservation.customer_driver_driving_license_date %></label>
         <div class="custom-date-form">
           <div class="custom-date-item">
             <select name="driver_driving_license_date_day" id="driver_driving_license_date_day"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_driving_license_date_month" id="driver_driving_license_date_month"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_driving_license_date_year" id="driver_driving_license_date_year"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
         </div>
         <input type="hidden" name="driver_driving_license_date" id="driver_driving_license_date"></input>
@@ -506,8 +520,8 @@ layout: default
     <div class="form-row">      
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_country"><?php _e('País de expedición carnet de conducir', 'mybooking') ?>
-          <i class="fa custom-icon fa-angle-down"></i>
+          for="driver_driving_license_country"><%= reservation.customer_driver_driving_license_country %>
+          <i class="fas custom-icon fa-angle-down"></i>
           <select name="driver_driving_license_country" id="driver_driving_license_country"
             class="form-control">
             <option value="AF">Afganistán</option>
@@ -749,41 +763,41 @@ layout: default
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_date_of_birth"><?php _e('Fecha de nacimiento del conductor', 'mybooking') ?></label>
+          for="driver_date_of_birth"><%= reservation.customer_driver_date_of_birth %></label>
         <div class="custom-date-form">
           <div class="custom-date-item">
             <select name="driver_date_of_birth_day" id="driver_date_of_birth_day"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_date_of_birth_month" id="driver_date_of_birth_month"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="driver_date_of_birth_year" id="driver_date_of_birth_year"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
         </div>
         <input type="hidden" name="driver_date_of_birth" id="driver_date_of_birth"></input>
       </div>
     </div>
     <!-- Additional drivers -->
-    <h4 class="brand-primary my-3"><?php _e('Conductores adicionales', 'mybooking') ?></h4>
+    <h4 class="brand-primary my-3"><%= reservation.additional_drivers %></h4>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="driver_name"><?php _e('Nombre del conductor', 'mybooking') ?></label>
+        <label for="driver_name"><%= reservation.customer_driver_name %></label>
         <input class="form-control" id="additional_driver_1_name" name="additional_driver_1_name" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Nombre del conductor', 'mybooking') ?>")%>" 
+          placeholder="<%= reservation.customer_driver_name %>" 
           value="<%=booking.additional_driver_1_name%>"
           maxlength="40">
       </div>
       <div class="form-group col-md-6">
-        <label for=""><?php _e('Apellidos del conductor', 'mybooking') ?></label>
+        <label for="additional_driver_1_surname"><%= reservation.customer_driver_surname %></label>
         <input class="form-control" id="additional_driver_1_surname" name="additional_driver_1_surname" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Apellidos del conductor', 'mybooking') ?>")%>" 
+          placeholder="<%= reservation.customer_driver_surname %>" 
           value="<%=booking.additional_driver_1_surname%>"
           maxlength="40">
       </div>
@@ -791,38 +805,38 @@ layout: default
     <div class="form-row">
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_number"><?php _e('Número del carnet de conducir', 'mybooking') ?></label>
+          for="additional_driver_1_driving_license_number"><%= reservation.customer_driver_driving_license_number %></label>
         <input class="form-control" id="additional_driver_1_driving_license_number" name="additional_driver_1_driving_license_number"
-          type="text" placeholder="<%=configuration.escapeHtml("<?php _e('Número del carnet de conducir', 'mybooking') ?>")%>" 
+          type="text" placeholder="<%= reservation.customer_driver_driving_license_number %>" 
           value="<%=booking.additional_driver_1_driving_license_number%>"
           maxlength="50">
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_date"><?php _e('Fecha expedición carnet de conducir', 'mybooking') ?></label>
+          for="driver_driving_license_date"><%= reservation.customer_driver_driving_license_date %></label>
         <div class="custom-date-form">
           <div class="custom-date-item">
             <select name="additional_driver_1_driving_license_date_day" id="additional_driver_1_driving_license_date_day"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="additional_driver_1_driving_license_date_month" id="additional_driver_1_driving_license_date_month"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="additional_driver_1_driving_license_date_year" id="additional_driver_1_driving_license_date_year"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
         </div>
         <input type="hidden" name="additional_driver_1_driving_license_date" id="additional_driver_1_driving_license_date"></input>
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_country"><?php _e('País de expedición carnet de conducir', 'mybooking') ?>
-          <i class="fa custom-icon fa-angle-down"></i>
+          for="driver_driving_license_country"><%= reservation.customer_driver_driving_license_country %>
+          <i class="fas custom-icon fa-angle-down"></i>
           <select name="additional_driver_1_driving_license_country" id="additional_driver_1_driving_license_country"
             class="form-control">
             <option value="AF">Afganistán</option>
@@ -1067,16 +1081,16 @@ layout: default
     <hr>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="driver_name"><?php _e('Nombre del conductor', 'mybooking') ?></label>
+        <label for="additional_driver_2_name"><%= reservation.customer_driver_name %></label>
         <input class="form-control" id="additional_driver_2_name" name="additional_driver_2_name" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Nombre del conductor', 'mybooking') ?>")%>" 
+          placeholder="<%= reservation.customer_driver_name %>" 
           value="<%=booking.additional_driver_2_name%>"
           maxlength="40">
       </div>
       <div class="form-group col-md-6">
-        <label for=""><?php _e('Apellidos del conductor', 'mybooking') ?></label>
+        <label for="additional_driver_2_surname"><%= reservation.customer_driver_surname %></label>
         <input class="form-control" id="additional_driver_2_surname" name="additional_driver_2_surname" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Apellidos del conductor', 'mybooking') ?>")%>" 
+          placeholder="<%= reservation.customer_driver_surname %>" 
           value="<%=booking.additional_driver_2_surname%>"
           maxlength="40">
       </div>
@@ -1084,38 +1098,38 @@ layout: default
     <div class="form-row">
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_number"><?php _e('Número del carnet de conducir', 'mybooking') ?></label>
+          for="driver_driving_license_number"><%= reservation.customer_driver_driving_license_number %></label>
         <input class="form-control" id="additional_driver_2_driving_license_number" name="additional_driver_2_driving_license_number"
-          type="text" placeholder="<%=configuration.escapeHtml("<?php _e('Número del carnet de conducir', 'mybooking') ?>")%>" 
+          type="text" placeholder="<%= reservation.customer_driver_driving_license_number %>" 
           value="<%=booking.additional_driver_2_driving_license_number%>"
           maxlength="50">
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_date"><?php _e('Fecha expedición carnet de conducir', 'mybooking') ?></label>
+          for="additional_driver_2_driving_license_date_day"><%= reservation.customer_driver_driving_license_date %></label>
         <div class="custom-date-form">
           <div class="custom-date-item">
             <select name="additional_driver_2_driving_license_date_day" id="additional_driver_2_driving_license_date_day"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="additional_driver_2_driving_license_date_month" id="additional_driver_2_driving_license_date_month"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
           <div class="custom-date-item">
             <select name="additional_driver_2_driving_license_date_year" id="additional_driver_2_driving_license_date_year"
               class="form-control"></select>
-            <i class="fa fa-angle-down"></i>
+            <i class="fas fa-angle-down"></i>
           </div>
         </div>
         <input type="hidden" name="additional_driver_2_driving_license_date" id="additional_driver_2_driving_license_date"></input>
       </div>
       <div class="form-group col-md-6">
         <label
-          for="driver_driving_license_country"><?php _e('País de expedición carnet de conducir', 'mybooking') ?>
-          <i class="fa custom-icon fa-angle-down"></i>
+          for="additional_driver_2_driving_license_country"><%= reservation.customer_driver_driving_license_country %>
+          <i class="fas custom-icon fa-angle-down"></i>
           <select name="additional_driver_2_driving_license_country" id="additional_driver_2_driving_license_country"
             class="form-control">
             <option value="AF">Afganistán</option>
@@ -1356,31 +1370,29 @@ layout: default
         </label>
       </div>
     </div>
-
-
     <!-- Flight information -->
-    <h4 class="brand-primary my-3"><?php _e('Vuelo', 'mybooking') ?></h4>
+    <h4 class="brand-primary my-3"><%= reservation.customer_flight %></h4>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="flight_company"><?php _e('Compañia', 'mybooking') ?></label>
+        <label for="flight_company"><%= reservation.customer_flight_company %></label>
         <input class="form-control" id="flight_company" name="flight_company" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Compañia', 'mybooking') ?>")%>" value="<%=booking.flight_company%>">
+          placeholder="<%= reservation.customer_flight_company %>">
       </div>
       <div class="form-group col-md-4">
-        <label for="flight_number"><?php _e('Número de vuelo', 'mybooking') ?></label>
+        <label for="flight_number"><%= reservation.customer_flight_number %></label>
         <input class="form-control" id="flight_number" name="flight_number" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Número de vuelo', 'mybooking') ?>")%>" value="<%=booking.flight_number%>">
+          placeholder="<%= reservation.customer_flight_number %>" value="<%=booking.flight_number%>">
       </div>
       <div class="form-group col-md-4">
-        <label for="flight_time"><?php _e('Hora prevista', 'mybooking') ?></label>
+        <label for="flight_time"><%= reservation.customer_flight_time %></label>
         <input class="form-control" id="flight_time" name="flight_time" type="text"
-          placeholder="<%=configuration.escapeHtml("<?php _e('Hora prevista', 'mybooking') ?>")%>" value="<%=booking.flight_time%>">
-      </div>
-    </div>
+          placeholder="<%= reservation.customer_flight_time %>" value="<%=booking.flight_time%>">
+      </div>            
+    </div>  
     <hr>
     <div class="form-row">
       <div class="form-group col-md-12">
-        <button class="btn btn-outline-dark" id="btn_update_reservation"><?php _e('Actualizar', 'mybooking') ?></button>
+        <button class="btn btn-outline-dark" id="btn_update_reservation"><%= reservation.update %></button>
       </div>
     </div>
   </form>

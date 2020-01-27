@@ -42,3 +42,29 @@ pay: Pago
 pay_button: Pagar
 paypal: Paypal
 credit_card: Tarjeta de crédito/débito
+# Customer data
+customer_adress_title: Dirección del cliente
+customer_adress_street: Calle
+customer_adress_number: Nombre
+customer_adress_complement: Complemento (piso/puerta)
+customer_adress_city: Ciudad
+customer_adress_province: Provincia
+customer_zip: Código postal
+customer_adress_country: País
+customer_driver_data: Datos del conductor
+customer_driver_name: Nombre del conductor
+customer_driver_surname: Apellidos del conductor
+customer_driver_passport: Nif o passaporte del conductor
+customer_driver_date_of_birth: Fecha de nacimiento del conductor
+customer_driver_driving_license_number: Número del carnet de conducir
+customer_driver_driving_license_date: Fecha expedición carnet de conducir
+customer_driver_driving_license_country: País expedición carnet de conducir
+customer_flight: Vuelo
+customer_flight_company: Compañía
+customer_flight_number: Nombre de vuelo
+customer_flight_time: Hora prevista
+additional_drivers: Conductores adicionales
+
+reservation_total_paid: Pagado
+reservation_total_pending: Pendiente
+update: Actualizar

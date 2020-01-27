@@ -5,13 +5,13 @@ meta-description: Reservation Detail | Car renting in Ibiza
 rental_locator: LOCATOR
 rental_duration: Rental duration
 rental_days: day/s
-summary_page_title: Reserva
+summary_page_title: Reservation
 booking_detail_state_pending_confirmation: Confirmation pendient
 booking_detail_state_confirming: Confirming
 booking_detail_state_confirmed: Confirmed
 booking_detail_state_in_progress: In progress
-booking_detail_state_done: Finalizada
-booking_detail_state_cancelled: Finished
+booking_detail_state_done: Finished
+booking_detail_state_cancelled: Cancelled
 booking_detail_product_title: Contracted product
 booking_detail_extras_title: Extras
 booking_detail_customer_title: Client data
@@ -32,8 +32,8 @@ reservation_summary_pickup_place_supplement: Pick up place supplement
 reservation_summary_pickup_time_supplement: Pick up time supplement
 reservation_summary_return_place_supplement: Return place supplement
 reservation_summary_return_time_supplement: Return time supplement
-reservation_summary_driver_age_supplement: Suplemento edad del conductor
-reservation_summary_fuel_supplement: Suplemento combustible
+reservation_summary_driver_age_supplement: Driver's age supplement
+reservation_summary_fuel_supplement: Fuel supplement
 reservation_summary_total: Total
 reservation_summary_deposit: Deposit
 reservation_summary_deposit_detail: The deposit will be returned after the return of the product
@@ -42,3 +42,29 @@ pay: Payment
 pay_button: Pay
 paypal: Paypal
 credit_card: Credit card
+# Customer data
+customer_adress_title: Customer adress
+customer_adress_street: Street
+customer_adress_number: Name
+customer_adress_complement: Complement (floor/door)
+customer_adress_city: City
+customer_adress_province: Province
+customer_zip: Postal code
+customer_adress_country: Country
+customer_driver_data: Driver data
+customer_driver_name: Driver name
+customer_driver_surname: Driver surname
+customer_driver_passport: Driver passport
+customer_driver_date_of_birth: Driver date of birth
+customer_driver_driving_license_number: Driver driving license number
+customer_driver_driving_license_date: Issue of driving license
+customer_driver_driving_license_country: Country of issue driving license
+customer_flight: Flight
+customer_flight_company: Company
+customer_flight_number: Flight number
+customer_flight_time: Estimated time
+additional_drivers: Additional drivers
+
+reservation_total_paid: Total paid
+reservation_total_pending: Total pending
+update: Update

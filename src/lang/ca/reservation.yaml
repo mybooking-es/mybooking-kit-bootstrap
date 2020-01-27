@@ -32,8 +32,8 @@ reservation_summary_pickup_place_supplement: Suplement punt de lliurament
 reservation_summary_pickup_time_supplement: Suplement hora de lliurament
 reservation_summary_return_place_supplement: Suplement punt de devolució
 reservation_summary_return_time_supplement: Suplement hora de devolució
-reservation_summary_driver_age_supplement: Suplemento edad del conductor
-reservation_summary_fuel_supplement: Suplemento combustible
+reservation_summary_driver_age_supplement: Suplement edad del conductor
+reservation_summary_fuel_supplement: Suplement combustible
 reservation_summary_total: Total
 reservation_summary_deposit: Fiança
 reservation_summary_deposit_detail: La fiança es retornarà després de la devolució del producte
@@ -42,3 +42,29 @@ pay: Pagament
 pay_button: Pagar
 paypal: Paypal
 credit_card: Tarjeta de crèdit/dèbit
+# Customer data
+customer_adress_title: Direcció del client
+customer_adress_street: Carrer
+customer_adress_number: Número
+customer_adress_complement: Complement (pis/porta)
+customer_adress_city: Ciutat
+customer_adress_province: Província
+customer_zip: Codi postal
+customer_adress_country: País
+customer_driver_data: Dades del conductor
+customer_driver_name: Nom del conductor
+customer_driver_surname: Cognoms del conductor
+customer_driver_passport: Nif o passaport del conductor
+customer_driver_date_of_birth: Data de naixement del conductor
+customer_driver_driving_license_number: Número del carnet de conduir
+customer_driver_driving_license_date: Data expedició carnet de conduir
+customer_driver_driving_license_country: País d'expedició carnet de conduir
+customer_flight: Vol
+customer_flight_company: Companyia
+customer_flight_number: Nom de vol
+customer_flight_time: Hora prevista
+additional_drivers: Conductors adicionals
+
+reservation_total_paid: Pagament total
+reservation_total_pending: Pendent total
+update: Actualitzar
