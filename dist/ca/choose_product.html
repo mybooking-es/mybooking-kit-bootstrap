@@ -93,7 +93,6 @@
     <!-- Script detailed product for choose_product -->
     <!-- Script detailed product for choose_product -->
     <script type="text/tpml" id="script_detailed_product">
-<<<<<<< HEAD
       <div class="magic-cards-container">
       <% for (var idx=0;idx<products.length; idx++) { %>
         <% var product = products[idx]; %>
@@ -104,6 +103,7 @@
                 <p class="product-name"><%=product.name%></p>
                 <p class="product-short-description"><%=product.short_description%></p>
               </div>
+              <i class="fas fa-info-circle color-gray-900"></i>
             </header>
             <div class="separator"></div>
             <section class="footer-card">
@@ -149,55 +149,6 @@
         <% } %>
       </div>
       </script><!-- Script for Pickup/Return information -->
-=======
-      <div class="magic-card-horizontal-wrapper">
-      <% for (var idx=0;idx<products.length; idx++) { %>
-        <% var product = products[idx]; %>
-        <div class="magic-card-horizontal">
-          <div class="magic-card-horizontal_image">
-              <img src="<%=product.photo%>">
-          </div>
-          <div class="magic-card-horizontal_body">
-            <div class="magic-card-horizontal_body-left">
-              <div>
-              <h6 class="row-card-product-name"><%=product.name%></h6>
-              <h7 class="row-card-product-short-description"><%=product.short_description%></h7>
-              </div>
-              <% if (product.price != product.base_price) { %>
-                <% if (product.offer_discount_type == 'percentage') { %>
-                  <p class="color-gray-500"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
-                <% } %>
-              <% } %>
-              <% if (product.few_available_units) { %>
-                <p class="text-danger mt-3">Queden poques unitats!</p>
-              <% } %>
-              <div class="row-card-price">
-                <h2><%=configuration.formatCurrency(product.price)%></h2>
-              </div>
-            </div>
-            <div class="magic-card-horizontal_body-right">
-              <div class="magic-card-horizontal_icons">
-                <% if (product.key_characteristics) { %> 
-                  <% for (characteristic in product.key_characteristics) { %>
-                    <div class="magic-icon">
-                      <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
-                      <span><%=product.key_characteristics[characteristic]%> </span>
-                    </div>
-                  <% } %>
-                <% } %>
-              </div>
-              <% if (product.availability) { %>
-                <a class="magic-button btn btn-choose-product" data-product="<%=product.code%>">Seleccionar</a>
-                <% } else { %>
-                <p>Model no disponible a l'oficina i dates seleccionades</p>
-              <% } %>
-            </div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-    </script><!-- Script for Pickup/Return information -->
->>>>>>> d759c784fc17382cece797d552f15fabef59e320
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
       <div class="reservation-summary-sticky-wrapper">

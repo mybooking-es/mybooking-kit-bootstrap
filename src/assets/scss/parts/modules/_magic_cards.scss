@@ -11,10 +11,23 @@
   padding: 10px;
 }
 .magic-card {
+  position: relative;
   flex-grow: 1;
   text-align: center;
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
   background-color: #f3efe4;
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 2rem;
+    color: $gray-900;
+    transition: ease-in-out 0.2ms;
+    &:hover {
+      cursor: pointer;
+      color: lighten($gray-900, 10%);
+    }
+  }
 }
 
 // Medium devices (tablets, 768px and up)
