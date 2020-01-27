@@ -1,0 +1,44 @@
+# translate for summary
+title: Detalle de la reserva
+meta-description: Detalle de la reserva | ALquiler de coches en Ibiza
+
+rental_locator: LOCALIZADOR
+rental_duration: Duración del alquiler
+rental_days: día/s
+summary_page_title: Reserva
+booking_detail_state_pending_confirmation: Pendiente de confirmación
+booking_detail_state_confirming: Confirmando
+booking_detail_state_confirmed: Confirmada
+booking_detail_state_in_progress: En progreso
+booking_detail_state_done: Finalizada
+booking_detail_state_cancelled: Cancelada
+booking_detail_product_title: Producto contratado
+booking_detail_extras_title: Extras
+booking_detail_customer_title: Datos del cliente
+booking_detail_customer_name: Nombre
+booking_detail_customer_phone_number: Teléfono
+booking_detail_customer_mobile: Teléfono alternativo
+booking_detail_customer_email: Correo electrónico
+booking_detail_summary_paid: Pagado
+booking_detail_summary_pending: Pendiente
+# sidebar
+reservation_summary_title: Detalle de la reserva
+reservation_summary_pickup: Entrega
+reservation_summary_return: Devolución
+reservation_summary_price: Precio
+reservation_summary_total_product: Total producto
+reservation_summary_total_extras: Total extras
+reservation_summary_pickup_place_supplement: Suplemento lugar entrega
+reservation_summary_pickup_time_supplement: Suplemento hora entrega
+reservation_summary_return_place_supplement: Suplemento lugar de devolución
+reservation_summary_return_time_supplement: Suplemento hora devolución
+reservation_summary_driver_age_supplement: Suplemento edad del conductor
+reservation_summary_fuel_supplement: Suplemento combustible
+reservation_summary_total: Importe total
+reservation_summary_deposit: Fianza
+reservation_summary_deposit_detail: La fianza se devolverá tras las devolución del producto
+# Pay
+pay: Pago
+pay_button: Pagar
+paypal: Paypal
+credit_card: Tarjeta de crédito/débito

@@ -99,16 +99,12 @@
     <!-- Reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
     
-    <% for (var idx=0; idx < booking.booking_lines.length; idx++) { %>
-    <%   var booking_line = booking.booking_lines[idx]; %>
-    <% } %>
-    
-    <div class="product-detail">
-      <div>
+    <div class="product-detail-container">
+      <div class="product-detail-content">
         <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
-        <h2 class="product-name"><%=booking_line.item_description_customer_translation%></h2>
-        <p class="detail-text"><%= summary.rental_locator %>: <%=booking.id%></br>
-          <%= summary.rental_duration %>: <%=booking.days%> <%= summary.rental_days %></p>
+          <h2 class="product-name"><%=booking.booking_lines[idx].item_description_customer_translation%></h2>
+          <p class="detail-text"><%= summary.rental_locator %>: <%=booking.id%></br>
+            <%= summary.rental_duration %>: <%=booking.days%> <%= summary.rental_days %></p>
         <% } %>
         <h5><%= summary.reservation_summary_pickup %></h5>
         <ul>
@@ -121,9 +117,9 @@
           <li><%=booking.return_place_customer_translation%></li>
         </ul>
       </div>
-      <div>
+      <div class="product-detail-image">
         <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
-        <img class="img-fluid" src="<%=booking_line.photo_full%>" alt="">
+          <img class="img-fluid" src="<%=booking.booking_lines[idx].photo_full%>" alt="">
         <% } %>
       </div>
     </div>

@@ -68,3 +68,11 @@ customer_flight: Vuelo
 customer_flight_company: Compañia
 customer_flight_number: Número de vuelo
 customer_flight_time: Hora prevista
+# Conditions and complete the process
+request_reservation: Solicitar reserva
+pay_on_delivery: Pagar en destino
+pay_now: Pagar ahora
+confirm: Confirmar
+paypal: Paypal
+credit_card: Tarjeta de crédito/débito
+confirm_conditions: He leído y acepto los términos y las condiciones

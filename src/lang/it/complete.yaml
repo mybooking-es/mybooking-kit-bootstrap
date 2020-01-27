@@ -67,6 +67,13 @@ customer_flight: Volo
 customer_flight_company: Società
 customer_flight_number: Numero di volo
 customer_flight_time: Tempo previsto
-
+# Conditions and complete the process
+request_reservation: Effettuare la prenotazione
+pay_on_delivery: Pagamento a destinazione
+pay_now: Paga ora
+confirm: Confermare
+paypal: Paypal
+credit_card: Carta di credito
+confirm_conditions: He letto e di accettare i termini e le condizioni
 
 
