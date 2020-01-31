@@ -89,3 +89,16 @@
     background-color: rgba(66, 66, 66, 0.5);
   }
 }
+// Nav language selector
+a.es,
+a.ca,
+a.it,
+a.en {
+  display: none;
+}
+a.es.visible,
+a.ca.visible,
+a.it.visible,
+a.en.visible {
+  display: block;
+}

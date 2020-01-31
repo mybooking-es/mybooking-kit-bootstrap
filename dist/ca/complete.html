@@ -1,0 +1,635 @@
+
+<!doctype html>
+<html class="no-js" lang="ca">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completar dades</title>
+    <meta name="description" content="Completar dades | Lloguer de cotxes"/>
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="complete ">
+<!-- trace:tmp/complete.html -->
+
+    
+    <div class="cta cta__bg cta__text">
+      <div class="d-none d-sm-block">
+        <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>
+      <div class="d-block d-sm-none text-center">
+        <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+        <span class="ml50">
+          <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+        </span>
+      </div>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Inici
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Index</a>
+              <a class="dropdown-item" href="index_1.html">Index 1</a>
+              <a class="dropdown-item" href="index_2.html">Index 2</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Condicions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contacte</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-europe"></i> Idioma
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item es visible" href="/complete.html">Espanyol</a>
+              <a class="dropdown-item en visible" href="/en/complete.html">Anglès</a>
+              <a class="dropdown-item ca visible" href="/ca/complete.html">Català</a>
+              <a class="dropdown-item it visible" href="/it/complete.html">Italià</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Reservation steps -->
+    <!-- Reservation steps -->
+    <div class="steps-wrapper">
+            <div id="steps">
+              <div data-desc="Lloc i Data" class="step">1</div>
+              <div data-desc="Seleccionar Producte" class="step">2</div>
+              <div data-desc="Completar reserva" class="active step">3</div>
+              <div data-desc="Sumari" class="step">4</div>
+            </div>
+            <h4 class="active-step color-gray-600 mr-3">Completar reserva</h4>
+    </div>
+    
+    <!-- Reservation : Selected product -->
+    <div id="selected_product" class="sticky-top"></div>
+    <div id="reservation_detail"></div>
+    
+    <div class="bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-5">
+            <!-- Reservation : Extras -->
+            <h4 class="title-small my-3">Extras</h4>
+            <div id="extras_listing"></div>
+          </div>
+          <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-3 mb-5 custom-form">
+            <!-- Reservation complete -->
+            <form id="form-reservation" name="reservation_form">
+              <h4 class="brand-primary my-3">Informació del client</h4>
+              <div class="form-row">
+                <div class="form-group col-lg-6">
+                  <label for="name">Nom *</label>
+                  <input class="form-control" id="customer_name" name="customer_name" type="text"
+                    placeholder="Nom">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="surname">Cognoms *</label>
+                  <input class="form-control" id="customer_surname" name="customer_surname" type="text"
+                    placeholder="Cognoms">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="email">Correu electrònic *</label>
+                  <input class="form-control" id="customer_email" name="customer_email" type="text"
+                    placeholder="Correu electrònic">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="confirm_customer_email">Confirmar correu electònic *</label>
+                  <input class="form-control" id="confirm_customer_email" name="confirm_customer_email" type="text"
+                    placeholder="Confirmar correu electònic">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="phone">Telèfon *</label>
+                  <input class="form-control" id="customer_phone" name="customer_phone" type="text"
+                    placeholder="Telèfon">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="">Telèfon alternatiu</label>
+                  <input class="form-control" id="customer_mobile_phone" name="customer_mobile_phone" type="text"
+                    placeholder="Telèfon alternatiu">
+                </div>
+              </div>
+              <h4 class="brand-primary my-3">Informació adicional</h4>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="comments">Comentaris</label>
+                  <textarea name="comments" id="comments" placeholder="Comentaris"
+                    style="width: 100%; height: 100px; padding: 0.8rem;"></textarea>
+                </div>
+              </div>
+              <!-- Reservation : payment -->
+              <div id="payment_detail"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Complete summary sticky bar -->
+    <script type="text/tpml" id="script_product_detail">
+    
+      <div class="complete-summary-sticky-wrapper">
+        <div class="complete-summary-sticky">
+          <div class="complete-summary-left">
+            <div class="complete-summary-item">
+                <!-- primer bloque Recogida -->
+                <p class="color-gray-500"><%=shopping_cart.pickup_place_customer_translation%></p>
+                <p class="color-white"><%=shopping_cart.days%> dia/s</p>
+            </div>
+            <!-- Button trigger modal -->
+            <div class="modify-button">
+              <button id="modify_reservation_button" data-toggle="modal" data-target="#choose_productModal"><i class="far fa-edit"></i></button>
+            </div>
+          </div>
+          <div class="complete-summary-right">
+            <div class="complete-summary-item">
+                <p class="color-gray-500">Total</p>
+                <p class="color-white"><%=configuration.formatCurrency(shopping_cart.total_cost)%></p>
+            </div>
+            <!-- Button trigger modal -->
+            <div class="modify-button">
+              <button data-toggle="modal" data-target="#viewReservationModal">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </script>
+    
+    <!-- Extra representation -->
+    <script type="text/template" id="script_detailed_extra">
+      <div class="extras-container">
+      <% for (var idx=0;idx<extras.length;idx++) { %>
+        <% var extra = extras[idx]; %>
+        <div class="extra-wrapper">
+          <div class="extra-image">
+            <% if (extra.photo_path != null) { %>
+              <img src="<%=extra.photo_path%>" class="card-img" />
+            <% } %>
+          </div>
+          <div class="extra-content">
+              <h6 class="lead"><%=extra.name%></h6>
+                  <% if (extra.max_quantity > 1) { %>
+                    <div class="input-group input-group-sm" style="width:90px;">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-secondary btn-minus-extra"
+                            data-value="<%=extra.code%>"
+                            data-max-quantity="<%=extra.max_quantity%>">-</button>
+                        </div>
+                        <% value = (extrasInShoppingCart[extra.code]) ? extrasInShoppingCart[extra.code] : 0; %>
+                        <input type="text" id="extra-<%=extra.code%>-quantity"
+                            class="form-control disabled text-center extra-input" value="<%=value%>" data-extra-code="<%=extra.code%>"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-plus-extra"
+                            data-value="<%=extra.code%>"
+                            data-max-quantity="<%=extra.max_quantity%>">+</button>
+                          </div>
+                    </div>
+                  <% } else { %>
+                    <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input extra-checkbox" id="checkboxl<%=extra.code%>" data-value="<%=extra.code%>" <% if (extrasInShoppingCart[extra.code] &&  extrasInShoppingCart[extra.code] > 0) { %> checked="checked" <% } %>>
+                      <label class="custom-control-label" for="checkboxl<%=extra.code%>"></label>
+                    </div>
+                  <% } %>
+                  <p class="fw-700 mt-2"><%= configuration.formatCurrency(extra.unit_price)%></p>
+          </div>
+        </div>
+      <% } %>
+      </div>
+    </script>
+    
+    <!-- Reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+        <!-- Modal view reservation-->
+        <div class="modal fade" id="viewReservationModal" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="viewModal">Detall de la reserva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body reservation-summary">
+      
+                <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
+                <p class="fw-700"><%=shopping_cart.items[idx].item_description_customer_translation%></p>
+                <p class="color-gray-500">Durada del lloguer: <%=shopping_cart.days%> dia/s</p>
+                <h6>Lliurament</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item color-gray-500"><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></li>
+                  <li class="list-group-item color-gray-500"><%=shopping_cart.pickup_place_customer_translation%></li>
+                </ul>
+                <h6>Devolució</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item color-gray-500"><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></li>
+                  <li class="list-group-item color-gray-500"><%=shopping_cart.return_place_customer_translation%></li>
+                </ul>
+                <% } %>
+                <img class="img-fluid" src="<%= shopping_cart.items[0].photo_medium%>">
+                <ul class="list-group">
+                  <!-- Product -->
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Total producte</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.item_cost)%></span>
+                  </li>
+                  <!-- Extras -->
+                  <% if (shopping_cart.extras.length > 0) { %>
+                  <% for (var idx=0; idx<shopping_cart.extras.length; idx++) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name"><%=shopping_cart.extras[idx].extra_description_customer_translation%></span>
+                    <span class="badge badge-primary badge-pill"><%=shopping_cart.extras[idx].quantity%></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.extras[idx].extra_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% } %>
+                  <!-- Supplements -->
+                  <% if (shopping_cart.time_from_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement hora de lliurament</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_from_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.pickup_place_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement punt de lliurament</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.pickup_place_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.time_to_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement hora de devolució</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_to_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.return_place_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement punt de devolució</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.return_place_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.driver_age_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement edad del conductor</span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.driver_age_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.category_supplement_1_cost > 0) { %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name">Suplement combustible</span>
+                    <span
+                      class="extra-price"><%=configuration.formatCurrency(shopping_cart.category_supplement_1_cost)%></span>
+                  </li>
+                  <% } %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="extra-name fw-700">Import total</span>
+                    <span class="extra-price fw-600"><%=configuration.formatCurrency(shopping_cart.total_cost)%></span>
+                  </li>
+                </ul>
+                <! -- TOTAL -->
+                  <hr>
+                  <p class="total-price text-right mr-3 fw-900 brand-primary"><%=configuration.formatCurrency(shopping_cart.total_cost)%></p>
+      
+              </div>
+            </div>
+          </div>
+        </div></script>
+    
+    <!-- Payment detail -->
+    <script type="text/tmpl" id="script_payment_detail">
+      <input type="hidden" name="payment" value="none">
+        <%  
+           var paymentAmount = 0;
+           var selectionOptions = 0;
+    
+           if (sales_process.can_request) { 
+             selectionOptions += 1;
+           }  
+           
+           if (sales_process.can_pay_on_delivery) { 
+             selectionOptions += 1;
+           } 
+           
+           if (sales_process.can_pay) {
+             selectionOptions += 1;
+             if (sales_process.can_pay_deposit) {
+                paymentAmount = shopping_cart.booking_amount;
+             }
+             else {
+                paymentAmount = shopping_cart.total_cost;
+             }
+           } 
+        %>
+    
+        <% if (selectionOptions > 1) { %>
+          <hr>
+          <div class="form-row">  
+             <% if (sales_process.can_request) { %>
+               <div class="form-group col-md-12">
+                 <label for="payments_paypal_standard">
+                  <input type="radio" name="complete_action" value="request_reservation" class="complete_action">&nbsp;Sol.licitar reserva
+                 </label>
+               </div>
+             <% } %>
+             <% if (sales_process.can_pay_on_delivery) { %>
+               <div class="form-group col-md-12">
+                 <label for="payments_paypal_standard">
+                  <input type="radio" name="complete_action" value="pay_on_delivery" class="complete_action">&nbsp;Pagar en destí
+                 </label>
+               </div>
+             <% } %>
+             <% if (sales_process.can_pay) { %>
+             <div class="form-group col-md-12">
+               <label for="payments_paypal_standard">
+                <input type="radio" name="complete_action" value="pay_now" class="complete_action">&nbsp;Pagar ara
+               </label>
+             </div>
+             <% } %>
+          </div>         
+        <% } %>
+    
+        <!-- Request reservation -->
+    
+        <% if (sales_process.can_request) { %>
+        <div id="request_reservation_container" <% if (selectionOptions > 1 || !sales_process.can_request) { %>style="display:none"<%}%>>
+    
+            <div class="border p-4">
+              <div class="form-row">  
+                <div class="form-group col-md-12">
+                  <label for="payments_paypal_standard">
+                    <input type="checkbox" id="conditions_read_request_reservation" name="conditions_read_request_reservation">&nbsp;He llegit i accepto els termes i les condicions
+                  </label>
+                </div>
+              </div>   
+              
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <button type="submit" class="btn btn-outline-dark">Sol.licitar reserva</button>
+                </div>
+              </div>
+            </div>
+    
+        </div>
+        <% } %>
+    
+        <% if (sales_process.can_pay) { %>
+            
+            <% if (sales_process.can_pay_on_delivery) { %>
+            <!-- Pay on delivery -->
+            <div id="payment_on_delivery_container" <% if (selectionOptions > 1 || !sales_process.can_pay_on_delivery) { %>style="display:none"<%}%>>
+    
+                <div class="border p-4">
+                    <div class="form-row">  
+                      <div class="form-group col-md-12">
+                        <label for="payments_paypal_standard">
+                          <input type="checkbox" id="conditions_read_payment_on_delivery" name="conditions_read_payment_on_delivery">&nbsp;He llegit i accepto els termes i les condicions
+                        </label>
+                      </div>
+                    </div>   
+    
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-outline-dark">Confirmar</button>
+                      </div>
+                    </div>  
+                </div>
+    
+            </div>
+            <% } %>
+    
+            <!-- Pay now -->
+    
+            <div id="payment_now_container" <% if (selectionOptions > 1 || !sales_process.can_pay) { %>style="display:none"<%}%>>
+    
+                <div class="border p-4">
+                    <h4><%=i18next.t('complete.reservationForm.total_payment', {amount: configuration.formatCurrency(paymentAmount)})%></h4>
+                    <br>
+    
+                    <!-- Payment amount -->
+    
+                    <div class="alert alert-info">
+                       <p><%=i18next.t('complete.reservationForm.booking_amount',{amount: configuration.formatCurrency(paymentAmount)})%></p>
+                    </div>
+    
+                    <% if (sales_process.payment_methods.paypal_standard && 
+                           sales_process.payment_methods.tpv_virtual) { %>
+                        <div class="form-row">  
+                           <div class="form-group col-md-12">
+                             <label for="payments_paypal_standard">
+                              <input type="radio" id="payments_paypal_standard" name="payment_method_select" class="payment_method_select" value="paypal_standard">&nbsp;Paypal
+                              <img src="/assets/images/pm-paypal.jpg"/>
+                             </label>
+                           </div>
+                           <div class="form-group col-md-12">
+                             <label for="payments_credit_card">
+                              <input type="radio" id="payments_credit_card" name="payment_method_select" class="payment_method_select" value="<%=sales_process.payment_methods.tpv_virtual%>">&nbsp;Tarjeta de crèdit/dèbit
+                              <img src="/assets/images/pm-visa.jpg"/>
+                              <img src="/assets/images/pm-mastercard.jpg"/>
+                             </label>
+                           </div>
+                        </div>  
+                        <div id="payment_method_select_error" class="form-row">
+                        </div> 
+                    <% } else if (sales_process.payment_methods.paypal_standard) { %>
+                        <img src="/assets/images/pm-paypal.jpg"/>
+                        <input type="hidden" id="payment_method_value" value="paypal_standard">
+                    <% } else if (sales_process.payment_methods.tpv_virtual) { %> 
+                        <img src="/assets/images/pm-mastercard.jpg"/>
+                        <img src="/assets/images/pm-visa.jpg"/>
+                        <input type="hidden" id="payment_method_value" value="<%=sales_process.payment_methods.tpv_virtual%>">
+                    <% } %>
+    
+                    <hr>
+                    <div class="form-row">  
+                      <div class="form-group col-md-12">
+                        <label for="payments_paypal_standard">
+                          <input type="checkbox" id="conditions_read_pay_now" name="conditions_read_pay_now">&nbsp;He llegit i accepto els termes i les condicions
+                        </label>
+                      </div>
+                    </div>   
+    
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-outline-dark"><%=i18next.t('complete.reservationForm.payment_button',{amount: configuration.formatCurrency(paymentAmount)})%></a>
+                      </div>
+                    </div>   
+                </div>
+    
+            </div>
+        <% } %>
+    
+    </script>
+    
+    <!-- FLEX-FORM-MODIFY MODAL -->
+    <!-- Modal -->
+    <div class="modal fade" id="choose_productModal" tabindex="-1" role="dialog" aria-labelledby="choose_productModal"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content  bg-gray-400">
+          <div class="modal-header">
+            <h5 class="modal-title">Modificar reserva</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="search_form" method="get" enctype="application/x-www-form-urlencoded" class="flex-form"
+            autocomplete="off">
+            <!-- Pickup place -->
+            <div class="flex-form-item-box">
+              <label>Punt de lliurament</label>       
+              <div class="flex-form-item pickup_place_group">
+                <select id="pickup_place" name="pickup_place"></select>
+                <i class="fa fa-angle-down flex-icon"></i>
+              </div>
+              <!-- Custom delivery place -->
+              <div id="another_pickup_place_group" style="display: none;">
+                <div class="flex-form-item justify-content-between">
+                  <input class="bg-white w-100" type="text" id="pickup_place_other" name="pickup_place_other" />
+                  <input type="hidden" name="custom_pickup_place" value="false" />
+                  <button type="button" class="another_pickup_place_group_close p-0">
+                    <i class="fa fa-times flex-icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Return place -->
+            <div class="flex-form-item-box">
+              <label>Punt de devolució</label>
+              <div class="flex-form-item return_place_group">
+                <select id="return_place" name="return_place">
+                </select>
+                <i class="fa fa-angle-down flex-icon"></i>
+              </div>
+              <!-- Custom collection place -->
+              <div id="another_return_place_group" style="display: none;">
+                <div class="flex-form-item justify-content-between">
+                  <input class="bg-white w-100" type="text" id="return_place_other" name="return_place_other" />
+                  <input type="hidden" name="custom_return_place" value="false" />
+                  <button type="button" class="another_return_place_group_close p-0">
+                      <i class="fa fa-times flex-icon"></i>
+                  </button>  
+                </div>          
+              </div>
+            </div>
+            <!-- Date/Time From -->
+            <div class="flex-form-item-box">
+              <label>Data de lliurament</label>
+              <div class="flex-form-item">
+                <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                <input type="text" id="date_from" name="date_from" readonly="true" placeholder="dd/mm/aaaa" />
+                <select class="ml-1" id="time_from" name="time_from">
+                </select>
+              </div>
+            </div>
+            <!-- Date/Time To -->
+            <div class="flex-form-item-box">
+              <label>Data de devolució</label>
+              <div class="flex-form-item">
+                <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                <input type="text" id="date_to" name="date_to" readonly="true" placeholder="dd/mm/aaaa" />
+                <select class="ml-1" id="time_to" name="time_to">
+                </select>
+              </div>
+            </div>
+            <div class="flex-form-item-box mt-3">
+              <input class="btn btn-primary btn-block" type="submit" value="Cercar de nou" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>    
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Company name</li>
+          <li>88888888</li>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Quinoa</a></li>
+          <li><a href="#">Palo Santo</a></li>
+          <li><a href="#">Apple</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Condiciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Siguenos</h6>
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix my-2"></div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/mybooking-engine-init.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>

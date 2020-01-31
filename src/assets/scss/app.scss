@@ -12,41 +12,12 @@
   font-size: 1.2rem;
   color: $brand-primary;
 }
-
+// shadow bottom for boxes in choose product complete and summary
 .shadow-bottom {
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 5px 5px 4px 4px;
 }
 
-.total-price {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.ui-datepicker {
-  z-index: 5000 !important;
-}
-
-// Utilities
-.full-height {
-  height: 100%;
-}
-.full-width {
-  width: 100%;
-}
-// Nav language selector
-a.es,
-a.ca,
-a.it,
-a.en {
-  display: none;
-}
-a.es.visible,
-a.ca.visible,
-a.it.visible,
-a.en.visible {
-  display: block;
-}
 // Google Autocomplete
 .pac-container {
   z-index: 10000 !important;

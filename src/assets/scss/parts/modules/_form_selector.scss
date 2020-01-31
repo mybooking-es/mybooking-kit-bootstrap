@@ -3,7 +3,11 @@
 
 //==============================================
 // Form Selector vertical
-// Estilos de formulario flat design puro flex-box
+
+.ui-datepicker {
+  z-index: 5000 !important;
+}
+
 .flex-form {
   display: flex;
   flex-direction: column;

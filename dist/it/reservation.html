@@ -1,0 +1,1595 @@
+
+<!doctype html>
+<html class="no-js" lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli sulla prenotazione</title>
+    <meta name="description" content="Dettagli"/>
+    <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="reservation ">
+<!-- trace:tmp/reservation.html -->
+
+    
+    <div class="cta cta__bg cta__text">
+      <div class="d-none d-sm-block">
+        <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>
+      <div class="d-block d-sm-none text-center">
+        <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+        <span class="ml50">
+          <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+        </span>
+      </div>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Casa
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Index</a>
+              <a class="dropdown-item" href="index_1.html">Index 1</a>
+              <a class="dropdown-item" href="index_2.html">Index 2</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Condizioni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contatto</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-europe"></i> Lingue
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item es visible" href="/reservation.html">Spagnolo</a>
+              <a class="dropdown-item en visible" href="/en/reservation.html">Inglese</a>
+              <a class="dropdown-item ca visible" href="/ca/reservation.html">Catalano</a>
+              <a class="dropdown-item it visible" href="/it/reservation.html">Italiano</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="bg-gray-200 full-height custom-form pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h4 id="reservation_title" class="color-gray-500 py-5"></h4>
+          </div>
+        </div>
+      </div>
+      <div id="reservation_detail"></div>
+    </div>
+    
+    <!-- Reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+    
+    <div class="product-detail-container">
+      <div class="product-detail-content">
+        <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
+          <h2 class="product-name"><%=booking.booking_lines[idx].item_description_customer_translation%></h2>
+          <p class="detail-text">LOCATOR: <%=booking.id%></br>
+            Durata del noleggio: <%=booking.days%> giorni</p>
+        <% } %>
+        <h5>Ritiro</h5>
+        <ul>
+          <li><%=booking.date_from_full_format%> / <%=booking.time_from%></li>
+          <li><%=booking.pickup_place_customer_translation%></li>
+        </ul>
+        <h5 class="mt-3">Riconsegna</h5>
+        <ul>
+          <li><%=booking.date_to_full_format%> / <%=booking.time_to%></li>
+          <li><%=booking.return_place_customer_translation%></li>
+        </ul>
+      </div>
+      <div class="product-detail-image">
+        <% for (var idx=0; idx<booking.booking_lines.length; idx++) { %>
+          <img class="img-fluid" src="<%=booking.booking_lines[idx].photo_full%>" alt="">
+        <% } %>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="col bg-white shadow-bottom py-3 px-3 mt-5">
+            <h4 class="brand-primary my-3">Dati del cliente</h4>
+            <div class="table-responsive">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <th scope="row">Nome:</th>
+                    <td><%=booking.customer_name%> <%=booking.customer_surname%></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">E-mail:</th>
+                    <td><%=booking.customer_email%></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Numeri di telefono:</th>
+                    <td><%=booking.customer_phone%></td>
+                  </tr>
+                  <% if (booking.customer_mobile_phone > 0) { %>
+                  <tr>
+                    <th scope="row">Telefono alternativo:</th>
+                    <td><%=booking.customer_mobile_phone%></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- /.table -->
+          </div><!-- / col -->
+          <div id="reservation_form_container" class="col bg-white shadow-bottom py-3 px-3" style="display:none"></div> 
+    
+        </div>
+        <!-- Sidebar -->
+        <div class="col-md-4">
+          <div class="col sidebar bg-white shadow-bottom py-3 px-3 my-5">
+            <h4 class="brand-primary my-3">Dettagli sulla prenotazione</h4>
+            <h5>Totale prodotto</h5>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.item_cost)%></p>
+            <hr>
+            <h5>Extra</h5>
+            <ul class="list-group">
+              <% for (var idx=0; idx<booking.booking_extras.length; idx++) { %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="extra-name"><%=booking.booking_extras[idx].extra_description_customer_translation%></span>
+                <span class="badge badge-primary badge-pill"><%=booking.booking_extras[idx].quantity%></span>
+                <span class="extra-price"><%=configuration.formatCurrency(booking.booking_extras[idx].extra_cost)%></span>
+              </li>
+              <% } %>
+            </ul>
+            <% if (booking.extras_cost > 0) { %>
+            <hr>
+            <h5>Totale extra</h5>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.extras_cost)%></p>
+            <% } %>
+    
+            <% if (booking.time_from_cost > 0) { %>
+            <hr>
+            <h6>Supplemento orario di ritiro</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.time_from_cost)%></p>
+            <% } %>
+    
+            <% if (booking.pickup_place_cost > 0) { %>
+            <hr>
+            <h6>Supplemento luogo di ritiro</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.pickup_place_cost)%></p>
+            <% } %>
+    
+            <% if (booking.time_to_cost > 0) { %>
+            <hr>
+            <h6>Supplemento orario di riconsegna</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.time_to_cost)%></p>
+            <% } %>
+    
+            <% if (booking.return_place_cost > 0) { %>
+            <hr>
+            <h6>Supplemento luogo di riconsegna</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.return_place_cost)%></p>
+            <% } %>
+    
+            <% if (booking.driver_age_cost > 0) { %>
+            <hr>
+            <h6>Suplemento edad del conductor</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.driver_age_cost)%></p>
+            <% } %>
+    
+            <% if (booking.category_supplement_1_cost > 0) { %>
+            <hr>
+            <h6>Suplemento combustible</h6>
+            <p class="color-gray-600"><%=configuration.formatCurrency(booking.category_supplement_1_cost)%></p>
+            <% } %>
+    
+            <hr>
+            <h5 class="brand-primary">Totale</h5>
+            <p class="total-price"><%=configuration.formatCurrency(booking.total_cost)%></p>
+    
+            <hr>
+            <h6>Pagamento totale</h5>
+            <p class="total-price"><%=configuration.formatCurrency(booking.total_paid)%></p>
+    
+            <hr>
+            <h6>Pendenza totale</h5>
+            <p class="total-price <% if (booking.total_pending > 0){ %>text-danger<%}%>"><%=configuration.formatCurrency(booking.total_pending)%></p>
+    
+          </div><!-- /.col.sidebar -->
+          <div id="payment_detail" class="col bg-white shadow-bottom py-3 px-3" style="display:none"></div>
+          <br>
+    
+        </div><!-- /col -->
+      </div><!-- /row -->
+    </div><!-- /container-fluid -->
+    
+    </script>
+    
+    <!-- Reservation form -->
+    <script type="text/tmpl" id="script_reservation_form">
+    
+      <form id="form-reservation" name="booking_information_form" autocomplete="off">
+        <!-- Customer address -->
+        <h4 class="brand-primary my-3">Indirizzo cliente</h4>
+    
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="street">Strada</label>
+            <input class="form-control" id="street" name="customer_address[street]" type="text"
+              placeholder="Strada" value="<%=booking.address_street%>" maxlength="60">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="number">Numero</label>
+            <input class="form-control" id="number" name="customer_address[number]" type="text"
+              placeholder="Numero" value="<%=booking.address_number%>" maxlength="10">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="complement">Complemento (piano / porta)</label>
+            <input class="form-control" id="complement" name="customer_address[complement]" type="text"
+              placeholder="Complemento (piano / porta)" value="<%=booking.address_complement%>"  max_length="20">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="city">Città</label>
+            <input class="form-control" id="city" name="customer_address[city]" type="text"
+              placeholder="Città" value="<%=booking.address_city%>" max_length="60">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="state">Provincia</label>
+            <input class="form-control" id="state" name="customer_address[state]" type="text"
+              placeholder="Provincia" value="<%=booking.address_state%>"  max_length="60">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="state">Codice postale</label>
+            <input class="form-control" id="zip" name="customer_address[zip]" type="text"
+              placeholder="Codice postale" max_length="10" value="<%=booking.address_zip%>">
+          </div>      
+          <div class="form-group col-md-6">
+            <label class="full-width" for="country">Paese
+              <i class="fas custom-icon fa-angle-down"></i>
+              <select name="customer_address[country]" id="country" class="form-control">
+                <option value="AF">Afganistán</option>
+                <option value="AL">Albania</option>
+                <option value="DE">Alemania</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguilla</option>
+                <option value="AQ">Antártida</option>
+                <option value="AG">Antigua y Barbuda</option>
+                <option value="AN">Antillas Holandesas</option>
+                <option value="SA">Arabia Saudí</option>
+                <option value="DZ">Argelia</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaiyán</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrein</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BE">Bélgica</option>
+                <option value="BZ">Belice</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermudas</option>
+                <option value="BY">Bielorrusia</option>
+                <option value="MM">Birmania</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia y Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BR">Brasil</option>
+                <option value="BN">Brunei</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="BT">Bután</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Camboya</option>
+                <option value="CM">Camerún</option>
+                <option value="CA">Canadá</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CY">Chipre</option>
+                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comores</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, República Democrática del</option>
+                <option value="KR">Corea</option>
+                <option value="KP">Corea del Norte</option>
+                <option value="CI">Costa de Marfíl</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croacia (Hrvatska)</option>
+                <option value="CU">Cuba</option>
+                <option value="DK">Dinamarca</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egipto</option>
+                <option value="SV">El Salvador</option>
+                <option value="AE">Emiratos Árabes Unidos</option>
+                <option value="ER">Eritrea</option>
+                <option value="SI">Eslovenia</option>
+                <option value="ES" selected>España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="EE">Estonia</option>
+                <option value="ET">Etiopía</option>
+                <option value="FJ">Fiji</option>
+                <option value="PH">Filipinas</option>
+                <option value="FI">Finlandia</option>
+                <option value="FR">Francia</option>
+                <option value="GA">Gabón</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GD">Granada</option>
+                <option value="GR">Grecia</option>
+                <option value="GL">Groenlandia</option>
+                <option value="GP">Guadalupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GY">Guayana</option>
+                <option value="GF">Guayana Francesa</option>
+                <option value="GN">Guinea</option>
+                <option value="GQ">Guinea Ecuatorial</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="HT">Haití</option>
+                <option value="HN">Honduras</option>
+                <option value="HU">Hungría</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IQ">Irak</option>
+                <option value="IR">Irán</option>
+                <option value="IE">Irlanda</option>
+                <option value="BV">Isla Bouvet</option>
+                <option value="CX">Isla de Christmas</option>
+                <option value="IS">Islandia</option>
+                <option value="KY">Islas Caimán</option>
+                <option value="CK">Islas Cook</option>
+                <option value="CC">Islas de Cocos o Keeling</option>
+                <option value="FO">Islas Faroe</option>
+                <option value="HM">Islas Heard y McDonald</option>
+                <option value="FK">Islas Malvinas</option>
+                <option value="MP">Islas Marianas del Norte</option>
+                <option value="MH">Islas Marshall</option>
+                <option value="UM">Islas menores de Estados Unidos</option>
+                <option value="PW">Islas Palau</option>
+                <option value="SB">Islas Salomón</option>
+                <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                <option value="TK">Islas Tokelau</option>
+                <option value="TC">Islas Turks y Caicos</option>
+                <option value="VI">Islas Vírgenes (EEUU)</option>
+                <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                <option value="WF">Islas Wallis y Futuna</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italia</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japón</option>
+                <option value="JO">Jordania</option>
+                <option value="KZ">Kazajistán</option>
+                <option value="KE">Kenia</option>
+                <option value="KG">Kirguizistán</option>
+                <option value="KI">Kiribati</option>
+                <option value="KW">Kuwait</option>
+                <option value="LA">Laos</option>
+                <option value="LS">Lesotho</option>
+                <option value="LV">Letonia</option>
+                <option value="LB">Líbano</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libia</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lituania</option>
+                <option value="LU">Luxemburgo</option>
+                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                <option value="MG">Madagascar</option>
+                <option value="MY">Malasia</option>
+                <option value="MW">Malawi</option>
+                <option value="MV">Maldivas</option>
+                <option value="ML">Malí</option>
+                <option value="MT">Malta</option>
+                <option value="MA">Marruecos</option>
+                <option value="MQ">Martinica</option>
+                <option value="MU">Mauricio</option>
+                <option value="MR">Mauritania</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">México</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldavia</option>
+                <option value="MC">Mónaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="MS">Montserrat</option>
+                <option value="MZ">Mozambique</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Níger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NF">Norfolk</option>
+                <option value="NO">Noruega</option>
+                <option value="NC">Nueva Caledonia</option>
+                <option value="NZ">Nueva Zelanda</option>
+                <option value="OM">Omán</option>
+                <option value="NL">Países Bajos</option>
+                <option value="PA">Panamá</option>
+                <option value="PG">Papúa Nueva Guinea</option>
+                <option value="PK">Paquistán</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PN">Pitcairn</option>
+                <option value="PF">Polinesia Francesa</option>
+                <option value="PL">Polonia</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="UK">Reino Unido</option>
+                <option value="CF">República Centroafricana</option>
+                <option value="CZ">República Checa</option>
+                <option value="ZA">República de Sudáfrica</option>
+                <option value="DO">República Dominicana</option>
+                <option value="SK">República Eslovaca</option>
+                <option value="RE">Reunión</option>
+                <option value="RW">Ruanda</option>
+                <option value="RO">Rumania</option>
+                <option value="RU">Rusia</option>
+                <option value="EH">Sahara Occidental</option>
+                <option value="KN">Saint Kitts y Nevis</option>
+                <option value="WS">Samoa</option>
+                <option value="AS">Samoa Americana</option>
+                <option value="SM">San Marino</option>
+                <option value="VC">San Vicente y Granadinas</option>
+                <option value="SH">Santa Helena</option>
+                <option value="LC">Santa Lucía</option>
+                <option value="ST">Santo Tomé y Príncipe</option>
+                <option value="SN">Senegal</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leona</option>
+                <option value="SG">Singapur</option>
+                <option value="SY">Siria</option>
+                <option value="SO">Somalia</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="PM">St Pierre y Miquelon</option>
+                <option value="SZ">Suazilandia</option>
+                <option value="SD">Sudán</option>
+                <option value="SE">Suecia</option>
+                <option value="CH">Suiza</option>
+                <option value="SR">Surinam</option>
+                <option value="TH">Tailandia</option>
+                <option value="TW">Taiwán</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TJ">Tayikistán</option>
+                <option value="TF">Territorios franceses del Sur</option>
+                <option value="TP">Timor Oriental</option>
+                <option value="TG">Togo</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad y Tobago</option>
+                <option value="TN">Túnez</option>
+                <option value="TM">Turkmenistán</option>
+                <option value="TR">Turquía</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UA">Ucrania</option>
+                <option value="UG">Uganda</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistán</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Vietnam</option>
+                <option value="YE">Yemen</option>
+                <option value="YU">Yugoslavia</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabue</option>
+              </select>
+            </label>
+          </div>
+        </div>  
+     
+        <!-- Driver information -->
+        <h4 class="brand-primary my-3">Dati del conducente</h4>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="driver_name">Nome del conducente</label>
+            <input class="form-control" id="driver_name" name="driver_name" type="text"
+              placeholder="Nome del conducente" value="<%=booking.driver_name%>"
+              maxlength="40">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="driver_surname">Cognome del conducente</label>
+            <input class="form-control" id="driver_surname" name="driver_surname" type="text"
+              placeholder="Cognome del conducente" value="<%=booking.driver_surname%>"
+              maxlength="40">
+          </div>
+        </div>
+        <div class="form-row">        
+          <div class="form-group col-md-6">
+            <label for="driver_document_id">Passaporto del conducente</label>
+            <input class="form-control" id="driver_document_id" name="driver_document_id" type="text"
+              placeholder="Passaporto del conducente" value="<%=booking.driver_document_id%>"
+              maxlength="50">
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="driver_document_id_date">Rilascio della patente di guida</label>
+            <div class="custom-date-form">
+              <div class="custom-date-item">
+                <select name="driver_document_id_date_day" id="driver_document_id_date_day"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_document_id_date_month" id="driver_document_id_date_month"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_document_id_date_year" id="driver_document_id_date_year"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <input type="hidden" name="driver_document_id_date" id="driver_document_id_date"></input>
+          </div>
+        </div>
+        <div class="form-row">  
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_number">Numero della patente di guida</label>
+            <input class="form-control" id="driver_driving_license_number" name="driver_driving_license_number"
+              type="text" placeholder="Numero della patente di guida" 
+              value="<%=booking.driver_driving_license_number%>" 
+              maxlength="50">
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_date">Rilascio della patente di guida</label>
+            <div class="custom-date-form">
+              <div class="custom-date-item">
+                <select name="driver_driving_license_date_day" id="driver_driving_license_date_day"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_driving_license_date_month" id="driver_driving_license_date_month"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_driving_license_date_year" id="driver_driving_license_date_year"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <input type="hidden" name="driver_driving_license_date" id="driver_driving_license_date"></input>
+          </div>
+        </div>
+        <div class="form-row">      
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_country">Paese di rilascio della patente di guida
+              <i class="fas custom-icon fa-angle-down"></i>
+              <select name="driver_driving_license_country" id="driver_driving_license_country"
+                class="form-control">
+                <option value="AF">Afganistán</option>
+                <option value="AL">Albania</option>
+                <option value="DE">Alemania</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguilla</option>
+                <option value="AQ">Antártida</option>
+                <option value="AG">Antigua y Barbuda</option>
+                <option value="AN">Antillas Holandesas</option>
+                <option value="SA">Arabia Saudí</option>
+                <option value="DZ">Argelia</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaiyán</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrein</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BE">Bélgica</option>
+                <option value="BZ">Belice</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermudas</option>
+                <option value="BY">Bielorrusia</option>
+                <option value="MM">Birmania</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia y Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BR">Brasil</option>
+                <option value="BN">Brunei</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="BT">Bután</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Camboya</option>
+                <option value="CM">Camerún</option>
+                <option value="CA">Canadá</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CY">Chipre</option>
+                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comores</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, República Democrática del</option>
+                <option value="KR">Corea</option>
+                <option value="KP">Corea del Norte</option>
+                <option value="CI">Costa de Marfíl</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croacia (Hrvatska)</option>
+                <option value="CU">Cuba</option>
+                <option value="DK">Dinamarca</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egipto</option>
+                <option value="SV">El Salvador</option>
+                <option value="AE">Emiratos Árabes Unidos</option>
+                <option value="ER">Eritrea</option>
+                <option value="SI">Eslovenia</option>
+                <option value="ES" selected>España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="EE">Estonia</option>
+                <option value="ET">Etiopía</option>
+                <option value="FJ">Fiji</option>
+                <option value="PH">Filipinas</option>
+                <option value="FI">Finlandia</option>
+                <option value="FR">Francia</option>
+                <option value="GA">Gabón</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GD">Granada</option>
+                <option value="GR">Grecia</option>
+                <option value="GL">Groenlandia</option>
+                <option value="GP">Guadalupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GY">Guayana</option>
+                <option value="GF">Guayana Francesa</option>
+                <option value="GN">Guinea</option>
+                <option value="GQ">Guinea Ecuatorial</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="HT">Haití</option>
+                <option value="HN">Honduras</option>
+                <option value="HU">Hungría</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IQ">Irak</option>
+                <option value="IR">Irán</option>
+                <option value="IE">Irlanda</option>
+                <option value="BV">Isla Bouvet</option>
+                <option value="CX">Isla de Christmas</option>
+                <option value="IS">Islandia</option>
+                <option value="KY">Islas Caimán</option>
+                <option value="CK">Islas Cook</option>
+                <option value="CC">Islas de Cocos o Keeling</option>
+                <option value="FO">Islas Faroe</option>
+                <option value="HM">Islas Heard y McDonald</option>
+                <option value="FK">Islas Malvinas</option>
+                <option value="MP">Islas Marianas del Norte</option>
+                <option value="MH">Islas Marshall</option>
+                <option value="UM">Islas menores de Estados Unidos</option>
+                <option value="PW">Islas Palau</option>
+                <option value="SB">Islas Salomón</option>
+                <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                <option value="TK">Islas Tokelau</option>
+                <option value="TC">Islas Turks y Caicos</option>
+                <option value="VI">Islas Vírgenes (EEUU)</option>
+                <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                <option value="WF">Islas Wallis y Futuna</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italia</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japón</option>
+                <option value="JO">Jordania</option>
+                <option value="KZ">Kazajistán</option>
+                <option value="KE">Kenia</option>
+                <option value="KG">Kirguizistán</option>
+                <option value="KI">Kiribati</option>
+                <option value="KW">Kuwait</option>
+                <option value="LA">Laos</option>
+                <option value="LS">Lesotho</option>
+                <option value="LV">Letonia</option>
+                <option value="LB">Líbano</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libia</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lituania</option>
+                <option value="LU">Luxemburgo</option>
+                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                <option value="MG">Madagascar</option>
+                <option value="MY">Malasia</option>
+                <option value="MW">Malawi</option>
+                <option value="MV">Maldivas</option>
+                <option value="ML">Malí</option>
+                <option value="MT">Malta</option>
+                <option value="MA">Marruecos</option>
+                <option value="MQ">Martinica</option>
+                <option value="MU">Mauricio</option>
+                <option value="MR">Mauritania</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">México</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldavia</option>
+                <option value="MC">Mónaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="MS">Montserrat</option>
+                <option value="MZ">Mozambique</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Níger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NF">Norfolk</option>
+                <option value="NO">Noruega</option>
+                <option value="NC">Nueva Caledonia</option>
+                <option value="NZ">Nueva Zelanda</option>
+                <option value="OM">Omán</option>
+                <option value="NL">Países Bajos</option>
+                <option value="PA">Panamá</option>
+                <option value="PG">Papúa Nueva Guinea</option>
+                <option value="PK">Paquistán</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PN">Pitcairn</option>
+                <option value="PF">Polinesia Francesa</option>
+                <option value="PL">Polonia</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="UK">Reino Unido</option>
+                <option value="CF">República Centroafricana</option>
+                <option value="CZ">República Checa</option>
+                <option value="ZA">República de Sudáfrica</option>
+                <option value="DO">República Dominicana</option>
+                <option value="SK">República Eslovaca</option>
+                <option value="RE">Reunión</option>
+                <option value="RW">Ruanda</option>
+                <option value="RO">Rumania</option>
+                <option value="RU">Rusia</option>
+                <option value="EH">Sahara Occidental</option>
+                <option value="KN">Saint Kitts y Nevis</option>
+                <option value="WS">Samoa</option>
+                <option value="AS">Samoa Americana</option>
+                <option value="SM">San Marino</option>
+                <option value="VC">San Vicente y Granadinas</option>
+                <option value="SH">Santa Helena</option>
+                <option value="LC">Santa Lucía</option>
+                <option value="ST">Santo Tomé y Príncipe</option>
+                <option value="SN">Senegal</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leona</option>
+                <option value="SG">Singapur</option>
+                <option value="SY">Siria</option>
+                <option value="SO">Somalia</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="PM">St Pierre y Miquelon</option>
+                <option value="SZ">Suazilandia</option>
+                <option value="SD">Sudán</option>
+                <option value="SE">Suecia</option>
+                <option value="CH">Suiza</option>
+                <option value="SR">Surinam</option>
+                <option value="TH">Tailandia</option>
+                <option value="TW">Taiwán</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TJ">Tayikistán</option>
+                <option value="TF">Territorios franceses del Sur</option>
+                <option value="TP">Timor Oriental</option>
+                <option value="TG">Togo</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad y Tobago</option>
+                <option value="TN">Túnez</option>
+                <option value="TM">Turkmenistán</option>
+                <option value="TR">Turquía</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UA">Ucrania</option>
+                <option value="UG">Uganda</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistán</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Vietnam</option>
+                <option value="YE">Yemen</option>
+                <option value="YU">Yugoslavia</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabue</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="driver_date_of_birth">Data di nascita del conducente</label>
+            <div class="custom-date-form">
+              <div class="custom-date-item">
+                <select name="driver_date_of_birth_day" id="driver_date_of_birth_day"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_date_of_birth_month" id="driver_date_of_birth_month"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="driver_date_of_birth_year" id="driver_date_of_birth_year"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <input type="hidden" name="driver_date_of_birth" id="driver_date_of_birth"></input>
+          </div>
+        </div>
+        <!-- Additional drivers -->
+        <h4 class="brand-primary my-3">driver aggiuntivi</h4>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="driver_name">Nome del conducente</label>
+            <input class="form-control" id="additional_driver_1_name" name="additional_driver_1_name" type="text"
+              placeholder="Nome del conducente" 
+              value="<%=booking.additional_driver_1_name%>"
+              maxlength="40">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="additional_driver_1_surname">Cognome del conducente</label>
+            <input class="form-control" id="additional_driver_1_surname" name="additional_driver_1_surname" type="text"
+              placeholder="Cognome del conducente" 
+              value="<%=booking.additional_driver_1_surname%>"
+              maxlength="40">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label
+              for="additional_driver_1_driving_license_number">Numero della patente di guida</label>
+            <input class="form-control" id="additional_driver_1_driving_license_number" name="additional_driver_1_driving_license_number"
+              type="text" placeholder="Numero della patente di guida" 
+              value="<%=booking.additional_driver_1_driving_license_number%>"
+              maxlength="50">
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_date">Rilascio della patente di guida</label>
+            <div class="custom-date-form">
+              <div class="custom-date-item">
+                <select name="additional_driver_1_driving_license_date_day" id="additional_driver_1_driving_license_date_day"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="additional_driver_1_driving_license_date_month" id="additional_driver_1_driving_license_date_month"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="additional_driver_1_driving_license_date_year" id="additional_driver_1_driving_license_date_year"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <input type="hidden" name="additional_driver_1_driving_license_date" id="additional_driver_1_driving_license_date"></input>
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_country">Paese di rilascio della patente di guida
+              <i class="fas custom-icon fa-angle-down"></i>
+              <select name="additional_driver_1_driving_license_country" id="additional_driver_1_driving_license_country"
+                class="form-control">
+                <option value="AF">Afganistán</option>
+                <option value="AL">Albania</option>
+                <option value="DE">Alemania</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguilla</option>
+                <option value="AQ">Antártida</option>
+                <option value="AG">Antigua y Barbuda</option>
+                <option value="AN">Antillas Holandesas</option>
+                <option value="SA">Arabia Saudí</option>
+                <option value="DZ">Argelia</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaiyán</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrein</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BE">Bélgica</option>
+                <option value="BZ">Belice</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermudas</option>
+                <option value="BY">Bielorrusia</option>
+                <option value="MM">Birmania</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia y Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BR">Brasil</option>
+                <option value="BN">Brunei</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="BT">Bután</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Camboya</option>
+                <option value="CM">Camerún</option>
+                <option value="CA">Canadá</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CY">Chipre</option>
+                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comores</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, República Democrática del</option>
+                <option value="KR">Corea</option>
+                <option value="KP">Corea del Norte</option>
+                <option value="CI">Costa de Marfíl</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croacia (Hrvatska)</option>
+                <option value="CU">Cuba</option>
+                <option value="DK">Dinamarca</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egipto</option>
+                <option value="SV">El Salvador</option>
+                <option value="AE">Emiratos Árabes Unidos</option>
+                <option value="ER">Eritrea</option>
+                <option value="SI">Eslovenia</option>
+                <option value="ES" selected>España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="EE">Estonia</option>
+                <option value="ET">Etiopía</option>
+                <option value="FJ">Fiji</option>
+                <option value="PH">Filipinas</option>
+                <option value="FI">Finlandia</option>
+                <option value="FR">Francia</option>
+                <option value="GA">Gabón</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GD">Granada</option>
+                <option value="GR">Grecia</option>
+                <option value="GL">Groenlandia</option>
+                <option value="GP">Guadalupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GY">Guayana</option>
+                <option value="GF">Guayana Francesa</option>
+                <option value="GN">Guinea</option>
+                <option value="GQ">Guinea Ecuatorial</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="HT">Haití</option>
+                <option value="HN">Honduras</option>
+                <option value="HU">Hungría</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IQ">Irak</option>
+                <option value="IR">Irán</option>
+                <option value="IE">Irlanda</option>
+                <option value="BV">Isla Bouvet</option>
+                <option value="CX">Isla de Christmas</option>
+                <option value="IS">Islandia</option>
+                <option value="KY">Islas Caimán</option>
+                <option value="CK">Islas Cook</option>
+                <option value="CC">Islas de Cocos o Keeling</option>
+                <option value="FO">Islas Faroe</option>
+                <option value="HM">Islas Heard y McDonald</option>
+                <option value="FK">Islas Malvinas</option>
+                <option value="MP">Islas Marianas del Norte</option>
+                <option value="MH">Islas Marshall</option>
+                <option value="UM">Islas menores de Estados Unidos</option>
+                <option value="PW">Islas Palau</option>
+                <option value="SB">Islas Salomón</option>
+                <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                <option value="TK">Islas Tokelau</option>
+                <option value="TC">Islas Turks y Caicos</option>
+                <option value="VI">Islas Vírgenes (EEUU)</option>
+                <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                <option value="WF">Islas Wallis y Futuna</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italia</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japón</option>
+                <option value="JO">Jordania</option>
+                <option value="KZ">Kazajistán</option>
+                <option value="KE">Kenia</option>
+                <option value="KG">Kirguizistán</option>
+                <option value="KI">Kiribati</option>
+                <option value="KW">Kuwait</option>
+                <option value="LA">Laos</option>
+                <option value="LS">Lesotho</option>
+                <option value="LV">Letonia</option>
+                <option value="LB">Líbano</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libia</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lituania</option>
+                <option value="LU">Luxemburgo</option>
+                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                <option value="MG">Madagascar</option>
+                <option value="MY">Malasia</option>
+                <option value="MW">Malawi</option>
+                <option value="MV">Maldivas</option>
+                <option value="ML">Malí</option>
+                <option value="MT">Malta</option>
+                <option value="MA">Marruecos</option>
+                <option value="MQ">Martinica</option>
+                <option value="MU">Mauricio</option>
+                <option value="MR">Mauritania</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">México</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldavia</option>
+                <option value="MC">Mónaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="MS">Montserrat</option>
+                <option value="MZ">Mozambique</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Níger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NF">Norfolk</option>
+                <option value="NO">Noruega</option>
+                <option value="NC">Nueva Caledonia</option>
+                <option value="NZ">Nueva Zelanda</option>
+                <option value="OM">Omán</option>
+                <option value="NL">Países Bajos</option>
+                <option value="PA">Panamá</option>
+                <option value="PG">Papúa Nueva Guinea</option>
+                <option value="PK">Paquistán</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PN">Pitcairn</option>
+                <option value="PF">Polinesia Francesa</option>
+                <option value="PL">Polonia</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="UK">Reino Unido</option>
+                <option value="CF">República Centroafricana</option>
+                <option value="CZ">República Checa</option>
+                <option value="ZA">República de Sudáfrica</option>
+                <option value="DO">República Dominicana</option>
+                <option value="SK">República Eslovaca</option>
+                <option value="RE">Reunión</option>
+                <option value="RW">Ruanda</option>
+                <option value="RO">Rumania</option>
+                <option value="RU">Rusia</option>
+                <option value="EH">Sahara Occidental</option>
+                <option value="KN">Saint Kitts y Nevis</option>
+                <option value="WS">Samoa</option>
+                <option value="AS">Samoa Americana</option>
+                <option value="SM">San Marino</option>
+                <option value="VC">San Vicente y Granadinas</option>
+                <option value="SH">Santa Helena</option>
+                <option value="LC">Santa Lucía</option>
+                <option value="ST">Santo Tomé y Príncipe</option>
+                <option value="SN">Senegal</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leona</option>
+                <option value="SG">Singapur</option>
+                <option value="SY">Siria</option>
+                <option value="SO">Somalia</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="PM">St Pierre y Miquelon</option>
+                <option value="SZ">Suazilandia</option>
+                <option value="SD">Sudán</option>
+                <option value="SE">Suecia</option>
+                <option value="CH">Suiza</option>
+                <option value="SR">Surinam</option>
+                <option value="TH">Tailandia</option>
+                <option value="TW">Taiwán</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TJ">Tayikistán</option>
+                <option value="TF">Territorios franceses del Sur</option>
+                <option value="TP">Timor Oriental</option>
+                <option value="TG">Togo</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad y Tobago</option>
+                <option value="TN">Túnez</option>
+                <option value="TM">Turkmenistán</option>
+                <option value="TR">Turquía</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UA">Ucrania</option>
+                <option value="UG">Uganda</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistán</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Vietnam</option>
+                <option value="YE">Yemen</option>
+                <option value="YU">Yugoslavia</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabue</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <!-- Additional driver 2 -->
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="additional_driver_2_name">Nome del conducente</label>
+            <input class="form-control" id="additional_driver_2_name" name="additional_driver_2_name" type="text"
+              placeholder="Nome del conducente" 
+              value="<%=booking.additional_driver_2_name%>"
+              maxlength="40">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="additional_driver_2_surname">Cognome del conducente</label>
+            <input class="form-control" id="additional_driver_2_surname" name="additional_driver_2_surname" type="text"
+              placeholder="Cognome del conducente" 
+              value="<%=booking.additional_driver_2_surname%>"
+              maxlength="40">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label
+              for="driver_driving_license_number">Numero della patente di guida</label>
+            <input class="form-control" id="additional_driver_2_driving_license_number" name="additional_driver_2_driving_license_number"
+              type="text" placeholder="Numero della patente di guida" 
+              value="<%=booking.additional_driver_2_driving_license_number%>"
+              maxlength="50">
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="additional_driver_2_driving_license_date_day">Rilascio della patente di guida</label>
+            <div class="custom-date-form">
+              <div class="custom-date-item">
+                <select name="additional_driver_2_driving_license_date_day" id="additional_driver_2_driving_license_date_day"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="additional_driver_2_driving_license_date_month" id="additional_driver_2_driving_license_date_month"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="custom-date-item">
+                <select name="additional_driver_2_driving_license_date_year" id="additional_driver_2_driving_license_date_year"
+                  class="form-control"></select>
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </div>
+            <input type="hidden" name="additional_driver_2_driving_license_date" id="additional_driver_2_driving_license_date"></input>
+          </div>
+          <div class="form-group col-md-6">
+            <label
+              for="additional_driver_2_driving_license_country">Paese di rilascio della patente di guida
+              <i class="fas custom-icon fa-angle-down"></i>
+              <select name="additional_driver_2_driving_license_country" id="additional_driver_2_driving_license_country"
+                class="form-control">
+                <option value="AF">Afganistán</option>
+                <option value="AL">Albania</option>
+                <option value="DE">Alemania</option>
+                <option value="AD">Andorra</option>
+                <option value="AO">Angola</option>
+                <option value="AI">Anguilla</option>
+                <option value="AQ">Antártida</option>
+                <option value="AG">Antigua y Barbuda</option>
+                <option value="AN">Antillas Holandesas</option>
+                <option value="SA">Arabia Saudí</option>
+                <option value="DZ">Argelia</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaiyán</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrein</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BE">Bélgica</option>
+                <option value="BZ">Belice</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermudas</option>
+                <option value="BY">Bielorrusia</option>
+                <option value="MM">Birmania</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia y Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BR">Brasil</option>
+                <option value="BN">Brunei</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="BT">Bután</option>
+                <option value="CV">Cabo Verde</option>
+                <option value="KH">Camboya</option>
+                <option value="CM">Camerún</option>
+                <option value="CA">Canadá</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CY">Chipre</option>
+                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comores</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, República Democrática del</option>
+                <option value="KR">Corea</option>
+                <option value="KP">Corea del Norte</option>
+                <option value="CI">Costa de Marfíl</option>
+                <option value="CR">Costa Rica</option>
+                <option value="HR">Croacia (Hrvatska)</option>
+                <option value="CU">Cuba</option>
+                <option value="DK">Dinamarca</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egipto</option>
+                <option value="SV">El Salvador</option>
+                <option value="AE">Emiratos Árabes Unidos</option>
+                <option value="ER">Eritrea</option>
+                <option value="SI">Eslovenia</option>
+                <option value="ES" selected>España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="EE">Estonia</option>
+                <option value="ET">Etiopía</option>
+                <option value="FJ">Fiji</option>
+                <option value="PH">Filipinas</option>
+                <option value="FI">Finlandia</option>
+                <option value="FR">Francia</option>
+                <option value="GA">Gabón</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GD">Granada</option>
+                <option value="GR">Grecia</option>
+                <option value="GL">Groenlandia</option>
+                <option value="GP">Guadalupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GY">Guayana</option>
+                <option value="GF">Guayana Francesa</option>
+                <option value="GN">Guinea</option>
+                <option value="GQ">Guinea Ecuatorial</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="HT">Haití</option>
+                <option value="HN">Honduras</option>
+                <option value="HU">Hungría</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IQ">Irak</option>
+                <option value="IR">Irán</option>
+                <option value="IE">Irlanda</option>
+                <option value="BV">Isla Bouvet</option>
+                <option value="CX">Isla de Christmas</option>
+                <option value="IS">Islandia</option>
+                <option value="KY">Islas Caimán</option>
+                <option value="CK">Islas Cook</option>
+                <option value="CC">Islas de Cocos o Keeling</option>
+                <option value="FO">Islas Faroe</option>
+                <option value="HM">Islas Heard y McDonald</option>
+                <option value="FK">Islas Malvinas</option>
+                <option value="MP">Islas Marianas del Norte</option>
+                <option value="MH">Islas Marshall</option>
+                <option value="UM">Islas menores de Estados Unidos</option>
+                <option value="PW">Islas Palau</option>
+                <option value="SB">Islas Salomón</option>
+                <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                <option value="TK">Islas Tokelau</option>
+                <option value="TC">Islas Turks y Caicos</option>
+                <option value="VI">Islas Vírgenes (EEUU)</option>
+                <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                <option value="WF">Islas Wallis y Futuna</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italia</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japón</option>
+                <option value="JO">Jordania</option>
+                <option value="KZ">Kazajistán</option>
+                <option value="KE">Kenia</option>
+                <option value="KG">Kirguizistán</option>
+                <option value="KI">Kiribati</option>
+                <option value="KW">Kuwait</option>
+                <option value="LA">Laos</option>
+                <option value="LS">Lesotho</option>
+                <option value="LV">Letonia</option>
+                <option value="LB">Líbano</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libia</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lituania</option>
+                <option value="LU">Luxemburgo</option>
+                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                <option value="MG">Madagascar</option>
+                <option value="MY">Malasia</option>
+                <option value="MW">Malawi</option>
+                <option value="MV">Maldivas</option>
+                <option value="ML">Malí</option>
+                <option value="MT">Malta</option>
+                <option value="MA">Marruecos</option>
+                <option value="MQ">Martinica</option>
+                <option value="MU">Mauricio</option>
+                <option value="MR">Mauritania</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">México</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldavia</option>
+                <option value="MC">Mónaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="MS">Montserrat</option>
+                <option value="MZ">Mozambique</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Níger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NF">Norfolk</option>
+                <option value="NO">Noruega</option>
+                <option value="NC">Nueva Caledonia</option>
+                <option value="NZ">Nueva Zelanda</option>
+                <option value="OM">Omán</option>
+                <option value="NL">Países Bajos</option>
+                <option value="PA">Panamá</option>
+                <option value="PG">Papúa Nueva Guinea</option>
+                <option value="PK">Paquistán</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Perú</option>
+                <option value="PN">Pitcairn</option>
+                <option value="PF">Polinesia Francesa</option>
+                <option value="PL">Polonia</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="UK">Reino Unido</option>
+                <option value="CF">República Centroafricana</option>
+                <option value="CZ">República Checa</option>
+                <option value="ZA">República de Sudáfrica</option>
+                <option value="DO">República Dominicana</option>
+                <option value="SK">República Eslovaca</option>
+                <option value="RE">Reunión</option>
+                <option value="RW">Ruanda</option>
+                <option value="RO">Rumania</option>
+                <option value="RU">Rusia</option>
+                <option value="EH">Sahara Occidental</option>
+                <option value="KN">Saint Kitts y Nevis</option>
+                <option value="WS">Samoa</option>
+                <option value="AS">Samoa Americana</option>
+                <option value="SM">San Marino</option>
+                <option value="VC">San Vicente y Granadinas</option>
+                <option value="SH">Santa Helena</option>
+                <option value="LC">Santa Lucía</option>
+                <option value="ST">Santo Tomé y Príncipe</option>
+                <option value="SN">Senegal</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leona</option>
+                <option value="SG">Singapur</option>
+                <option value="SY">Siria</option>
+                <option value="SO">Somalia</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="PM">St Pierre y Miquelon</option>
+                <option value="SZ">Suazilandia</option>
+                <option value="SD">Sudán</option>
+                <option value="SE">Suecia</option>
+                <option value="CH">Suiza</option>
+                <option value="SR">Surinam</option>
+                <option value="TH">Tailandia</option>
+                <option value="TW">Taiwán</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TJ">Tayikistán</option>
+                <option value="TF">Territorios franceses del Sur</option>
+                <option value="TP">Timor Oriental</option>
+                <option value="TG">Togo</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad y Tobago</option>
+                <option value="TN">Túnez</option>
+                <option value="TM">Turkmenistán</option>
+                <option value="TR">Turquía</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UA">Ucrania</option>
+                <option value="UG">Uganda</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistán</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Vietnam</option>
+                <option value="YE">Yemen</option>
+                <option value="YU">Yugoslavia</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabue</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <!-- Flight information -->
+        <h4 class="brand-primary my-3">Volo</h4>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="flight_company">Società</label>
+            <input class="form-control" id="flight_company" name="flight_company" type="text"
+              placeholder="Società">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="flight_number">Numero di volo</label>
+            <input class="form-control" id="flight_number" name="flight_number" type="text"
+              placeholder="Numero di volo" value="<%=booking.flight_number%>">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="flight_time">Tempo previsto</label>
+            <input class="form-control" id="flight_time" name="flight_time" type="text"
+              placeholder="Tempo previsto" value="<%=booking.flight_time%>">
+          </div>            
+        </div>  
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <button class="btn btn-outline-dark" id="btn_update_reservation">Aggiornare</button>
+          </div>
+        </div>
+      </form>
+    
+    </script>
+    
+    <!-- Payment detail -->
+    <script type="text/tmpl" id="script_payment_detail">
+      <h4 class="brand-primary my-3">Pagamento</h4>
+      <% if (booking.total_paid == 0) {%>
+        <div id="payment_amount_container" class="alert alert-info">
+          <%= i18next.t('complete.reservationForm.booking_amount', {amount:configuration.formatCurrency(booking.booking_amount) }) %>
+        </div>
+      <% } %>
+      <form name="payment_form">  
+        <% if (sales_process.payment_methods.paypal_standard && sales_process.payment_methods.tpv_virtual) { %>
+        <div class="form-row">  
+           <div class="form-group col-md-12">
+             <label for="payments_paypal_standard">
+              <input type="radio" name="payment_method_id" value="paypal_standard">&nbsp;Paypal
+              <img src="/assets/images/pm-paypal.jpg"/>
+             </label>
+           </div>
+           <div class="form-group col-md-12">
+             <label for="payments_paypal_standard">
+              <input type="radio" name="payment_method_id" value="<%=sales_process.payment_methods.tpv_virtual%>">&nbsp;Carta di credito
+              <img src="/assets/images/pm-visa.jpg"/>
+              <img src="/assets/images/pm-mastercard.jpg"/>
+             </label>
+           </div>
+        </div>   
+        <% } else if (sales_process.payment_methods.paypal_standard) {%>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <img src="/assets/images/pm-paypal.jpg"/>
+            </div>
+          </div>
+          <input type="hidden" name="payment_method_id" value="paypal_standard" data-payment-method="paypal_standard">
+        <% } else if (sales_process.payment_methods.tpv_virtual) {%>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <img src="/assets/images/pm-visa.jpg"/>
+              <img src="/assets/images/pm-mastercard.jpg"/>
+            </div>
+          </div>
+          
+          <input type="hidden" name="payment_method_id" value="<%=sales_process.payment_methods.tpv_virtual%>"/>
+        <% } %>  
+        <% if (sales_process.can_pay_deposit) { %>
+          <input type="hidden" name="payment" value="deposit"/>
+        <% } else if (booking.total_paid == 0) {%>
+          <input type="hidden" name="payment" value="total"/>
+        <% } else { %>
+          <input type="hidden" name="payment" value="pending"/>
+        <% } %>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <button class="btn btn-outline-dark" id="btn_pay" type="submit">Pagare</button>
+          </div>
+        </div>
+      </div>  
+    
+    </script>
+    
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Company name</li>
+          <li>88888888</li>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Quinoa</a></li>
+          <li><a href="#">Palo Santo</a></li>
+          <li><a href="#">Apple</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Condiciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Siguenos</h6>
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix my-2"></div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/mybooking-engine-init.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>
