@@ -1,0 +1,205 @@
+---
+layout: default
+body-classes: "mybooking-activity"
+---
+
+{{> cta }}
+{{> nav }}
+
+<div class="container-fluid px-0" style="background-color: #3a3e3e">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-6 col-lg-7 activities-sidebar">
+      <!-- Product -->
+      <div class="activity-card">
+        <div class="card-img-bg-color">
+          <div class="activity-card__img">
+            <img src="{{ root }}assets/images/activities_4.jpg" alt="" style="height: 400px;">
+
+          </div>
+          <div class="activity-card__img-text" style="height: 400px;">
+            <h5 class="card-title color-white">Dubrovnik : El Desembarco del Rey</h5>
+          </div>
+        </div><!-- /bg-color -->
+        <p class="activity-description">
+          Visita el Castillo de los Lannister, capital de los Siete Reinos.  El escenario de Desembarco del Rey, sede del deseado Trono de Hierro, y centro neurálgico de las intrigas palaciegas de sus personajes. 
+        </p>
+      </div><!-- /activity-card -->
+      <!-- media objects -->
+
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Calendario, horario y duración</h5>
+          <p class="mb-0">De lunes a domingo, tours a las 8:00 y a las 14:00</p>
+        </div>
+        <i class="far fa-calendar-alt align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Horario</h5>
+          <p class="mb-0">10:30</p>
+        </div>
+        <i class="far fa-clock align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Precio</h5>
+          <p class="mb-0">Adulto: 300€</p>
+          <p class="mb-0">Niño: (3-14 años) 100€</p>
+          <p class="mb-0">Gratuito para menores de 3 años.</p>
+        </div>
+        <i class="fas fa-money-bill-wave align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Personas</h5>
+          <p class="mb-0">Grupos de hasta 4</p>
+        </div>
+        <i class="fas fa-users align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">¿Qué traer?</h5>
+          <ul>
+            <li>Coffee readymade</li>
+            <li>Iceland drinking </li>
+            <li>Fashion</li>
+            <li>Etsy vinegar</li>
+          </ul>
+        </div>
+        <i class="fas fa-highlighter align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Idiomas</h5>
+          <p class="mb-0">Castellano e inglés</p>
+        </div>
+        <i class="fas fa-language align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">¿Qué incluye?</h5>
+          <ul>
+            <li>Kombucha</li>
+            <li>microdosing</li>
+            <li>Quinoa </li>
+            <li>dummy text</li>
+            <li>hot chicken</li>
+          </ul>
+        </div>
+        <i class="fas fa-box-open align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Recomendaciones</h5>
+          <p class="mb-0">Kombucha man braid pop-up intelligentsia asymmetrical forage letterpress hot chicken lo-fi
+            before they sold out portland chambray paleo jean shorts. Selvage street art four dollar toast pug aesthetic
+            sartorial franzen artisan microdosing flannel synth. </p>
+        </div>
+        <i class="fas fa-comment-alt align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Dificultad</h5>
+          <p class="mb-0">Kombucha man braid pop-up intelligentsia asymmetrical forage letterpress hot</p>
+        </div>
+        <i class="fas fa-sort-numeric-up align-self-center ml-3"></i>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0">Punto de encuentro</h5>
+          <p class="mb-0">Helvetica leggings fanny pack copper mug.</p>
+        </div>
+        <i class="fas fa-map-marked-alt align-self-center ml-3"></i>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-5 activities-content">
+      <div class="activities-content__widget-wrapper">
+        <div class="activity-content__widget">
+          <div id="buy_selector" data-id="4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Micro templates -->
+
+<!-- Activity One Time Selector -->
+
+<script type="text/tmpl" id="script_one_time_selector">
+  <div class="tile is-parent is-vertical">
+        <div class="tile is-child">
+          <form name="select_date_form" id="select_date_form">
+            <input type="hidden" name="activity_id" id="activity_id" value="<%=activity.id%>"/>
+            <div id="tickets"></div>
+          </form>
+        </div>
+      </div>  
+  </script>
+
+<!-- Activity Multiple Dates Selector -->
+
+<script type="text/tmpl" id="script_multiple_dates_selector">
+  <div class="tile is-parent is-vertical">
+        <div class="tile is-child">
+          <h4 class="title is-6 has-text-grey" style="margin-top: 10px">Seleccionar fecha</h4>
+        <div>
+        <div class="tile is-child">
+          <form name="select_date_form" id="select_date_form">
+            <input type="hidden" name="activity_id" id="activity_id" value="<%=activity.id%>"/>
+            <select name="activity_date_id" id="activity_date_id"
+                    class="selectpicker" data-live-search="true" data-width="auto"
+                    data-toggle="tooltip" title="Select" data-container="body">
+            </select>
+            <div id="tickets"></div>
+          </form>
+        </div>
+      </div>  
+  </script>
+
+<!-- Activity Cyclic Calendar -->
+
+<script type="text/tmpl" id="script_cyclic_calendar">
+  <h4 class="activity-widget__title">Seleccionar fecha</h4>
+      <form name="select_date_form" id="select_date_form">
+        <input type="hidden" name="activity_id" id="activity_id" value="<%=activity_id%>"/>
+        <div id="datepicker"></div>
+        <div id="turns"></div>
+        <div id="tickets"></div>
+      </form>
+  </script>
+
+<script type="text/tmpl" id="script_cyclic_turns">
+  <% if (turns.length == 0) {%>
+    <p class="color-gray-500">Lo sentimos, no hay horarios disponibles</p>
+  <% } else { %>
+    <br>
+    <h4 class="activity-widget__title">Seleccionar hora</h4>
+    <div class="field">
+      <div class="control">
+        <% for (var idx=0;idx<turns.length;idx++) { %>
+          <input type="radio" name="turn" value="<%=turns[idx]%>"> <span class="color-white">&nbsp;<%=turns[idx]%></span>  </input>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
+  </script>
+
+<script type="text/tmpl" id="script_tickets">
+  <br>
+  <h4 class="activity-widget__title">Seleccionar personas</h4>
+  <% for (item in tickets) { %>
+      <div class="flex-form-item-box">
+        <div class="flex-form-item">
+          <select name="quantity_rate_<%=item%>" id="quantity_rate_<%=item%>" class="quantity_rate">
+            <% for (var idx=0; idx<tickets[item].length; idx++) { %>
+            <option value="<%=tickets[item][idx]["number"]%>" data-total="<%=tickets[item][idx]["total"]%>"><%=tickets[item][idx]["description"]%></option>
+            <% } %>
+          </select>
+          <i class="fa fa-angle-down flex-icon"></i>
+        </div>
+      </div> 
+  <% } %>
+  <br>
+  <a id="btn_reservation" href="#" class="btn btn-primary full-width" role="button">Reservar</a>
+</script>
