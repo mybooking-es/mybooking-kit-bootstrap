@@ -20,7 +20,7 @@ reservation_summary_return_place_supplement: Suplement punt de devolució
 reservation_summary_return_time_supplement: Suplement hora de devolució
 reservation_summary_driver_age_supplement: Suplement edad del conductor
 reservation_summary_fuel_supplement: Suplement combustible
-reservation_summary_total: Import total
+reservation_summary_total: Total
 reservation_summary_deposit: Fiança
 reservation_summary_deposit_detail: La fiança es retornarà després de la devolució del producte
 modify_reservation: Modificar reserva

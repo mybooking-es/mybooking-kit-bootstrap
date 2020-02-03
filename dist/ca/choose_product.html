@@ -103,7 +103,7 @@
                 <p class="product-name"><%=product.name%></p>
                 <p class="product-short-description"><%=product.short_description%></p>
               </div>
-              <i class="fas fa-info-circle color-gray-900"></i>
+              <i type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#infoModal"></i>
             </header>
             <div class="separator"></div>
             <section class="footer-card">
@@ -148,7 +148,29 @@
       </div>
         <% } %>
       </div>
-      </script><!-- Script for Pickup/Return information -->
+      </script>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">More info Modal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- Script for Pickup/Return information -->
     <!-- Script detailed for reservation summary -->
     <script type="text/tmpl" id="script_reservation_summary">
       <div class="reservation-summary-sticky-wrapper">

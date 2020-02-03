@@ -1,0 +1,42 @@
+// Reservation Summary
+
+.modal-body.reservation-summary {
+  padding: 0;
+  line-height: 1;
+  font-size: 14px;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+.product-view {
+  padding: 1rem;
+  display: flex;
+  background-color: $gray-50;
+}
+.product-view_image {
+  width: 50%;
+  img {
+    max-width: 100px;
+  }
+}
+.product-view_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+.product-summary-wrapper {
+  display: flex;
+  padding: 1rem;
+}
+.product-summary {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  li {
+    font-size: 13px;
+    color: $gray-500;
+  }
+}

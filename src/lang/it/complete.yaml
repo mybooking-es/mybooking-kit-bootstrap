@@ -18,7 +18,7 @@ reservation_summary_return_place_supplement: Supplemento luogo di riconsegna
 reservation_summary_return_time_supplement: Supplemento orario di riconsegna
 reservation_summary_driver_age_supplement: Supplemento dell'età del conducente
 reservation_summary_fuel_supplement: Supplemento carburante
-reservation_summary_total: Importo totale
+reservation_summary_total: Totale
 reservation_summary_deposit: Deposito cauzionale
 reservation_summary_deposit_detail: Il deposito cauzionale verrà restituito alla riconsegna del prodotto
 modify_reservation: Modifica prenotazione

@@ -19,7 +19,7 @@ reservation_summary_return_place_supplement: Suplemento lugar recogida
 reservation_summary_return_time_supplement: Suplemento hora recogida
 reservation_summary_driver_age_supplement: Suplemento edad del conductor
 reservation_summary_fuel_supplement: Suplemento combustible
-reservation_summary_total: Importe total
+reservation_summary_total: Total
 reservation_summary_deposit: Fianza
 reservation_summary_deposit_detail: La fianza se devolverá tras las devolución del producto
 modify_reservation: Modificar reserva
