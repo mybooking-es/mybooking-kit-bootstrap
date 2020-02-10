@@ -48,6 +48,8 @@
               <a class="dropdown-item" href="index.html">Index</a>
               <a class="dropdown-item" href="index_1.html">Index 1</a>
               <a class="dropdown-item" href="index_2.html">Index 2</a>
+              <a class="dropdown-item" href="activity.html">Activity 1</a>
+              <a class="dropdown-item" href="activity2.html">Activity 2</a>                    
             </div>
           </li>
           <li class="nav-item">
@@ -234,33 +236,33 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="street"><%= reservation.customer_adress_street %></label>
-            <input class="form-control" id="street" name="customer_address[street]" type="text"
+            <input class="form-control" id="street" name="driver_address[street]" type="text"
               placeholder="<%= reservation.customer_adress_street %>" value="<%=booking.address_street%>" maxlength="60">
           </div>
           <div class="form-group col-md-6">
             <label for="number"><%= reservation.customer_adress_number %></label>
-            <input class="form-control" id="number" name="customer_address[number]" type="text"
+            <input class="form-control" id="number" name="driver_address[number]" type="text"
               placeholder="<%= reservation.customer_adress_number %>" value="<%=booking.address_number%>" maxlength="10">
           </div>
           <div class="form-group col-md-6">
             <label for="complement"><%= reservation.customer_adress_complement %></label>
-            <input class="form-control" id="complement" name="customer_address[complement]" type="text"
-              placeholder="<%= reservation.customer_adress_complement %>" value="<%=booking.address_complement%>"  max_length="20">
+            <input class="form-control" id="complement" name="driver_address[complement]" type="text"
+              placeholder="<%= reservation.customer_adress_complement %>" value="<%=booking.address_complement%>"  maxlength="20">
           </div>
           <div class="form-group col-md-6">
             <label for="city"><%= reservation.customer_adress_city %></label>
-            <input class="form-control" id="city" name="customer_address[city]" type="text"
-              placeholder="<%= reservation.customer_adress_city %>" value="<%=booking.address_city%>" max_length="60">
+            <input class="form-control" id="city" name="driver_address[city]" type="text"
+              placeholder="<%= reservation.customer_adress_city %>" value="<%=booking.address_city%>" maxlength="60">
           </div>
           <div class="form-group col-md-6">
             <label for="state"><%= reservation.customer_adress_province %></label>
-            <input class="form-control" id="state" name="customer_address[state]" type="text"
-              placeholder="<%= reservation.customer_adress_province %>" value="<%=booking.address_state%>"  max_length="60">
+            <input class="form-control" id="state" name="driver_address[state]" type="text"
+              placeholder="<%= reservation.customer_adress_province %>" value="<%=booking.address_state%>"  maxlength="60">
           </div>
           <div class="form-group col-md-6">
             <label for="state"><%= reservation.customer_zip %></label>
-            <input class="form-control" id="zip" name="customer_address[zip]" type="text"
-              placeholder="<%= reservation.customer_zip %>" max_length="10" value="<%=booking.address_zip%>">
+            <input class="form-control" id="zip" name="driver_address[zip]" type="text"
+              placeholder="<%= reservation.customer_zip %>" maxlength="10" value="<%=booking.address_zip%>">
           </div>      
           <div class="form-group col-md-6">
             <label class="full-width" for="country"><%= reservation.customer_adress_country %>

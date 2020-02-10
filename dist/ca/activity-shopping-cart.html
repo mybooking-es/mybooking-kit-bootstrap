@@ -49,6 +49,8 @@
               <a class="dropdown-item" href="index.html">Index</a>
               <a class="dropdown-item" href="index_1.html">Index 1</a>
               <a class="dropdown-item" href="index_2.html">Index 2</a>
+              <a class="dropdown-item" href="activity.html">Activity 1</a>
+              <a class="dropdown-item" href="activity2.html">Activity 2</a>                    
             </div>
           </li>
           <li class="nav-item">
@@ -126,7 +128,7 @@
               <p class="card-text color-white"><%= configuration.formatDate(shopping_cart.items[idx].date) %> <%= shopping_cart.items[idx].time %></p>
             </div>
           </div><!-- /bg-color -->
-          <table class="activity-card_table table table-borderless">
+          <table class="table">
             <tbody>
               <% for (var x=0; x<shopping_cart.items[idx]['items'].length; x++) { %>
                 <tr>
@@ -134,14 +136,14 @@
                         <%=shopping_cart.items[idx]['items'][x].item_price_description %> x
                         <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_unit_cost) %>
                     </td>
-                    <td class="float-right">
+                    <td class="text-right">
                         <%=configuration.formatCurrency(shopping_cart.items[idx]['items'][x].item_cost) %>
                     </td>
                 </tr>
               <% } %>  
               <tr>
-                <td>Total</td>
-                <td class="fw-700 brand-primary float-right"><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
+                <td><strong>Total</strong></td>
+                <td class="text-right"><%=configuration.formatCurrency(shopping_cart.items[idx]['total'])%></td>
               </tr>
             </tbody>
           </table>
@@ -212,49 +214,116 @@
     
     <!-- Script payment -->
     <script type="text/tmpl" id="script_payment_detail">
-      <h4 class="color-white">Confirmar</h4>
-          <hr>
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="accept" name="accept"/>
-            <label class="form-check-label" for="accept">He leído y acepto los Términos y condicionest</label>
+    
+      <input type="hidden" name="payment" value="none">
+    
+      <% if (canRequestAndPay) { %>
+        <hr>
+        <div class="form-row">
+           <% if (shopping_cart.can_make_request) { %>
+             <div class="form-group col-md-12">
+               <label>
+                <input type="radio" name="complete_action" value="request_reservation" class="complete_action">&nbsp;Solicitd de reserva
+               </label>
+             </div>
+           <% } %>
+           <% if (canPay) { %>
+           <div class="form-group col-md-12">
+             <label>
+              <input type="radio" name="complete_action" value="pay_now" class="complete_action">&nbsp;Pagar ahora
+             </label>
+           </div>
+           <% } %>
+        </div>
+      <% } %>
+    
+      <!-- Request reservation -->
+    
+      <% if (shopping_cart.can_make_request) { %>
+      <div id="request_reservation_container" <% if (canRequestAndPay) { %>style="display:none"<%}%>>
+        <div class="border p-4">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>
+                <input type="checkbox" id="conditions_read_request_reservation" name="conditions_read_request_reservation">&nbsp;Acepto los términos y condiciones y la política de privacidad
+              </label>
+            </div>
           </div>
     
-          <% if ((shopping_cart.can_pay_deposit || shopping_cart.can_pay_total) && shopping_cart.can_make_request) { %>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="none" name="payment" value="none" data-payment-method="none">
-              <label class="form-check-label mr-5" for="none">
-                Solicitud de reserva
-              </label>
-              <input class="form-check-input" type="radio" id="credit-card" name="payment" value="redsys256" data-payment-method="redsys256">
-              <label class="form-check-label" for="credit-card">
-                Pagar
-              </label>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button type="submit" class="btn btn-success w-100">Solicitud de reserva</button>
             </div>
-            <div class="form-group mt-5 w-100">
-            <button id="btn_reservation" type="button" class="btn btn-primary w-100">Confirmar</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    
+    
+      <% if (canPay) { %>
+    
+        <div id="payment_now_container" <% if (canRequestAndPay) { %>style="display:none"<%}%>>
+    
+            <div class="border p-4">
+                <h4><%=i18next.t('complete.reservationForm.total_payment', {amount: configuration.formatCurrency(paymentAmount)})%></h4>
+                <br>
+    
+                <!-- Payment amount -->
+    
+                <div class="alert alert-info">
+                   <p><%=i18next.t('complete.reservationForm.booking_amount',{amount: configuration.formatCurrency(paymentAmount)})%></p>
+                </div>
+    
+                <% if (shopping_cart.payment_methods.paypal_standard &&
+                       shopping_cart.payment_methods.tpv_virtual) { %>
+                    <div class="form-row">
+                       <div class="form-group col-md-12">
+                         <label for="payments_paypal_standard">
+                          <input type="radio" id="payments_paypal_standard" name="payment_method_select" class="payment_method_select" value="paypal_standard">&nbsp;Paypal
+                          <img src="assets/images/pm-paypal.jpg"/>
+                         </label>
+                       </div>
+                       <div class="form-group col-md-12">
+                         <label for="payments_credit_card">
+                          <input type="radio" id="payments_credit_card" name="payment_method_select" class="payment_method_select" value="<%=shopping_cart.payment_methods.tpv_virtual%>">&nbsp;Tarjeta de crédito/débito
+                          <img src="assets/images/pm-visa.jpg"/>
+                          <img src="assets/images/pm-mastercard.jpg"/>
+                         </label>
+                       </div>
+                    </div>
+                    <div id="payment_method_select_error" class="form-row">
+                    </div>
+                <% } else if (shopping_cart.payment_methods.paypal_standard) { %>
+                    <img src="assets/images/pm-paypal.jpg"/>
+                    <input type="hidden" id="payment_method_value" value="paypal_standard">
+                <% } else if (shopping_cart.payment_methods.tpv_virtual) { %>
+                    <img src="assets/images/pm-mastercard.jpg"/>
+                    <img src="assets/images/pm-visa.jpg"/>
+                    <input type="hidden" id="payment_method_value" value="<%=shopping_cart.payment_methods.tpv_virtual%>">
+                <% } %>
+    
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="payments_paypal_standard">
+                      <input type="checkbox" id="conditions_read_pay_now" name="conditions_read_pay_now">&nbsp;Acepto los términos y condiciones y la política de privacidad
+                    </label>
+                  </div>
+                </div>
+    
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-success w-100"><%=i18next.t('complete.reservationForm.payment_button',{amount: configuration.formatCurrency(paymentAmount)})%></a>
+                  </div>
+                </div>
             </div>
     
-          <% } else if (shopping_cart.can_make_request) { %>
+        </div>
     
-            <input type="hidden" name="payment" value="none" data-payment-method="none">
-              <div class="form-group mt-5 w-100">
-                <div class="control">
-                  <button id="btn_reservation" type="button" class="btn btn-primary w-100">Solicitar reserva</a>
-                </div>
-              </div>  
-    
-          <% } else if ((shopping_cart.can_pay_deposit || shopping_cart.can_pay_total)) { %>
-            
-            <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
-              <div class="form-group mt-5 w-100">
-                <div class="control">
-                  <button id="btn_reservation" type="button" class="btn btn-primary w-100">Pagar</a>
-                </div>
-              </div>  
-          <% } %> 
+      <% } %>  
     
     
-        </script>
+    </script>
     
 <footer class="footer">
   <div class="container">
