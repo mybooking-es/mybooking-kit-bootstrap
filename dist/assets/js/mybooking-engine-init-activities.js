@@ -1,8 +1,8 @@
 window.mybookingEngine = (function() {
-  var baseURL = "http://mbctours.test";
+  var baseURL = "https://demo-tours.mybooking.es";
   var apiKey = "";
   var shoppingCartUrl = "activity-shopping-cart.html";
-  var orderUrl = "order.html";
+  var orderUrl = "activity-summary.html";
   function getBaseURL() {
     return baseURL;
   }

@@ -1,0 +1,148 @@
+---
+layout: default
+body-classes: "mybooking-activity-summary"
+---
+
+{{> cta }}
+{{> nav }}
+
+
+<div id="reservation_detail">
+</div>
+
+<!-- Microtemplates -->
+<script type="text/tpml" id="script_order">
+<div class="container-fluid px-0" style="background-color: #3a3e3e">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-6 activities-sidebar">
+      <h1 class="color-white m-5"><%=order.summary_status%></h1>
+      <!-- selected_products -->
+        <% for (idx in order.items) { %>
+        <div class="activity-card">
+          <div class="card-img-bg-color">
+            <div class="activity-card__img">
+              <img src="<%=order.items[idx].photo_full%>" alt="" />
+            </div>
+            <div class="activity-card__img-text">
+              <h5 class="card-title color-white"><%=order.items[idx].item_description_customer_translation%></h5>
+              <p class="card-text color-white"><%= configuration.formatDate(order.items[idx].date) %>
+                <%= order.items[idx].time %></p>
+            </div>
+          </div>
+          <table class="activity-card_table table table-borderless">
+            <tbody>
+              <% for (var x=0; x<order.items[idx]['items'].length; x++) { %>
+              <tr>
+                <td><%=order.items[idx]['items'][x].quantity %>
+                  <%=order.items[idx]['items'][x].item_price_description %> x
+                  <%=configuration.formatCurrency(order.items[idx]['items'][x].item_unit_cost) %>
+                </td>
+                <td class="float-right">
+                  <%=configuration.formatCurrency(order.items[idx]['items'][x].item_cost) %>
+                </td>
+              </tr>
+              <% } %>
+              <tr>
+                <td>Total</td>
+                <td class="fw-700 brand-primary float-right">
+                  <%=configuration.formatCurrency(order.items[idx]['total'])%></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /activity-card -->
+        <% } %>
+      <!-- /selected products -->
+    </div><!-- /sidebar -->
+    <div class="col-md-6 activities-content">
+      <div class="widget widget-wrapper">
+        <!-- reservation_detail -->
+          <table class="activity-card_table table table-borderless">
+            <h4 class="color-white">Detalle de la reserva</h4>
+            <tbody>
+              <tr>
+                <td>
+                  Importe total
+                </td>
+                <td class="float-right">
+                  <%= configuration.formatCurrency(order.total_cost)%>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Total pagado
+                </td>
+                <td class="float-right">
+                  <%= configuration.formatCurrency(order.total_paid)%>
+                </td>
+              </tr>
+              <tr>
+                <td>Total pendiente</td>
+                <td class="fw-700 brand-primary float-right">
+                  <%= configuration.formatCurrency(order.total_pending)%>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <!-- /reservation detail -->
+
+      </div><!-- /widget -->
+
+      <div class="widget-wrapper">
+        <h4 class="color-white">Datos del cliente</h4>
+        <table class="table table-borderless color-white">
+          <tbody>
+            <tr>
+              <th scope="row">Nombre:</th>
+              <td class="float-right"><%=order.customer_name%> <%=order.customer_surname%></td>
+            </tr>
+            <tr>
+              <th scope="row">Email:</th>
+              <td class="float-right"><%=order.customer_email%></td>
+            </tr>
+            <tr>
+              <th scope="row">Teléfono:</th>
+              <td class="float-right"><%=order.customer_phone%></td>
+            </tr>
+            <% if (order.customer_mobile_phone > 0) { %>
+            <tr>
+              <th scope="row">Teléfono alternativo:</th>
+              <td class="float-right"><%=order.customer_mobile_phone%></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Reservation data -->
+        <!-- Payment -->
+        <% if (order.can_pay_deposit || order.can_pay_total)  { %>
+
+        <div class="widget-wrapper">
+        <form id="form-reservation" name="reservation_form" class="form-delivery" method="post" autocomplete="off">
+        </form>
+
+        <form id="form-payment" name="payment_form" class="form-delivery" method="post" autocomplete="off">
+          <h4 class="color-white">Pagar</h4>
+          <input type="hidden" name="payment" value="redsys256" data-payment-method="redsys256">
+
+          <div class="clearfix">
+          <button id="btn_reservation" type="button" class="btn btn-danger float-right">
+            Pagar</button>
+          </div>
+        </form>
+
+        <div id="reservation_error" class="alert alert-danger" style="display:none">
+        </div>
+
+        </div>
+
+
+        <% } %>
+
+
+    </div><!-- /activities-content"-->
+  </div><!-- /row-->
+</div><!-- /container -->
+
+
+</script>
