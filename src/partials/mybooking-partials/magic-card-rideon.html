@@ -12,7 +12,7 @@
           </div>
           <div class="card-rideon-header_right">
             <p class="unit-price-title">Al día</p>
-            <div class="unit-price"><%=configuration.formatCurrency(product.unit_price)%></div>
+            <div class="unit-price"><%=configuration.formatCurrency(product.unit_price, 0)%></div>
             <% if (product.price != product.base_price) { %>
               <% if (product.offer_discount_type == 'percentage') { %>
                 <p class="offer"><%=new Number(product.offer_value)%>%<s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>

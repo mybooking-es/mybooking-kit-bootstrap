@@ -3,8 +3,11 @@ layout: default
 body-classes: "mybooking-selector-widget"
 ---
 
+{{#ifequal global.engine.selector 'horizontal'}}
 {{> hero-header-horizontal }}
-
+{{else}}
+{{> hero-header }}
+{{/ifequal}}
 
 <header class="header-wrapper">
     <h1 class="title fw-900"><%= index.featured_section_title %></h1>

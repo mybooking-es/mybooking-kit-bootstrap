@@ -3,16 +3,25 @@
 <html class="no-js" lang="<%= _lang_ %>">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= complete.title %></title>
-    <meta name="description" content="<%= complete.meta-description %>"/>
-    <link rel="stylesheet" href="/assets/css/app.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= complete.title %></title>
+  <meta name="description" content="<%= complete.meta-description %>" />
+  <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body class="complete ">
-
+  <div id="full_loader">
+    <div class="gooey">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
     
     <div class="cta cta__bg cta__text">
       <div class="d-none d-sm-block">
@@ -48,6 +57,8 @@
               <a class="dropdown-item" href="index.html">Index</a>
               <a class="dropdown-item" href="index_1.html">Index 1</a>
               <a class="dropdown-item" href="index_2.html">Index 2</a>
+              <a class="dropdown-item" href="activity.html">Activity 1</a>
+              <a class="dropdown-item" href="activity2.html">Activity 2</a>                    
             </div>
           </li>
           <li class="nav-item">
@@ -85,8 +96,9 @@
     
     <!-- Reservation : Selected product -->
     <div id="selected_product" class="sticky-top"></div>
+    <!-- Reservation detail modal inside selected product -->
     <div id="reservation_detail"></div>
-    
+    <!-- Extras and complete form -->
     <div class="bg-gray-200">
       <div class="container">
         <div class="row">
@@ -96,7 +108,7 @@
             <div id="extras_listing"></div>
           </div>
           <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-3 mb-5 custom-form">
-            <!-- Reservation complete -->
+            <!-- Reservation complete form -->
             <form id="form-reservation" name="reservation_form">
               <h4 class="brand-primary my-3"><%= complete.customer_title %></h4>
               <div class="form-row">
@@ -149,7 +161,6 @@
     
     <!-- Complete summary sticky bar -->
     <script type="text/tpml" id="script_product_detail">
-    
       <div class="complete-summary-sticky-wrapper">
         <div class="complete-summary-sticky">
           <div class="complete-summary-left">
@@ -177,11 +188,121 @@
           </div>
         </div>
       </div>
-    
     </script>
     
+    <!-- Modal Reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+        <!-- Modal view reservation-->
+        <div class="modal fade" id="viewReservationModal" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="viewModal"><%= complete.reservation_summary_title %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body summary-modal">
+                <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
+                <div class="product-view">
+                  <div class="product-view_image">
+                    <img class="img-fluid" src="<%= shopping_cart.items[0].photo_medium%>">
+                  </div>
+                  <div class="product-view_text">
+                    <p class="fw-700"><%=shopping_cart.items[idx].item_description_customer_translation%></p>
+                    <p class="color-gray-500"><%= complete.rental_duration %>: <%=shopping_cart.days%>
+                      <%= complete.rental_days %></p>
+                  </div>
+                </div>
+                <div class="product-summary-wrapper">
+                  <div class="product-summary">
+                    <ul>
+                      <li><%=shopping_cart.date_from_full_format%> /
+                        <%=shopping_cart.time_from%></li>
+                      <li><%=shopping_cart.pickup_place_customer_translation%></li>
+                    </ul>
+                  </div>
+                  <div class="product-summary_separator">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                  </div>
+                  <div class="product-summary">
+                    <ul>
+                      <li><%=shopping_cart.date_to_full_format%> /
+                        <%=shopping_cart.time_to%></li>
+                      <li><%=shopping_cart.return_place_customer_translation%></li>
+                    </ul>
+                  </div>
+                </div>
+                <% } %>
+      
+                <ul class="list-group p-3 summary-modal_list">
+                  <!-- Product -->
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_total_product %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.item_cost)%></span>
+                  </li>
+                  <!-- Extras -->
+                  <% if (shopping_cart.extras.length > 0) { %>
+                  <% for (var idx=0; idx<shopping_cart.extras.length; idx++) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%=shopping_cart.extras[idx].extra_description_customer_translation%></span>
+                    <span class="badge badge-primary badge-pill"><%=shopping_cart.extras[idx].quantity%></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.extras[idx].extra_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% } %>
+                  <!-- Supplements -->
+                  <% if (shopping_cart.time_from_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_pickup_time_supplement %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_from_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.pickup_place_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_pickup_place_supplement %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.pickup_place_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.time_to_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_return_time_supplement %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_to_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.return_place_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_return_place_supplement %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.return_place_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.driver_age_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_driver_age_supplement %></span>
+                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.driver_age_cost)%></span>
+                  </li>
+                  <% } %>
+                  <% if (shopping_cart.category_supplement_1_cost > 0) { %>
+                  <li class="list-group-item">
+                    <span class="extra-name"><%= complete.reservation_summary_fuel_supplement %></span>
+                    <span
+                      class="extra-price"><%=configuration.formatCurrency(shopping_cart.category_supplement_1_cost)%></span>
+                  </li>
+                  <% } %>
+              </div>
+              <div class="modal-footer summary-modal_footer">
+                <! -- TOTAL -->
+                      <span class="extra-name fw-700"><%= complete.reservation_summary_total %></span>
+                      <span
+                        class="fw-900 brand-primary"><%=configuration.formatCurrency(shopping_cart.total_cost)%></span>
+              </div>
+            </div>
+          </div>
+        </div></script>
+    
     <!-- Extra representation -->
-    <script type="text/template" id="script_detailed_extra">
+    <script type="text/tmpl" id="script_detailed_extra">
       <div class="extras-container">
       <% for (var idx=0;idx<extras.length;idx++) { %>
         <% var extra = extras[idx]; %>
@@ -221,119 +342,6 @@
       <% } %>
       </div>
     </script>
-    
-    <!-- Modal Reservation summary -->
-    <script type="text/tmpl" id="script_reservation_summary">
-        <!-- Modal view reservation-->
-        <div class="modal fade" id="viewReservationModal" tabindex="-1" role="dialog" aria-labelledby="viewModal"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="viewModal"><%= complete.reservation_summary_title %></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body reservation-summary">
-      
-                <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
-      
-                <div class="product-view">
-                  <div class="product-view_image">
-                    <img class="img-fluid" src="<%= shopping_cart.items[0].photo_medium%>">
-                  </div>
-                  <div class="product-view_text">
-                    <p class="fw-700"><%=shopping_cart.items[idx].item_description_customer_translation%></p>
-                    <p class="color-gray-500"><%= complete.rental_duration %>: <%=shopping_cart.days%>
-                      <%= complete.rental_days %></p>
-                  </div>
-                </div>
-                <div class="product-summary-wrapper">
-                  <div class="product-summary">
-                    <h6><%= complete.reservation_summary_pickup %></h6>
-                    <ul>
-                      <li><%=shopping_cart.date_from_full_format%> /
-                        <%=shopping_cart.time_from%></li>
-                      <li><%=shopping_cart.pickup_place_customer_translation%></li>
-                    </ul>
-                  </div>
-                  <div class="product-summary">
-                    <h6><%= complete.reservation_summary_return %></h6>
-                    <ul>
-                      <li><%=shopping_cart.date_to_full_format%> /
-                        <%=shopping_cart.time_to%></li>
-                      <li><%=shopping_cart.return_place_customer_translation%></li>
-                    </ul>
-                  </div>
-                </div>
-                <% } %>
-      
-                <ul class="list-group p-3 bg-gray-50">
-                  <!-- Product -->
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_total_product %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.item_cost)%></span>
-                  </li>
-                  <!-- Extras -->
-                  <% if (shopping_cart.extras.length > 0) { %>
-                  <% for (var idx=0; idx<shopping_cart.extras.length; idx++) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%=shopping_cart.extras[idx].extra_description_customer_translation%></span>
-                    <span class="badge badge-primary badge-pill"><%=shopping_cart.extras[idx].quantity%></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.extras[idx].extra_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% } %>
-                  <!-- Supplements -->
-                  <% if (shopping_cart.time_from_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_pickup_time_supplement %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_from_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% if (shopping_cart.pickup_place_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_pickup_place_supplement %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.pickup_place_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% if (shopping_cart.time_to_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_return_time_supplement %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.time_to_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% if (shopping_cart.return_place_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_return_place_supplement %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.return_place_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% if (shopping_cart.driver_age_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_driver_age_supplement %></span>
-                    <span class="extra-price"><%=configuration.formatCurrency(shopping_cart.driver_age_cost)%></span>
-                  </li>
-                  <% } %>
-                  <% if (shopping_cart.category_supplement_1_cost > 0) { %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                    <span class="extra-name"><%= complete.reservation_summary_fuel_supplement %></span>
-                    <span
-                      class="extra-price"><%=configuration.formatCurrency(shopping_cart.category_supplement_1_cost)%></span>
-                  </li>
-                  <% } %>
-                  <! -- TOTAL -->
-                    <li class="list-group-item d-flex justify-content-between align-items-center bg-gray-50">
-                      <span class="extra-name fw-700"><%= complete.reservation_summary_total %></span>
-                      <span class="fw-900 brand-primary"><%=configuration.formatCurrency(shopping_cart.total_cost)%></span>
-                    </li>
-                </ul>
-      
-              </div>
-            </div>
-          </div>
-        </div></script>
     
     <!-- Payment detail -->
     <script type="text/tmpl" id="script_payment_detail">

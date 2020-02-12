@@ -3,16 +3,25 @@
 <html class="no-js" lang="<%= _lang_ %>">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= choose_product.title %></title>
-    <meta name="description" content="<%= choose_product.meta-description %>"/>
-    <link rel="stylesheet" href="/assets/css/app.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= choose_product.title %></title>
+  <meta name="description" content="<%= choose_product.meta-description %>" />
+  <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body class="choose_product ">
-
+  <div id="full_loader">
+    <div class="gooey">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
     
     <div class="cta cta__bg cta__text">
       <div class="d-none d-sm-block">
@@ -48,6 +57,8 @@
               <a class="dropdown-item" href="index.html">Index</a>
               <a class="dropdown-item" href="index_1.html">Index 1</a>
               <a class="dropdown-item" href="index_2.html">Index 2</a>
+              <a class="dropdown-item" href="activity.html">Activity 1</a>
+              <a class="dropdown-item" href="activity2.html">Activity 2</a>                    
             </div>
           </li>
           <li class="nav-item">
@@ -92,47 +103,48 @@
     <!-- Script detailed product for choose_product -->
     <!-- Script detailed product for choose_product -->
     <script type="text/tpml" id="script_detailed_product">
-      <div class="magic-cards-container">
+      <div class="cards-rideon-container">
       <% for (var idx=0;idx<products.length; idx++) { %>
         <% var product = products[idx]; %>
-        <div class="magic-card-wrapper">
-        <div class="magic-card">
-            <header class="magic-card-header">
-              <div class="product-name-and-short-description">
+        <div class="card-rideon-wrapper">
+        <div class="card-rideon">
+            <div class="card-rideon-header">
+              <div class="card-rideon-header_left">
                 <p class="product-name"><%=product.name%></p>
-                <p class="product-short-description"><%=product.short_description%></p>
+                <img class="img-fluid" src="<%=product.photo%>">
               </div>
-              <i type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#infoModal"></i>
-            </header>
-            <div class="separator"></div>
-            <section class="footer-card">
-              <div class="img-wrapper">
-            <img src="<%=product.photo%>" class="product-image"></div>
-                <div class="variable-content">
-                  <% if (product.price != product.base_price) { %>
-                    <% if (product.offer_discount_type == 'percentage') { %>
-                      <p class="offer"><%=new Number(product.offer_value)%>% <%=product.offer_name%><span><small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
-                    <% } %>
+              <div class="card-rideon-header_right">
+                <p class="unit-price-title">Al día</p>
+                <div class="unit-price"><%=configuration.formatCurrency(product.unit_price, 0)%></div>
+                <% if (product.price != product.base_price) { %>
+                  <% if (product.offer_discount_type == 'percentage') { %>
+                    <p class="offer"><%=new Number(product.offer_value)%>%<s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
+                    <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
                   <% } %>
-                </div>
-    
-                <% if (product.key_characteristics) { %> 
-                    <div class="key-characteristics">
-                      <% for (characteristic in product.key_characteristics) { %>
-                      <div class="key-icon">
-                        <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
-                        <p><%=product.key_characteristics[characteristic]%></p>  
-                      </div>
-                    
-                      <% } %>
-                    </div>
+                <% } else { %>
+                  <p>Total alquiler</p>
+                  <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+                  <p>Cancelación gratuita</p>               
                 <% } %>
+                <div type="button" class="info-btn" data-toggle="modal" data-target="#infoModal">
+                  <i class="fas fa-plus"></i>
+                  <span> INFO</span> 
+                </div>
+            
+            </div>
+          </div>
     
-                <div class="push-down">
-                <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
-    
+            <div class="coverages">
+              <p class="coverages-title">¡Añádele cobertura a todo riesgo!</p>
+              <ul class="coverage-list">
+                <li>Cobertura rider</li>
+                <li>Cobertura prorider</li>
+                <li>Cobertura premium</li>
+              </ul>
+            </div>
+     
                 <% if (product.availability) { %>
-                <a class="btn btn-dark btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
+                <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
                 <% } else { %>
                 <div class="not-available"><%= choose_product.model_not_available %></div>
                 <% } %> 
@@ -140,16 +152,15 @@
                 <% if (product.few_available_units) { %>
                   <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
                 <% } %>
-                
-                </div>
-            </section>
+      
+    
+          </div>
         </div>
-      </div>
         <% } %>
       </div>
       </script>
     
-    <!-- Modal -->
+    <!-- More info modal -->
     <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">

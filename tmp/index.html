@@ -3,22 +3,29 @@
 <html class="no-js" lang="<%= _lang_ %>">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= index.title %></title>
-    <meta name="description" content="<%= index.meta-description %>"/>
-    <link rel="stylesheet" href="/assets/css/app.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= index.title %></title>
+  <meta name="description" content="<%= index.meta-description %>" />
+  <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
 <body class="index mybooking-selector-widget">
-
+  <div id="full_loader">
+    <div class="gooey">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
     
-    <!-- hero-header with video -->
+    <!-- hero-header-horizontal -->
     <div class="hero-header-container">
-      <video autoplay loop muted poster="assets/video/bg-cover.jpg" class="bg-landing">
-        <source src="assets/video/bg-video.mp4"> 
-      </video>
+      <img class="bg-landing" src="assets/images/bg-image.jpg" alt="">
       <div class="cta cta__bg cta__text">
         <div class="d-none d-sm-block">
           <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
@@ -53,6 +60,8 @@
                 <a class="dropdown-item" href="index.html">Index</a>
                 <a class="dropdown-item" href="index_1.html">Index 1</a>
                 <a class="dropdown-item" href="index_2.html">Index 2</a>
+                <a class="dropdown-item" href="activity.html">Activity 1</a>
+                <a class="dropdown-item" href="activity2.html">Activity 2</a>                    
               </div>
             </li>
             <li class="nav-item">
@@ -75,78 +84,78 @@
             </li>
           </ul>
         </div>
-      </nav>  <div class="hero-header-content">
-        <div class="hero-header-left">
-          <div class="aligner">
-            <h1 class="fw-900"><%= index.slogan_title %></h1>
-            <p>
-              <%= index.slogan_text %>
-            </p>
-          </div>
-        </div>
-        <div class="hero-header-right">
+      </nav>  <div class="hero-header-content-horizontal">
+        <div class="aligner-horizontal">
+          <h1 class="fw-900 color-white"><%= index.slogan_title %></h1>
+          <p class="color-white"><%= index.slogan_text %></p>
           <!-- FLEX-FORM-SELECTOR -->
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
-              class="flex-form" autocomplete="off">
-              <!-- Pickup place -->
-              <div class="flex-form-item-box">
-                <label><%= index.pickup_place %></label>
-                <div class="flex-form-item widget_pickup_place_group">
-                  <select id="widget_pickup_place" name="pickup_place"></select>
-                  <i class="fa fa-angle-down flex-icon"></i>
+              class="flex-form-horizontal">
+              <div class="flex-form-group-wrapper">
+                <div class="flex-form-group">
+                  <!-- Pickup place -->
+                  <div class="flex-form-horizontal-box">
+                    <label><%= index.pickup_place %></label>
+                    <div class="flex-form-item widget_pickup_place_group">
+                      <select id="widget_pickup_place" name="pickup_place"></select>
+                      <i class="fa fa-angle-down flex-icon"></i>
+                    </div>
+                    <!-- Custom delivery place -->
+                    <div id="another_pickup_place_group" style="display: none;">
+                      <div class="flex-form-item justify-content-between">
+                        <input class="bg-white w-100" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
+                        <input type="hidden" name="custom_pickup_place" value="false" />
+                        <button type="button" class="widget_another_pickup_place_group_close p-0">
+                          <i class="fa fa-times flex-icon"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Return place -->
+                  <div class="flex-form-horizontal-box">
+                    <label><%= index.return_place %></label>
+                    <div class="flex-form-item widget_return_place_group">
+                      <select id="widget_return_place" name="return_place">
+                      </select>
+                      <i class="fa fa-angle-down flex-icon"></i>
+                    </div>
+                    <!-- Custom delivery place -->
+                    <div id="another_return_place_group" style="display: none;">
+                      <div class="flex-form-item bg-white justify-content-between">
+                        <input class="bg-white w-100" type="text" id="widget_return_place_other" name="return_place_other" />
+                        <input type="hidden" name="custom_return_place" value="false" />
+                        <button type="button" class="widget_another_return_place_group_close p-0">
+                          <i class="fa fa-times flex-icon"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- Custom delivery place -->
-                <div id="another_pickup_place_group" style="display: none;">
-                  <div class="flex-form-item justify-content-between">
-                    <input class="bg-white w-100" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
-                    <input type="hidden" name="custom_pickup_place" value="false" />
-                    <button type="button" class="widget_another_pickup_place_group_close p-0">
-                      <i class="fa fa-times flex-icon"></i>
-                    </button>
+                <!-- Date/Time from / to -->
+                <div class="flex-form-group">
+                  <div class="flex-form-horizontal-box">
+                    <label><%= index.date_from %></label>
+                    <div class="flex-form-horizontal-item">
+                      <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                      <input type="text" id="widget_date_from" name="date_from" readonly="true"/>
+                      <select class="ml-1" id="widget_time_from" name="time_from">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex-form-horizontal-box">
+                    <label><%= index.date_to %></label>
+                    <div class="flex-form-horizontal-item">
+                      <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                      <input type="text" id="widget_date_to" name="date_to"  readonly="true"/>
+                      <select class="ml-1" id="widget_time_to" name="time_to">
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- Return place -->
-              <div class="flex-form-item-box">
-                <label><%= index.return_place %></label>
-                <div class="flex-form-item widget_return_place_group">
-                  <select id="widget_return_place" name="return_place">
-                  </select>
-                  <i class="fa fa-angle-down flex-icon"></i>
-                </div>
-                <!-- Custom delivery place -->
-                <div id="another_return_place_group" style="display: none;">
-                  <div class="flex-form-item bg-white justify-content-between">
-                    <input class="bg-white w-100" type="text" id="widget_return_place_other" name="return_place_other" />
-                    <input type="hidden" name="custom_return_place" value="false" />
-                    <button type="button" class="widget_another_return_place_group_close p-0">
-                      <i class="fa fa-times flex-icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-form-item-box">
-                <label><%= index.date_from %></label>
-                <div class="flex-form-item">
-                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                  <input type="text" id="widget_date_from" name="date_from" readonly="true" placeholder="dd/mm/aaaa" />
-                  <select class="ml-1" id="widget_time_from" name="time_from">
-                  </select>
-                </div>
-              </div>
-              <div class="flex-form-item-box">
-                <label><%= index.date_to %></label>
-                <div class="flex-form-item">
-                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
-                  <input type="text" id="widget_date_to" name="date_to" readonly="true" placeholder="dd/mm/aaaa" />
-                  <select class="ml-1" id="widget_time_to" name="time_to">
-                  </select>
-                </div>
-              </div>
-          
-              <div class="flex-form-item-box">
-                <input type="submit" class="btn btn-primary" value="<%= index.search_button %>" />
+              <div class="flex-form-horizontal-box">
+                <input type="submit" class="btn btn-primary mt-3" value="<%= index.search_button %>" />
               </div>
             </form>
           </section>    </div>
@@ -157,6 +166,7 @@
         </div>
       </div>
     </div>
+    
     <header class="header-wrapper">
         <h1 class="title fw-900"><%= index.featured_section_title %></h1>
         <hr class="custom-hr"></hr>
