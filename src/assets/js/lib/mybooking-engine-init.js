@@ -1,5 +1,5 @@
 window.mybookingEngine = (function() {
-  var baseURL = "https://demo-rentacar.mybooking.es";
+  var baseURL = "https://rideon2.mybooking.es";
   var apiKey = "";
   var extrasStep = false;
   var chooseProductUrl = "choose_product.html";

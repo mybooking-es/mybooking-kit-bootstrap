@@ -11,8 +11,9 @@ active_step: steps.step_3
 
 <!-- Reservation : Selected product -->
 <div id="selected_product" class="sticky-top"></div>
+<!-- Reservation detail modal inside selected product -->
 <div id="reservation_detail"></div>
-
+<!-- Extras and complete form -->
 <div class="bg-gray-200">
   <div class="container">
     <div class="row">
@@ -22,7 +23,7 @@ active_step: steps.step_3
         <div id="extras_listing"></div>
       </div>
       <div class="col-md-12 bg-white shadow-bottom py-3 px-3 mt-3 mb-5 custom-form">
-        <!-- Reservation complete -->
+        <!-- Reservation complete form -->
         <form id="form-reservation" name="reservation_form">
           <h4 class="brand-primary my-3"><%= complete.customer_title %></h4>
           <div class="form-row">
@@ -75,7 +76,6 @@ active_step: steps.step_3
 
 <!-- Complete summary sticky bar -->
 <script type="text/tpml" id="script_product_detail">
-
   <div class="complete-summary-sticky-wrapper">
     <div class="complete-summary-sticky">
       <div class="complete-summary-left">
@@ -103,11 +103,15 @@ active_step: steps.step_3
       </div>
     </div>
   </div>
+</script>
 
+<!-- Modal Reservation summary -->
+<script type="text/tmpl" id="script_reservation_summary">
+  {{> modal_reservation_summary }}
 </script>
 
 <!-- Extra representation -->
-<script type="text/template" id="script_detailed_extra">
+<script type="text/tmpl" id="script_detailed_extra">
   <div class="extras-container">
   <% for (var idx=0;idx<extras.length;idx++) { %>
     <% var extra = extras[idx]; %>
@@ -146,11 +150,6 @@ active_step: steps.step_3
     </div>
   <% } %>
   </div>
-</script>
-
-<!-- Modal Reservation summary -->
-<script type="text/tmpl" id="script_reservation_summary">
-  {{> modal_reservation_summary }}
 </script>
 
 <!-- Payment detail -->

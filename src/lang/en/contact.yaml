@@ -1,2 +1,17 @@
+# Translate for contact
 title: Contact
-meta-description: Contact
+meta-description: Contact Uepcars | Car rental in Mallorca
+# Contact info
+contact_title: Contact
+contact_info: Contact information
+contact_info_text: We'll be happy to assist you
+location: location
+phone: Phone
+email: Email
+# Contact form
+write_us: Write us
+name: Name
+surname: Surnames
+comment: Comment$#58;
+message: Message
+send: Enviar

@@ -33,7 +33,6 @@ import webpack2 from "webpack";
 import named from "vinyl-named";
 import i18n from "gulp-html-i18n";
 import autoprefixer from "autoprefixer";
-import sitemap from "gulp-sitemap";
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -124,22 +123,6 @@ function resetPages(done) {
 }
 
 // -----------------------------------------------------------------------------
-//   Sitemap
-// -----------------------------------------------------------------------------
-
-// Generate a sitemap from generated html files.
-// function sitemap() {
-//   return gulp
-//     .src(PATHS.dist + "/**/*.html")
-//     .pipe(
-//       sitemap({
-//         siteUrl: "http://www.amazon.com"
-//       })
-//     )
-//     .pipe(gulp.dest(PATHS.dist));
-// }
-
-// -----------------------------------------------------------------------------
 //  Styles
 // -----------------------------------------------------------------------------
 
@@ -185,11 +168,22 @@ function cssimages() {
     .pipe(gulp.dest(PATHS.dist + "/assets/css/images"));
 }
 
-// Copy video to the dist folder
+// Copy video into  the dist folder
 function video() {
   return gulp
     .src("src/assets/video/*{.mp4,jpg}")
     .pipe(gulp.dest(PATHS.dist + "/assets/video"));
+}
+
+// Copy mybooking engine JS into the "dist" folder
+function myBookingEngine() {
+  return gulp
+    .src([
+      "src/assets/js/lib/mybooking-engine-init.js",
+      "src/assets/js/lib/mybooking-engine-init-activities.js",
+      "src/assets/js/lib/mybooking-engine.js"
+    ])
+    .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 
 // -----------------------------------------------------------------------------
@@ -235,17 +229,6 @@ function javascript() {
       )
     )
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest(PATHS.dist + "/assets/js"));
-}
-
-// Copy mybooking engine JS to the "dist" folder
-function myBookingEngine() {
-  return gulp
-    .src([
-      "src/assets/js/lib/mybooking-engine-init.js",
-      "src/assets/js/lib/mybooking-engine-init-activities.js",
-      "src/assets/js/lib/mybooking-engine.js"
-    ])
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 
@@ -345,4 +328,3 @@ gulp.task("default", gulp.series("build", server, watch));
 
 // export tasks
 exports.clean = clean;
-exports.sitemap = sitemap;

@@ -1,6 +1,6 @@
 // Reservation Summary
 
-.modal-body.reservation-summary {
+.modal-body.summary-modal {
   padding: 0;
   line-height: 1;
   font-size: 14px;
@@ -13,7 +13,7 @@
 .product-view {
   padding: 1rem;
   display: flex;
-  background-color: $gray-50;
+  background-color: $gray-100;
 }
 .product-view_image {
   width: 50%;
@@ -30,13 +30,49 @@
 .product-summary-wrapper {
   display: flex;
   padding: 1rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 .product-summary {
   flex-direction: column;
   display: flex;
   flex-grow: 1;
+  i {
+    align-self: center;
+    color: $brand-primary;
+  }
   li {
     font-size: 13px;
     color: $gray-500;
   }
+}
+.product-summary_separator {
+  display: flex;
+  flex-grow: 1;
+  i {
+    align-self: center;
+    color: $brand-primary;
+  }
+}
+ul.summary-modal_prices {
+  background-color: $gray-100;
+  padding: 1rem;
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $gray-100;
+  }
+}
+.summary-modal_list {
+  background-color: $gray-100;
+  li {
+    background-color: $gray-100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.summary-modal_footer {
+  justify-content: space-between;
 }

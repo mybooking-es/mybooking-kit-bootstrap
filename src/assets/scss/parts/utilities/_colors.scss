@@ -3,7 +3,7 @@
 // ===================================================================
 // Descriptive colors
 // ===================================================================
-$white: #fff;
+$white: #ffffff;
 $black: #2e3131;
 $transparent-white: rgba(255, 255, 255, 0.6);
 $red: #f03434;
@@ -43,8 +43,12 @@ $red: #f03434;
 // $brand-secondary: #ff6361;
 
 // mybooking
-$brand-primary: #8ac53f;
-$brand-secondary: #bfd975;
+// $brand-primary: #8ac53f;
+// $brand-secondary: #bfd975;
+
+// Rideon
+$brand-primary: #23393d;
+$brand-secondary: #23393d;
 
 .brand-primary {
   color: $brand-primary;
