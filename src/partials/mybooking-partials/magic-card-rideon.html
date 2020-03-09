@@ -13,42 +13,74 @@
           <div class="card-rideon-header_right">
             <p class="unit-price-title">Al día</p>
             <div class="unit-price"><%=configuration.formatCurrency(product.unit_price, 0)%></div>
+            
             <% if (product.price != product.base_price) { %>
               <% if (product.offer_discount_type == 'percentage') { %>
-                <p class="offer"><%=new Number(product.offer_value)%>%<s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
-                <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
+                <p class="offer"><%=new Number(product.offer_value)%>% de descuento</p>
+                <p>Total:</p>
+                <p class="product-price"><small class="tachado"><%= configuration.formatCurrency(product.base_price, 0)%></small> <%=configuration.formatCurrency(product.price, 0)%></p>
               <% } %>
             <% } else { %>
-              <p>Total alquiler</p>
-              <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
-              <p>Cancelación gratuita</p>               
+              <p class="product-price"><%=configuration.formatCurrency(product.price, 0)%></p>             
             <% } %>
+            <p>Cancelación gratuita</p>  
             <div type="button" class="info-btn" data-toggle="modal" data-target="#infoModal">
               <i class="fas fa-plus"></i>
               <span> INFO</span> 
             </div>
-        
         </div>
       </div>
 
-        <div class="coverages">
-          <p class="coverages-title">¡Añádele cobertura a todo riesgo!</p>
-          <ul class="coverage-list">
-            <li>Cobertura rider</li>
-            <li>Cobertura prorider</li>
-            <li>Cobertura premium</li>
-          </ul>
-        </div>
- 
-            <% if (product.availability) { %>
-            <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
-            <% } else { %>
-            <div class="not-available"><%= choose_product.model_not_available %></div>
-            <% } %> 
+      <p class="coverages-title">¡Añádele cobertura todo riesgo!</p>
+      <ul class="coverages">
+        <li>
+          <span><i class="fas fa-info-circle"></i></span>
+          <span class="coverage-text">Cobertura rider</span>
+          <span class="switch-control mr-0 float-right">
+            <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1"></label>
+            </div>
+          </span>
+          <span class="coverage-price float-right mr-2">6 €/día</span>
+        </li>
+        <li>
+          <span><i class="fas fa-info-circle"></i></span>
+          <span class="coverage-text">Cobertura rider lalala</span>
+          <span class="switch-control mr-0 float-right">
+            <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1"></label>
+            </div>
+          </span>
+          <span class="coverage-price float-right mr-2">300 €/día</span>
+        </li>
 
-            <% if (product.few_available_units) { %>
-              <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
-            <% } %>
+        <li>
+          <span><i class="fas fa-info-circle"></i></span>
+          <span class="coverage-text">Cobertura la rider</span>
+          <span class="switch-control mr-0 float-right">
+            <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1"></label>
+            </div>
+          </span>
+          <span class="coverage-price float-right mr-2">10 €/día</span>
+        </li>
+
+
+      </ul>
+
+ 
+          <% if (product.availability) { %>
+          <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
+          <% } else { %>
+          <div class="not-available"><%= choose_product.model_not_available %></div>
+          <% } %> 
+
+          <% if (product.few_available_units) { %>
+            <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
+          <% } %>
   
 
       </div>

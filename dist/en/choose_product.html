@@ -104,64 +104,59 @@
     <!-- Script detailed product for choose_product -->
     <!-- Script detailed product for choose_product -->
     <script type="text/tpml" id="script_detailed_product">
-      <div class="cards-rideon-container">
+      <div class="cards-static-container">
       <% for (var idx=0;idx<products.length; idx++) { %>
         <% var product = products[idx]; %>
-        <div class="card-rideon-wrapper">
-        <div class="card-rideon">
-            <div class="card-rideon-header">
-              <div class="card-rideon-header_left">
-                <p class="product-name"><%=product.name%></p>
-                <img class="img-fluid" src="<%=product.photo%>">
-              </div>
-              <div class="card-rideon-header_right">
-                <p class="unit-price-title">Al día</p>
-                <div class="unit-price"><%=configuration.formatCurrency(product.unit_price, 0)%></div>
-                <% if (product.price != product.base_price) { %>
-                  <% if (product.offer_discount_type == 'percentage') { %>
-                    <p class="offer"><%=new Number(product.offer_value)%>%<s><%= configuration.formatCurrency(product.base_price)%></s></small></span></p>
-                    <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
-                  <% } %>
-                <% } else { %>
-                  <p>Total alquiler</p>
-                  <p class="product-price"><%=configuration.formatCurrency(product.price)%></p>
-                  <p>Cancelación gratuita</p>               
-                <% } %>
-                <div type="button" class="info-btn" data-toggle="modal" data-target="#infoModal">
-                  <i class="fas fa-plus"></i>
-                  <span> INFO</span> 
+        <div class="card-static-wrapper">
+          <div class="card-static">
+            <div class="card-static_image">
+                <img src="<%=product.photo%>">
+                <i type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#infoModal"></i>
+            </div>
+            <div class="card-static_body">
+                <div class="card-static_price">
+                  <h2><%=configuration.formatCurrency(product.price)%></h2>
+                </div>
+                <div class="card-static_header">
+                    <h2 class="card-static_product-name"><%=product.name%></h2>
+                    <h3 class="card-static_product-short-description"><%=product.short_description%></h3>
                 </div>
             
-            </div>
-          </div>
-    
-            <div class="coverages">
-              <p class="coverages-title">¡Añádele cobertura a todo riesgo!</p>
-              <ul class="coverage-list">
-                <li>Cobertura rider</li>
-                <li>Cobertura prorider</li>
-                <li>Cobertura premium</li>
-              </ul>
-            </div>
-     
-                <% if (product.availability) { %>
-                <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
-                <% } else { %>
-                <div class="not-available">Model not available in the office and selected dates</div>
-                <% } %> 
-    
                 <% if (product.few_available_units) { %>
-                  <p class="text-danger mt-3">There are few units left!</p>
+                  <p class="text-danger card-static_low-availability">There are few units left!</p>
                 <% } %>
-      
-    
+                <% if (product.price != product.base_price) { %>
+                  <% if (product.offer_discount_type == 'percentage') { %>
+                    <p class="card-static_discount"><%=new Number(product.offer_value)%>% <%=product.offer_name%><br>
+                    <small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small><span class="ml-2"><%=configuration.formatCurrency(product.price)%></span></p>
+                  <% } %>
+                <% } %>
+                
+                <div class="card-static_icons">
+                  <% if (product.key_characteristics) { %> 
+                    <% for (characteristic in product.key_characteristics) { %>
+                      <div class="icon">
+                        <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
+                        <span><%=product.key_characteristics[characteristic]%> </span>
+                      </div>
+                    <% } %>
+                  <% } %>
+                </div>
+                <% if (product.availability) { %>
+                  <div class="card-static_btn">
+                    <a class="button btn btn-choose-product" data-product="<%=product.code%>">Select</a>
+                  </div>
+                  <% } else { %>
+                  <p>Model not available in the office and selected dates</p>
+                <% } %>
+              </div>
+            </div>
           </div>
+          <% } %>
         </div>
-        <% } %>
-      </div>
-      </script>
+    </script>
     
-    <!-- More info modal -->
+    <!-- Modal -->
     <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">

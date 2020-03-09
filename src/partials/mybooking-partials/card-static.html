@@ -1,0 +1,75 @@
+<!-- Script detailed product for choose_product -->
+<script type="text/tpml" id="script_detailed_product">
+  <div class="cards-static-container">
+  <% for (var idx=0;idx<products.length; idx++) { %>
+    <% var product = products[idx]; %>
+    <div class="card-static-wrapper">
+      <div class="card-static">
+        <div class="card-static_image">
+            <img src="<%=product.photo%>">
+            <i type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#infoModal"></i>
+        </div>
+        <div class="card-static_body">
+            <div class="card-static_price">
+              <h2><%=configuration.formatCurrency(product.price)%></h2>
+            </div>
+            <div class="card-static_header">
+                <h2 class="card-static_product-name"><%=product.name%></h2>
+                <h3 class="card-static_product-short-description"><%=product.short_description%></h3>
+            </div>
+        
+            <% if (product.few_available_units) { %>
+              <p class="text-danger card-static_low-availability"><%= choose_product.low_stock %></p>
+            <% } %>
+            <% if (product.price != product.base_price) { %>
+              <% if (product.offer_discount_type == 'percentage') { %>
+                <p class="card-static_discount"><%=new Number(product.offer_value)%>% <%=product.offer_name%><br>
+                <small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small><span class="ml-2"><%=configuration.formatCurrency(product.price)%></span></p>
+              <% } %>
+            <% } %>
+            
+            <div class="card-static_icons">
+              <% if (product.key_characteristics) { %> 
+                <% for (characteristic in product.key_characteristics) { %>
+                  <div class="icon">
+                    <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
+                    <span><%=product.key_characteristics[characteristic]%> </span>
+                  </div>
+                <% } %>
+              <% } %>
+            </div>
+            <% if (product.availability) { %>
+              <div class="card-static_btn">
+                <a class="button btn btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
+              </div>
+              <% } else { %>
+              <p><%= choose_product.model_not_available %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More info Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

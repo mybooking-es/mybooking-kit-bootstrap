@@ -1,8 +1,8 @@
 // Cards for product list
 
-$rideon-yellow: #f0c540;
+$rideon-yellow: #ebcf00;
 $rideon-blue: #23393d;
-$rideon-green: #c3d600;
+$rideon-green: #b3bc23;
 
 .cards-rideon-container {
   display: flex;
@@ -51,6 +51,7 @@ $rideon-green: #c3d600;
   width: 40%;
   text-align: right;
   padding: 20px;
+  line-height: 1;
   .unit-price-title {
     color: $rideon-green;
     text-transform: uppercase;
@@ -63,20 +64,25 @@ $rideon-green: #c3d600;
     font-size: 2rem;
     font-weight: 800;
     margin-right: -20px;
-    padding-right: 20px;
+    padding: 10px 20px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     margin-bottom: 10px;
   }
   .product-price {
-    font-size: 1.5em;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    .tachado s {
+      text-decoration: line-through;
+      font-size: 10px !important;
+      color: red !important;
+    }
   }
   .offer {
     font-size: 0.9em;
     font-weight: 700;
-    color: $brand-primary;
+    color: $rideon-blue;
   }
   .info-btn {
     display: flex;
@@ -94,12 +100,7 @@ $rideon-green: #c3d600;
     }
   }
 }
-.coverages-title {
-  text-align: center;
-  font-weight: 700;
-  color: $rideon-blue;
-  max-width: 12px auto;
-}
+
 .rideon-card-btn {
   display: flex;
   height: 60px;
@@ -118,12 +119,43 @@ $rideon-green: #c3d600;
 }
 
 .not-available {
-  width: fit-content;
+  text-align: center;
+  width: calc(100% - 20px);
   background: $gray-800;
   color: $white;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+}
+
+.coverages-title {
+  text-align: center;
+  font-weight: 700;
+  color: $rideon-blue;
+  max-width: 12px auto;
+}
+
+.coverages {
+  padding: 1rem;
+  .coverage-text {
+    align-self: flex-start;
+  }
+
+  li {
+    padding: 5px 0;
+    color: $rideon-blue;
+    text-transform: uppercase;
+    list-style: none;
+    border-bottom: 1px solid $gray-300;
+    &:last-child {
+      border-bottom: none;
+    }
+    i {
+      color: $rideon-green;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
 }
 
 // Medium devices (tablets, 768px and up)

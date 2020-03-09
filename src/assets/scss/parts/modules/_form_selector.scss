@@ -60,6 +60,12 @@
   height: 48px;
   color: $gray-700;
 }
+.selector-label {
+  background-color: pink;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {

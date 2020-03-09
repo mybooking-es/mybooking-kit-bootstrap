@@ -98,6 +98,7 @@
     <div id="selected_product" class="sticky-top"></div>
     <!-- Reservation detail modal inside selected product -->
     <div id="reservation_detail"></div>
+    
     <!-- Extras and complete form -->
     <div class="bg-gray-200">
       <div class="container">
@@ -299,7 +300,32 @@
               </div>
             </div>
           </div>
-        </div></script>
+        </div>  <!-- Descktop reservation detail -->
+      <div class="product-detail-container d-none d-md-flex">
+        <div class="product-detail-content">
+          <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
+            <h2 class="product-name"><%=shopping_cart.items[idx].item_description_customer_translation%></h2>
+            <p class="detail-text">
+              <%= summary.rental_duration %>: <%=shopping_cart.days%> <%= summary.rental_days %></p>
+          <% } %>
+          <h5><%= summary.reservation_summary_pickup %></h5>
+          <ul>
+            <li><%=shopping_cart.date_from_full_format%> / <%=shopping_cart.time_from%></li>
+            <li><%=shopping_cart.pickup_place_customer_translation%></li>
+          </ul>
+          <h5 class="mt-3"><%= summary.reservation_summary_return %></h5>
+          <ul>
+            <li><%=shopping_cart.date_to_full_format%> / <%=shopping_cart.time_to%></li>
+            <li><%=shopping_cart.return_place_customer_translation%></li>
+          </ul>
+        </div>
+        <div class="product-detail-image">
+          <% for (var idx=0; idx<shopping_cart.items.length; idx++) { %>
+            <img class="img-fluid" src="<%=shopping_cart.items[idx].photo_full%>" alt="">
+          <% } %>
+        </div>
+      </div>
+    </script>
     
     <!-- Extra representation -->
     <script type="text/tmpl" id="script_detailed_extra">
