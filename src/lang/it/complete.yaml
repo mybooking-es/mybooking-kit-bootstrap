@@ -25,6 +25,7 @@ modify_reservation: Modifica prenotazione
 # main content
 product_information_title: Informazioni sul prodotto
 products_information_title: Informazioni sul produrre
+coverage_title: Copertura
 extras_title: Extra
 customer_title: Dati del cliente
 not_available: Non disponibile

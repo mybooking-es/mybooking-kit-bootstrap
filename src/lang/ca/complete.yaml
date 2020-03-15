@@ -27,6 +27,7 @@ modify_reservation: Modificar reserva
 # main content
 product_information_title: Informació del producte
 products_information_title: Informació dels productes
+coverage_title: Cobertura
 extras_title: Extras
 customer_title: Informació del client
 not_available: No disponible

@@ -26,6 +26,7 @@ modify_reservation: Modify reservation
 # main content
 product_information_title: Product information
 products_information_title: Products information
+coverage_title: Coverage
 extras_title: Extras
 customer_title: Client information
 not_available: Not available
