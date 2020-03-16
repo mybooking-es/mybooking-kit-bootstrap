@@ -49,7 +49,7 @@ function loadConfig() {
   return yaml.load(ymlFile);
 }
 
-// Delete the "dist" folder
+// Delete "dist" and "tmp" folders
 function clean(done) {
   rimraf(PATHS.dist, done);
   rimraf(PATHS.tmp, done);

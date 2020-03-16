@@ -1,0 +1,22 @@
+# translate for choose product
+title: Sélectionnez un produit
+meta-description: Sélectionnez un produit | Location de voiture à Minorque, AUCUN extras et service personnalisé
+choose_product_page_title: Sélectionnez un produit
+model_not_available: Modèle non disponible au bureau et dates sélectionnées
+low_stock: Il reste peu d'unités!
+# main content
+select: Sélectionnez
+# sidebar
+reservation_summary_pickup: Livraison
+reservation_summary_return: Retour
+reservation_summary_title: Detalls de la reserva
+pickup_place: Point de livraison
+return_place: Point de retour
+date_from: Date de livraison
+date_to: Date de retour
+time_from: Délai de livraison
+time_to: Heure de retour
+update: Mise à jour
+modify_reservation: Modifier la réservation
+new_search: Rechercher à nouveau
+reservation_summary_title: Détails de la réservation

@@ -1,0 +1,41 @@
+# translate for index
+title: Réservez votre voiture de location à MenorcaRacers
+meta-description: Location de voiture à Menorca
+home: Maison
+search_title: Chercher
+pickup_place: Point de livraison
+return_place: Point de retour
+date_from: Date de livraison
+date_to: Date de retour
+time_from: Délai de livraison
+time_to: Heure de retour
+search_button: Cherchez
+
+# Index content
+# slogan
+slogan_title: Location de voitures et de fourgonnettes à Menorca
+slogan_text: Où que vous alliez ... MenorcaRacers pour toutes les routes où il y a de la vie!
+# first section
+featured_section_title: POURQUOI MenorcaRacers?
+featured_section_text: À MenorcaRacers nous vous proposons le véhicule dont vous aurez besoin pour que vous alliez où vous voulez aller... Nous voulons que nos véhicules et notre service, respectueux au maximum avec le paradis où nous sommes, soient votre moyen de transport agile et de qualité. Tu mets les limites. Nous votre véhicule de location aux Terres de l´Ebre.
+feature_1: Flotte moderne
+feature_2: Nous ne facturons pas de carburant
+feature_3: Service client personnalisé
+feature_4: Service client personnalisé
+feature_5: Nous acceptons les paiements par carte de crédit et en espèces
+# second section
+featured_section_2_title: RÉSERVER AVEC NOUS MAINTENANT PLUS FACILE
+featured_section_2_text: >
+  Vous pouvez le faire par le web MenorcaRacers.com, dans nos bureaux d´Amposta ou Tortosa, par téléphone en appelant au 902750770 ou WhatsApp au +34606967138 / 640702464. Aussi par notre email <a class="text-light bg-dark" href="mailto:info@MenorcaRacers.com" target:_"blank">info@MenorcaRacers.com</a>.
+
+
+feature_title_1: Facile
+feature_title_2: Assurance
+feature_title_3: Honnête
+feature_title_4: Abordable
+
+feature_text_1: Sans caution, payez le loyer total lors de la prise en charge de la voiture.
+feature_text_2: Annulation facile et gratuite, envoyez-nous simplement un e-mail.
+feature_text_3: Aucune carte de crédit nécessaire, nous ne facturons pas de dépôt.
+feature_text_4: Assurance complète incluse dans les frais.
+

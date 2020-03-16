@@ -1,0 +1,40 @@
+# translate for summary
+title: Réserve
+meta-description: Réserve | Location de voitures
+
+rental_locator: LOCATOR
+rental_duration: Durée de la location
+rental_days: Jour / s
+summary_page_title: Réserver
+booking_detail_state_pending_confirmation: Confirmation en attente
+booking_detail_state_confirming: Il est en cours de confirmation
+booking_detail_state_confirmed: Confirmé
+booking_detail_state_in_progress: Ceci est en cours
+booking_detail_state_done: C'est fait
+booking_detail_state_cancelled: Annulé
+booking_detail_product_title: Produit sous contrat
+booking_detail_extras_title: Suppléments
+booking_detail_customer_title: Données client
+booking_detail_customer_name: Nom
+booking_detail_customer_phone_number: Téléphone
+booking_detail_customer_mobile: Autre téléphone
+booking_detail_customer_email: Courriel
+booking_detail_summary_paid: Payé
+booking_detail_summary_pending: En attente
+
+# sidebar
+reservation_summary_title: Détails de la réservation
+reservation_summary_pickup: Livraison
+reservation_summary_return: Retour
+reservation_summary_price: Prix
+reservation_summary_total_product: Produit total
+reservation_summary_total_extras: Total des extras
+reservation_summary_pickup_place_supplement: Supplément au point de livraison
+reservation_summary_pickup_time_supplement: Supplément de délai de livraison
+reservation_summary_return_place_supplement: Supplément point de retour
+reservation_summary_return_time_supplement: Supplément de temps de retour
+reservation_summary_driver_age_supplement: Supplément pour l'âge du conducteur
+reservation_summary_fuel_supplement: Supplément carburant
+reservation_summary_total: Total
+reservation_summary_deposit: Dépôt de garantie
+reservation_summary_deposit_detail: Le dépôt sera retourné après le retour du produit

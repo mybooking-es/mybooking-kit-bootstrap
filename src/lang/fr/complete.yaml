@@ -1,0 +1,79 @@
+# translate for complete
+title: Données complètes
+meta-description: Données complètes | Location de voiture à Minorque
+
+complete_reservation_page_title: Données complètes
+rental_locator: LOCATOR
+rental_duration: Durée de la location
+rental_days: jour / s
+# sidebar
+reservation_summary_title: Détails de la réservation
+reservation_summary_pickup: Livraison
+reservation_summary_return: Retour
+reservation_summary_price: Prix
+reservation_summary_total_product: Produit total
+reservation_summary_total_extras: Total des extras
+reservation_summary_pickup_place_supplement: Supplément au point de livraison
+reservation_summary_pickup_time_supplement: Supplément de délai de livraison
+reservation_summary_return_place_supplement: Supplément point de retour
+reservation_summary_return_time_supplement: Supplément de temps de retour
+reservation_summary_driver_age_supplement: Supplément pour l\u0027âge du conducteur
+reservation_summary_fuel_supplement: Supplément carburant
+reservation_summary_total: Montant total
+reservation_summary_deposit: Dépôt de garantie
+reservation_summary_deposit_detail: Le dépôt sera retourné après le retour du produit
+modify_reservation: Modifier la réservation
+# main content
+coverage_title: Couverture
+product_information_title: Informations sur le produit
+products_information_title: Informations sur le produit
+extras_title: Extras
+customer_title: Informations client
+not_available: Non disponible
+field_customer_name: Name
+field_customer_name_mandatory: Le nom est obligatoire
+field_customer_surname: Noms de famille
+field_customer_surname_mandatory: Les noms de famille sont requis
+field_customer_email: Courriel
+field_customer_email_mandatory: L\u0027email est requis
+field_customer_email_confirm: Confirmer l\u0027e-mail
+field_customer_main_phone_number: Téléphone
+field_customer_alternative_phone_number: Autre téléphone
+additional_information_title: Informations supplémentaires
+field_comments: Commentaires
+payment_title: Paiement
+payment_to_confirm_reservation: Une réservation de% 1% du montant de la réservation est nécessaire pour confirmer la réservation
+conditions_read: J\u0027ai lu et j\u0027accepte les <a href="%1" target="blank"> conditions de location </a>
+request_reservation: Demande de réservation
+only_request_reservation: Demander une réservation uniquement
+credit_card_payment: Carte de crédit (un paiement de% 1% est requis pour confirmer la réservation)
+paypal_payment: PayPal (% 1% de paiement et signal requis pour confirmer la réservation)
+conditions_not_read: Désolé. Il n\u0027a pas indiqué avoir lu les conditions de location
+form_errors: Veuillez consulter le formulaire. Il contient des données invalides.
+customer_adress_title: Adresse du client
+customer_adress_street: Rue
+customer_adress_number: Number
+customer_adress_complement: Complément (plancher / porte)
+customer_adress_city: Ville
+customer_adress_province: Province
+customer_adress_country: Pays
+customer_driver_data: Détails du pilote
+customer_driver_name: Nom du pilote
+customer_driver_surname: Nom de famille du conducteur
+customer_driver_passport: Nif ou passeport du conducteur
+customer_driver_date_of_birth: Date de naissance du conducteur
+customer_driver_driving_license_number: Numéro de permis de conduire
+customer_driver_driving_license_date: Date d\u0027émission du permis de conduire
+customer_driver_driving_license_country: Permis de conduire
+customer_flight: Vol
+customer_flight_company: Société
+customer_flight_number: Numéro de vol
+customer_flight_time: Heure prévue
+# Conditions and complete the process
+request_reservation: Demander une réservation
+pay_on_delivery: Payez à l\u0027arrivée
+pay_now: Payez maintenant
+confirm: Confirmer
+paypal: Paypal
+credit_card: Carte de crédit
+confirm_conditions: J\u0027ai lu et j\u0027accepte les termes et conditions

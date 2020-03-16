@@ -1,0 +1,70 @@
+# translate for summary
+title: Détail de la réservation
+meta-description: Détail de la réservation | Location de voitures à Minorque
+
+rental_locator: LOCALISATEUR
+rental_duration: Durée de location
+rental_days: jours
+summary_page_title: Réserver
+booking_detail_state_pending_confirmation: Confirmation en attente
+booking_detail_state_confirming: Confirmé
+booking_detail_state_confirmed: Confirmé
+booking_detail_state_in_progress: En progrès
+booking_detail_state_done: Fini
+booking_detail_state_cancelled: Annulé
+booking_detail_product_title: Produit sous contrat
+booking_detail_extras_title: Extras
+booking_detail_customer_title: données client
+booking_detail_customer_name: Nom
+booking_detail_customer_phone_number: Numéro de téléphone
+booking_detail_customer_mobile: Téléphone alternatif
+booking_detail_customer_email: Courrier électronique
+booking_detail_summary_paid: Payé
+booking_detail_summary_pending: En attente
+# sidebar
+reservation_summary_title: Détail de la réservation
+reservation_summary_pickup: Livraison
+reservation_summary_return: Retour
+reservation_summary_price: Prix
+reservation_summary_total_product: Produit total
+reservation_summary_total_extras: Extras total
+reservation_summary_pickup_place_supplement: Supplément lieu de livraison
+reservation_summary_pickup_time_supplement: Supplément de délai de livraison
+reservation_summary_return_place_supplement: Supplément lieu de retour
+reservation_summary_return_time_supplement: Temps de retour supplémentaire
+reservation_summary_driver_age_supplement: Supplément âge du conducteur
+reservation_summary_fuel_supplement: Supplément carburant
+reservation_summary_total: Montant total
+reservation_summary_deposit: Caution
+reservation_summary_deposit_detail: La caution sera restituée après le retour du produit
+# Pay
+pay: Paiment
+pay_button: Payer
+paypal: Paypal
+credit_card: Carte de crédit / débit
+# Customer data
+customer_adress_title: Adresse client
+customer_adress_street: Rue
+customer_adress_number: Nom
+customer_adress_complement: Complemento (piso/puerta)
+customer_adress_city: Ville
+customer_adress_province: Province
+customer_zip: Code postal
+customer_adress_country: Pays
+customer_driver_data: Données du conducteur
+customer_driver_name: Nom du conducteur
+customer_driver_surname: Nom de famille du conducteur
+customer_driver_passport: Numéro de passeport du conducteur
+customer_driver_date_of_birth: Date de naissance du conducteur
+customer_driver_driving_license_number: Numéro de permis de conduire
+customer_driver_driving_license_date: Délivrance du permis de conduire
+customer_driver_driving_license_country: Permis de conduire pour expédition dans un pays
+customer_flight: Vol
+customer_flight_company: Compagnie
+customer_flight_number: Nom du vol
+customer_flight_time: Temps prevú
+additional_drivers: Pilotes supplémentaires
+
+reservation_total_paid: Payé
+reservation_total_pending: En attente
+update: Mettre à jour

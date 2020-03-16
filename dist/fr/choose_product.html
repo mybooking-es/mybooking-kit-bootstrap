@@ -1,0 +1,364 @@
+
+<!doctype html>
+<html class="no-js" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sélectionnez un produit</title>
+  <meta name="description" content="Sélectionnez un produit | Location de voiture à Minorque, AUCUN extras et service personnalisé" />
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="choose_product ">
+<!-- trace:tmp/choose_product.html -->
+  <div id="full_loader">
+    <div class="gooey">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+    
+    <div class="cta cta__bg cta__text">
+      <div class="d-none d-sm-block">
+        <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+        <span class="mr-auto ml-3">
+          <i class="far fa-envelope"></i>
+          <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+        </span>
+      </div>
+      <div class="d-block d-sm-none text-center">
+        <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+        <span class="ml50">
+          <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+        </span>
+      </div>
+    </div><nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-white"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Accueil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Index</a>
+              <a class="dropdown-item" href="index_1.html">Index 1</a>
+              <a class="dropdown-item" href="index_2.html">Index 2</a>
+              <a class="dropdown-item" href="activity.html">Activity 1</a>
+              <a class="dropdown-item" href="activity_2.html">Activity 2</a>                    
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conditions.html">Condicions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contacte</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-europe"></i> Langage
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item es visible" href="/choose_product.html">Espagnol</a>
+              <a class="dropdown-item en visible" href="/en/choose_product.html">Anglais</a>
+              <a class="dropdown-item ca visible" href="/ca/choose_product.html">Catalan</a>
+              <a class="dropdown-item it visible" href="/it/choose_product.html">Italien</a>
+              <a class="dropdown-item fr visible" href="/fr/choose_product.html">Français</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Reservation steps -->
+    <!-- Reservation steps -->
+    <div class="steps-wrapper">
+            <div id="steps">
+              <div data-desc="Lieu et date" class="step">1</div>
+              <div data-desc="Sélectionnez un produit" class="active step">2</div>
+              <div data-desc="Réservation complète" class="step">3</div>
+              <div data-desc="Résumé" class="step">4</div>
+            </div>
+            <h4 class="active-step color-gray-600 mr-3">Sélectionnez un produit</h4>
+    </div>
+    
+    <!-- Result -->
+    <!-- Reservation : Pickup/Return information -->
+    <div id="reservation_detail" class="sticky-top"></div>
+    <!-- Product card listing -->
+    <div id="product_listing" class="bg-gray-200"></div>
+    
+    <!-- Script detailed product for choose_product -->
+    <!-- Script detailed product for choose_product -->
+    <script type="text/tpml" id="script_detailed_product">
+      <div class="cards-static-container">
+      <% for (var idx=0;idx<products.length; idx++) { %>
+        <% var product = products[idx]; %>
+        <div class="card-static-wrapper">
+          <div class="card-static">
+            <div class="card-static_image">
+                <img src="<%=product.photo%>">
+                <i type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#infoModal"></i>
+            </div>
+            <div class="card-static_body">
+                <div class="card-static_price">
+                  <h2><%=configuration.formatCurrency(product.price)%></h2>
+                </div>
+                <div class="card-static_header">
+                    <h2 class="card-static_product-name"><%=product.name%></h2>
+                    <h3 class="card-static_product-short-description"><%=product.short_description%></h3>
+                </div>
+            
+                <% if (product.few_available_units) { %>
+                  <p class="text-danger card-static_low-availability">Il reste peu d'unités!</p>
+                <% } %>
+                <% if (product.price != product.base_price) { %>
+                  <% if (product.offer_discount_type == 'percentage') { %>
+                    <p class="card-static_discount"><%=new Number(product.offer_value)%>% <%=product.offer_name%><br>
+                    <small class="text-muted ml-2"><s><%= configuration.formatCurrency(product.base_price)%></s></small><span class="ml-2"><%=configuration.formatCurrency(product.price)%></span></p>
+                  <% } %>
+                <% } %>
+                
+                <div class="card-static_icons">
+                  <% if (product.key_characteristics) { %> 
+                    <% for (characteristic in product.key_characteristics) { %>
+                      <div class="icon">
+                        <img src="assets/images/key_characteristics/<%=characteristic%>.svg"/>
+                        <span><%=product.key_characteristics[characteristic]%> </span>
+                      </div>
+                    <% } %>
+                  <% } %>
+                </div>
+                <% if (product.availability) { %>
+                  <div class="card-static_btn">
+                    <a class="button btn btn-choose-product" data-product="<%=product.code%>">Sélectionnez</a>
+                  </div>
+                  <% } else { %>
+                  <p>Modèle non disponible au bureau et dates sélectionnées</p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+    </script>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">More info Modal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- Script for Pickup/Return information -->
+    <!-- Script detailed for reservation summary -->
+    <script type="text/tmpl" id="script_reservation_summary">
+      <div class="reservation-summary-sticky-wrapper">
+        <div class="reservation-summary-sticky">
+          <div class="reservation-summary-item">
+            <!-- primer bloque Recogida -->
+            <p>
+              <span class="fw-700 d-none d-md-block mr-2">Recogida</span>
+              <span class="bold-on-mobile"><%=shopping_cart.pickup_place_customer_translation%></span>
+            </p>
+            <p><%=shopping_cart.date_from_short_format%> - <%=shopping_cart.time_from%></p>
+          </div>
+          <div class="reservation-summary-separator">
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </div>
+          <div class="reservation-summary-item">
+            <!-- Devolución (en móbil muestra lugar sólo cuando es diferente) -->
+            <% if ( shopping_cart.pickup_place_customer_translation !== shopping_cart.return_place_customer_translation) { %>
+              <p>
+                <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
+                <span class="bold-on-mobile"><%=shopping_cart.return_place_customer_translation%></span>
+              </p>
+            <% } else { %>
+              <p>
+                <span class="fw-700 d-none d-md-block mr-2">Devolución</span>
+                <span class="bold-on-mobile d-none d-md-block"><%=shopping_cart.return_place_customer_translation%></span>
+              </p> 
+            <% } %>
+            <p><%=shopping_cart.date_to_short_format%> - <%=shopping_cart.time_to%></p>
+          </div>
+          <!-- Button trigger modal -->
+          <div class="modify-button">
+            <button id="modify_reservation_button" data-toggle="modal" data-target="#choose_productModal"><i class="far fa-edit"></i></button>
+          </div>
+        </div>
+      </div>
+    </script><!-- Modal for Pickup/Return information -->
+    <!-- FLEX-FORM-MODIFY MODAL -->
+    <!-- Modal -->
+    <div class="modal fade" id="choose_productModal" tabindex="-1" role="dialog" aria-labelledby="choose_productModal"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content  bg-gray-400">
+          <div class="modal-header">
+            <h5 class="modal-title">Modifier la réservation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="search_form" method="get" enctype="application/x-www-form-urlencoded" class="flex-form"
+            autocomplete="off">
+            <!-- Pickup place -->
+            <div class="flex-form-item-box">
+              <label>Point de livraison</label>       
+              <div class="flex-form-item pickup_place_group">
+                <select id="pickup_place" name="pickup_place"></select>
+                <i class="fa fa-angle-down flex-icon"></i>
+              </div>
+              <!-- Custom delivery place -->
+              <div id="another_pickup_place_group" style="display: none;">
+                <div class="flex-form-item justify-content-between">
+                  <input class="bg-white w-100" type="text" id="pickup_place_other" name="pickup_place_other" />
+                  <input type="hidden" name="custom_pickup_place" value="false" />
+                  <button type="button" class="another_pickup_place_group_close p-0">
+                    <i class="fa fa-times flex-icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Return place -->
+            <div class="flex-form-item-box">
+              <label>Point de retour</label>
+              <div class="flex-form-item return_place_group">
+                <select id="return_place" name="return_place">
+                </select>
+                <i class="fa fa-angle-down flex-icon"></i>
+              </div>
+              <!-- Custom collection place -->
+              <div id="another_return_place_group" style="display: none;">
+                <div class="flex-form-item justify-content-between">
+                  <input class="bg-white w-100" type="text" id="return_place_other" name="return_place_other" />
+                  <input type="hidden" name="custom_return_place" value="false" />
+                  <button type="button" class="another_return_place_group_close p-0">
+                      <i class="fa fa-times flex-icon"></i>
+                  </button>  
+                </div>          
+              </div>
+            </div>
+            <!-- Date/Time From -->
+            <div class="flex-form-item-box">
+              <label>Date de livraison</label>
+              <div class="flex-form-item">
+                <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                <input type="text" id="date_from" name="date_from" readonly="true" placeholder="dd/mm/aaaa" />
+                <select class="ml-1" id="time_from" name="time_from">
+                </select>
+              </div>
+            </div>
+            <!-- Date/Time To -->
+            <div class="flex-form-item-box">
+              <label>Date de retour</label>
+              <div class="flex-form-item">
+                <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                <input type="text" id="date_to" name="date_to" readonly="true" placeholder="dd/mm/aaaa" />
+                <select class="ml-1" id="time_to" name="time_to">
+                </select>
+              </div>
+            </div>
+            <div class="flex-form-item-box mt-3">
+              <input class="btn btn-primary btn-block" type="submit" value="Rechercher à nouveau" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>    
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Company name</li>
+          <li>88888888</li>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Quinoa</a></li>
+          <li><a href="#">Palo Santo</a></li>
+          <li><a href="#">Apple</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Condiciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Siguenos</h6>
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix my-2"></div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2019 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/mybooking-engine-init.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>
