@@ -38,7 +38,7 @@ $rideon-green: #b3bc23;
     object-fit: contain;
   }
   .product-name {
-    color: #23393d;
+    color: $gray-900;
     font-weight: 800;
     line-height: 1;
     font-size: 1.8rem;
@@ -53,13 +53,13 @@ $rideon-green: #b3bc23;
   padding: 20px;
   line-height: 1;
   .unit-price-title {
-    color: $rideon-green;
+    color: $brand-primary;
     text-transform: uppercase;
     font-size: 1.2rem;
     margin-bottom: 0;
   }
   .unit-price {
-    background-color: $rideon-green;
+    background-color: $brand-primary;
     color: $white;
     font-size: 2rem;
     font-weight: 800;
@@ -96,7 +96,7 @@ $rideon-green: #b3bc23;
     transition: ease-in-out 0.2ms;
     &:hover {
       cursor: pointer;
-      color: darken($color: $rideon-green, $amount: 10%);
+      color: darken($color: $brand-primary, $amount: 10%);
     }
   }
 }

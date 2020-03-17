@@ -94,5 +94,7 @@ jQuery(document).ready(function($) {
     $("a.it").removeClass("visible");
   } else if ($("html").attr("lang") == "en") {
     $("a.en").removeClass("visible");
+  } else if ($("html").attr("lang") == "fr") {
+    $("a.fr").removeClass("visible");
   }
 });

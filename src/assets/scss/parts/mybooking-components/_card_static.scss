@@ -5,6 +5,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+.cards-static-container.fleet {
+  .card-static_body {
+    min-height: fit-content;
+  }
+}
 // This is just for the shadow
 .card-static-wrapper {
   display: flex;
@@ -41,10 +46,10 @@
   img {
     height: 100%;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 10px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background: #f3efe4;
+    background: #ffffff;
     box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
     // For background transparent images use contain
     object-fit: contain;
@@ -62,7 +67,7 @@
   padding: 80px 20px 20px 20px;
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -123,7 +128,7 @@
   top: 20px;
   h2 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 800;
     color: $brand-primary;
   }
 }

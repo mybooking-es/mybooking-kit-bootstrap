@@ -31,56 +31,15 @@
         </div>
       </div>
 
-      <p class="coverages-title">¡Añádele cobertura todo riesgo!</p>
-      <ul class="coverages">
-        <li>
-          <span><i class="fas fa-info-circle"></i></span>
-          <span class="coverage-text">Cobertura rider</span>
-          <span class="switch-control mr-0 float-right">
-            <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            </div>
-          </span>
-          <span class="coverage-price float-right mr-2">6 €/día</span>
-        </li>
-        <li>
-          <span><i class="fas fa-info-circle"></i></span>
-          <span class="coverage-text">Cobertura rider lalala</span>
-          <span class="switch-control mr-0 float-right">
-            <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            </div>
-          </span>
-          <span class="coverage-price float-right mr-2">300 €/día</span>
-        </li>
+      <% if (product.availability) { %>
+      <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
+      <% } else { %>
+      <div class="not-available"><%= choose_product.model_not_available %></div>
+      <% } %> 
 
-        <li>
-          <span><i class="fas fa-info-circle"></i></span>
-          <span class="coverage-text">Cobertura la rider</span>
-          <span class="switch-control mr-0 float-right">
-            <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            </div>
-          </span>
-          <span class="coverage-price float-right mr-2">10 €/día</span>
-        </li>
-
-
-      </ul>
-
- 
-          <% if (product.availability) { %>
-          <a class="rideon-card-btn btn-choose-product" data-product="<%=product.code%>">Reservar</a>
-          <% } else { %>
-          <div class="not-available"><%= choose_product.model_not_available %></div>
-          <% } %> 
-
-          <% if (product.few_available_units) { %>
-            <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
-          <% } %>
+      <% if (product.few_available_units) { %>
+        <p class="text-danger mt-3"><%= choose_product.low_stock %></p>
+      <% } %>
   
 
       </div>

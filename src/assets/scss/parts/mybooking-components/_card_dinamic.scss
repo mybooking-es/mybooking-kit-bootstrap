@@ -33,17 +33,16 @@
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 300px;
-  border-radius: 4px;
+  border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background: #f3efe4;
+  background: #ffffff;
   img {
     height: 100%;
     width: 100%;
     // For background transparent images use contain
-    // object-fit: contain;
+    object-fit: contain;
     // otherwise use cover
-    object-fit: cover;
   }
 }
 .magic-card-horizontal_body {
@@ -53,7 +52,7 @@
   padding: 30px;
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -132,14 +131,14 @@
   }
   .magic-card-horizontal_image {
     flex-basis: 40%;
-    border-radius: 4px;
+    border-radius: 10px;
   }
   .magic-card-horizontal_body {
     display: flex;
     height: 250px;
     flex-basis: 70%;
     margin-left: -10px;
-    border-radius: 4px;
+    border-radius: 10px;
   }
   .magic-card-horizontal_icons {
     flex-wrap: wrap;

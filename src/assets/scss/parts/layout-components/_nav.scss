@@ -73,7 +73,9 @@
   color: $white;
   margin-top: 8px;
 }
-
+.dropdown-menu {
+  z-index: 3000;
+}
 .navbar .dropdown-item {
   color: $gray-800;
 }
@@ -93,12 +95,14 @@
 a.es,
 a.ca,
 a.it,
+a.fr,
 a.en {
   display: none;
 }
 a.es.visible,
 a.ca.visible,
 a.it.visible,
+a.fr.visible,
 a.en.visible {
   display: block;
 }

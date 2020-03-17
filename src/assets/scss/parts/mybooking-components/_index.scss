@@ -16,13 +16,13 @@
 // Read more - https://smacss.com/book/type-module
 //
 
+@import "card_diagonal_bg";
+@import "card_dinamic";
+@import "card_rideon";
 @import "card_static";
 @import "complete_summary_sticky";
 @import "extras_cards";
 @import "form_selector";
-@import "magic_card_rideon";
-@import "magic_cards_horizontal";
-@import "magic_cards";
 @import "product_detail";
 @import "reservation_detail";
 @import "reservation_summary_modal";
