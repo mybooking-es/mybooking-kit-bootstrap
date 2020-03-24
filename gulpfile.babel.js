@@ -186,6 +186,16 @@ function myBookingEngine() {
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
 
+// Copy robots.txt and sitemap.xml into the "dist" folder
+function robotsSitemap() {
+  return gulp
+    .src([
+      "src/robots.txt",
+      "src/sitemap.xml"
+    ])
+    .pipe(gulp.dest(PATHS.dist));  
+}
+
 // -----------------------------------------------------------------------------
 //   Scripts with webpack
 // -----------------------------------------------------------------------------
@@ -284,6 +294,7 @@ gulp.task(
     sass,
     javascript,
     myBookingEngine,
+    robotsSitemap,    
     images,
     build_fonts,
     fontawesome,
