@@ -22,3 +22,20 @@
 .pac-container {
   z-index: 10000 !important;
 }
+
+// Slide
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+.slick-prev:before,
+.slick-prev {
+  left: 0;
+  z-index: 3;
+}
+
+.slick-next:before,
+.slick-next {
+  right: 0;
+  z-index: 3;
+}

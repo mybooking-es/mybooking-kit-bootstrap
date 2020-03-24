@@ -1,4 +1,4 @@
-<!-- FLEX-FORM-SELECTOR -->
+<!-- FORM-SELECTOR -->
 <section class="widget widget_mybooking_rent_engine_selector reservation-step">
   <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
     class="flex-form" autocomplete="off">
@@ -6,8 +6,9 @@
     <div class="flex-form-item-box">
       <label><%= index.pickup_place %></label>
       <div class="flex-form-item widget_pickup_place_group">
+        <label class="form_selector-select_label_wrap">
         <select id="widget_pickup_place" name="pickup_place"></select>
-        <i class="fa fa-angle-down flex-icon" aria-labelledby="widget_pickup_place"></i>
+        </label>
       </div>
       <!-- Custom delivery place -->
       <div id="another_pickup_place_group" style="display: none;">
@@ -24,9 +25,11 @@
     <div class="flex-form-item-box">
       <label><%= index.return_place %></label>
       <div class="flex-form-item widget_return_place_group">
+        <label class="form_selector-select_label_wrap">
         <select id="widget_return_place" name="return_place">
         </select>
-        <i class="fa fa-angle-down flex-icon"></i>
+        </label>
+
       </div>
       <!-- Custom delivery place -->
       <div id="another_return_place_group" style="display: none;">

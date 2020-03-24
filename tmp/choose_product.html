@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= choose_product.title %></title>
   <meta name="description" content="<%= choose_product.meta-description %>" />
+  <!-- Install slick with yarn -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
@@ -150,7 +153,7 @@
                     <a class="button btn btn-choose-product" data-product="<%=product.code%>"><%= choose_product.select %></a>
                   </div>
                   <% } else { %>
-                  <p><%= choose_product.model_not_available %></p>
+                  <p class="card-static_model-not-available"><%= choose_product.model_not_available %></p>
                 <% } %>
               </div>
             </div>
@@ -356,7 +359,12 @@
   </div>
 </div>
 
+
 <script src="/assets/js/app.js"></script>
+<!-- Install slick with yarn -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
 <script src="/assets/js/mybooking-engine-init.js"></script>
 <script src="/assets/js/mybooking-engine.js"></script>
 <a href="#0" class="cd-top">Top</a>

@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= index.title %></title>
   <meta name="description" content="<%= index.meta-description %>" />
+  <!-- Install slick with yarn -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
@@ -100,7 +103,7 @@
           </div>
         </div>
         <div class="hero-header-right">
-          <!-- FLEX-FORM-SELECTOR -->
+          <!-- FORM-SELECTOR -->
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
               class="flex-form" autocomplete="off">
@@ -108,8 +111,9 @@
               <div class="flex-form-item-box">
                 <label><%= index.pickup_place %></label>
                 <div class="flex-form-item widget_pickup_place_group">
+                  <label class="form_selector-select_label_wrap">
                   <select id="widget_pickup_place" name="pickup_place"></select>
-                  <i class="fa fa-angle-down flex-icon" aria-labelledby="widget_pickup_place"></i>
+                  </label>
                 </div>
                 <!-- Custom delivery place -->
                 <div id="another_pickup_place_group" style="display: none;">
@@ -126,9 +130,11 @@
               <div class="flex-form-item-box">
                 <label><%= index.return_place %></label>
                 <div class="flex-form-item widget_return_place_group">
+                  <label class="form_selector-select_label_wrap">
                   <select id="widget_return_place" name="return_place">
                   </select>
-                  <i class="fa fa-angle-down flex-icon"></i>
+                  </label>
+          
                 </div>
                 <!-- Custom delivery place -->
                 <div id="another_return_place_group" style="display: none;">
@@ -243,6 +249,16 @@
       </div>
     </div>
     
+    <!-- Layout Slide Component -->
+    <div class="fleet_slide my-5 mx-3 px-3">
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/nissan-juke.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/opel-mokka.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/peugeot-3008.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/renault-clio.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/seat-leon.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/toyota-yaris.png" alt=""></div>
+    </div>
+    <!-- Layout media-block component -->
     <div class="media-block bg-gray-50">
       <div class="media-block_left media-block_text">
         <div class="media-block_text_aligner">
@@ -259,7 +275,7 @@
       </div>
       <div class="media-block_right" id="image_1"></div>
     </div>
-    
+    <!-- Layout media-block component -->
     <div class="media-block bg-gray-50">
       <div class="media-block_right media-block_text">
         <div class="media-block_text_aligner">
@@ -276,6 +292,7 @@
       </div>
       <div class="media-block_left" id="image_2"></div>
     </div>
+    
     
 <footer class="footer">
   <div class="container">
@@ -338,7 +355,12 @@
   </div>
 </div>
 
+
 <script src="/assets/js/app.js"></script>
+<!-- Install slick with yarn -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
 <script src="/assets/js/mybooking-engine-init.js"></script>
 <script src="/assets/js/mybooking-engine.js"></script>
 <a href="#0" class="cd-top">Top</a>

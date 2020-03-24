@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inici</title>
   <meta name="description" content="Lloguer de cotxes" />
+  <!-- Install slick with yarn -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 
@@ -101,7 +104,7 @@
           </div>
         </div>
         <div class="hero-header-right">
-          <!-- FLEX-FORM-SELECTOR -->
+          <!-- FORM-SELECTOR -->
           <section class="widget widget_mybooking_rent_engine_selector reservation-step">
             <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
               class="flex-form" autocomplete="off">
@@ -109,8 +112,9 @@
               <div class="flex-form-item-box">
                 <label>Punt de lliurament</label>
                 <div class="flex-form-item widget_pickup_place_group">
+                  <label class="form_selector-select_label_wrap">
                   <select id="widget_pickup_place" name="pickup_place"></select>
-                  <i class="fa fa-angle-down flex-icon" aria-labelledby="widget_pickup_place"></i>
+                  </label>
                 </div>
                 <!-- Custom delivery place -->
                 <div id="another_pickup_place_group" style="display: none;">
@@ -127,9 +131,11 @@
               <div class="flex-form-item-box">
                 <label>Punt de devolució</label>
                 <div class="flex-form-item widget_return_place_group">
+                  <label class="form_selector-select_label_wrap">
                   <select id="widget_return_place" name="return_place">
                   </select>
-                  <i class="fa fa-angle-down flex-icon"></i>
+                  </label>
+          
                 </div>
                 <!-- Custom delivery place -->
                 <div id="another_return_place_group" style="display: none;">
@@ -340,7 +346,12 @@
   </div>
 </div>
 
+
 <script src="/assets/js/app.js"></script>
+<!-- Install slick with yarn -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
 <script src="/assets/js/mybooking-engine-init.js"></script>
 <script src="/assets/js/mybooking-engine.js"></script>
 <a href="#0" class="cd-top">Top</a>
