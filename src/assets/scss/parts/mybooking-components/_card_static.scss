@@ -5,9 +5,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+// cards in fleet page
 .cards-static-container.fleet {
   .card-static_body {
-    min-height: fit-content;
+    height: fit-content !important;
   }
 }
 // This is just for the shadow

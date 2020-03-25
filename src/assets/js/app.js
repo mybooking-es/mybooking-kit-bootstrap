@@ -1,5 +1,7 @@
 // Import jquery from dependencies
 import $ from "jquery";
+// Import slick-carousel from dependencies
+import "slick-carousel";
 
 window.$ = $;
 window.jQuery = $;

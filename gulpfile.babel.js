@@ -72,7 +72,21 @@ function fontawesome() {
     .src(
       "./node_modules/@fortawesome/fontawesome-free/webfonts/*.{woff,woff2,eot,svg,ttf}"
     )
-    .pipe(gulp.dest(PATHS.dist + "/assets/fonts"));
+    .pipe(gulp.dest(PATHS.dist + "/assets/fonts/fontawesome"));
+}
+
+// Copy Slick-carousel fonts into dist folder
+function slick_carousel() {
+  return gulp
+    .src("./node_modules/slick-carousel/slick/fonts/*.{woff,woff2,eot,svg,ttf}")
+    .pipe(gulp.dest(PATHS.dist + "/assets/fonts/slick"));
+}
+
+// Copy Slick-carousel loader into dist folder
+function slick_loader() {
+  return gulp
+    .src("./node_modules/slick-carousel/slick/*.gif")
+    .pipe(gulp.dest(PATHS.dist + "/assets/images"));
 }
 
 // -----------------------------------------------------------------------------
@@ -189,11 +203,8 @@ function myBookingEngine() {
 // Copy robots.txt and sitemap.xml into the "dist" folder
 function robotsSitemap() {
   return gulp
-    .src([
-      "src/robots.txt",
-      "src/sitemap.xml"
-    ])
-    .pipe(gulp.dest(PATHS.dist));  
+    .src(["src/robots.txt", "src/sitemap.xml"])
+    .pipe(gulp.dest(PATHS.dist));
 }
 
 // -----------------------------------------------------------------------------
@@ -294,10 +305,12 @@ gulp.task(
     sass,
     javascript,
     myBookingEngine,
-    robotsSitemap,    
+    robotsSitemap,
     images,
     build_fonts,
     fontawesome,
+    slick_carousel,
+    slick_loader,
     translate,
     cssimages,
     video

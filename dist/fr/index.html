@@ -1,0 +1,367 @@
+
+<!doctype html>
+<html class="no-js" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservez votre voiture de location à MenorcaRacers</title>
+  <meta name="description" content="Location de voiture à Menorca" />
+
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+
+<body class="index mybooking-selector-widget">
+<!-- trace:tmp/index.html -->
+  <div id="full_loader">
+    <div class="gooey">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+    
+    <!-- hero-header with video -->
+    <div class="hero-header-container">
+      <video autoplay loop muted poster="assets/video/bg-cover.jpg" class="bg-landing">
+        <source src="/assets/video/bg-video.mp4"> 
+      </video>
+      <div class="cta cta__bg cta__text">
+        <div class="d-none d-sm-block">
+          <span><i class="fas fa-phone"></i> <a href="+34 888 88 88 88">+34 888 88 88 88</a></span>
+          <span class="mr-auto ml-3">
+            <i class="far fa-envelope"></i>
+            <a class="color-white" href="mailto:info@johndoe.com">info@johndoe.com</a>
+          </span>
+        </div>
+        <div class="d-block d-sm-none text-center">
+          <span class="mr50"><a href="+34 888 88 88 88"><i class="fas fa-phone"></i></a></span>
+          <span class="ml50">
+            <a class="color-white" href="mailto:info@johndoe.com"><i class="far fa-envelope"></i></a>
+          </span>
+        </div>
+      </div>  <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-white"></div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Accueil
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="index.html">Index</a>
+                <a class="dropdown-item" href="index_1.html">Index 1</a>
+                <a class="dropdown-item" href="index_2.html">Index 2</a>
+                <a class="dropdown-item" href="activity.html">Activity 1</a>
+                <a class="dropdown-item" href="activity_2.html">Activity 2</a>                    
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="fleet.html">Flotte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="conditions.html">Condicions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacte</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe-europe"></i> Langage
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item es visible" href="/index.html">Espagnol</a>
+                <a class="dropdown-item en visible" href="/en/index.html">Anglais</a>
+                <a class="dropdown-item ca visible" href="/ca/index.html">Catalan</a>
+                <a class="dropdown-item it visible" href="/it/index.html">Italien</a>
+                <a class="dropdown-item fr visible" href="/fr/index.html">Français</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>  <div class="hero-header-content">
+        <div class="hero-header-left">
+          <div class="aligner">
+            <h1 class="fw-900">Location de voitures et de fourgonnettes à Menorca</h1>
+            <p>
+              Où que vous alliez ... MenorcaRacers pour toutes les routes où il y a de la vie!
+            </p>
+          </div>
+        </div>
+        <div class="hero-header-right">
+          <!-- FORM-SELECTOR -->
+          <section class="widget widget_mybooking_rent_engine_selector reservation-step">
+            <form id="form-selector" name="widget_search_form" method="get" enctype="application/x-www-form-urlencoded"
+              class="flex-form" autocomplete="off">
+              <!-- Pickup place -->
+              <div class="flex-form-item-box">
+                <label>Point de livraison</label>
+                <div class="flex-form-item widget_pickup_place_group">
+                  <label class="form_selector-select_label_wrap">
+                  <select id="widget_pickup_place" name="pickup_place"></select>
+                  </label>
+                </div>
+                <!-- Custom delivery place -->
+                <div id="another_pickup_place_group" style="display: none;">
+                  <div class="flex-form-item justify-content-between">
+                    <input class="bg-white w-100" type="text" id="widget_pickup_place_other" name="pickup_place_other" />
+                    <input type="hidden" name="custom_pickup_place" value="false" />
+                    <button type="button" class="widget_another_pickup_place_group_close p-0">
+                      <i class="fa fa-times flex-icon"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Return place -->
+              <div class="flex-form-item-box">
+                <label>Point de retour</label>
+                <div class="flex-form-item widget_return_place_group">
+                  <label class="form_selector-select_label_wrap">
+                  <select id="widget_return_place" name="return_place">
+                  </select>
+                  </label>
+          
+                </div>
+                <!-- Custom delivery place -->
+                <div id="another_return_place_group" style="display: none;">
+                  <div class="flex-form-item bg-white justify-content-between">
+                    <input class="bg-white w-100" type="text" id="widget_return_place_other" name="return_place_other" />
+                    <input type="hidden" name="custom_return_place" value="false" />
+                    <button type="button" class="widget_another_return_place_group_close p-0">
+                      <i class="fa fa-times flex-icon"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-form-item-box">
+                <label>Date de livraison</label>
+                <div class="flex-form-item">
+                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                  <input type="text" id="widget_date_from" name="date_from" readonly="true" placeholder="dd/mm/aaaa" />
+                  <select class="ml-1" id="widget_time_from" name="time_from">
+                  </select>
+                </div>
+              </div>
+              <div class="flex-form-item-box">
+                <label>Date de retour</label>
+                <div class="flex-form-item">
+                  <i class="fa fa-calendar flex-icon" aria-hidden="true"></i>
+                  <input type="text" id="widget_date_to" name="date_to" readonly="true" placeholder="dd/mm/aaaa" />
+                  <select class="ml-1" id="widget_time_to" name="time_to">
+                  </select>
+                </div>
+              </div>
+          
+              <div class="flex-form-item-box">
+                <input type="submit" class="btn btn-primary" value="Cherchez" />
+              </div>
+            </form>
+          </section>    </div>
+      </div>
+      <div class="scroll-downs">
+        <div class="mousey">
+          <div class="scroller"></div>
+        </div>
+      </div>
+    </div>
+    <header class="header-wrapper">
+        <h1 class="title fw-900">POURQUOI MenorcaRacers?</h1>
+        <hr class="custom-hr"></hr>
+        <p class="subtitle">
+          À MenorcaRacers nous vous proposons le véhicule dont vous aurez besoin pour que vous alliez où vous voulez aller... Nous voulons que nos véhicules et notre service, respectueux au maximum avec le paradis où nous sommes, soient votre moyen de transport agile et de qualité. Tu mets les limites. Nous votre véhicule de location aux Terres de l´Ebre.
+        </p>
+    </header>
+    
+    <div class="icons-wrapper mt100">
+      <div class="icon-panel icon-1">
+        <i class="fas fa-gas-pump"></i><br />
+        <h6>Flotte moderne</h6>
+      </div>
+      <div class="icon-panel icon-2">
+        <i class="fas fa-wallet"></i><br />
+        <h6>Nous ne facturons pas de carburant</h6>
+      </div>
+      <div class="icon-panel icon-3">
+        <i class="fas fa-credit-card"></i><br />
+        <h6>Service client personnalisé</h6>
+      </div>
+      <div class="icon-panel icon-4">
+        <i class="fas fa-users"></i><br />
+        <h6>Service client personnalisé</h6>
+      </div>
+    </div>
+    
+    <div class="gradient-section">
+      <header class="header-wrapper">
+        <h1 class="title color-white fw-900 mt-5">
+          RÉSERVER AVEC NOUS MAINTENANT PLUS FACILE
+        </h1>
+        <hr class="custom-hr-white">
+        </hr>
+        <p class="subtitle color-white">
+          Vous pouvez le faire par le web MenorcaRacers.com, dans nos bureaux d´Amposta ou Tortosa, par téléphone en appelant au 902750770 ou WhatsApp au +34606967138 / 640702464. Aussi par notre email <a class="text-light bg-dark" href="mailto:info@MenorcaRacers.com" target:_"blank">info@MenorcaRacers.com</a>.
+
+        </p>
+      </header>
+    
+      <div class="text-center">
+        <img class="img-fluid" src="../assets/images/three-cars.png" alt="" />
+      </div>
+    
+      <div class="feature">
+        <div class="features__item">
+          <span class="stopa stopa-1">1</span>
+          <h3>Facile</h3>
+          <hr />
+          <p>
+            Sans caution, payez le loyer total lors de la prise en charge de la voiture.
+          </p>
+        </div>
+        <div class="features__item">
+          <span class="stopa stopa-2">2</span>
+          <h3>Assurance</h3>
+          <hr />
+          <p>
+            Annulation facile et gratuite, envoyez-nous simplement un e-mail.
+          </p>
+        </div>
+        <div class="features__item">
+          <span class="stopa stopa-3">3</span>
+          <h3>Honnête</h3>
+          <hr />
+          <p>
+            Aucune carte de crédit nécessaire, nous ne facturons pas de dépôt.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Layout Slide Component -->
+    <div class="fleet_slide my-5 mx-3 px-3">
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/nissan-juke.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/opel-mokka.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/peugeot-3008.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/renault-clio.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/seat-leon.png" alt=""></div>
+      <div><img class="img-fluid rounded" src="/assets/images/fleet/toyota-yaris.png" alt=""></div>
+    </div>
+    <!-- Layout media-block component -->
+    <div class="media-block bg-gray-50">
+      <div class="media-block_left media-block_text">
+        <div class="media-block_text_aligner">
+          <h3>Quinoa before</h3>
+          <ul class="list-unstyled color-gray-500">
+            <li class="lead">Marfa dreamcatcher</li>
+            <li class="lead">Palo santo</li>
+            <li class="lead">Heirloom pabst</li>
+            <li class="lead">Coloring book</li>
+          </ul>
+          <a class="btn btn-outline-dark" href="#" role="button">Leer
+            más</a>
+        </div>
+      </div>
+      <div class="media-block_right" id="image_1"></div>
+    </div>
+    <!-- Layout media-block component -->
+    <div class="media-block bg-gray-50">
+      <div class="media-block_right media-block_text">
+        <div class="media-block_text_aligner">
+          <h3>Chicharrones</h3>
+          <ul class="list-unstyled color-gray-500">
+            <li class="lead">Kickstarter </li>
+            <li class="lead">Activated charcoal</li>
+            <li class="lead">Flexitarian leggings</li>
+            <li class="lead">Tumblr biodiesel </li>
+          </ul>
+          <a class="btn btn-outline-dark" href="#" role="button">Leer
+            más</a>
+        </div>
+      </div>
+      <div class="media-block_left" id="image_2"></div>
+    </div>
+    
+    
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="logo-footer"></div>
+        <ul>
+          <li>Company name</li>
+          <li>88888888</li>
+          <li>Polígon Industrial</li>
+          <li>07730 Alaior</li>
+          <li>Menorca - Illes Balears</li>
+          <li><i class="fas fa-phone"></i> +34 888 88 88 88</li>
+          <li><i class="far fa-envelope"></i> <a class="color-white"
+              href="mailto:info@johndoe.com">info@johndoe.com</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="#">Quinoa</a></li>
+          <li><a href="#">Palo Santo</a></li>
+          <li><a href="#">Apple</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <h6>Links</h6>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="fleet.html">Flotte</a></li>
+          <li><a href="conditions.html">Condicions</a></li>
+          <li><a href="contact.html">Contacte</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <ul class="social-links mt50">
+          <li class="social__item">
+            <a href="https://www.facebook.com/Drake/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://www.instagram.com/drakeovodaily/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="social__item">
+            <a href="https://twitter.com/Drake" target="_blank"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix my-2"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container-fluid copy">
+  <div class="row">
+    <div class="col text-center">
+      <p>&copy; 2020 <strong>Company name</strong><span class="ml-5">
+          Powered by <a href="https://mybooking.es/" target="_blank">mybooking</a></span></p>
+    </div>
+  </div>
+</div>
+
+
+<script src="/assets/js/app.js"></script>
+
+
+<script src="/assets/js/mybooking-engine-init.js"></script>
+<script src="/assets/js/mybooking-engine.js"></script>
+<a href="#0" class="cd-top">Top</a>
+</body>
+
+</html>
