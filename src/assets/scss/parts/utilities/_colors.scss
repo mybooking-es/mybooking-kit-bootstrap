@@ -46,6 +46,9 @@ $red: #f03434;
 $brand-primary: #8ac53f;
 $brand-secondary: #bfd975;
 
+$brand-dark: #4b6e48;
+$brand-light: #bed3a2;
+
 .brand-primary {
   color: $brand-primary;
 }
@@ -56,10 +59,12 @@ $brand-secondary: #bfd975;
 .bg-brand-brimary {
   background-color: $brand-primary;
 }
-.bg-brand-secondary {
-  background-color: $brand-secondary;
+.bg-brand-light {
+  background-color: $brand-light;
 }
-
+.bg-brand-dark {
+  background-color: $brand-dark;
+}
 // ========================================================
 //  Gray Material Colors
 // ========================================================

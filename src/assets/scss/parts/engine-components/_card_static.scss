@@ -6,7 +6,8 @@
   flex-wrap: wrap;
 }
 // cards in fleet page
-.cards-static-container.fleet {
+.cards-static-container.fleet,
+.cards-static-container.components {
   .card-static_body {
     height: fit-content !important;
   }
@@ -214,4 +215,46 @@
     flex-basis: 33%;
     flex-grow: 0;
   }
+}
+
+// Card effects for components
+
+.cards-static-container.components .card-static_image {
+  img {
+    background: $brand-light;
+    box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+  }
+}
+
+.component-card_image {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.component-card_middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-static-wrapper:hover .component-card_image {
+  opacity: 0.3;
+}
+
+.card-static-wrapper:hover .component-card_middle {
+  opacity: 1;
+}
+
+.component-text {
+  background-color: $brand-primary;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
 }
