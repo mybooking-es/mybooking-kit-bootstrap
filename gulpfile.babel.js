@@ -103,7 +103,7 @@ function pages() {
         layouts: "src/layouts/",
         partials: "src/partials/",
         data: "src/data/",
-        helpers: "src/helpers/"
+        helpers: "src/helpers/",
       })
     )
     .pipe(gulp.dest(PATHS.tmp));
@@ -124,7 +124,7 @@ function translate() {
         defaultLang: "es",
         trace: true,
         delimiters: ["<%=", "%>"],
-        langRegExp: /<%= ?([\w-.]+) %>/g
+        langRegExp: /<%= ?([\w-.]+) %>/g,
       })
     )
     .pipe(gulp.dest(PATHS.dist));
@@ -150,7 +150,7 @@ function sass() {
     .pipe($.sourcemaps.init())
     .pipe(
       $.sass({
-        includePaths: PATHS.sass
+        includePaths: PATHS.sass,
       }).on("error", $.sass.logError)
     )
     .pipe($.postcss(postCssPlugins))
@@ -158,7 +158,7 @@ function sass() {
       $.if(
         PRODUCTION,
         $.cleanCss({
-          compatibility: "ie9"
+          compatibility: "ie9",
         })
       )
     )
@@ -166,7 +166,7 @@ function sass() {
     .pipe(gulp.dest(PATHS.dist + "/assets/css"))
     .pipe(
       browser.reload({
-        stream: true
+        stream: true,
       })
     );
 }
@@ -195,7 +195,7 @@ function myBookingEngine() {
     .src([
       "src/assets/js/lib/mybooking-engine-init.js",
       "src/assets/js/lib/mybooking-engine-init-activities.js",
-      "src/assets/js/lib/mybooking-engine.js"
+      "./node_modules/mybooking-js-engine/dist/js/mybooking-js-engine.js",
     ])
     .pipe(gulp.dest(PATHS.dist + "/assets/js"));
 }
@@ -219,18 +219,18 @@ let webpackConfig = {
         test: /.js$/,
         use: [
           {
-            loader: "babel-loader"
-          }
-        ]
-      }
-    ]
+            loader: "babel-loader",
+          },
+        ],
+      },
+    ],
   },
   resolve: {
     modules: [
       "node_modules",
-      "src/assets/js/lib" // To be able to use libraries
-    ]
-  }
+      "src/assets/js/lib", // To be able to use libraries
+    ],
+  },
 };
 
 // Combine JavaScript into one file
@@ -244,7 +244,7 @@ function javascript() {
     .pipe(
       $.if(
         PRODUCTION,
-        $.uglify().on("error", e => {
+        $.uglify().on("error", (e) => {
           console.log(e);
         })
       )
@@ -266,7 +266,7 @@ function images() {
       $.if(
         PRODUCTION,
         $.imagemin({
-          progressive: true
+          progressive: true,
         })
       )
     )
@@ -281,7 +281,7 @@ function images() {
 function server(done) {
   browser.init({
     server: PATHS.dist,
-    port: PORT
+    port: PORT,
   });
   done();
 }

@@ -5512,6 +5512,11 @@ mute-stdout@^1.0.0:
   resolved "https://registry.yarnpkg.com/mute-stdout/-/mute-stdout-1.0.1.tgz#acb0300eb4de23a7ddeec014e3e96044b3472331"
   integrity sha512-kDcwXR4PS7caBpuRYYBUz9iVixUk3anO3f5OYFiIPwK/20vCzKCHyKoulbiDY1S53zD2bxUpxN/IJ+TnXjfvxg==
 
+mybooking-js-engine@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/mybooking-js-engine/-/mybooking-js-engine-0.9.4.tgz#348cdd75466bff32b77fd5edc43143312a552a9c"
+  integrity sha512-4ckAbK46dWzGf3OFSSgbvNt7YABdl0uETyGAumsBGBJ7T0WPXpNFFdUhzc3cGU6Q+cowwAJSKlRUuq4vDm9FuQ==
+
 nan@^2.12.1, nan@^2.13.2:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"

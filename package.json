@@ -48,6 +48,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "js-yaml": "^3.13.1",
+    "mybooking-js-engine": "^0.9.4",
     "panini": "^1.6.3",
     "rimraf": "^3.0.0",
     "slick-carousel": "^1.8.1",
